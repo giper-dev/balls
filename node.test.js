@@ -6430,7 +6430,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("hd/lines/lines.view.css", "@keyframes hd_lines_score_show {\n\tfrom {\n\t\ttransform: scale(200%);\n\t}\n}\n\n[hd_lines_score] {\n\tanimation: hd_lines_score_show .25s ease-out;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n}\n");
+    $mol_style_attach("hd/lines/lines.view.css", "@keyframes hd_lines_score_show {\n\tfrom {\n\t\ttransform: scale(200%);\n\t}\n}\n\n[hd_lines_score] {\n\tanimation: hd_lines_score_show .25s ease-out;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n  touch-action: none;\n}\n");
 })($ || ($ = {}));
 
 ;
