@@ -140,7 +140,7 @@ $hd_lines_ball $mol_view
 	attr * hd_lines_ball_active <= active false
 
 $hd_lines $mol_page
-	title @ \Hyper Lines
+	title \Hyper Lines
 	size 9
 	kind_colors /
 		\
@@ -152,7 +152,7 @@ $hd_lines $mol_page
 		\yellow
 		\darkorange
 	ball_kind*? 0
-	active_cell? /number
+	active_cell? /
 	plugins /
 		<= Theme $mol_theme_auto
 	tools /

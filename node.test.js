@@ -5883,7 +5883,7 @@ var $;
 			return null;
 		}
 		title(){
-			return (this.$.$mol_locale.text("$hd_lines_title"));
+			return "Hyper Lines";
 		}
 		size(){
 			return 9;
@@ -5949,6 +5949,26 @@ var $;
 
 ;
 "use strict";
+var $;
+(function ($) {
+    function $mol_offline() { }
+    $.$mol_offline = $mol_offline;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    try {
+        $mol_offline();
+    }
+    catch (error) {
+        console.error(error);
+    }
+})($ || ($ = {}));
+
+;
+"use strict";
 
 ;
 "use strict";
@@ -5994,20 +6014,24 @@ var $;
                 return this.kind_colors()[this.ball_kind([row, col])];
             }
             ball_grab(id, event) {
+                if (this.active_cell())
+                    this.ball_drop(this.active_cell(), event);
                 if (!this.ball_kind(id))
                     return;
                 this.cell_active(id, !this.cell_active(id));
                 event.target.releasePointerCapture(event.pointerId);
             }
             ball_drop(id, event) {
+                this.active_cell([]);
                 if (!this.ball_kind(id))
                     return;
-                this.cell_active(id, false);
                 if (!this.check_lines(id)) {
                     this.add_new(null);
                 }
             }
             ball_move(id, event) {
+                if (!event.buttons)
+                    return;
                 const active = this.active_cell();
                 if (!active.length)
                     return;
@@ -6151,15 +6175,14 @@ var $;
                 justify: {
                     content: 'center',
                 },
-                gap: '1vmin',
                 userSelect: 'none',
             },
             Row: {
-                flexBasis: 'min(10vw,8vh)',
+                flexBasis: 'min(11vw,9vh)',
                 flex: {},
-                gap: '1vmin',
             },
             Cell: {
+                padding: '0.5vmin',
                 flex: {},
                 aspectRatio: 1,
                 border: {

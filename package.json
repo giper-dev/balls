@@ -163,7 +163,9 @@
     "$mol_locale",
     "$hd_lines_ball",
     "$mol_array_lottery",
-    "$mol_array"
+    "$mol_array",
+    "$mol_offline_install",
+    "$mol_offline"
   ],
   "dependencies": {
     "jsdom": "*"

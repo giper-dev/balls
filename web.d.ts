@@ -1797,6 +1797,17 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    function $mol_offline(): void;
+}
+
+declare namespace $ {
+    function $mol_offline_web(): void;
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
 
 	type $mol_chip__sub_hd_lines_1 = $mol_type_enforce<
 		readonly(any)[]
@@ -1859,7 +1870,7 @@ declare namespace $ {
 		size( ): number
 		kind_colors( ): readonly(any)[]
 		ball_kind( id: any, next?: number ): number
-		active_cell( next?: readonly(number)[] ): readonly(number)[]
+		active_cell( next?: readonly(any)[] ): readonly(any)[]
 		plugins( ): readonly(any)[]
 		tools( ): readonly(any)[]
 		body_content( ): readonly(any)[]
@@ -1878,7 +1889,7 @@ declare namespace $.$$ {
         ball_color([row, col]: [number, number]): any;
         ball_grab(id: [number, number], event: PointerEvent): void;
         ball_drop(id: [number, number], event: PointerEvent): void;
-        ball_move(id: [number, number], event: Event): void;
+        ball_move(id: [number, number], event: PointerEvent): void;
         cell_active(id: [number, number], next?: boolean): boolean;
         Score_pick(): $mol_chip;
         check_lines(id: [number, number]): false | undefined;

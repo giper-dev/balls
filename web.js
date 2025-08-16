@@ -5414,7 +5414,7 @@ var $;
 			return null;
 		}
 		title(){
-			return (this.$.$mol_locale.text("$hd_lines_title"));
+			return "Hyper Lines";
 		}
 		size(){
 			return 9;
@@ -5480,6 +5480,119 @@ var $;
 
 ;
 "use strict";
+var $;
+(function ($) {
+    function $mol_offline() { }
+    $.$mol_offline = $mol_offline;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    const blacklist = new Set([
+        '//cse.google.com/adsense/search/async-ads.js'
+    ]);
+    function $mol_offline_web() {
+        if (typeof window === 'undefined') {
+            self.addEventListener('install', (event) => {
+                ;
+                self.skipWaiting();
+            });
+            self.addEventListener('activate', (event) => {
+                ;
+                self.clients.claim();
+                $$.$mol_log3_done({
+                    place: '$mol_offline',
+                    message: 'Activated',
+                });
+            });
+            self.addEventListener('fetch', (event) => {
+                const request = event.request;
+                if (blacklist.has(request.url.replace(/^https?:/, ''))) {
+                    return event.respondWith(new Response(null, {
+                        status: 418,
+                        statusText: 'Blocked'
+                    }));
+                }
+                if (request.method !== 'GET')
+                    return;
+                if (!/^https?:/.test(request.url))
+                    return;
+                if (/\?/.test(request.url))
+                    return;
+                if (request.cache === 'no-store')
+                    return;
+                const fetch_data = () => fetch(new Request(request, { credentials: 'omit' })).then(response => {
+                    if (response.status !== 200)
+                        return response;
+                    event.waitUntil(caches.open('$mol_offline').then(cache => cache.put(request, response)));
+                    return response.clone();
+                });
+                const enrich = (response) => {
+                    if (!response.status)
+                        return response;
+                    const headers = new Headers(response.headers);
+                    headers.set("$mol_offline", "");
+                    return new Response(response.body, {
+                        status: response.status,
+                        statusText: response.statusText,
+                        headers,
+                    });
+                };
+                const fresh = request.cache === 'force-cache' ? null : fetch_data();
+                if (fresh)
+                    event.waitUntil(fresh.then(enrich));
+                event.respondWith(caches.match(request).then(cached => request.cache === 'no-cache' || request.cache === 'reload'
+                    ? (cached
+                        ? fresh
+                            .then(actual => {
+                            if (actual.status === cached.status)
+                                return actual;
+                            throw new Error(`${actual.status}${actual.statusText ? ` ${actual.statusText}` : ''}`, { cause: actual });
+                        })
+                            .catch((err) => {
+                            const cloned = cached.clone();
+                            const message = `${err.cause instanceof Response ? '' : '500 '}${err.message} $mol_offline fallback to cache`;
+                            cloned.headers.set('$mol_offline_remote_status', message);
+                            return cloned;
+                        })
+                        : fresh)
+                    : (cached || fresh || fetch_data())).then(enrich));
+            });
+            self.addEventListener('beforeinstallprompt', (event) => event.prompt());
+        }
+        else if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
+            console.warn('HTTPS or localhost is required for service workers.');
+        }
+        else if (!navigator.serviceWorker) {
+            console.warn('Service Worker is not supported.');
+        }
+        else {
+            $mol_dom.addEventListener('DOMContentLoaded', () => {
+                navigator.serviceWorker.register('web.js').then(reg => {
+                });
+            });
+        }
+    }
+    $.$mol_offline_web = $mol_offline_web;
+    $.$mol_offline = $mol_offline_web;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    try {
+        $mol_offline();
+    }
+    catch (error) {
+        console.error(error);
+    }
+})($ || ($ = {}));
+
+;
+"use strict";
 
 ;
 "use strict";
@@ -5525,20 +5638,24 @@ var $;
                 return this.kind_colors()[this.ball_kind([row, col])];
             }
             ball_grab(id, event) {
+                if (this.active_cell())
+                    this.ball_drop(this.active_cell(), event);
                 if (!this.ball_kind(id))
                     return;
                 this.cell_active(id, !this.cell_active(id));
                 event.target.releasePointerCapture(event.pointerId);
             }
             ball_drop(id, event) {
+                this.active_cell([]);
                 if (!this.ball_kind(id))
                     return;
-                this.cell_active(id, false);
                 if (!this.check_lines(id)) {
                     this.add_new(null);
                 }
             }
             ball_move(id, event) {
+                if (!event.buttons)
+                    return;
                 const active = this.active_cell();
                 if (!active.length)
                     return;
@@ -5682,15 +5799,14 @@ var $;
                 justify: {
                     content: 'center',
                 },
-                gap: '1vmin',
                 userSelect: 'none',
             },
             Row: {
-                flexBasis: 'min(10vw,8vh)',
+                flexBasis: 'min(11vw,9vh)',
                 flex: {},
-                gap: '1vmin',
             },
             Cell: {
+                padding: '0.5vmin',
                 flex: {},
                 aspectRatio: 1,
                 border: {
