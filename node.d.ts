@@ -1497,6 +1497,96 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+    class $mol_state_time extends $mol_object {
+        static task(precision: number, reset?: null): $mol_after_timeout | $mol_after_frame;
+        static now(precision: number): number;
+    }
+}
+
+declare namespace $ {
+
+	export class $mol_svg extends $mol_view {
+		dom_name( ): string
+		dom_name_space( ): string
+		font_size( ): number
+		font_family( ): string
+		style_size( ): Record<string, any>
+	}
+	
+}
+
+//# sourceMappingURL=svg.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_svg extends $.$mol_svg {
+        computed_style(): Record<string, any>;
+        font_size(): number;
+        font_family(): any;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_svg_root extends $mol_svg {
+		view_box( ): string
+		aspect( ): string
+		dom_name( ): string
+		attr( ): ({ 
+			'viewBox': ReturnType< $mol_svg_root['view_box'] >,
+			'preserveAspectRatio': ReturnType< $mol_svg_root['aspect'] >,
+		})  & ReturnType< $mol_svg['attr'] >
+	}
+	
+}
+
+//# sourceMappingURL=root.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_svg_path extends $mol_svg {
+		geometry( ): string
+		dom_name( ): string
+		attr( ): ({ 
+			'd': ReturnType< $mol_svg_path['geometry'] >,
+		})  & ReturnType< $mol_svg['attr'] >
+	}
+	
+}
+
+//# sourceMappingURL=path.view.tree.d.ts.map
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_svg_path__geometry_mol_icon_1 = $mol_type_enforce<
+		ReturnType< $mol_icon['path'] >
+		,
+		ReturnType< $mol_svg_path['geometry'] >
+	>
+	export class $mol_icon extends $mol_svg_root {
+		path( ): string
+		Path( ): $mol_svg_path
+		view_box( ): string
+		minimal_width( ): number
+		minimal_height( ): number
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=icon.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_restart extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=restart.view.tree.d.ts.map
+declare namespace $ {
     let $mol_layer: Record<"focus" | "float" | "hover" | "speck" | "popup", $mol_style_func<"var", unknown>>;
 }
 
@@ -1756,87 +1846,6 @@ declare namespace $ {
 
 //# sourceMappingURL=icon.view.tree.d.ts.map
 declare namespace $ {
-    class $mol_state_time extends $mol_object {
-        static task(precision: number, reset?: null): $mol_after_timeout | $mol_after_frame;
-        static now(precision: number): number;
-    }
-}
-
-declare namespace $ {
-
-	export class $mol_svg extends $mol_view {
-		dom_name( ): string
-		dom_name_space( ): string
-		font_size( ): number
-		font_family( ): string
-		style_size( ): Record<string, any>
-	}
-	
-}
-
-//# sourceMappingURL=svg.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_svg extends $.$mol_svg {
-        computed_style(): Record<string, any>;
-        font_size(): number;
-        font_family(): any;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $mol_svg_root extends $mol_svg {
-		view_box( ): string
-		aspect( ): string
-		dom_name( ): string
-		attr( ): ({ 
-			'viewBox': ReturnType< $mol_svg_root['view_box'] >,
-			'preserveAspectRatio': ReturnType< $mol_svg_root['aspect'] >,
-		})  & ReturnType< $mol_svg['attr'] >
-	}
-	
-}
-
-//# sourceMappingURL=root.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_svg_path extends $mol_svg {
-		geometry( ): string
-		dom_name( ): string
-		attr( ): ({ 
-			'd': ReturnType< $mol_svg_path['geometry'] >,
-		})  & ReturnType< $mol_svg['attr'] >
-	}
-	
-}
-
-//# sourceMappingURL=path.view.tree.d.ts.map
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	type $mol_svg_path__geometry_mol_icon_1 = $mol_type_enforce<
-		ReturnType< $mol_icon['path'] >
-		,
-		ReturnType< $mol_svg_path['geometry'] >
-	>
-	export class $mol_icon extends $mol_svg_root {
-		path( ): string
-		Path( ): $mol_svg_path
-		view_box( ): string
-		minimal_width( ): number
-		minimal_height( ): number
-		sub( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=icon.view.tree.d.ts.map
-declare namespace $ {
 
 	export class $mol_icon_brightness_4 extends $mol_icon {
 		path( ): string
@@ -2007,22 +2016,32 @@ declare namespace $ {
 		,
 		ReturnType< $mol_chip['sub'] >
 	>
-	type $mol_link_source__uri_hd_lines_2 = $mol_type_enforce<
+	type $mol_button_minor__click_hd_lines_2 = $mol_type_enforce<
+		ReturnType< $hd_lines['restart'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_button_minor__sub_hd_lines_3 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_link_source__uri_hd_lines_4 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link_source['uri'] >
 	>
-	type $hd_lines_ball__color_hd_lines_3 = $mol_type_enforce<
+	type $hd_lines_ball__color_hd_lines_5 = $mol_type_enforce<
 		ReturnType< $hd_lines['ball_color'] >
 		,
 		ReturnType< $hd_lines_ball['color'] >
 	>
-	type $hd_lines_ball__active_hd_lines_4 = $mol_type_enforce<
+	type $hd_lines_ball__active_hd_lines_6 = $mol_type_enforce<
 		ReturnType< $hd_lines['cell_active'] >
 		,
 		ReturnType< $hd_lines_ball['active'] >
 	>
-	type $mol_view__event_hd_lines_5 = $mol_type_enforce<
+	type $mol_view__event_hd_lines_7 = $mol_type_enforce<
 		({ 
 			pointerdown( next?: ReturnType< $hd_lines['ball_grab'] > ): ReturnType< $hd_lines['ball_grab'] >,
 			pointerenter( next?: ReturnType< $hd_lines['ball_move'] > ): ReturnType< $hd_lines['ball_move'] >,
@@ -2031,17 +2050,17 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['event'] >
 	>
-	type $mol_view__sub_hd_lines_6 = $mol_type_enforce<
+	type $mol_view__sub_hd_lines_8 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_hd_lines_7 = $mol_type_enforce<
+	type $mol_view__sub_hd_lines_9 = $mol_type_enforce<
 		ReturnType< $hd_lines['cells'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_hd_lines_8 = $mol_type_enforce<
+	type $mol_view__sub_hd_lines_10 = $mol_type_enforce<
 		ReturnType< $hd_lines['rows'] >
 		,
 		ReturnType< $mol_view['sub'] >
@@ -2051,6 +2070,9 @@ declare namespace $ {
 		score( next?: number ): number
 		Score( id: any): $mol_chip
 		Score_pick( ): ReturnType< $hd_lines['Score'] >
+		restart( next?: any ): any
+		Restart_icon( ): $mol_icon_restart
+		Restart( ): $mol_button_minor
 		Lights( ): $mol_lights_toggle
 		Source( ): $mol_link_source
 		ball_grab( id: any, next?: any ): any
@@ -2093,6 +2115,7 @@ declare namespace $.$$ {
         Score_pick(): $mol_chip;
         check_lines(id: [number, number]): false | undefined;
         add_new(next?: null): void;
+        restart(): void;
     }
 }
 
