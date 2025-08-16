@@ -1,0 +1,4 @@
+$hd_lines_ball $mol_view
+	color \white
+	style * background-image <= image \
+	attr * hd_lines_ball_active <= active false

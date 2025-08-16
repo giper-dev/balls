@@ -1,0 +1,33 @@
+$hd_lines $mol_page
+	title @ \Hyper Lines
+	size 9
+	kind_colors /
+		\
+		\blue
+		\red
+		\limegreen
+		\magenta
+		\cyan
+		\yellow
+		\darkorange
+	ball_kind*? 0
+	active_cell? /number
+	plugins /
+		<= Theme $mol_theme_auto
+	tools /
+		<= Score_pick <= Score*0 $mol_chip sub / <= score? 0
+		<= Lights $mol_lights_toggle
+	body_content /
+		<= Board $mol_view sub <= rows /
+			<= Row*0 $mol_view sub <= cells* /
+				<= Cell*0 $mol_view
+					event *
+						pointerdown? <=> ball_grab*? null
+						pointerenter? <=> ball_move*? null
+						pointerup? <=> ball_drop*? null
+					sub /
+						<= Ball* $hd_lines_ball
+							color <= ball_color* \
+							active <= cell_active*? false
+	auto /
+		<= add_new null

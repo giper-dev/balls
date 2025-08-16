@@ -1,0 +1,9 @@
+@keyframes hd_lines_score_show {
+	from {
+		transform: scale(200%);
+	}
+}
+
+[hd_lines_score] {
+	animation: hd_lines_score_show .25s ease-out;
+}
