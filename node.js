@@ -6439,7 +6439,7 @@ var $;
                 flex: {},
             },
             Cell: {
-                padding: '0.5vmin',
+                padding: '0.25vmin',
                 flex: {},
                 aspectRatio: 1,
                 border: {
