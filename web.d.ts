@@ -1765,6 +1765,88 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
+	export class $mol_link extends $mol_view {
+		uri_toggle( ): string
+		hint( ): string
+		hint_safe( ): ReturnType< $mol_link['hint'] >
+		target( ): string
+		file_name( ): string
+		current( ): boolean
+		relation( ): string
+		event_click( next?: any ): any
+		click( next?: ReturnType< $mol_link['event_click'] > ): ReturnType< $mol_link['event_click'] >
+		uri( ): string
+		dom_name( ): string
+		uri_off( ): string
+		uri_native( ): any
+		external( ): boolean
+		attr( ): ({ 
+			'href': ReturnType< $mol_link['uri_toggle'] >,
+			'title': ReturnType< $mol_link['hint_safe'] >,
+			'target': ReturnType< $mol_link['target'] >,
+			'download': ReturnType< $mol_link['file_name'] >,
+			'mol_link_current': ReturnType< $mol_link['current'] >,
+			'rel': ReturnType< $mol_link['relation'] >,
+		})  & ReturnType< $mol_view['attr'] >
+		sub( ): readonly($mol_view_content)[]
+		arg( ): Record<string, any>
+		event( ): ({ 
+			click( next?: ReturnType< $mol_link['click'] > ): ReturnType< $mol_link['click'] >,
+		})  & ReturnType< $mol_view['event'] >
+	}
+	
+}
+
+//# sourceMappingURL=link.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_link extends $.$mol_link {
+        uri_toggle(): string;
+        uri(): string;
+        uri_off(): string;
+        uri_native(): URL;
+        current(): boolean;
+        file_name(): string;
+        minimal_height(): number;
+        external(): boolean;
+        target(): '_self' | '_blank' | '_top' | '_parent' | string;
+        hint_safe(): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_icon_script extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=script.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_script_text extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=text.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_link_source extends $mol_link {
+		Icon( ): $mol_icon_script_text
+		hint( ): string
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=source.view.tree.d.ts.map
+declare namespace $ {
+
 	export class $hd_lines_ball extends $mol_view {
 		image( ): string
 		active( ): boolean
@@ -1814,17 +1896,22 @@ declare namespace $ {
 		,
 		ReturnType< $mol_chip['sub'] >
 	>
-	type $hd_lines_ball__color_hd_lines_2 = $mol_type_enforce<
+	type $mol_link_source__uri_hd_lines_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link_source['uri'] >
+	>
+	type $hd_lines_ball__color_hd_lines_3 = $mol_type_enforce<
 		ReturnType< $hd_lines['ball_color'] >
 		,
 		ReturnType< $hd_lines_ball['color'] >
 	>
-	type $hd_lines_ball__active_hd_lines_3 = $mol_type_enforce<
+	type $hd_lines_ball__active_hd_lines_4 = $mol_type_enforce<
 		ReturnType< $hd_lines['cell_active'] >
 		,
 		ReturnType< $hd_lines_ball['active'] >
 	>
-	type $mol_view__event_hd_lines_4 = $mol_type_enforce<
+	type $mol_view__event_hd_lines_5 = $mol_type_enforce<
 		({ 
 			pointerdown( next?: ReturnType< $hd_lines['ball_grab'] > ): ReturnType< $hd_lines['ball_grab'] >,
 			pointerenter( next?: ReturnType< $hd_lines['ball_move'] > ): ReturnType< $hd_lines['ball_move'] >,
@@ -1833,17 +1920,17 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['event'] >
 	>
-	type $mol_view__sub_hd_lines_5 = $mol_type_enforce<
+	type $mol_view__sub_hd_lines_6 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_hd_lines_6 = $mol_type_enforce<
+	type $mol_view__sub_hd_lines_7 = $mol_type_enforce<
 		ReturnType< $hd_lines['cells'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_hd_lines_7 = $mol_type_enforce<
+	type $mol_view__sub_hd_lines_8 = $mol_type_enforce<
 		ReturnType< $hd_lines['rows'] >
 		,
 		ReturnType< $mol_view['sub'] >
@@ -1854,6 +1941,7 @@ declare namespace $ {
 		Score( id: any): $mol_chip
 		Score_pick( ): ReturnType< $hd_lines['Score'] >
 		Lights( ): $mol_lights_toggle
+		Source( ): $mol_link_source
 		ball_grab( id: any, next?: any ): any
 		ball_move( id: any, next?: any ): any
 		ball_drop( id: any, next?: any ): any
