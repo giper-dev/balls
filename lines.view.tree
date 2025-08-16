@@ -17,6 +17,7 @@ $hd_lines $mol_page
 	tools /
 		<= Score_pick <= Score*0 $mol_chip sub / <= score? 0
 		<= Lights $mol_lights_toggle
+		<= Source $mol_link_source uri \http://github.com/hd4ru/lines/
 	body_content /
 		<= Board $mol_view sub <= rows /
 			<= Row*0 $mol_view sub <= cells* /

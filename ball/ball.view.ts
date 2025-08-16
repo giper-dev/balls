@@ -3,7 +3,7 @@ namespace $.$$ {
 		
 		@ $mol_mem
 		image() {
-			if( !this.color() ) return 'radial-gradient( circle at 50% 125%, transparent, rgba( 0, 0, 0, 0.5 ) )'
+			if( !this.color() ) return 'radial-gradient( circle at 50% 125%, transparent, rgba( 0, 0, 0, 0.25 ) )'
 			return `radial-gradient( circle at 50% 25%, ${ this.color() }, black 90% )`
 		}
 		
