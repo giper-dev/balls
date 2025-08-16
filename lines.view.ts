@@ -173,5 +173,9 @@ namespace $.$$ {
 			
 		}
 		
+		restart() {
+			this.$.$mol_dom.location.reload()
+		}
+		
 	}
 }

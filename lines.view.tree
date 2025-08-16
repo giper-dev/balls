@@ -16,6 +16,9 @@ $hd_lines $mol_page
 		<= Theme $mol_theme_auto
 	tools /
 		<= Score_pick <= Score*0 $mol_chip sub / <= score? 0
+		<= Restart $mol_button_minor
+			click? <=> restart? null
+			sub / <= Restart_icon $mol_icon_restart
 		<= Lights $mol_lights_toggle
 		<= Source $mol_link_source uri \http://github.com/hd4ru/lines/
 	body_content /
