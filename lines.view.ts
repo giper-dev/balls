@@ -64,8 +64,9 @@ namespace $.$$ {
 			if( !this.ball_kind( id ) ) return
 			
 			this.cell_active( id, false )
-			this.check_lines( id )
-			this.add_new( null )
+			if( !this.check_lines( id ) ) {
+				this.add_new( null )
+			}
 			
 		}
 		
@@ -106,6 +107,8 @@ namespace $.$$ {
 			const kind = this.ball_kind( id )
 			if( !kind ) return
 			
+			let found = false
+			
 			const walk = ( row_step: number, col_step: number )=> {
 				
 				let count = -1
@@ -133,6 +136,7 @@ namespace $.$$ {
 				}
 				
 				this.score( this.score() + ( count - 4 ) ** ( count - 4 ) )
+				found = true
 				
 			}
 			
@@ -141,6 +145,7 @@ namespace $.$$ {
 			walk( +1, +0 )
 			walk( +1, -1 )
 			
+			return found
 		}
 		
 		@ $mol_mem
