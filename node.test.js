@@ -6003,8 +6003,9 @@ var $;
                 if (!this.ball_kind(id))
                     return;
                 this.cell_active(id, false);
-                this.check_lines(id);
-                this.add_new(null);
+                if (!this.check_lines(id)) {
+                    this.add_new(null);
+                }
             }
             ball_move(id, event) {
                 const active = this.active_cell();
@@ -6037,6 +6038,7 @@ var $;
                 const kind = this.ball_kind(id);
                 if (!kind)
                     return;
+                let found = false;
                 const walk = (row_step, col_step) => {
                     let count = -1;
                     let [row, col] = id;
@@ -6059,11 +6061,13 @@ var $;
                         this.ball_kind([row, col], 0);
                     }
                     this.score(this.score() + (count - 4) ** (count - 4));
+                    found = true;
                 };
                 walk(+0, +1);
                 walk(+1, +1);
                 walk(+1, +0);
                 walk(+1, -1);
+                return found;
             }
             add_new(next) {
                 const free = this.free();

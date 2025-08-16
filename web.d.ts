@@ -1881,7 +1881,7 @@ declare namespace $.$$ {
         ball_move(id: [number, number], event: Event): void;
         cell_active(id: [number, number], next?: boolean): boolean;
         Score_pick(): $mol_chip;
-        check_lines(id: [number, number]): void;
+        check_lines(id: [number, number]): false | undefined;
         add_new(next?: null): void;
     }
 }
