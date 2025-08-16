@@ -30,7 +30,7 @@ namespace $.$$ {
 		},
 		
 		Cell: {
-			padding: '0.5vmin',
+			padding: '0.25vmin',
 			flex: {
 				// basis: '2rem',
 				// grow: 1,
