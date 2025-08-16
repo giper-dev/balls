@@ -18,20 +18,19 @@ namespace $.$$ {
 			justify: {
 				content: 'center',
 			},
-			gap: '1vmin',
 			userSelect: 'none',
 		},
 		
 		Row: {
-			flexBasis: 'min(10vw,8vh)',
+			flexBasis: 'min(11vw,9vh)',
 			flex: {
 				// basis: '10vmin',
 				// grow: 1,
 			},
-			gap: '1vmin',
 		},
 		
 		Cell: {
+			padding: '0.5vmin',
 			flex: {
 				// basis: '2rem',
 				// grow: 1,

@@ -53,6 +53,7 @@ namespace $.$$ {
 		
 		@ $mol_action
 		ball_grab( id: [ number, number ], event: PointerEvent ) {
+			if( this.active_cell() ) this.ball_drop( this.active_cell() as any, event )
 			if( !this.ball_kind( id ) ) return
 			this.cell_active( id, ! this.cell_active( id ) )
 			;( event.target! as Element ).releasePointerCapture(event.pointerId)
@@ -61,9 +62,10 @@ namespace $.$$ {
 		@ $mol_action
 		ball_drop( id: [ number, number ], event: PointerEvent ) {
 			
+			this.active_cell([])
+			
 			if( !this.ball_kind( id ) ) return
 			
-			this.cell_active( id, false )
 			if( !this.check_lines( id ) ) {
 				this.add_new( null )
 			}
@@ -71,7 +73,9 @@ namespace $.$$ {
 		}
 		
 		@ $mol_action
-		ball_move( id: [ number, number ], event: Event ) {
+		ball_move( id: [ number, number ], event: PointerEvent ) {
+			
+			if( !event.buttons ) return
 			
 			const active = this.active_cell() as [ number, number ]
 			if( !active.length ) return
