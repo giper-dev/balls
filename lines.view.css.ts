@@ -22,7 +22,7 @@ namespace $.$$ {
 		},
 		
 		Row: {
-			flexBasis: 'min(9vw,9vh)',
+			flexBasis: '9vmin',
 			flex: {
 				// basis: '10vmin',
 				// grow: 1,
