@@ -5563,7 +5563,7 @@ var $;
             image() {
                 if (!this.color())
                     return 'radial-gradient( circle at 50% 125%, transparent, rgba( 0, 0, 0, 0.25 ) )';
-                return `radial-gradient( circle at 50% 25%, ${this.color()}, black 90% )`;
+                return `radial-gradient( circle at 50% 25%, ${this.color()}, rgba( 0, 0, 0, 0.8 ) )`;
             }
         }
         __decorate([
@@ -5714,18 +5714,17 @@ var $;
 		kind_colors(){
 			return [
 				"", 
-				"blue", 
-				"red", 
-				"limegreen", 
-				"magenta", 
-				"cyan", 
-				"yellow", 
-				"darkorange"
+				"oklch( .8 0.3 35 )", 
+				"oklch( .8 0.3 115 )", 
+				"oklch( .8 0.3 170 )", 
+				"oklch( .8 0.3 215 )", 
+				"oklch( .8 0.3 270 )", 
+				"oklch( .8 0.3 325 )", 
+				"oklch( .8 0.3 360 )"
 			];
 		}
 		mood_smiles(){
 			return [
-				".__.", 
 				"._.", 
 				"*_*", 
 				"*o*", 
@@ -5734,7 +5733,8 @@ var $;
 				"=^_^=", 
 				"=^__^=", 
 				"=*_*=", 
-				"=*__*="
+				"=*__*=", 
+				"@_@"
 			];
 		}
 		ball_kind(id, next){

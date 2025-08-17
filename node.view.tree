@@ -178,15 +178,14 @@ $hd_lines $mol_page
 	size 9
 	kind_colors /
 		\
-		\blue
-		\red
-		\limegreen
-		\magenta
-		\cyan
-		\yellow
-		\darkorange
+		\oklch( .8 0.3 35 )
+		\oklch( .8 0.3 115 )
+		\oklch( .8 0.3 170 )
+		\oklch( .8 0.3 215 )
+		\oklch( .8 0.3 270 )
+		\oklch( .8 0.3 325 )
+		\oklch( .8 0.3 360 )
 	mood_smiles /
-		\.__.
 		\._.
 		\*_*
 		\*o*
@@ -196,6 +195,7 @@ $hd_lines $mol_page
 		\=^__^=
 		\=*_*=
 		\=*__*=
+		\@_@
 	ball_kind*? 0
 	active_cell? /
 	score? 0
