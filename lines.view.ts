@@ -47,6 +47,36 @@ namespace $.$$ {
 			return this.kind_colors()[ this.ball_kind([ row, col ]) ]
 		}
 		
+		@ $mol_mem_key
+		ball_mood( [ row, col ]: [ number, number ] ) {
+			
+			const kind = this.ball_kind([ row, col ])
+			if( !kind ) return ''
+			
+			let mood = 0
+			const size = this.size()
+			
+			const nears = [
+				[ row-1, col-1 ], [ row-1, col ], [ row-1, col+1 ],
+				[ row, col-1 ],                   [ row, col+1 ],
+				[ row+1, col-1 ], [ row+1, col ], [ row+1, col+1 ],
+			]
+			
+			for( const [ r, c ] of nears ) {
+				
+				if( r < 0 ) continue
+				if( c < 0 ) continue
+				if( r >= size ) continue
+				if( c >= size ) continue
+				
+				if( this.ball_kind([ r, c ]) !== kind ) continue
+				++ mood
+				
+			}
+			
+			return this.mood_smiles()[ mood ]
+		}
+		
 		@ $mol_action
 		ball_grab( id: [ number, number ], event: PointerEvent ) {
 			if( this.active_cell() ) this.ball_drop( this.active_cell() as any, event )
