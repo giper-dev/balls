@@ -101,6 +101,7 @@ namespace $.$$ {
 		@ $mol_action
 		ball_move( id: [ number, number ], event: PointerEvent ) {
 			
+			event.preventDefault()
 			if( !event.buttons ) return
 			
 			const active = this.active_cell() as [ number, number ]
@@ -112,7 +113,6 @@ namespace $.$$ {
 			this.ball_kind( active, 0 )
 			this.active_cell( id )
 			
-			event.preventDefault()
 		}
 		
 		@ $mol_mem_key
