@@ -5681,7 +5681,7 @@ var $;
 			return null;
 		}
 		title(){
-			return "Hyper Lines";
+			return (this.$.$mol_locale.text("$hd_lines_title"));
 		}
 		size(){
 			return 9;
@@ -6172,13 +6172,12 @@ var $;
                 },
                 userSelect: 'none',
             },
-            Row: {
-                flexBasis: '9vmin',
-                flex: {},
-            },
+            Row: {},
             Cell: {
                 padding: '0.25vmin',
-                flex: {},
+                flex: {
+                    basis: '9vmin',
+                },
                 background: {
                     color: $mol_theme.card,
                 },

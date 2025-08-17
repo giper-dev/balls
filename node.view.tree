@@ -172,7 +172,7 @@ $hd_lines_ball $mol_view
 	attr * hd_lines_ball_active <= active false
 
 $hd_lines $mol_page
-	title \Hyper Lines
+	title @ \Hyper Lines
 	size 9
 	kind_colors /
 		\
