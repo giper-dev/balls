@@ -8,6 +8,10 @@
 	animation: hd_balls_score_show .25s ease-out;
 }
 
+[hd_balls_board] {
+	-webkit-user-select: none;
+}
+
 html, body {
   overscroll-behavior-x: none;
   touch-action: none;
