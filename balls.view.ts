@@ -88,13 +88,13 @@ namespace $.$$ {
 		@ $mol_action
 		ball_drop( id: [ number, number ], event: PointerEvent ) {
 			
+			const active = this.active_cell() as [ number, number ]
+			if( !active.length ) return
+			
 			this.active_cell([])
 			
-			if( !this.ball_kind( id ) ) return
-			
-			if( !this.check_lines( id ) ) {
-				this.add_new( null )
-			}
+			const win = this.check_lines( id ) || this.check_lines( active )
+			if( !win ) this.add_new( null )
 			
 		}
 		
@@ -162,7 +162,7 @@ namespace $.$$ {
 			const edge = ( row: number, col: number )=> row < 0 || col < 0 || row >= size || col >= size || this.ball_kind([ row, col ]) !== kind
 			
 			const kind = this.ball_kind( id )
-			if( !kind ) return
+			if( !kind ) return false
 			
 			let total = 0
 			
