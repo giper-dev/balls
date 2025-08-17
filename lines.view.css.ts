@@ -50,9 +50,9 @@ namespace $.$$ {
 				// basis: '2rem',
 				// grow: 1,
 			},
-			// background: {
-			// 	color: $mol_theme.card,
-			// },
+			background: {
+				color: $mol_theme.card,
+			},
 			aspectRatio: 1,
 			border: {
 				radius: $mol_gap.round,

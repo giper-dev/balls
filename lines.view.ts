@@ -134,7 +134,7 @@ namespace $.$$ {
 			const kind = this.ball_kind( id )
 			if( !kind ) return
 			
-			let found = false
+			let total = 0
 			
 			const walk = ( row_step: number, col_step: number )=> {
 				
@@ -162,8 +162,7 @@ namespace $.$$ {
 					this.ball_kind( [ row, col ], 0 )
 				}
 				
-				this.score( this.score() + ( count - 4 ) ** ( count - 4 ) )
-				found = true
+				total += count
 				
 			}
 			
@@ -172,7 +171,12 @@ namespace $.$$ {
 			walk( +1, +0 )
 			walk( +1, -1 )
 			
-			return found
+			if( !total  ) return false
+			
+			total -= 5
+			this.score( this.score() + 2 ** total )
+			
+			return true
 		}
 		
 		@ $mol_mem
@@ -218,6 +222,8 @@ namespace $.$$ {
 				score_max,
 				kinds: [],
 			})
+			
+			this.active_cell([])
 			
 			this.add_new( null )
 			
