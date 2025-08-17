@@ -5766,8 +5766,8 @@ var $;
 		tools(){
 			return [(this.Lights()), (this.Source())];
 		}
-		sub(){
-			return [(this.Head()), (this.Board())];
+		body_content(){
+			return [(this.Board())];
 		}
 		auto(){
 			return [(this.add_new())];
