@@ -22,7 +22,7 @@ namespace $.$$ {
 		},
 		
 		Board: {
-			margin: 'auto',
+			// margin: 'auto',
 			flex: {
 				direction: 'column',
 			},
