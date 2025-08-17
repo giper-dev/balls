@@ -37,17 +37,17 @@ namespace $.$$ {
 		},
 		
 		Row: {
-			flexBasis: '9vmin',
-			flex: {
-				// basis: '10vmin',
-				// grow: 1,
-			},
+			// flexBasis: '9vmin',
+			// flex: {
+			// 	// basis: '10vmin',
+			// 	// grow: 1,
+			// },
 		},
 		
 		Cell: {
 			padding: '0.25vmin',
 			flex: {
-				// basis: '2rem',
+				basis: '9vmin',
 				// grow: 1,
 			},
 			background: {
