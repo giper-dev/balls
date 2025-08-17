@@ -79,10 +79,10 @@ namespace $.$$ {
 		
 		@ $mol_action
 		ball_grab( id: [ number, number ], event: PointerEvent ) {
+			;( event.target! as Element ).releasePointerCapture(event.pointerId)
 			if( this.active_cell() ) this.ball_drop( this.active_cell() as any, event )
 			if( !this.ball_kind( id ) ) return
 			this.cell_active( id, ! this.cell_active( id ) )
-			;( event.target! as Element ).releasePointerCapture(event.pointerId)
 		}
 		
 		@ $mol_action
