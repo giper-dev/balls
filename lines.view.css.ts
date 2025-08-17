@@ -2,8 +2,24 @@ namespace $.$$ {
 	
 	$mol_style_define( $hd_lines, {
 		
+		Head: {
+			justify: {
+				content: 'space-between',
+			},
+		},
+		
+		Title: {
+			flex: {
+				basis: `7rem`,
+				grow: 0,
+			},
+		},
+		
 		Score: {
 			color: $mol_theme.special,
+			font: {
+				weight: 'bold',
+			},
 		},
 		
 		Board: {

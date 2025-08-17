@@ -6,24 +6,13 @@ namespace $.$$ {
 		return true
 	}
 	
+	type Snapshot = Readonly<{
+		score: number
+		score_max: number
+		kinds: readonly number[]
+	}>
+	
 	export class $hd_lines extends $.$hd_lines {
-		
-		@ $mol_mem
-		free() {
-			
-			$mol_wire_solid()
-			
-			const size = this.size()
-			const free = new Set< `${number},${number}` >()
-			
-			for( let row = 0; row < size; ++ row ) {
-				for( let col = 0; col < size; ++ col ) {
-					free.add( `${row},${col}` )
-				}
-			}
-			
-			return free
-		}
 		
 		@ $mol_mem
 		rows() {
@@ -35,15 +24,22 @@ namespace $.$$ {
 			return Array.from( { length: this.size() }, (_, col )=> this.Cell([ row, col ]) )
 		}
 		
+		@ $mol_mem
+		snapshot( next?: Snapshot ): Snapshot {
+			return this.$.$mol_state_local.value( 'snapshot', next ) ?? { score: 0, score_max: 0, kinds: [] }
+		}
+		
 		@ $mol_mem_key
 		ball_kind( id: [ number, number ], next?: number ) {
 			
 			if( next !== undefined ) {
-				if( next === 0 ) this.free().add( id.join(',') as `${number},${number}` )
-				else this.free().delete( id.join(',') as `${number},${number}` )
+				const snapshot = $mol_mutable( this.snapshot() )
+				snapshot.kinds[ id[0] * this.size() + id[1] ]( ()=> next )
+				this.snapshot( snapshot() )
 			}
 			
-			return super.ball_kind( id, next )
+			return this.snapshot().kinds[ id[0] * this.size() + id[1] ] ?? 0
+			
 		}
 		
 		@ $mol_mem_key
@@ -95,6 +91,33 @@ namespace $.$$ {
 			if( next ) this.active_cell( id )
 			else this.active_cell( [] )
 			return next
+		}
+		
+		@ $mol_mem
+		score( next?: number ){
+			
+			const { score, score_max, kinds } = this.snapshot()
+			if( next === undefined ) return score
+			
+			this.snapshot({
+				score: next,
+				score_max: Math.max( next, score_max ),
+				kinds: kinds,
+			})
+			
+			return next
+		}
+		
+		score_max() {
+			return this.snapshot().score_max
+		}
+		
+		@ $mol_mem
+		score_text() {
+			const score = this.score()
+			const max = this.score_max()
+			if( score === max ) return `${score}!`
+			else return `${score} / ${max}`
 		}
 		
 		@ $mol_mem
@@ -155,15 +178,26 @@ namespace $.$$ {
 		@ $mol_mem
 		add_new( next?: null ) {
 			
-			const free = this.free()
-			const vars = this.kind_colors().length - 1
+			if( next === undefined && this.snapshot().kinds.length ) return
 			
-			for( let i = 0; free.size && i < 3; ++i ) {
+			const vars = this.kind_colors().length - 1
+			const size = this.size()
+			
+			for( let i = 0; i < 3; ++i ) {
 				
-				const key = $mol_array_lottery([ ... free ])
-				free.delete( key )
+				const snapshot = this.snapshot().kinds
+				const free = [] as [ number, number ][]
 				
-				const id = key.split( ',' ).map( Number ) as [ number, number ]
+				for( let row = 0; row < size; ++ row ) {
+					for( let col = 0; col < size; ++ col ) {
+						if( snapshot[ row * size + col ] ) continue
+						free.push([ row, col ])
+					}
+				}
+				
+				if( !free.length ) return
+				
+				const id = $mol_array_lottery([ ... free ])
 				const kind = Math.ceil( Math.random() * vars )
 				
 				this.ball_kind( id, kind )
@@ -171,10 +205,22 @@ namespace $.$$ {
 				
 			}
 			
+			return
 		}
 		
+		@ $mol_action
 		restart() {
-			this.$.$mol_dom.location.reload()
+			
+			const { score_max } = this.snapshot()
+			
+			this.snapshot({
+				score: 0,
+				score_max,
+				kinds: [],
+			})
+			
+			this.add_new( null )
+			
 		}
 		
 	}
