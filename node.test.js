@@ -6609,6 +6609,7 @@ var $;
                     direction: 'column',
                 },
                 userSelect: 'none',
+                touchAction: 'none',
                 width: '88vmin',
             },
             Cell: {
@@ -6625,7 +6626,6 @@ var $;
                 flex: {
                     grow: 1,
                 },
-                touchAction: 'none',
             },
         });
     })($$ = $.$$ || ($.$$ = {}));
