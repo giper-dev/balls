@@ -6528,6 +6528,9 @@ var $;
             },
             Body: {
                 display: 'flex',
+                flex: {
+                    direction: 'row',
+                },
             },
             Title: {
                 flex: {
