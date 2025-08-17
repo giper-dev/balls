@@ -1,4 +1,4 @@
-@keyframes hd_lines_ball_jumping {
+@keyframes hd_balls_ball_jumping {
 	from {
 		transform: scaleY(100%) translateY(-25%);
 	}
@@ -7,6 +7,6 @@
 	}
 }
 
-[hd_lines_ball_active] {
-	animation: hd_lines_ball_jumping .25s infinite ease-in alternate-reverse;
+[hd_balls_ball_active] {
+	animation: hd_balls_ball_jumping .25s infinite ease-in alternate-reverse;
 }

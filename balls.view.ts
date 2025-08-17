@@ -12,7 +12,7 @@ namespace $.$$ {
 		kinds: readonly number[]
 	}>
 	
-	export class $hd_lines extends $.$hd_lines {
+	export class $hd_balls extends $.$hd_balls {
 		
 		@ $mol_mem
 		rows() {

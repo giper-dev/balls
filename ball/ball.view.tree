@@ -1,6 +1,6 @@
-$hd_lines_ball $mol_view
+$hd_balls_ball $mol_view
 	color \white
 	style * background-image <= image \
-	attr * hd_lines_ball_active <= active false
+	attr * hd_balls_ball_active <= active false
 	sub /
 		<= mood \x_x

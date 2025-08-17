@@ -1,6 +1,6 @@
 namespace $.$$ {
 	
-	$mol_style_define( $hd_lines_ball, {
+	$mol_style_define( $hd_balls_ball, {
 		
 		border: {
 			radius: '50%',

@@ -1,11 +1,11 @@
-@keyframes hd_lines_score_show {
+@keyframes hd_balls_score_show {
 	from {
 		transform: scale(200%);
 	}
 }
 
-[hd_lines_score] {
-	animation: hd_lines_score_show .25s ease-out;
+[hd_balls_score] {
+	animation: hd_balls_score_show .25s ease-out;
 }
 
 html, body {

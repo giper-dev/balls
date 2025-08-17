@@ -1,5 +1,5 @@
 namespace $.$$ {
-	export class $hd_lines_ball extends $.$hd_lines_ball {
+	export class $hd_balls_ball extends $.$hd_balls_ball {
 		
 		@ $mol_mem
 		image() {

@@ -1,6 +1,6 @@
 namespace $.$$ {
 	
-	$mol_style_define( $hd_lines, {
+	$mol_style_define( $hd_balls, {
 		
 		Head: {
 			justify: {
