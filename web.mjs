@@ -2253,6 +2253,9 @@ var $;
         static linear_gradient(value) {
             return new $mol_style_func('linear-gradient', value);
         }
+        static radial_gradient(value) {
+            return new $mol_style_func('radial-gradient', value);
+        }
         static calc(value) {
             return new $mol_style_func('calc', value);
         }
@@ -6147,6 +6150,9 @@ var $;
                     content: 'space-between',
                 },
             },
+            Body: {
+                display: 'flex',
+            },
             Title: {
                 flex: {
                     grow: 0,
@@ -6160,7 +6166,6 @@ var $;
             },
             Board: {
                 margin: 'auto',
-                padding: '1vmin',
                 flex: {
                     direction: 'column',
                 },
@@ -6169,7 +6174,7 @@ var $;
             Cell: {
                 padding: '0.25vmin',
                 flex: {
-                    basis: '9vmin',
+                    basis: '9.5vmin',
                 },
                 aspectRatio: 1,
                 border: {
