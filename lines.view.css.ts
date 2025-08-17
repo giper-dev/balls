@@ -10,6 +10,9 @@ namespace $.$$ {
 		
 		Body: {
 			display: 'flex',
+			flex: {
+				direction: 'row',
+			},
 		},
 		
 		Title: {
