@@ -1999,6 +1999,21 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+    type $mol_type_immutable_deep<Val> = {
+        readonly [field in keyof Val]: $mol_type_immutable_deep<Val[field]>;
+    };
+}
+
+declare namespace $ {
+    type $mol_mutable_wrapper<Value> = {
+        (patch?: (next: $mol_type_immutable_deep<Value>) => $mol_type_immutable_deep<Value>): $mol_type_immutable_deep<Value>;
+    } & {
+        [Field in keyof Value]: $mol_mutable_wrapper<Value[Field]>;
+    };
+    function $mol_mutable<Value>(input: Value, update?: (next: Value) => Value): $mol_mutable_wrapper<Value>;
+}
+
+declare namespace $ {
     function $mol_array_lottery<Value>(list: readonly Value[]): Value;
 }
 
@@ -2067,7 +2082,7 @@ declare namespace $ {
 	>
 	export class $hd_lines extends $mol_page {
 		Theme( ): $mol_theme_auto
-		score( next?: number ): number
+		score_text( ): string
 		Score( id: any): $mol_chip
 		Score_pick( ): ReturnType< $hd_lines['Score'] >
 		restart( next?: any ): any
@@ -2092,7 +2107,9 @@ declare namespace $ {
 		kind_colors( ): readonly(any)[]
 		ball_kind( id: any, next?: number ): number
 		active_cell( next?: readonly(any)[] ): readonly(any)[]
+		score( next?: number ): number
 		plugins( ): readonly(any)[]
+		head( ): readonly(any)[]
 		tools( ): readonly(any)[]
 		body_content( ): readonly(any)[]
 		auto( ): readonly(any)[]
@@ -2102,21 +2119,30 @@ declare namespace $ {
 
 //# sourceMappingURL=lines.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $hd_lines extends $.$hd_lines {
-        free(): Set<`${number},${number}`>;
+    type Snapshot = Readonly<{
+        score: number;
+        score_max: number;
+        kinds: readonly number[];
+    }>;
+    export class $hd_lines extends $.$hd_lines {
         rows(): $mol_view[];
         cells(row: number): $mol_view[];
+        snapshot(next?: Snapshot): Snapshot;
         ball_kind(id: [number, number], next?: number): number;
         ball_color([row, col]: [number, number]): any;
         ball_grab(id: [number, number], event: PointerEvent): void;
         ball_drop(id: [number, number], event: PointerEvent): void;
         ball_move(id: [number, number], event: PointerEvent): void;
         cell_active(id: [number, number], next?: boolean): boolean;
+        score(next?: number): number;
+        score_max(): number;
+        score_text(): string;
         Score_pick(): $mol_chip;
         check_lines(id: [number, number]): false | undefined;
         add_new(next?: null): void;
         restart(): void;
     }
+    export {};
 }
 
 declare namespace $ {

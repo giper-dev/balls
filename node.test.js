@@ -6061,13 +6061,12 @@ var $;
 			const obj = new this.$.$mol_theme_auto();
 			return obj;
 		}
-		score(next){
-			if(next !== undefined) return next;
-			return 0;
+		score_text(){
+			return "";
 		}
 		Score(id){
 			const obj = new this.$.$mol_chip();
-			(obj.sub) = () => ([(this.score())]);
+			(obj.sub) = () => ([(this.score_text())]);
 			return obj;
 		}
 		Score_pick(){
@@ -6176,12 +6175,22 @@ var $;
 			if(next !== undefined) return next;
 			return [];
 		}
+		score(next){
+			if(next !== undefined) return next;
+			return 0;
+		}
 		plugins(){
 			return [(this.Theme())];
 		}
+		head(){
+			return [
+				(this.Title()), 
+				(this.Score_pick()), 
+				(this.Tools())
+			];
+		}
 		tools(){
 			return [
-				(this.Score_pick()), 
 				(this.Restart()), 
 				(this.Lights()), 
 				(this.Source())
@@ -6195,7 +6204,6 @@ var $;
 		}
 	};
 	($mol_mem(($.$hd_lines.prototype), "Theme"));
-	($mol_mem(($.$hd_lines.prototype), "score"));
 	($mol_mem_key(($.$hd_lines.prototype), "Score"));
 	($mol_mem(($.$hd_lines.prototype), "restart"));
 	($mol_mem(($.$hd_lines.prototype), "Restart_icon"));
@@ -6212,7 +6220,33 @@ var $;
 	($mol_mem(($.$hd_lines.prototype), "Board"));
 	($mol_mem_key(($.$hd_lines.prototype), "ball_kind"));
 	($mol_mem(($.$hd_lines.prototype), "active_cell"));
+	($mol_mem(($.$hd_lines.prototype), "score"));
 
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    function $mol_mutable(input, update = next => input = next) {
+        let output = undefined;
+        const clone = Array.isArray(input)
+            ? () => [...input]
+            : () => ({ ...input });
+        return new Proxy($mol_mutable, {
+            get: (Mut, field) => Mut(input[field], next => (output ?? (output = update(clone())))[field] = next),
+            set: () => false,
+            apply: (Mut, self, [patch]) => {
+                if (patch)
+                    update(output = input = patch(input));
+                return output ?? input;
+            },
+        });
+    }
+    $.$mol_mutable = $mol_mutable;
+})($ || ($ = {}));
 
 ;
 "use strict";
@@ -6261,31 +6295,22 @@ var $;
             return true;
         }
         class $hd_lines extends $.$hd_lines {
-            free() {
-                $mol_wire_solid();
-                const size = this.size();
-                const free = new Set();
-                for (let row = 0; row < size; ++row) {
-                    for (let col = 0; col < size; ++col) {
-                        free.add(`${row},${col}`);
-                    }
-                }
-                return free;
-            }
             rows() {
                 return Array.from({ length: this.size() }, (_, row) => this.Row(row));
             }
             cells(row) {
                 return Array.from({ length: this.size() }, (_, col) => this.Cell([row, col]));
             }
+            snapshot(next) {
+                return this.$.$mol_state_local.value('snapshot', next) ?? { score: 0, score_max: 0, kinds: [] };
+            }
             ball_kind(id, next) {
                 if (next !== undefined) {
-                    if (next === 0)
-                        this.free().add(id.join(','));
-                    else
-                        this.free().delete(id.join(','));
+                    const snapshot = $mol_mutable(this.snapshot());
+                    snapshot.kinds[id[0] * this.size() + id[1]](() => next);
+                    this.snapshot(snapshot());
                 }
-                return super.ball_kind(id, next);
+                return this.snapshot().kinds[id[0] * this.size() + id[1]] ?? 0;
             }
             ball_color([row, col]) {
                 return this.kind_colors()[this.ball_kind([row, col])];
@@ -6330,6 +6355,28 @@ var $;
                     this.active_cell([]);
                 return next;
             }
+            score(next) {
+                const { score, score_max, kinds } = this.snapshot();
+                if (next === undefined)
+                    return score;
+                this.snapshot({
+                    score: next,
+                    score_max: Math.max(next, score_max),
+                    kinds: kinds,
+                });
+                return next;
+            }
+            score_max() {
+                return this.snapshot().score_max;
+            }
+            score_text() {
+                const score = this.score();
+                const max = this.score_max();
+                if (score === max)
+                    return `${score}!`;
+                else
+                    return `${score} / ${max}`;
+            }
             Score_pick() {
                 return this.Score(this.score());
             }
@@ -6371,30 +6418,48 @@ var $;
                 return found;
             }
             add_new(next) {
-                const free = this.free();
+                if (next === undefined && this.snapshot().kinds.length)
+                    return;
                 const vars = this.kind_colors().length - 1;
-                for (let i = 0; free.size && i < 3; ++i) {
-                    const key = $mol_array_lottery([...free]);
-                    free.delete(key);
-                    const id = key.split(',').map(Number);
+                const size = this.size();
+                for (let i = 0; i < 3; ++i) {
+                    const snapshot = this.snapshot().kinds;
+                    const free = [];
+                    for (let row = 0; row < size; ++row) {
+                        for (let col = 0; col < size; ++col) {
+                            if (snapshot[row * size + col])
+                                continue;
+                            free.push([row, col]);
+                        }
+                    }
+                    if (!free.length)
+                        return;
+                    const id = $mol_array_lottery([...free]);
                     const kind = Math.ceil(Math.random() * vars);
                     this.ball_kind(id, kind);
                     this.check_lines(id);
                 }
+                return;
             }
             restart() {
-                this.$.$mol_dom.location.reload();
+                const { score_max } = this.snapshot();
+                this.snapshot({
+                    score: 0,
+                    score_max,
+                    kinds: [],
+                });
+                this.add_new(null);
             }
         }
-        __decorate([
-            $mol_mem
-        ], $hd_lines.prototype, "free", null);
         __decorate([
             $mol_mem
         ], $hd_lines.prototype, "rows", null);
         __decorate([
             $mol_mem_key
         ], $hd_lines.prototype, "cells", null);
+        __decorate([
+            $mol_mem
+        ], $hd_lines.prototype, "snapshot", null);
         __decorate([
             $mol_mem_key
         ], $hd_lines.prototype, "ball_kind", null);
@@ -6415,6 +6480,12 @@ var $;
         ], $hd_lines.prototype, "cell_active", null);
         __decorate([
             $mol_mem
+        ], $hd_lines.prototype, "score", null);
+        __decorate([
+            $mol_mem
+        ], $hd_lines.prototype, "score_text", null);
+        __decorate([
+            $mol_mem
         ], $hd_lines.prototype, "Score_pick", null);
         __decorate([
             $mol_action
@@ -6422,6 +6493,9 @@ var $;
         __decorate([
             $mol_mem
         ], $hd_lines.prototype, "add_new", null);
+        __decorate([
+            $mol_action
+        ], $hd_lines.prototype, "restart", null);
         $$.$hd_lines = $hd_lines;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -6440,8 +6514,22 @@ var $;
     var $$;
     (function ($$) {
         $mol_style_define($hd_lines, {
+            Head: {
+                justify: {
+                    content: 'space-between',
+                },
+            },
+            Title: {
+                flex: {
+                    basis: `7rem`,
+                    grow: 0,
+                },
+            },
             Score: {
                 color: $mol_theme.special,
+                font: {
+                    weight: 'bold',
+                },
             },
             Board: {
                 padding: '1vmin',
@@ -9690,6 +9778,48 @@ var $;
             $mol_mem_key
         ], $mol_locale_mock, "source", null);
         $.$mol_locale = $mol_locale_mock;
+    });
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_test({
+        'Wrap & unwrap'() {
+            const val = [1];
+            const mut = $mol_mutable(val);
+            $mol_assert_equal(val, mut());
+        },
+        'Deep array'() {
+            const val = [[1], [2], [3]];
+            const mut = $mol_mutable(val);
+            $mol_assert_equal(mut[1][0](v => -v), -2);
+            $mol_assert_unique(val, mut());
+            $mol_assert_equal(val[0], mut()[0]);
+            $mol_assert_equal(val[2], mut()[2]);
+            $mol_assert_unique(val[1], mut()[1]);
+            $mol_assert_like(mut()[1], [-2]);
+        },
+        'Array insert'() {
+            const val = [[1, 2, 3, 4]];
+            const mut = $mol_mutable(val);
+            $mol_assert_like(mut[0](a => [...a.slice(0, 2), 7, ...a.slice(2)]), [1, 2, 7, 3, 4]);
+            $mol_assert_like(mut(), [[1, 2, 7, 3, 4]]);
+        },
+        'Deep objects'() {
+            const val = { a: { x: 1 }, b: { y: 2 }, c: { z: 3 } };
+            const mut = $mol_mutable(val);
+            $mol_assert_equal(mut.b.y(v => -v), -2);
+            $mol_assert_unique(val, mut());
+            $mol_assert_equal(val.a, mut().a);
+            $mol_assert_equal(val.c, mut().c);
+            $mol_assert_unique(val.b, mut().b);
+            $mol_assert_like(mut().b, { y: -2 });
+        },
     });
 })($ || ($ = {}));
 

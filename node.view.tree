@@ -185,10 +185,14 @@ $hd_lines $mol_page
 		\darkorange
 	ball_kind*? 0
 	active_cell? /
+	score? 0
 	plugins /
 		<= Theme $mol_theme_auto
+	head /
+		<= Title
+		<= Score_pick <= Score*0 $mol_chip sub / <= score_text \
+		<= Tools
 	tools /
-		<= Score_pick <= Score*0 $mol_chip sub / <= score? 0
 		<= Restart $mol_button_minor
 			click? <=> restart? null
 			sub / <= Restart_icon $mol_icon_restart
