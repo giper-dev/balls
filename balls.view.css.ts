@@ -21,21 +21,8 @@ namespace $.$$ {
 			},
 		},
 		
-		Body: {
-			display: 'flex',
-			flex: {
-				direction: 'row',
-			},
-			align: {
-				items: 'safe center',
-			},
-			justify: {
-				content: 'safe center',
-			},
-		},
-		
 		Board: {
-			// margin: 'auto',
+			margin: 'auto',
 			// align: {
 			// 	self: 'center',
 			// },
