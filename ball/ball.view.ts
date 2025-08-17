@@ -3,8 +3,8 @@ namespace $.$$ {
 		
 		@ $mol_mem
 		image() {
-			if( !this.color() ) return 'radial-gradient( circle at 50% 125%, transparent, rgba( 0, 0, 0, 0.25 ) )'
-			return `radial-gradient( circle at 50% 25%, rgba( 255, 255, 255 ), ${ this.color() } 3%, rgba( 0, 0, 0, 0.75 ) 90% )`
+			if( !this.color() ) return 'radial-gradient( circle at 50% 125%, transparent, oklch( 0 0 0 / .25 ) )'
+			return `radial-gradient( circle at 50% 25%, oklch( 1 0 0 ), ${ this.color() } 3%, oklch( 0 0 0 / .75 ) 90% )`
 		}
 		
 	}

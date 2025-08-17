@@ -1,5 +1,5 @@
 $hd_lines $mol_page
-	title @ \Hyper Lines
+	title @ \Hyper Balls
 	size 8
 	kind_colors /
 		\
@@ -27,13 +27,16 @@ $hd_lines $mol_page
 		<= Theme $mol_theme_auto
 	head /
 		<= Title
-		<= Score_pick <= Score*0 $mol_chip sub / <= score_text \
+		<= Main $mol_view sub /
+			<= Restart $mol_button_minor
+				hint @ \Reset
+				click? <=> restart? null
+				sub / <= Restart_icon $mol_icon_autorenew
+			<= Score_pick <= Score*0 $mol_chip sub / <= score_text \
 		<= Tools
 	tools /
-		<= Restart $mol_button_minor
-			click? <=> restart? null
-			sub / <= Restart_icon $mol_icon_restart
 		<= Lights $mol_lights_toggle
+		<= Support $mol_link_support
 		<= Source $mol_link_source uri \http://github.com/hd4ru/lines/
 	body_content /
 		<= Board $mol_view sub <= rows /
