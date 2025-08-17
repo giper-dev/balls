@@ -6227,13 +6227,15 @@ var $;
                     weight: 'bold',
                 },
             },
-            Board: {
+            Body: {
                 align: {
-                    self: 'center',
+                    items: 'safe center',
                 },
                 justify: {
-                    self: 'center',
+                    content: 'safe center',
                 },
+            },
+            Board: {
                 flex: {
                     direction: 'column',
                 },
