@@ -39,7 +39,7 @@ namespace $.$$ {
 		Cell: {
 			padding: '0.25vmin',
 			flex: {
-				basis: '9.5vmin',
+				basis: '11vmin',
 			},
 			aspectRatio: 1,
 			border: {
