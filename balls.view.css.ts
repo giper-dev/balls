@@ -21,14 +21,23 @@ namespace $.$$ {
 			},
 		},
 		
-		Board: {
-			// margin: 'auto',
+		Body: {
 			align: {
-				self: 'center',
+				items: 'safe center',
 			},
 			justify: {
-				self: 'center',
+				content: 'safe center',
 			},
+		},
+		
+		Board: {
+			// margin: 'auto',
+			// align: {
+			// 	self: 'center',
+			// },
+			// justify: {
+			// 	self: 'center',
+			// },
 			flex: {
 				direction: 'column',
 			},
