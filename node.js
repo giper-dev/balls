@@ -6041,7 +6041,7 @@ var $;
             image() {
                 if (!this.color())
                     return 'radial-gradient( circle at 50% 125%, transparent, rgba( 0, 0, 0, 0.25 ) )';
-                return `radial-gradient( circle at 50% 25%, ${this.color()}, rgba( 0, 0, 0, 0.8 ) )`;
+                return `radial-gradient( circle at 50% 25%, rgba( 255, 255, 255 ), ${this.color()} 3%, rgba( 0, 0, 0, 0.75 ) 90% )`;
             }
         }
         __decorate([
@@ -6187,18 +6187,17 @@ var $;
 			return (this.$.$mol_locale.text("$hd_lines_title"));
 		}
 		size(){
-			return 9;
+			return 8;
 		}
 		kind_colors(){
 			return [
 				"", 
-				"oklch( .9 0.28 0 )", 
-				"oklch( .9 0.28 50 )", 
-				"oklch( .9 0.28 100 )", 
-				"oklch( .9 0.28 150 )", 
-				"oklch( .9 0.28 200 )", 
-				"oklch( .9 0.28 250 )", 
-				"oklch( .9 0.28 300 )"
+				"oklch( .9 0.3 0 )", 
+				"oklch( .9 0.3 60 )", 
+				"oklch( .9 0.3 120 )", 
+				"oklch( .9 0.3 180 )", 
+				"oklch( .9 0.3 240 )", 
+				"oklch( .9 0.3 300 )"
 			];
 		}
 		mood_smiles(){
@@ -6627,7 +6626,7 @@ var $;
             Cell: {
                 padding: '0.25vmin',
                 flex: {
-                    basis: '9.5vmin',
+                    basis: '11vmin',
                 },
                 aspectRatio: 1,
                 border: {

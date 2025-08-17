@@ -175,16 +175,15 @@ $hd_lines_ball $mol_view
 
 $hd_lines $mol_page
 	title @ \Hyper Lines
-	size 9
+	size 8
 	kind_colors /
 		\
-		\oklch( .9 0.28 0 )
-		\oklch( .9 0.28 50 )
-		\oklch( .9 0.28 100 )
-		\oklch( .9 0.28 150 )
-		\oklch( .9 0.28 200 )
-		\oklch( .9 0.28 250 )
-		\oklch( .9 0.28 300 )
+		\oklch( .9 0.3 0 )
+		\oklch( .9 0.3 60 )
+		\oklch( .9 0.3 120 )
+		\oklch( .9 0.3 180 )
+		\oklch( .9 0.3 240 )
+		\oklch( .9 0.3 300 )
 	mood_smiles /
 		\._.
 		\*_*
