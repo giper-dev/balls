@@ -6535,27 +6535,17 @@ var $;
                 },
             },
             Board: {
+                margin: 'auto',
                 padding: '1vmin',
                 flex: {
                     direction: 'column',
                 },
-                align: {
-                    self: 'stretch',
-                    items: 'center',
-                },
-                justify: {
-                    content: 'center',
-                },
                 userSelect: 'none',
             },
-            Row: {},
             Cell: {
                 padding: '0.25vmin',
                 flex: {
                     basis: '9vmin',
-                },
-                background: {
-                    color: $mol_theme.card,
                 },
                 aspectRatio: 1,
                 border: {
