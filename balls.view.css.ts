@@ -27,6 +27,7 @@ namespace $.$$ {
 				direction: 'column',
 			},
 			userSelect: 'none',
+			touchAction: 'none',
 			width: '88vmin',
 		},
 		
@@ -45,7 +46,6 @@ namespace $.$$ {
 			flex: {
 				grow: 1,
 			},
-			touchAction: 'none',
 		},
 		
 	} )
