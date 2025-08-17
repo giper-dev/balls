@@ -6201,7 +6201,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("hd/balls/balls.view.css", "@keyframes hd_balls_score_show {\n\tfrom {\n\t\ttransform: scale(200%);\n\t}\n}\n\n[hd_balls_score] {\n\tanimation: hd_balls_score_show .25s ease-out;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n  touch-action: none;\n}\n");
+    $mol_style_attach("hd/balls/balls.view.css", "@keyframes hd_balls_score_show {\n\tfrom {\n\t\ttransform: scale(200%);\n\t}\n}\n\n[hd_balls_score] {\n\tanimation: hd_balls_score_show .25s ease-out;\n}\n\n[hd_balls_board] {\n\t-webkit-user-select: none;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n  touch-action: none;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -6233,7 +6233,6 @@ var $;
                     direction: 'column',
                 },
                 userSelect: 'none',
-                webkitUserSelect: 'none',
                 touchAction: 'none',
                 width: '88vmin',
             },
