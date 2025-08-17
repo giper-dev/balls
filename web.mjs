@@ -5714,12 +5714,12 @@ var $;
 		kind_colors(){
 			return [
 				"", 
-				"oklch( .9 0.3 45 )", 
-				"oklch( .9 0.3 105 )", 
-				"oklch( .9 0.3 165 )", 
-				"oklch( .9 0.3 225 )", 
-				"oklch( .9 0.3 285 )", 
-				"oklch( .9 0.3 345 )"
+				"oklch( .9 0.3 40 )", 
+				"oklch( .9 0.3 100 )", 
+				"oklch( .9 0.3 160 )", 
+				"oklch( .9 0.3 220 )", 
+				"oklch( .9 0.3 280 )", 
+				"oklch( .9 0.3 340 )"
 			];
 		}
 		mood_smiles(){
