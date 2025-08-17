@@ -8,6 +8,10 @@ namespace $.$$ {
 			},
 		},
 		
+		Body: {
+			display: 'flex',
+		},
+		
 		Title: {
 			flex: {
 				grow: 0,
@@ -23,7 +27,6 @@ namespace $.$$ {
 		
 		Board: {
 			margin: 'auto',
-			padding: '1vmin',
 			flex: {
 				direction: 'column',
 			},
@@ -33,7 +36,7 @@ namespace $.$$ {
 		Cell: {
 			padding: '0.25vmin',
 			flex: {
-				basis: '9vmin',
+				basis: '9.5vmin',
 			},
 			aspectRatio: 1,
 			border: {
