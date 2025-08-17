@@ -6145,7 +6145,6 @@ var $;
             },
             Title: {
                 flex: {
-                    basis: `7rem`,
                     grow: 0,
                 },
             },
