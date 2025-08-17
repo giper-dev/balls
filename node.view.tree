@@ -175,14 +175,14 @@ $mol_link_source $mol_link
 	sub /
 		<= Icon $mol_icon_script_text
 
-$hd_lines_ball $mol_view
+$hd_balls_ball $mol_view
 	color \white
 	style * background-image <= image \
-	attr * hd_lines_ball_active <= active false
+	attr * hd_balls_ball_active <= active false
 	sub /
 		<= mood \x_x
 
-$hd_lines $mol_page
+$hd_balls $mol_page
 	title @ \Hyper Balls
 	size 8
 	kind_colors /
@@ -231,7 +231,7 @@ $hd_lines $mol_page
 						pointerenter? <=> ball_move*? null
 						pointerup? <=> ball_drop*? null
 					sub /
-						<= Ball* $hd_lines_ball
+						<= Ball* $hd_balls_ball
 							color <= ball_color* \
 							mood <= ball_mood* \
 							active <= cell_active*? false

@@ -6044,7 +6044,7 @@ var $;
 "use strict";
 
 ;
-	($.$hd_lines_ball) = class $hd_lines_ball extends ($.$mol_view) {
+	($.$hd_balls_ball) = class $hd_balls_ball extends ($.$mol_view) {
 		image(){
 			return "";
 		}
@@ -6061,7 +6061,7 @@ var $;
 			return {"background-image": (this.image())};
 		}
 		attr(){
-			return {"hd_lines_ball_active": (this.active())};
+			return {"hd_balls_ball_active": (this.active())};
 		}
 		sub(){
 			return [(this.mood())];
@@ -6078,7 +6078,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        class $hd_lines_ball extends $.$hd_lines_ball {
+        class $hd_balls_ball extends $.$hd_balls_ball {
             image() {
                 if (!this.color())
                     return 'radial-gradient( circle at 50% 125%, transparent, oklch( 0 0 0 / .25 ) )';
@@ -6087,8 +6087,8 @@ var $;
         }
         __decorate([
             $mol_mem
-        ], $hd_lines_ball.prototype, "image", null);
-        $$.$hd_lines_ball = $hd_lines_ball;
+        ], $hd_balls_ball.prototype, "image", null);
+        $$.$hd_balls_ball = $hd_balls_ball;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
@@ -6096,7 +6096,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("hd/lines/ball/ball.view.css", "@keyframes hd_lines_ball_jumping {\n\tfrom {\n\t\ttransform: scaleY(100%) translateY(-25%);\n\t}\n\tto {\n\t\ttransform: scaleY(90%) translateY(10%);\n\t}\n}\n\n[hd_lines_ball_active] {\n\tanimation: hd_lines_ball_jumping .25s infinite ease-in alternate-reverse;\n}\n");
+    $mol_style_attach("hd/balls/ball/ball.view.css", "@keyframes hd_balls_ball_jumping {\n\tfrom {\n\t\ttransform: scaleY(100%) translateY(-25%);\n\t}\n\tto {\n\t\ttransform: scaleY(90%) translateY(10%);\n\t}\n}\n\n[hd_balls_ball_active] {\n\tanimation: hd_balls_ball_jumping .25s infinite ease-in alternate-reverse;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -6105,7 +6105,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        $mol_style_define($hd_lines_ball, {
+        $mol_style_define($hd_balls_ball, {
             border: {
                 radius: '50%',
             },
@@ -6127,7 +6127,7 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$hd_lines) = class $hd_lines extends ($.$mol_page) {
+	($.$hd_balls) = class $hd_balls extends ($.$mol_page) {
 		Theme(){
 			const obj = new this.$.$mol_theme_auto();
 			return obj;
@@ -6142,7 +6142,7 @@ var $;
 		}
 		Restart(){
 			const obj = new this.$.$mol_button_minor();
-			(obj.hint) = () => ((this.$.$mol_locale.text("$hd_lines_Restart_hint")));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$hd_balls_Restart_hint")));
 			(obj.click) = (next) => ((this.restart(next)));
 			(obj.sub) = () => ([(this.Restart_icon())]);
 			return obj;
@@ -6199,7 +6199,7 @@ var $;
 			return false;
 		}
 		Ball(id){
-			const obj = new this.$.$hd_lines_ball();
+			const obj = new this.$.$hd_balls_ball();
 			(obj.color) = () => ((this.ball_color(id)));
 			(obj.mood) = () => ((this.ball_mood(id)));
 			(obj.active) = () => ((this.cell_active(id)));
@@ -6235,7 +6235,7 @@ var $;
 			return null;
 		}
 		title(){
-			return (this.$.$mol_locale.text("$hd_lines_title"));
+			return (this.$.$mol_locale.text("$hd_balls_title"));
 		}
 		size(){
 			return 8;
@@ -6301,26 +6301,26 @@ var $;
 			return [(this.add_new())];
 		}
 	};
-	($mol_mem(($.$hd_lines.prototype), "Theme"));
-	($mol_mem(($.$hd_lines.prototype), "restart"));
-	($mol_mem(($.$hd_lines.prototype), "Restart_icon"));
-	($mol_mem(($.$hd_lines.prototype), "Restart"));
-	($mol_mem_key(($.$hd_lines.prototype), "Score"));
-	($mol_mem(($.$hd_lines.prototype), "Main"));
-	($mol_mem(($.$hd_lines.prototype), "Lights"));
-	($mol_mem(($.$hd_lines.prototype), "Support"));
-	($mol_mem(($.$hd_lines.prototype), "Source"));
-	($mol_mem_key(($.$hd_lines.prototype), "ball_grab"));
-	($mol_mem_key(($.$hd_lines.prototype), "ball_move"));
-	($mol_mem_key(($.$hd_lines.prototype), "ball_drop"));
-	($mol_mem_key(($.$hd_lines.prototype), "cell_active"));
-	($mol_mem_key(($.$hd_lines.prototype), "Ball"));
-	($mol_mem_key(($.$hd_lines.prototype), "Cell"));
-	($mol_mem_key(($.$hd_lines.prototype), "Row"));
-	($mol_mem(($.$hd_lines.prototype), "Board"));
-	($mol_mem_key(($.$hd_lines.prototype), "ball_kind"));
-	($mol_mem(($.$hd_lines.prototype), "active_cell"));
-	($mol_mem(($.$hd_lines.prototype), "score"));
+	($mol_mem(($.$hd_balls.prototype), "Theme"));
+	($mol_mem(($.$hd_balls.prototype), "restart"));
+	($mol_mem(($.$hd_balls.prototype), "Restart_icon"));
+	($mol_mem(($.$hd_balls.prototype), "Restart"));
+	($mol_mem_key(($.$hd_balls.prototype), "Score"));
+	($mol_mem(($.$hd_balls.prototype), "Main"));
+	($mol_mem(($.$hd_balls.prototype), "Lights"));
+	($mol_mem(($.$hd_balls.prototype), "Support"));
+	($mol_mem(($.$hd_balls.prototype), "Source"));
+	($mol_mem_key(($.$hd_balls.prototype), "ball_grab"));
+	($mol_mem_key(($.$hd_balls.prototype), "ball_move"));
+	($mol_mem_key(($.$hd_balls.prototype), "ball_drop"));
+	($mol_mem_key(($.$hd_balls.prototype), "cell_active"));
+	($mol_mem_key(($.$hd_balls.prototype), "Ball"));
+	($mol_mem_key(($.$hd_balls.prototype), "Cell"));
+	($mol_mem_key(($.$hd_balls.prototype), "Row"));
+	($mol_mem(($.$hd_balls.prototype), "Board"));
+	($mol_mem_key(($.$hd_balls.prototype), "ball_kind"));
+	($mol_mem(($.$hd_balls.prototype), "active_cell"));
+	($mol_mem(($.$hd_balls.prototype), "score"));
 
 
 ;
@@ -6394,7 +6394,7 @@ var $;
                 return false;
             return true;
         }
-        class $hd_lines extends $.$hd_lines {
+        class $hd_balls extends $.$hd_balls {
             rows() {
                 return Array.from({ length: this.size() }, (_, row) => this.Row(row));
             }
@@ -6583,53 +6583,53 @@ var $;
         }
         __decorate([
             $mol_mem
-        ], $hd_lines.prototype, "rows", null);
+        ], $hd_balls.prototype, "rows", null);
         __decorate([
             $mol_mem_key
-        ], $hd_lines.prototype, "cells", null);
+        ], $hd_balls.prototype, "cells", null);
         __decorate([
             $mol_mem
-        ], $hd_lines.prototype, "snapshot", null);
+        ], $hd_balls.prototype, "snapshot", null);
         __decorate([
             $mol_mem_key
-        ], $hd_lines.prototype, "ball_kind", null);
+        ], $hd_balls.prototype, "ball_kind", null);
         __decorate([
             $mol_mem_key
-        ], $hd_lines.prototype, "ball_color", null);
+        ], $hd_balls.prototype, "ball_color", null);
         __decorate([
             $mol_mem_key
-        ], $hd_lines.prototype, "ball_mood", null);
+        ], $hd_balls.prototype, "ball_mood", null);
         __decorate([
             $mol_action
-        ], $hd_lines.prototype, "ball_grab", null);
+        ], $hd_balls.prototype, "ball_grab", null);
         __decorate([
             $mol_action
-        ], $hd_lines.prototype, "ball_drop", null);
+        ], $hd_balls.prototype, "ball_drop", null);
         __decorate([
             $mol_action
-        ], $hd_lines.prototype, "ball_move", null);
+        ], $hd_balls.prototype, "ball_move", null);
         __decorate([
             $mol_mem_key
-        ], $hd_lines.prototype, "cell_active", null);
+        ], $hd_balls.prototype, "cell_active", null);
         __decorate([
             $mol_mem
-        ], $hd_lines.prototype, "score", null);
+        ], $hd_balls.prototype, "score", null);
         __decorate([
             $mol_mem
-        ], $hd_lines.prototype, "score_text", null);
+        ], $hd_balls.prototype, "score_text", null);
         __decorate([
             $mol_mem
-        ], $hd_lines.prototype, "Score_pick", null);
+        ], $hd_balls.prototype, "Score_pick", null);
         __decorate([
             $mol_action
-        ], $hd_lines.prototype, "check_lines", null);
+        ], $hd_balls.prototype, "check_lines", null);
         __decorate([
             $mol_mem
-        ], $hd_lines.prototype, "add_new", null);
+        ], $hd_balls.prototype, "add_new", null);
         __decorate([
             $mol_action
-        ], $hd_lines.prototype, "restart", null);
-        $$.$hd_lines = $hd_lines;
+        ], $hd_balls.prototype, "restart", null);
+        $$.$hd_balls = $hd_balls;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
@@ -6637,7 +6637,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("hd/lines/lines.view.css", "@keyframes hd_lines_score_show {\n\tfrom {\n\t\ttransform: scale(200%);\n\t}\n}\n\n[hd_lines_score] {\n\tanimation: hd_lines_score_show .25s ease-out;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n  touch-action: none;\n}\n");
+    $mol_style_attach("hd/balls/balls.view.css", "@keyframes hd_balls_score_show {\n\tfrom {\n\t\ttransform: scale(200%);\n\t}\n}\n\n[hd_balls_score] {\n\tanimation: hd_balls_score_show .25s ease-out;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n  touch-action: none;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -6646,7 +6646,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        $mol_style_define($hd_lines, {
+        $mol_style_define($hd_balls, {
             Head: {
                 justify: {
                     content: 'space-between',

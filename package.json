@@ -1,5 +1,5 @@
 {
-  "name": "hd_lines",
+  "name": "hd_balls",
   "version": "0.0.1",
   "exports": {
     "node": {
@@ -15,7 +15,7 @@
   "browser": "./web.js",
   "types": "./web.d.ts",
   "keywords": [
-    "$hd_lines",
+    "$hd_balls",
     "$hd",
     "$mol_page",
     "$mol",
@@ -169,7 +169,7 @@
     "$mol_link_source",
     "$mol_icon_script_text",
     "$mol_icon_script",
-    "$hd_lines_ball",
+    "$hd_balls_ball",
     "$mol_mutable",
     "$mol_type_immutable_deep_deep",
     "$mol_type_immutable_deep",
