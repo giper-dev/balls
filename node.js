@@ -6618,6 +6618,7 @@ var $;
                     direction: 'column',
                 },
                 userSelect: 'none',
+                webkitUserSelect: 'none',
                 touchAction: 'none',
                 width: '88vmin',
             },
