@@ -23,12 +23,6 @@ namespace $.$$ {
 		
 		Board: {
 			margin: 'auto',
-			// align: {
-			// 	self: 'center',
-			// },
-			// justify: {
-			// 	self: 'center',
-			// },
 			flex: {
 				direction: 'column',
 			},
