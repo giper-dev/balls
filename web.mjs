@@ -5738,8 +5738,7 @@ var $;
 				"=^_^=", 
 				"=^__^=", 
 				"=*_*=", 
-				"=*__*=", 
-				"@_@"
+				"=*__*="
 			];
 		}
 		ball_kind(id, next){
@@ -5767,7 +5766,7 @@ var $;
 		tools(){
 			return [(this.Lights()), (this.Source())];
 		}
-		body_content(){
+		body(){
 			return [(this.Board())];
 		}
 		auto(){
@@ -6215,12 +6214,6 @@ var $;
             Head: {
                 justify: {
                     content: 'space-between',
-                },
-            },
-            Body: {
-                display: 'flex',
-                flex: {
-                    direction: 'row',
                 },
             },
             Title: {

@@ -2021,7 +2021,7 @@ declare namespace $ {
 		plugins( ): readonly(any)[]
 		head( ): readonly(any)[]
 		tools( ): readonly(any)[]
-		body_content( ): readonly(any)[]
+		body( ): readonly(any)[]
 		auto( ): readonly(any)[]
 	}
 	
