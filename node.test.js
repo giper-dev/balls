@@ -6604,6 +6604,10 @@ var $;
                 },
             },
             Body: {
+                display: 'flex',
+                flex: {
+                    direction: 'row',
+                },
                 align: {
                     items: 'safe center',
                 },
