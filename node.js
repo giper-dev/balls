@@ -6244,8 +6244,8 @@ var $;
 		tools(){
 			return [(this.Lights()), (this.Source())];
 		}
-		body_content(){
-			return [(this.Board())];
+		sub(){
+			return [(this.Head()), (this.Board())];
 		}
 		auto(){
 			return [(this.add_new())];
@@ -6612,19 +6612,8 @@ var $;
                     weight: 'bold',
                 },
             },
-            Body: {
-                display: 'flex',
-                flex: {
-                    direction: 'row',
-                },
-                align: {
-                    items: 'safe center',
-                },
-                justify: {
-                    content: 'safe center',
-                },
-            },
             Board: {
+                margin: 'auto',
                 flex: {
                     direction: 'column',
                 },
