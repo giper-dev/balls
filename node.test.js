@@ -6235,7 +6235,7 @@ var $;
 		tools(){
 			return [(this.Lights()), (this.Source())];
 		}
-		body(){
+		body_content(){
 			return [(this.Board())];
 		}
 		auto(){
@@ -6604,7 +6604,6 @@ var $;
                 },
             },
             Board: {
-                margin: 'auto',
                 flex: {
                     direction: 'column',
                 },
