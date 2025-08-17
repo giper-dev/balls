@@ -6183,12 +6183,12 @@ var $;
 		kind_colors(){
 			return [
 				"", 
-				"oklch( .9 0.3 0 )", 
-				"oklch( .9 0.3 60 )", 
-				"oklch( .9 0.3 120 )", 
-				"oklch( .9 0.3 180 )", 
-				"oklch( .9 0.3 240 )", 
-				"oklch( .9 0.3 300 )"
+				"oklch( .9 0.3 45 )", 
+				"oklch( .9 0.3 105 )", 
+				"oklch( .9 0.3 165 )", 
+				"oklch( .9 0.3 225 )", 
+				"oklch( .9 0.3 285 )", 
+				"oklch( .9 0.3 345 )"
 			];
 		}
 		mood_smiles(){
