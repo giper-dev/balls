@@ -6449,6 +6449,7 @@ var $;
                 }
             }
             ball_move(id, event) {
+                event.preventDefault();
                 if (!event.buttons)
                     return;
                 const active = this.active_cell();
@@ -6461,7 +6462,6 @@ var $;
                 this.ball_kind(id, this.ball_kind(active));
                 this.ball_kind(active, 0);
                 this.active_cell(id);
-                event.preventDefault();
             }
             cell_active(id, next) {
                 if (next === undefined)
