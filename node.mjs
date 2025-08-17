@@ -6451,12 +6451,13 @@ var $;
                 this.cell_active(id, !this.cell_active(id));
             }
             ball_drop(id, event) {
-                this.active_cell([]);
-                if (!this.ball_kind(id))
+                const active = this.active_cell();
+                if (!active.length)
                     return;
-                if (!this.check_lines(id)) {
+                this.active_cell([]);
+                const win = this.check_lines(id) || this.check_lines(active);
+                if (!win)
                     this.add_new(null);
-                }
             }
             ball_move(id, event) {
                 event.preventDefault();
@@ -6512,7 +6513,7 @@ var $;
                 const edge = (row, col) => row < 0 || col < 0 || row >= size || col >= size || this.ball_kind([row, col]) !== kind;
                 const kind = this.ball_kind(id);
                 if (!kind)
-                    return;
+                    return false;
                 let total = 0;
                 const walk = (row_step, col_step) => {
                     let count = -1;

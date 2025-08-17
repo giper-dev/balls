@@ -2084,7 +2084,7 @@ declare namespace $.$$ {
         score_max(): number;
         score_text(): string;
         Score_pick(): $mol_chip;
-        check_lines(id: [number, number]): boolean | undefined;
+        check_lines(id: [number, number]): boolean;
         add_new(next?: null): void;
         restart(): void;
     }
