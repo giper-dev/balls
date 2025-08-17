@@ -1267,23 +1267,6 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-
-	export class $mol_chip extends $mol_view {
-		hint( ): string
-		minimal_height( ): number
-		attr( ): ({ 
-			'title': ReturnType< $mol_chip['hint'] >,
-		})  & ReturnType< $mol_view['attr'] >
-		sub( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=chip.view.tree.d.ts.map
-declare namespace $.$$ {
-}
-
-declare namespace $ {
     class $mol_state_time extends $mol_object {
         static task(precision: number, reset?: null): $mol_after_timeout | $mol_after_frame;
         static now(precision: number): number;
@@ -1366,13 +1349,13 @@ declare namespace $ {
 //# sourceMappingURL=icon.view.tree.d.ts.map
 declare namespace $ {
 
-	export class $mol_icon_restart extends $mol_icon {
+	export class $mol_icon_autorenew extends $mol_icon {
 		path( ): string
 	}
 	
 }
 
-//# sourceMappingURL=restart.view.tree.d.ts.map
+//# sourceMappingURL=autorenew.view.tree.d.ts.map
 declare namespace $ {
     let $mol_layer: Record<"focus" | "float" | "hover" | "speck" | "popup", $mol_style_func<"var", unknown>>;
 }
@@ -1478,64 +1461,6 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=minor.view.tree.d.ts.map
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	type $mol_view__sub_mol_check_1 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	export class $mol_check extends $mol_button_minor {
-		checked( next?: boolean ): boolean
-		aria_checked( ): string
-		aria_role( ): string
-		Icon( ): any
-		title( ): string
-		Title( ): $mol_view
-		label( ): readonly(any)[]
-		attr( ): ({ 
-			'mol_check_checked': ReturnType< $mol_check['checked'] >,
-			'aria-checked': ReturnType< $mol_check['aria_checked'] >,
-			'role': ReturnType< $mol_check['aria_role'] >,
-		})  & ReturnType< $mol_button_minor['attr'] >
-		sub( ): readonly($mol_view_content)[]
-	}
-	
-}
-
-//# sourceMappingURL=check.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_check extends $.$mol_check {
-        click(next?: Event): void;
-        sub(): readonly $mol_view_content[];
-        label(): readonly any[];
-        aria_checked(): string;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $mol_check_icon extends $mol_check {
-	}
-	
-}
-
-//# sourceMappingURL=icon.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_brightness_4 extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=4.view.tree.d.ts.map
 declare namespace $ {
     class $mol_lock extends $mol_object {
         protected promise: null | Promise<void>;
@@ -1756,6 +1681,81 @@ declare namespace $ {
 
 declare namespace $ {
 
+	export class $mol_chip extends $mol_view {
+		hint( ): string
+		minimal_height( ): number
+		attr( ): ({ 
+			'title': ReturnType< $mol_chip['hint'] >,
+		})  & ReturnType< $mol_view['attr'] >
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=chip.view.tree.d.ts.map
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_view__sub_mol_check_1 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $mol_check extends $mol_button_minor {
+		checked( next?: boolean ): boolean
+		aria_checked( ): string
+		aria_role( ): string
+		Icon( ): any
+		title( ): string
+		Title( ): $mol_view
+		label( ): readonly(any)[]
+		attr( ): ({ 
+			'mol_check_checked': ReturnType< $mol_check['checked'] >,
+			'aria-checked': ReturnType< $mol_check['aria_checked'] >,
+			'role': ReturnType< $mol_check['aria_role'] >,
+		})  & ReturnType< $mol_button_minor['attr'] >
+		sub( ): readonly($mol_view_content)[]
+	}
+	
+}
+
+//# sourceMappingURL=check.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_check extends $.$mol_check {
+        click(next?: Event): void;
+        sub(): readonly $mol_view_content[];
+        label(): readonly any[];
+        aria_checked(): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_check_icon extends $mol_check {
+	}
+	
+}
+
+//# sourceMappingURL=icon.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_brightness_4 extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=4.view.tree.d.ts.map
+declare namespace $ {
+
 	export class $mol_lights_toggle extends $mol_check_icon {
 		Lights_icon( ): $mol_icon_brightness_4
 		lights( next?: boolean ): boolean
@@ -1826,6 +1826,35 @@ declare namespace $.$$ {
 declare namespace $ {
 }
 
+declare namespace $ {
+
+	export class $mol_icon_face extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=face.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_face_agent extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=agent.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_link_support extends $mol_link {
+		Icon( ): $mol_icon_face_agent
+		hint( ): string
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=support.view.tree.d.ts.map
 declare namespace $ {
 
 	export class $mol_icon_script extends $mol_icon {
@@ -1918,10 +1947,10 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_chip__sub_hd_lines_1 = $mol_type_enforce<
-		readonly(any)[]
+	type $mol_button_minor__hint_hd_lines_1 = $mol_type_enforce<
+		string
 		,
-		ReturnType< $mol_chip['sub'] >
+		ReturnType< $mol_button_minor['hint'] >
 	>
 	type $mol_button_minor__click_hd_lines_2 = $mol_type_enforce<
 		ReturnType< $hd_lines['restart'] >
@@ -1933,27 +1962,37 @@ declare namespace $ {
 		,
 		ReturnType< $mol_button_minor['sub'] >
 	>
-	type $mol_link_source__uri_hd_lines_4 = $mol_type_enforce<
+	type $mol_chip__sub_hd_lines_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_chip['sub'] >
+	>
+	type $mol_view__sub_hd_lines_5 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_link_source__uri_hd_lines_6 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link_source['uri'] >
 	>
-	type $hd_lines_ball__color_hd_lines_5 = $mol_type_enforce<
+	type $hd_lines_ball__color_hd_lines_7 = $mol_type_enforce<
 		ReturnType< $hd_lines['ball_color'] >
 		,
 		ReturnType< $hd_lines_ball['color'] >
 	>
-	type $hd_lines_ball__mood_hd_lines_6 = $mol_type_enforce<
+	type $hd_lines_ball__mood_hd_lines_8 = $mol_type_enforce<
 		ReturnType< $hd_lines['ball_mood'] >
 		,
 		ReturnType< $hd_lines_ball['mood'] >
 	>
-	type $hd_lines_ball__active_hd_lines_7 = $mol_type_enforce<
+	type $hd_lines_ball__active_hd_lines_9 = $mol_type_enforce<
 		ReturnType< $hd_lines['cell_active'] >
 		,
 		ReturnType< $hd_lines_ball['active'] >
 	>
-	type $mol_view__event_hd_lines_8 = $mol_type_enforce<
+	type $mol_view__event_hd_lines_10 = $mol_type_enforce<
 		({ 
 			pointerdown( next?: ReturnType< $hd_lines['ball_grab'] > ): ReturnType< $hd_lines['ball_grab'] >,
 			pointerenter( next?: ReturnType< $hd_lines['ball_move'] > ): ReturnType< $hd_lines['ball_move'] >,
@@ -1962,30 +2001,32 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['event'] >
 	>
-	type $mol_view__sub_hd_lines_9 = $mol_type_enforce<
+	type $mol_view__sub_hd_lines_11 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_hd_lines_10 = $mol_type_enforce<
+	type $mol_view__sub_hd_lines_12 = $mol_type_enforce<
 		ReturnType< $hd_lines['cells'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_hd_lines_11 = $mol_type_enforce<
+	type $mol_view__sub_hd_lines_13 = $mol_type_enforce<
 		ReturnType< $hd_lines['rows'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
 	export class $hd_lines extends $mol_page {
 		Theme( ): $mol_theme_auto
+		restart( next?: any ): any
+		Restart_icon( ): $mol_icon_autorenew
+		Restart( ): $mol_button_minor
 		score_text( ): string
 		Score( id: any): $mol_chip
 		Score_pick( ): ReturnType< $hd_lines['Score'] >
-		restart( next?: any ): any
-		Restart_icon( ): $mol_icon_restart
-		Restart( ): $mol_button_minor
+		Main( ): $mol_view
 		Lights( ): $mol_lights_toggle
+		Support( ): $mol_link_support
 		Source( ): $mol_link_source
 		ball_grab( id: any, next?: any ): any
 		ball_move( id: any, next?: any ): any
