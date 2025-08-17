@@ -1481,23 +1481,6 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-
-	export class $mol_chip extends $mol_view {
-		hint( ): string
-		minimal_height( ): number
-		attr( ): ({ 
-			'title': ReturnType< $mol_chip['hint'] >,
-		})  & ReturnType< $mol_view['attr'] >
-		sub( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=chip.view.tree.d.ts.map
-declare namespace $.$$ {
-}
-
-declare namespace $ {
     class $mol_state_time extends $mol_object {
         static task(precision: number, reset?: null): $mol_after_timeout | $mol_after_frame;
         static now(precision: number): number;
@@ -1812,6 +1795,23 @@ declare namespace $ {
 }
 
 declare namespace $ {
+
+	export class $mol_chip extends $mol_view {
+		hint( ): string
+		minimal_height( ): number
+		attr( ): ({ 
+			'title': ReturnType< $mol_chip['hint'] >,
+		})  & ReturnType< $mol_view['attr'] >
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=chip.view.tree.d.ts.map
+declare namespace $.$$ {
+}
+
+declare namespace $ {
 }
 
 declare namespace $ {
@@ -1943,6 +1943,35 @@ declare namespace $ {
 
 declare namespace $ {
 
+	export class $mol_icon_face extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=face.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_face_agent extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=agent.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_link_support extends $mol_link {
+		Icon( ): $mol_icon_face_agent
+		hint( ): string
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=support.view.tree.d.ts.map
+declare namespace $ {
+
 	export class $mol_icon_script extends $mol_icon {
 		path( ): string
 	}
@@ -2029,52 +2058,57 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_chip__sub_hd_balls_1 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_chip['sub'] >
-	>
-	type $mol_button_minor__hint_hd_balls_2 = $mol_type_enforce<
+	type $mol_button_minor__hint_hd_balls_1 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_minor['hint'] >
 	>
-	type $mol_button_minor__click_hd_balls_3 = $mol_type_enforce<
+	type $mol_button_minor__click_hd_balls_2 = $mol_type_enforce<
 		ReturnType< $hd_balls['restart'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_button_minor__sub_hd_balls_4 = $mol_type_enforce<
+	type $mol_button_minor__sub_hd_balls_3 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_chip__sub_hd_balls_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_chip['sub'] >
 	>
 	type $mol_view__sub_hd_balls_5 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_link_source__uri_hd_balls_6 = $mol_type_enforce<
+	type $mol_link_support__uri_hd_balls_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link_support['uri'] >
+	>
+	type $mol_link_source__uri_hd_balls_7 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link_source['uri'] >
 	>
-	type $hd_balls_ball__color_hd_balls_7 = $mol_type_enforce<
+	type $hd_balls_ball__color_hd_balls_8 = $mol_type_enforce<
 		ReturnType< $hd_balls['ball_color'] >
 		,
 		ReturnType< $hd_balls_ball['color'] >
 	>
-	type $hd_balls_ball__mood_hd_balls_8 = $mol_type_enforce<
+	type $hd_balls_ball__mood_hd_balls_9 = $mol_type_enforce<
 		ReturnType< $hd_balls['ball_mood'] >
 		,
 		ReturnType< $hd_balls_ball['mood'] >
 	>
-	type $hd_balls_ball__active_hd_balls_9 = $mol_type_enforce<
+	type $hd_balls_ball__active_hd_balls_10 = $mol_type_enforce<
 		ReturnType< $hd_balls['cell_active'] >
 		,
 		ReturnType< $hd_balls_ball['active'] >
 	>
-	type $mol_view__event_hd_balls_10 = $mol_type_enforce<
+	type $mol_view__event_hd_balls_11 = $mol_type_enforce<
 		({ 
 			pointerdown( next?: ReturnType< $hd_balls['ball_grab'] > ): ReturnType< $hd_balls['ball_grab'] >,
 			pointerenter( next?: ReturnType< $hd_balls['ball_move'] > ): ReturnType< $hd_balls['ball_move'] >,
@@ -2083,31 +2117,32 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['event'] >
 	>
-	type $mol_view__sub_hd_balls_11 = $mol_type_enforce<
+	type $mol_view__sub_hd_balls_12 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_hd_balls_12 = $mol_type_enforce<
+	type $mol_view__sub_hd_balls_13 = $mol_type_enforce<
 		ReturnType< $hd_balls['cells'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_hd_balls_13 = $mol_type_enforce<
+	type $mol_view__sub_hd_balls_14 = $mol_type_enforce<
 		ReturnType< $hd_balls['rows'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
 	export class $hd_balls extends $mol_page {
 		Theme( ): $mol_theme_auto
-		score_text( ): string
-		Score( id: any): $mol_chip
-		Score_pick( ): ReturnType< $hd_balls['Score'] >
 		restart( next?: any ): any
 		Restart_icon( ): $mol_icon_autorenew
 		Restart( ): $mol_button_minor
+		score_text( ): string
+		Score( id: any): $mol_chip
+		Score_pick( ): ReturnType< $hd_balls['Score'] >
 		Main( ): $mol_view
 		Lights( ): $mol_lights_toggle
+		Support( ): $mol_link_support
 		Source( ): $mol_link_source
 		ball_grab( id: any, next?: any ): any
 		ball_move( id: any, next?: any ): any

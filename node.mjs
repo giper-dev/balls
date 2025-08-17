@@ -4984,45 +4984,6 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$mol_chip) = class $mol_chip extends ($.$mol_view) {
-		hint(){
-			return "";
-		}
-		minimal_height(){
-			return 40;
-		}
-		attr(){
-			return {...(super.attr()), "title": (this.hint())};
-		}
-		sub(){
-			return [(this.title())];
-		}
-	};
-
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        $mol_style_define($mol_chip, {
-            padding: $mol_gap.text,
-            border: {
-                radius: $mol_gap.round,
-            },
-            background: {
-                color: $mol_theme.card,
-            },
-            gap: $mol_gap.block,
-        });
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
 	($.$mol_svg) = class $mol_svg extends ($.$mol_view) {
 		dom_name(){
 			return "svg";
@@ -5615,6 +5576,45 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$mol_chip) = class $mol_chip extends ($.$mol_view) {
+		hint(){
+			return "";
+		}
+		minimal_height(){
+			return 40;
+		}
+		attr(){
+			return {...(super.attr()), "title": (this.hint())};
+		}
+		sub(){
+			return [(this.title())];
+		}
+	};
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($mol_chip, {
+            padding: $mol_gap.text,
+            border: {
+                radius: $mol_gap.round,
+            },
+            background: {
+                color: $mol_theme.card,
+            },
+            gap: $mol_gap.block,
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$mol_check) = class $mol_check extends ($.$mol_button_minor) {
 		checked(next){
 			if(next !== undefined) return next;
@@ -5962,6 +5962,47 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$mol_icon_face) = class $mol_icon_face extends ($.$mol_icon) {
+		path(){
+			return "M9,11.75C8.31,11.75 7.75,12.31 7.75,13C7.75,13.69 8.31,14.25 9,14.25C9.69,14.25 10.25,13.69 10.25,13C10.25,12.31 9.69,11.75 9,11.75M15,11.75C14.31,11.75 13.75,12.31 13.75,13C13.75,13.69 14.31,14.25 15,14.25C15.69,14.25 16.25,13.69 16.25,13C16.25,12.31 15.69,11.75 15,11.75M12,2C6.48,2 2,6.48 2,12C2,17.52 6.48,22 12,22C17.52,22 22,17.52 22,12C22,6.48 17.52,2 12,2M12,20C7.59,20 4,16.41 4,12C4,11.71 4,11.42 4.05,11.14C6.41,10.09 8.28,8.16 9.26,5.77C11.07,8.33 14.05,10 17.42,10C18.2,10 18.95,9.91 19.67,9.74C19.88,10.45 20,11.21 20,12C20,16.41 16.41,20 12,20Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_face_agent) = class $mol_icon_face_agent extends ($.$mol_icon) {
+		path(){
+			return "M18.72,14.76C19.07,13.91 19.26,13 19.26,12C19.26,11.28 19.15,10.59 18.96,9.95C18.31,10.1 17.63,10.18 16.92,10.18C13.86,10.18 11.15,8.67 9.5,6.34C8.61,8.5 6.91,10.26 4.77,11.22C4.73,11.47 4.73,11.74 4.73,12A7.27,7.27 0 0,0 12,19.27C13.05,19.27 14.06,19.04 14.97,18.63C15.54,19.72 15.8,20.26 15.78,20.26C14.14,20.81 12.87,21.08 12,21.08C9.58,21.08 7.27,20.13 5.57,18.42C4.53,17.38 3.76,16.11 3.33,14.73H2V10.18H3.09C3.93,6.04 7.6,2.92 12,2.92C14.4,2.92 16.71,3.87 18.42,5.58C19.69,6.84 20.54,8.45 20.89,10.18H22V14.67H22V14.69L22,14.73H21.94L18.38,18L13.08,17.4V15.73H17.91L18.72,14.76M9.27,11.77C9.57,11.77 9.86,11.89 10.07,12.11C10.28,12.32 10.4,12.61 10.4,12.91C10.4,13.21 10.28,13.5 10.07,13.71C9.86,13.92 9.57,14.04 9.27,14.04C8.64,14.04 8.13,13.54 8.13,12.91C8.13,12.28 8.64,11.77 9.27,11.77M14.72,11.77C15.35,11.77 15.85,12.28 15.85,12.91C15.85,13.54 15.35,14.04 14.72,14.04C14.09,14.04 13.58,13.54 13.58,12.91A1.14,1.14 0 0,1 14.72,11.77Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_link_support) = class $mol_link_support extends ($.$mol_link) {
+		Icon(){
+			const obj = new this.$.$mol_icon_face_agent();
+			return obj;
+		}
+		hint(){
+			return (this.$.$mol_locale.text("$mol_link_support_hint"));
+		}
+		sub(){
+			return [(this.Icon())];
+		}
+	};
+	($mol_mem(($.$mol_link_support.prototype), "Icon"));
+
+
+;
+"use strict";
+
+;
 	($.$mol_icon_script) = class $mol_icon_script extends ($.$mol_icon) {
 		path(){
 			return "M17.8,20C17.4,21.2 16.3,22 15,22H5C3.3,22 2,20.7 2,19V18H5L14.2,18C14.6,19.2 15.7,20 17,20H17.8M19,2H8C6.3,2 5,3.3 5,5V16H16V17C16,17.6 16.4,18 17,18H18V5C18,4.4 18.4,4 19,4C19.6,4 20,4.4 20,5V6H22V5C22,3.3 20.7,2 19,2Z";
@@ -6091,17 +6132,6 @@ var $;
 			const obj = new this.$.$mol_theme_auto();
 			return obj;
 		}
-		score_text(){
-			return "";
-		}
-		Score(id){
-			const obj = new this.$.$mol_chip();
-			(obj.sub) = () => ([(this.score_text())]);
-			return obj;
-		}
-		Score_pick(){
-			return (this.Score("0"));
-		}
 		restart(next){
 			if(next !== undefined) return next;
 			return null;
@@ -6117,13 +6147,29 @@ var $;
 			(obj.sub) = () => ([(this.Restart_icon())]);
 			return obj;
 		}
+		score_text(){
+			return "";
+		}
+		Score(id){
+			const obj = new this.$.$mol_chip();
+			(obj.sub) = () => ([(this.score_text())]);
+			return obj;
+		}
+		Score_pick(){
+			return (this.Score("0"));
+		}
 		Main(){
 			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.Score_pick()), (this.Restart())]);
+			(obj.sub) = () => ([(this.Restart()), (this.Score_pick())]);
 			return obj;
 		}
 		Lights(){
 			const obj = new this.$.$mol_lights_toggle();
+			return obj;
+		}
+		Support(){
+			const obj = new this.$.$mol_link_support();
+			(obj.uri) = () => ("https://t.me/hd4ru/118");
 			return obj;
 		}
 		Source(){
@@ -6242,7 +6288,11 @@ var $;
 			];
 		}
 		tools(){
-			return [(this.Lights()), (this.Source())];
+			return [
+				(this.Lights()), 
+				(this.Support()), 
+				(this.Source())
+			];
 		}
 		body_content(){
 			return [(this.Board())];
@@ -6252,12 +6302,13 @@ var $;
 		}
 	};
 	($mol_mem(($.$hd_balls.prototype), "Theme"));
-	($mol_mem_key(($.$hd_balls.prototype), "Score"));
 	($mol_mem(($.$hd_balls.prototype), "restart"));
 	($mol_mem(($.$hd_balls.prototype), "Restart_icon"));
 	($mol_mem(($.$hd_balls.prototype), "Restart"));
+	($mol_mem_key(($.$hd_balls.prototype), "Score"));
 	($mol_mem(($.$hd_balls.prototype), "Main"));
 	($mol_mem(($.$hd_balls.prototype), "Lights"));
+	($mol_mem(($.$hd_balls.prototype), "Support"));
 	($mol_mem(($.$hd_balls.prototype), "Source"));
 	($mol_mem_key(($.$hd_balls.prototype), "ball_grab"));
 	($mol_mem_key(($.$hd_balls.prototype), "ball_move"));
