@@ -6604,6 +6604,12 @@ var $;
                 },
             },
             Board: {
+                align: {
+                    self: 'center',
+                },
+                justify: {
+                    self: 'center',
+                },
                 flex: {
                     direction: 'column',
                 },
