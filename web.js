@@ -6233,8 +6233,6 @@ var $;
                     direction: 'column',
                 },
                 userSelect: 'none',
-            },
-            Row: {
                 width: '88vmin',
             },
             Cell: {
