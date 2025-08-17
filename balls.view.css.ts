@@ -40,6 +40,7 @@ namespace $.$$ {
 			border: {
 				radius: $mol_gap.round,
 			},
+			cursor: 'grab',
 		},
 		
 		Ball: {
