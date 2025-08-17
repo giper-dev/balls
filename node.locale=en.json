@@ -2,6 +2,5 @@
 	"$hd_balls_Restart_hint": "Reset",
 	"$hd_balls_title": "Hyper Balls",
 	"$mol_lights_toggle_hint": "Toggle lights",
-	"$mol_link_source_hint": "Source code",
-	"$mol_link_support_hint": "Discuss the project"
+	"$mol_link_source_hint": "Source code"
 }
