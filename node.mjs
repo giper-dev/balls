@@ -6442,12 +6442,13 @@ var $;
                 return this.mood_smiles()[mood];
             }
             ball_grab(id, event) {
+                ;
+                event.target.releasePointerCapture(event.pointerId);
                 if (this.active_cell())
                     this.ball_drop(this.active_cell(), event);
                 if (!this.ball_kind(id))
                     return;
                 this.cell_active(id, !this.cell_active(id));
-                event.target.releasePointerCapture(event.pointerId);
             }
             ball_drop(id, event) {
                 this.active_cell([]);
