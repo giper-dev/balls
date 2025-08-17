@@ -1860,6 +1860,7 @@ declare namespace $ {
 	export class $hd_lines_ball extends $mol_view {
 		image( ): string
 		active( ): boolean
+		mood( ): string
 		color( ): string
 		style( ): ({ 
 			'background-image': ReturnType< $hd_lines_ball['image'] >,
@@ -1867,6 +1868,7 @@ declare namespace $ {
 		attr( ): ({ 
 			'hd_lines_ball_active': ReturnType< $hd_lines_ball['active'] >,
 		}) 
+		sub( ): readonly(any)[]
 	}
 	
 }
@@ -1941,12 +1943,17 @@ declare namespace $ {
 		,
 		ReturnType< $hd_lines_ball['color'] >
 	>
-	type $hd_lines_ball__active_hd_lines_6 = $mol_type_enforce<
+	type $hd_lines_ball__mood_hd_lines_6 = $mol_type_enforce<
+		ReturnType< $hd_lines['ball_mood'] >
+		,
+		ReturnType< $hd_lines_ball['mood'] >
+	>
+	type $hd_lines_ball__active_hd_lines_7 = $mol_type_enforce<
 		ReturnType< $hd_lines['cell_active'] >
 		,
 		ReturnType< $hd_lines_ball['active'] >
 	>
-	type $mol_view__event_hd_lines_7 = $mol_type_enforce<
+	type $mol_view__event_hd_lines_8 = $mol_type_enforce<
 		({ 
 			pointerdown( next?: ReturnType< $hd_lines['ball_grab'] > ): ReturnType< $hd_lines['ball_grab'] >,
 			pointerenter( next?: ReturnType< $hd_lines['ball_move'] > ): ReturnType< $hd_lines['ball_move'] >,
@@ -1955,17 +1962,17 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['event'] >
 	>
-	type $mol_view__sub_hd_lines_8 = $mol_type_enforce<
+	type $mol_view__sub_hd_lines_9 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_hd_lines_9 = $mol_type_enforce<
+	type $mol_view__sub_hd_lines_10 = $mol_type_enforce<
 		ReturnType< $hd_lines['cells'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_hd_lines_10 = $mol_type_enforce<
+	type $mol_view__sub_hd_lines_11 = $mol_type_enforce<
 		ReturnType< $hd_lines['rows'] >
 		,
 		ReturnType< $mol_view['sub'] >
@@ -1984,6 +1991,7 @@ declare namespace $ {
 		ball_move( id: any, next?: any ): any
 		ball_drop( id: any, next?: any ): any
 		ball_color( id: any): string
+		ball_mood( id: any): string
 		cell_active( id: any, next?: boolean ): boolean
 		Ball( id: any): $hd_lines_ball
 		Cell( id: any): $mol_view
@@ -1995,6 +2003,7 @@ declare namespace $ {
 		title( ): string
 		size( ): number
 		kind_colors( ): readonly(any)[]
+		mood_smiles( ): readonly(any)[]
 		ball_kind( id: any, next?: number ): number
 		active_cell( next?: readonly(any)[] ): readonly(any)[]
 		score( next?: number ): number
@@ -2020,6 +2029,7 @@ declare namespace $.$$ {
         snapshot(next?: Snapshot): Snapshot;
         ball_kind(id: [number, number], next?: number): number;
         ball_color([row, col]: [number, number]): any;
+        ball_mood([row, col]: [number, number]): any;
         ball_grab(id: [number, number], event: PointerEvent): void;
         ball_drop(id: [number, number], event: PointerEvent): void;
         ball_move(id: [number, number], event: PointerEvent): void;

@@ -5532,6 +5532,9 @@ var $;
 		active(){
 			return false;
 		}
+		mood(){
+			return "x_x";
+		}
 		color(){
 			return "white";
 		}
@@ -5540,6 +5543,9 @@ var $;
 		}
 		attr(){
 			return {"hd_lines_ball_active": (this.active())};
+		}
+		sub(){
+			return [(this.mood())];
 		}
 	};
 
@@ -5585,6 +5591,18 @@ var $;
                 radius: '50%',
             },
             transition: 'background 1s',
+            align: {
+                items: 'center',
+            },
+            justify: {
+                content: 'center',
+            },
+            color: 'black',
+            font: {
+                weight: 'bold',
+                size: '2vmin',
+                family: 'monospace',
+            },
         });
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -5644,6 +5662,9 @@ var $;
 		ball_color(id){
 			return "";
 		}
+		ball_mood(id){
+			return "";
+		}
 		cell_active(id, next){
 			if(next !== undefined) return next;
 			return false;
@@ -5651,6 +5672,7 @@ var $;
 		Ball(id){
 			const obj = new this.$.$hd_lines_ball();
 			(obj.color) = () => ((this.ball_color(id)));
+			(obj.mood) = () => ((this.ball_mood(id)));
 			(obj.active) = () => ((this.cell_active(id)));
 			return obj;
 		}
@@ -5699,6 +5721,20 @@ var $;
 				"cyan", 
 				"yellow", 
 				"darkorange"
+			];
+		}
+		mood_smiles(){
+			return [
+				".__.", 
+				"._.", 
+				"*_*", 
+				"*o*", 
+				"^_^", 
+				"^__^", 
+				"=^_^=", 
+				"=^__^=", 
+				"=*_*=", 
+				"=*__*="
 			];
 		}
 		ball_kind(id, next){
@@ -5942,6 +5978,32 @@ var $;
             ball_color([row, col]) {
                 return this.kind_colors()[this.ball_kind([row, col])];
             }
+            ball_mood([row, col]) {
+                const kind = this.ball_kind([row, col]);
+                if (!kind)
+                    return '';
+                let mood = 0;
+                const size = this.size();
+                const nears = [
+                    [row - 1, col - 1], [row - 1, col], [row - 1, col + 1],
+                    [row, col - 1], [row, col + 1],
+                    [row + 1, col - 1], [row + 1, col], [row + 1, col + 1],
+                ];
+                for (const [r, c] of nears) {
+                    if (r < 0)
+                        continue;
+                    if (c < 0)
+                        continue;
+                    if (r >= size)
+                        continue;
+                    if (c >= size)
+                        continue;
+                    if (this.ball_kind([r, c]) !== kind)
+                        continue;
+                    ++mood;
+                }
+                return this.mood_smiles()[mood];
+            }
             ball_grab(id, event) {
                 if (this.active_cell())
                     this.ball_drop(this.active_cell(), event);
@@ -6097,6 +6159,9 @@ var $;
         __decorate([
             $mol_mem_key
         ], $hd_lines.prototype, "ball_color", null);
+        __decorate([
+            $mol_mem_key
+        ], $hd_lines.prototype, "ball_mood", null);
         __decorate([
             $mol_action
         ], $hd_lines.prototype, "ball_grab", null);
