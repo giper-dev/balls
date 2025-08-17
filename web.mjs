@@ -6010,7 +6010,7 @@ var $;
                 const kind = this.ball_kind(id);
                 if (!kind)
                     return;
-                let found = false;
+                let total = 0;
                 const walk = (row_step, col_step) => {
                     let count = -1;
                     let [row, col] = id;
@@ -6032,14 +6032,17 @@ var $;
                         col += col_step;
                         this.ball_kind([row, col], 0);
                     }
-                    this.score(this.score() + (count - 4) ** (count - 4));
-                    found = true;
+                    total += count;
                 };
                 walk(+0, +1);
                 walk(+1, +1);
                 walk(+1, +0);
                 walk(+1, -1);
-                return found;
+                if (!total)
+                    return false;
+                total -= 5;
+                this.score(this.score() + 2 ** total);
+                return true;
             }
             add_new(next) {
                 if (next === undefined && this.snapshot().kinds.length)
@@ -6072,6 +6075,7 @@ var $;
                     score_max,
                     kinds: [],
                 });
+                this.active_cell([]);
                 this.add_new(null);
             }
         }
@@ -6175,6 +6179,9 @@ var $;
             Cell: {
                 padding: '0.25vmin',
                 flex: {},
+                background: {
+                    color: $mol_theme.card,
+                },
                 aspectRatio: 1,
                 border: {
                     radius: $mol_gap.round,
