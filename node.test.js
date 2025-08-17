@@ -6610,6 +6610,9 @@ var $;
                 },
                 userSelect: 'none',
             },
+            Row: {
+                width: '88vmin',
+            },
             Cell: {
                 padding: '0.25vmin',
                 flex: {
