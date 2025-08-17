@@ -22,6 +22,10 @@ namespace $.$$ {
 		},
 		
 		Body: {
+			display: 'flex',
+			flex: {
+				direction: 'row',
+			},
 			align: {
 				items: 'safe center',
 			},
