@@ -8,13 +8,6 @@ namespace $.$$ {
 			},
 		},
 		
-		Body: {
-			display: 'flex',
-			flex: {
-				direction: 'row',
-			},
-		},
-		
 		Title: {
 			flex: {
 				grow: 0,
