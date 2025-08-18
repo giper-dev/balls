@@ -214,7 +214,7 @@ namespace $.$$ {
 			const size = this.size()
 			
 			const snapshot = this.snapshot().kinds
-			const free = new Set<[ number, number >()
+			const free = new Set<[ number, number ]>()
 			const plan = [] as [ number, number ][]
 			
 			for( let row = 0; row < size; ++ row ) {
