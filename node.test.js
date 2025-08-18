@@ -6483,8 +6483,10 @@ var $;
             }
             ball_mood([row, col]) {
                 const kind = this.ball_kind([row, col]);
-                if (kind <= 0)
+                if (kind === 0)
                     return '';
+                if (kind < 0)
+                    return '.^.';
                 let mood = 0;
                 const size = this.size();
                 const nears = [
