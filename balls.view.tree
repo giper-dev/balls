@@ -24,7 +24,9 @@ $hd_balls $mol_page
 	plugins /
 		<= Theme $mol_theme_auto
 	head /
-		<= Title
+		<= Caption $mol_view sub /
+			<= Share $mol_button_share
+			<= Title
 		<= Main $mol_view sub /
 			<= Restart $mol_button_minor
 				hint @ \Reset
