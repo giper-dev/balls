@@ -1481,96 +1481,6 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-    class $mol_state_time extends $mol_object {
-        static task(precision: number, reset?: null): $mol_after_timeout | $mol_after_frame;
-        static now(precision: number): number;
-    }
-}
-
-declare namespace $ {
-
-	export class $mol_svg extends $mol_view {
-		dom_name( ): string
-		dom_name_space( ): string
-		font_size( ): number
-		font_family( ): string
-		style_size( ): Record<string, any>
-	}
-	
-}
-
-//# sourceMappingURL=svg.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_svg extends $.$mol_svg {
-        computed_style(): Record<string, any>;
-        font_size(): number;
-        font_family(): any;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $mol_svg_root extends $mol_svg {
-		view_box( ): string
-		aspect( ): string
-		dom_name( ): string
-		attr( ): ({ 
-			'viewBox': ReturnType< $mol_svg_root['view_box'] >,
-			'preserveAspectRatio': ReturnType< $mol_svg_root['aspect'] >,
-		})  & ReturnType< $mol_svg['attr'] >
-	}
-	
-}
-
-//# sourceMappingURL=root.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_svg_path extends $mol_svg {
-		geometry( ): string
-		dom_name( ): string
-		attr( ): ({ 
-			'd': ReturnType< $mol_svg_path['geometry'] >,
-		})  & ReturnType< $mol_svg['attr'] >
-	}
-	
-}
-
-//# sourceMappingURL=path.view.tree.d.ts.map
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	type $mol_svg_path__geometry_mol_icon_1 = $mol_type_enforce<
-		ReturnType< $mol_icon['path'] >
-		,
-		ReturnType< $mol_svg_path['geometry'] >
-	>
-	export class $mol_icon extends $mol_svg_root {
-		path( ): string
-		Path( ): $mol_svg_path
-		view_box( ): string
-		minimal_width( ): number
-		minimal_height( ): number
-		sub( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=icon.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_autorenew extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=autorenew.view.tree.d.ts.map
-declare namespace $ {
     let $mol_layer: Record<"focus" | "float" | "hover" | "speck" | "popup", $mol_style_func<"var", unknown>>;
 }
 
@@ -1781,6 +1691,105 @@ declare namespace $ {
 
 //# sourceMappingURL=minor.view.tree.d.ts.map
 declare namespace $ {
+    class $mol_state_time extends $mol_object {
+        static task(precision: number, reset?: null): $mol_after_timeout | $mol_after_frame;
+        static now(precision: number): number;
+    }
+}
+
+declare namespace $ {
+
+	export class $mol_svg extends $mol_view {
+		dom_name( ): string
+		dom_name_space( ): string
+		font_size( ): number
+		font_family( ): string
+		style_size( ): Record<string, any>
+	}
+	
+}
+
+//# sourceMappingURL=svg.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_svg extends $.$mol_svg {
+        computed_style(): Record<string, any>;
+        font_size(): number;
+        font_family(): any;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_svg_root extends $mol_svg {
+		view_box( ): string
+		aspect( ): string
+		dom_name( ): string
+		attr( ): ({ 
+			'viewBox': ReturnType< $mol_svg_root['view_box'] >,
+			'preserveAspectRatio': ReturnType< $mol_svg_root['aspect'] >,
+		})  & ReturnType< $mol_svg['attr'] >
+	}
+	
+}
+
+//# sourceMappingURL=root.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_svg_path extends $mol_svg {
+		geometry( ): string
+		dom_name( ): string
+		attr( ): ({ 
+			'd': ReturnType< $mol_svg_path['geometry'] >,
+		})  & ReturnType< $mol_svg['attr'] >
+	}
+	
+}
+
+//# sourceMappingURL=path.view.tree.d.ts.map
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_svg_path__geometry_mol_icon_1 = $mol_type_enforce<
+		ReturnType< $mol_icon['path'] >
+		,
+		ReturnType< $mol_svg_path['geometry'] >
+	>
+	export class $mol_icon extends $mol_svg_root {
+		path( ): string
+		Path( ): $mol_svg_path
+		view_box( ): string
+		minimal_width( ): number
+		minimal_height( ): number
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=icon.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_share extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=share.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_share_variant extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=variant.view.tree.d.ts.map
+declare namespace $ {
     interface $mol_locale_dict {
         [key: string]: string;
     }
@@ -1794,6 +1803,88 @@ declare namespace $ {
     }
 }
 
+declare namespace $ {
+    type $mol_type_partial_deep<Val> = Val extends object ? Val extends Function ? Val : {
+        [field in keyof Val]?: $mol_type_partial_deep<Val[field]> | undefined;
+    } : Val;
+}
+
+declare namespace $ {
+    let $mol_jsx_prefix: string;
+    let $mol_jsx_crumbs: string;
+    let $mol_jsx_booked: null | Set<string>;
+    let $mol_jsx_document: $mol_jsx.JSX.ElementClass['ownerDocument'];
+    const $mol_jsx_frag = "";
+    function $mol_jsx<Props extends $mol_jsx.JSX.IntrinsicAttributes, Children extends Array<Node | string>>(Elem: string | ((props: Props, ...children: Children) => Element), props: Props, ...childNodes: Children): Element | DocumentFragment;
+    namespace $mol_jsx.JSX {
+        interface Element extends HTMLElement {
+            class?: string;
+        }
+        interface ElementClass {
+            attributes: {};
+            ownerDocument: Pick<Document, 'getElementById' | 'createElementNS' | 'createDocumentFragment'>;
+            childNodes: Array<Node | string>;
+            valueOf(): Element;
+        }
+        type OrString<Dict> = {
+            [key in keyof Dict]: Dict[key] | string;
+        };
+        type IntrinsicElements = {
+            [key in keyof ElementTagNameMap]?: $.$mol_type_partial_deep<OrString<Element & IntrinsicAttributes & ElementTagNameMap[key]>>;
+        };
+        interface IntrinsicAttributes {
+            id?: string;
+            xmlns?: string;
+        }
+        interface ElementAttributesProperty {
+            attributes: {};
+        }
+        interface ElementChildrenAttribute {
+        }
+    }
+}
+
+declare namespace $ {
+    function $mol_dom_serialize(node: Node): string;
+}
+
+declare namespace $ {
+    function $mol_dom_capture_svg(el: Element): Promise<$mol_jsx.JSX.Element>;
+    function $mol_dom_capture_image(el: Element): Promise<HTMLImageElement>;
+    function $mol_dom_capture_canvas(el: Element): Promise<HTMLCanvasElement>;
+}
+
+declare namespace $ {
+
+	export class $mol_button_share extends $mol_button_minor {
+		Icon( ): $mol_icon_share_variant
+		title( ): string
+		uri( ): string
+		capture( ): any
+		hint( ): string
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=share.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_button_share extends $.$mol_button_share {
+        capture(): any;
+        uri(): string;
+        click(): Promise<void>;
+    }
+}
+
+declare namespace $ {
+
+	export class $mol_icon_autorenew extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=autorenew.view.tree.d.ts.map
 declare namespace $ {
 
 	export class $mol_chip extends $mol_view {
@@ -2092,67 +2183,72 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_button_minor__hint_hd_balls_1 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_button_minor['hint'] >
-	>
-	type $mol_button_minor__click_hd_balls_2 = $mol_type_enforce<
-		ReturnType< $hd_balls['restart'] >
-		,
-		ReturnType< $mol_button_minor['click'] >
-	>
-	type $mol_button_minor__sub_hd_balls_3 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_button_minor['sub'] >
-	>
-	type $mol_chip__sub_hd_balls_4 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_chip['sub'] >
-	>
-	type $mol_view__sub_hd_balls_5 = $mol_type_enforce<
+	type $mol_view__sub_hd_balls_1 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_link_donate__uri_hd_balls_6 = $mol_type_enforce<
+	type $mol_button_minor__hint_hd_balls_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_minor['hint'] >
+	>
+	type $mol_button_minor__click_hd_balls_3 = $mol_type_enforce<
+		ReturnType< $hd_balls['restart'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_button_minor__sub_hd_balls_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_chip__sub_hd_balls_5 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_chip['sub'] >
+	>
+	type $mol_view__sub_hd_balls_6 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_link_donate__uri_hd_balls_7 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link_donate['uri'] >
 	>
-	type $mol_link_support__uri_hd_balls_7 = $mol_type_enforce<
+	type $mol_link_support__uri_hd_balls_8 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link_support['uri'] >
 	>
-	type $mol_link_source__uri_hd_balls_8 = $mol_type_enforce<
+	type $mol_link_source__uri_hd_balls_9 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link_source['uri'] >
 	>
-	type $hd_balls_ball__kind_hd_balls_9 = $mol_type_enforce<
+	type $hd_balls_ball__kind_hd_balls_10 = $mol_type_enforce<
 		ReturnType< $hd_balls['ball_kind'] >
 		,
 		ReturnType< $hd_balls_ball['kind'] >
 	>
-	type $hd_balls_ball__mood_hd_balls_10 = $mol_type_enforce<
+	type $hd_balls_ball__mood_hd_balls_11 = $mol_type_enforce<
 		ReturnType< $hd_balls['ball_mood'] >
 		,
 		ReturnType< $hd_balls_ball['mood'] >
 	>
-	type $hd_balls_ball__active_hd_balls_11 = $mol_type_enforce<
+	type $hd_balls_ball__active_hd_balls_12 = $mol_type_enforce<
 		ReturnType< $hd_balls['cell_active'] >
 		,
 		ReturnType< $hd_balls_ball['active'] >
 	>
-	type $hd_balls_ball__colors_hd_balls_12 = $mol_type_enforce<
+	type $hd_balls_ball__colors_hd_balls_13 = $mol_type_enforce<
 		ReturnType< $hd_balls['colors'] >
 		,
 		ReturnType< $hd_balls_ball['colors'] >
 	>
-	type $mol_view__event_hd_balls_13 = $mol_type_enforce<
+	type $mol_view__event_hd_balls_14 = $mol_type_enforce<
 		({ 
 			pointerdown( next?: ReturnType< $hd_balls['ball_grab'] > ): ReturnType< $hd_balls['ball_grab'] >,
 			pointerenter( next?: ReturnType< $hd_balls['ball_move'] > ): ReturnType< $hd_balls['ball_move'] >,
@@ -2161,23 +2257,25 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['event'] >
 	>
-	type $mol_view__sub_hd_balls_14 = $mol_type_enforce<
+	type $mol_view__sub_hd_balls_15 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_hd_balls_15 = $mol_type_enforce<
+	type $mol_view__sub_hd_balls_16 = $mol_type_enforce<
 		ReturnType< $hd_balls['cells'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_hd_balls_16 = $mol_type_enforce<
+	type $mol_view__sub_hd_balls_17 = $mol_type_enforce<
 		ReturnType< $hd_balls['rows'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
 	export class $hd_balls extends $mol_page {
 		Theme( ): $mol_theme_auto
+		Share( ): $mol_button_share
+		Caption( ): $mol_view
 		restart( next?: any ): any
 		Restart_icon( ): $mol_icon_autorenew
 		Restart( ): $mol_button_minor
