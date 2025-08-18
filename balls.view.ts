@@ -46,7 +46,8 @@ namespace $.$$ {
 		ball_mood( [ row, col ]: [ number, number ] ) {
 			
 			const kind = this.ball_kind([ row, col ])
-			if( kind <= 0 ) return ''
+			if( kind === 0 ) return ''
+			if( kind < 0 ) return '.^.'
 			
 			let mood = 0
 			const size = this.size()
