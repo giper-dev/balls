@@ -6,8 +6,6 @@ namespace $.$$ {
 			radius: '50%',
 		},
 		
-		transition: 'background 1s',
-		
 		align: {
 			items: 'center',
 		},
@@ -20,8 +18,15 @@ namespace $.$$ {
 		
 		font: {
 			weight: 'bold',
-			size: '2vmin',
+			size: '3vmin',
 			family: 'monospace',
+		},
+		
+		'[hd_balls_ball_ghost]': {
+			true : {
+				transform: 'scale(.5)',
+				transition: 'none',
+			}
 		},
 		
 	} )

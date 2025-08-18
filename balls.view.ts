@@ -43,15 +43,10 @@ namespace $.$$ {
 		}
 		
 		@ $mol_mem_key
-		ball_color( [ row, col ]: [ number, number ] ) {
-			return this.kind_colors()[ this.ball_kind([ row, col ]) ]
-		}
-		
-		@ $mol_mem_key
 		ball_mood( [ row, col ]: [ number, number ] ) {
 			
 			const kind = this.ball_kind([ row, col ])
-			if( !kind ) return ''
+			if( kind <= 0 ) return ''
 			
 			let mood = 0
 			const size = this.size()
@@ -69,7 +64,7 @@ namespace $.$$ {
 				if( r >= size ) continue
 				if( c >= size ) continue
 				
-				if( this.ball_kind([ r, c ]) !== kind ) continue
+				if( Math.abs( this.ball_kind([ r, c ]) ) !== kind ) continue
 				++ mood
 				
 			}
@@ -81,7 +76,7 @@ namespace $.$$ {
 		ball_grab( id: [ number, number ], event: PointerEvent ) {
 			;( event.target! as Element ).releasePointerCapture(event.pointerId)
 			if( this.active_cell() ) this.ball_drop( this.active_cell() as any, event )
-			if( !this.ball_kind( id ) ) return
+			if( this.ball_kind( id ) <= 0 ) return
 			this.cell_active( id, ! this.cell_active( id ) )
 		}
 		
@@ -106,11 +101,12 @@ namespace $.$$ {
 			
 			const active = this.active_cell() as [ number, number ]
 			if( !active.length ) return
-			if( this.ball_kind( id ) ) return
+			if( this.ball_kind( id ) > 0 ) return
 			if( !near( active, id ) ) return
 			
-			this.ball_kind( id, this.ball_kind( active ) )
+			const kind = this.ball_kind( active )
 			this.ball_kind( active, 0 )
+			this.ball_kind( id, kind )
 			this.active_cell( id )
 			
 		}
@@ -162,7 +158,7 @@ namespace $.$$ {
 			const edge = ( row: number, col: number )=> row < 0 || col < 0 || row >= size || col >= size || this.ball_kind([ row, col ]) !== kind
 			
 			const kind = this.ball_kind( id )
-			if( !kind ) return false
+			if( kind <= 0 ) return false
 			
 			let total = 0
 			
@@ -214,28 +210,45 @@ namespace $.$$ {
 			
 			if( next === undefined && this.snapshot().kinds.length ) return
 			
-			const vars = this.kind_colors().length - 1
+			const vars = this.colors().length - 1
 			const size = this.size()
 			
-			for( let i = 0; i < 3; ++i ) {
-				
-				const snapshot = this.snapshot().kinds
-				const free = [] as [ number, number ][]
-				
-				for( let row = 0; row < size; ++ row ) {
-					for( let col = 0; col < size; ++ col ) {
-						if( snapshot[ row * size + col ] ) continue
-						free.push([ row, col ])
-					}
+			const snapshot = this.snapshot().kinds
+			const free = new Set<[ number, number >()
+			const plan = [] as [ number, number ][]
+			
+			for( let row = 0; row < size; ++ row ) {
+				for( let col = 0; col < size; ++ col ) {
+					
+					const kind = snapshot[ row * size + col ]
+					if( kind > 0 ) continue
+					
+					if( kind < 0 ) plan.push([ row, col ])
+					else free.add([ row, col ])
+					
 				}
-				
-				if( !free.length ) return
+			}
+			
+			while( free.size && plan.length < 3 ) {
+				const id = $mol_array_lottery([ ... free ])
+				free.delete( id )
+				plan.push( id )
+			}
+			
+			for( const id of plan ) {
+				const kind = Math.abs( this.ball_kind( id ) ) || Math.ceil( Math.random() * vars )
+				this.ball_kind( id, kind )
+			}
+			
+			for( const id of plan ) this.check_lines( id )
+			
+			for( let i = 0; free.size && i < 3; ++i ) {
 				
 				const id = $mol_array_lottery([ ... free ])
-				const kind = Math.ceil( Math.random() * vars )
+				free.delete( id )
 				
-				this.ball_kind( id, kind )
-				this.check_lines( id )
+				const kind = Math.ceil( Math.random() * vars )
+				this.ball_kind( id, - kind )
 				
 			}
 			

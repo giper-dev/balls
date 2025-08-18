@@ -1,7 +1,7 @@
 $hd_balls $mol_page
 	title @ \Hyper Balls
 	size 8
-	kind_colors /
+	colors /
 		\
 		\oklch( .9 0.3 40 )
 		\oklch( .9 0.3 100 )
@@ -19,7 +19,6 @@ $hd_balls $mol_page
 		\=^__^=
 		\=*_*=
 		\=*__*=
-	ball_kind*? 0
 	active_cell? /
 	score? 0
 	plugins /
@@ -47,8 +46,9 @@ $hd_balls $mol_page
 						pointerup? <=> ball_drop*? null
 					sub /
 						<= Ball* $hd_balls_ball
-							color <= ball_color* \
+							kind <= ball_kind*? 0
 							mood <= ball_mood* \
 							active <= cell_active*? false
+							colors <= colors
 	auto /
 		<= add_new null
