@@ -33,9 +33,10 @@ $hd_balls $mol_page
 			<= Score_pick <= Score*0 $mol_chip sub / <= score_text \
 		<= Tools
 	tools /
-		<= Lights $mol_lights_toggle
+		<= Donate $mol_link_donate uri \https://boosty.to/hyoo
 		<= Support $mol_link_support uri \https://t.me/hd4ru/118
 		<= Source $mol_link_source uri \http://github.com/hd4ru/lines/
+		<= Lights $mol_lights_toggle
 	body_content /
 		<= Board $mol_view sub <= rows /
 			<= Row*0 $mol_view sub <= cells* /
