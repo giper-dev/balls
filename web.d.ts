@@ -1889,13 +1889,16 @@ declare namespace $ {
 	export class $hd_balls_ball extends $mol_view {
 		image( ): string
 		active( ): boolean
+		ghost( ): boolean
 		mood( ): string
-		color( ): string
+		kind( ): number
+		colors( ): readonly(string)[]
 		style( ): ({ 
 			'background-image': ReturnType< $hd_balls_ball['image'] >,
 		}) 
 		attr( ): ({ 
 			'hd_balls_ball_active': ReturnType< $hd_balls_ball['active'] >,
+			'hd_balls_ball_ghost': ReturnType< $hd_balls_ball['ghost'] >,
 		}) 
 		sub( ): readonly(any)[]
 	}
@@ -1905,6 +1908,8 @@ declare namespace $ {
 //# sourceMappingURL=ball.view.tree.d.ts.map
 declare namespace $.$$ {
     class $hd_balls_ball extends $.$hd_balls_ball {
+        color(): string;
+        ghost(): boolean;
         image(): string;
     }
 }
@@ -1982,10 +1987,10 @@ declare namespace $ {
 		,
 		ReturnType< $mol_link_source['uri'] >
 	>
-	type $hd_balls_ball__color_hd_balls_8 = $mol_type_enforce<
-		ReturnType< $hd_balls['ball_color'] >
+	type $hd_balls_ball__kind_hd_balls_8 = $mol_type_enforce<
+		ReturnType< $hd_balls['ball_kind'] >
 		,
-		ReturnType< $hd_balls_ball['color'] >
+		ReturnType< $hd_balls_ball['kind'] >
 	>
 	type $hd_balls_ball__mood_hd_balls_9 = $mol_type_enforce<
 		ReturnType< $hd_balls['ball_mood'] >
@@ -1997,7 +2002,12 @@ declare namespace $ {
 		,
 		ReturnType< $hd_balls_ball['active'] >
 	>
-	type $mol_view__event_hd_balls_11 = $mol_type_enforce<
+	type $hd_balls_ball__colors_hd_balls_11 = $mol_type_enforce<
+		ReturnType< $hd_balls['colors'] >
+		,
+		ReturnType< $hd_balls_ball['colors'] >
+	>
+	type $mol_view__event_hd_balls_12 = $mol_type_enforce<
 		({ 
 			pointerdown( next?: ReturnType< $hd_balls['ball_grab'] > ): ReturnType< $hd_balls['ball_grab'] >,
 			pointerenter( next?: ReturnType< $hd_balls['ball_move'] > ): ReturnType< $hd_balls['ball_move'] >,
@@ -2006,17 +2016,17 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['event'] >
 	>
-	type $mol_view__sub_hd_balls_12 = $mol_type_enforce<
+	type $mol_view__sub_hd_balls_13 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_hd_balls_13 = $mol_type_enforce<
+	type $mol_view__sub_hd_balls_14 = $mol_type_enforce<
 		ReturnType< $hd_balls['cells'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_hd_balls_14 = $mol_type_enforce<
+	type $mol_view__sub_hd_balls_15 = $mol_type_enforce<
 		ReturnType< $hd_balls['rows'] >
 		,
 		ReturnType< $mol_view['sub'] >
@@ -2036,7 +2046,7 @@ declare namespace $ {
 		ball_grab( id: any, next?: any ): any
 		ball_move( id: any, next?: any ): any
 		ball_drop( id: any, next?: any ): any
-		ball_color( id: any): string
+		ball_kind( id: any, next?: number ): number
 		ball_mood( id: any): string
 		cell_active( id: any, next?: boolean ): boolean
 		Ball( id: any): $hd_balls_ball
@@ -2048,9 +2058,8 @@ declare namespace $ {
 		add_new( ): any
 		title( ): string
 		size( ): number
-		kind_colors( ): readonly(any)[]
+		colors( ): readonly(any)[]
 		mood_smiles( ): readonly(any)[]
-		ball_kind( id: any, next?: number ): number
 		active_cell( next?: readonly(any)[] ): readonly(any)[]
 		score( next?: number ): number
 		plugins( ): readonly(any)[]
@@ -2074,7 +2083,6 @@ declare namespace $.$$ {
         cells(row: number): $mol_view[];
         snapshot(next?: Snapshot): Snapshot;
         ball_kind(id: [number, number], next?: number): number;
-        ball_color([row, col]: [number, number]): any;
         ball_mood([row, col]: [number, number]): any;
         ball_grab(id: [number, number], event: PointerEvent): void;
         ball_drop(id: [number, number], event: PointerEvent): void;

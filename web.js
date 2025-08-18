@@ -5573,17 +5573,23 @@ var $;
 		active(){
 			return false;
 		}
+		ghost(){
+			return false;
+		}
 		mood(){
 			return "x_x";
 		}
-		color(){
-			return "white";
+		kind(){
+			return 0;
+		}
+		colors(){
+			return [];
 		}
 		style(){
 			return {"background-image": (this.image())};
 		}
 		attr(){
-			return {"hd_balls_ball_active": (this.active())};
+			return {"hd_balls_ball_active": (this.active()), "hd_balls_ball_ghost": (this.ghost())};
 		}
 		sub(){
 			return [(this.mood())];
@@ -5601,12 +5607,24 @@ var $;
     var $$;
     (function ($$) {
         class $hd_balls_ball extends $.$hd_balls_ball {
+            color() {
+                return this.colors()[Math.abs(this.kind())];
+            }
+            ghost() {
+                return this.kind() < 0;
+            }
             image() {
-                if (!this.color())
+                if (this.kind() === 0)
                     return 'radial-gradient( circle at 50% 125%, transparent, oklch( 0 0 0 / .25 ) )';
                 return `radial-gradient( circle at 50% 25%, oklch( 1 0 0 ), ${this.color()} 3%, oklch( 0 0 0 / .75 ) 90% )`;
             }
         }
+        __decorate([
+            $mol_mem
+        ], $hd_balls_ball.prototype, "color", null);
+        __decorate([
+            $mol_mem
+        ], $hd_balls_ball.prototype, "ghost", null);
         __decorate([
             $mol_mem
         ], $hd_balls_ball.prototype, "image", null);
@@ -5631,7 +5649,6 @@ var $;
             border: {
                 radius: '50%',
             },
-            transition: 'background 1s',
             align: {
                 items: 'center',
             },
@@ -5641,8 +5658,14 @@ var $;
             color: 'black',
             font: {
                 weight: 'bold',
-                size: '2vmin',
+                size: '3vmin',
                 family: 'monospace',
+            },
+            '[hd_balls_ball_ghost]': {
+                true: {
+                    transform: 'scale(.5)',
+                    transition: 'none',
+                }
             },
         });
     })($$ = $.$$ || ($.$$ = {}));
@@ -5711,8 +5734,9 @@ var $;
 			if(next !== undefined) return next;
 			return null;
 		}
-		ball_color(id){
-			return "";
+		ball_kind(id, next){
+			if(next !== undefined) return next;
+			return 0;
 		}
 		ball_mood(id){
 			return "";
@@ -5723,9 +5747,10 @@ var $;
 		}
 		Ball(id){
 			const obj = new this.$.$hd_balls_ball();
-			(obj.color) = () => ((this.ball_color(id)));
+			(obj.kind) = () => ((this.ball_kind(id)));
 			(obj.mood) = () => ((this.ball_mood(id)));
 			(obj.active) = () => ((this.cell_active(id)));
+			(obj.colors) = () => ((this.colors()));
 			return obj;
 		}
 		Cell(id){
@@ -5763,7 +5788,7 @@ var $;
 		size(){
 			return 8;
 		}
-		kind_colors(){
+		colors(){
 			return [
 				"", 
 				"oklch( .9 0.3 40 )", 
@@ -5786,10 +5811,6 @@ var $;
 				"=*_*=", 
 				"=*__*="
 			];
-		}
-		ball_kind(id, next){
-			if(next !== undefined) return next;
-			return 0;
 		}
 		active_cell(next){
 			if(next !== undefined) return next;
@@ -5835,12 +5856,12 @@ var $;
 	($mol_mem_key(($.$hd_balls.prototype), "ball_grab"));
 	($mol_mem_key(($.$hd_balls.prototype), "ball_move"));
 	($mol_mem_key(($.$hd_balls.prototype), "ball_drop"));
+	($mol_mem_key(($.$hd_balls.prototype), "ball_kind"));
 	($mol_mem_key(($.$hd_balls.prototype), "cell_active"));
 	($mol_mem_key(($.$hd_balls.prototype), "Ball"));
 	($mol_mem_key(($.$hd_balls.prototype), "Cell"));
 	($mol_mem_key(($.$hd_balls.prototype), "Row"));
 	($mol_mem(($.$hd_balls.prototype), "Board"));
-	($mol_mem_key(($.$hd_balls.prototype), "ball_kind"));
 	($mol_mem(($.$hd_balls.prototype), "active_cell"));
 	($mol_mem(($.$hd_balls.prototype), "score"));
 
@@ -6027,12 +6048,9 @@ var $;
                 }
                 return this.snapshot().kinds[id[0] * this.size() + id[1]] ?? 0;
             }
-            ball_color([row, col]) {
-                return this.kind_colors()[this.ball_kind([row, col])];
-            }
             ball_mood([row, col]) {
                 const kind = this.ball_kind([row, col]);
-                if (!kind)
+                if (kind <= 0)
                     return '';
                 let mood = 0;
                 const size = this.size();
@@ -6050,7 +6068,7 @@ var $;
                         continue;
                     if (c >= size)
                         continue;
-                    if (this.ball_kind([r, c]) !== kind)
+                    if (Math.abs(this.ball_kind([r, c])) !== kind)
                         continue;
                     ++mood;
                 }
@@ -6061,7 +6079,7 @@ var $;
                 event.target.releasePointerCapture(event.pointerId);
                 if (this.active_cell())
                     this.ball_drop(this.active_cell(), event);
-                if (!this.ball_kind(id))
+                if (this.ball_kind(id) <= 0)
                     return;
                 this.cell_active(id, !this.cell_active(id));
             }
@@ -6081,12 +6099,13 @@ var $;
                 const active = this.active_cell();
                 if (!active.length)
                     return;
-                if (this.ball_kind(id))
+                if (this.ball_kind(id) > 0)
                     return;
                 if (!near(active, id))
                     return;
-                this.ball_kind(id, this.ball_kind(active));
+                const kind = this.ball_kind(active);
                 this.ball_kind(active, 0);
+                this.ball_kind(id, kind);
                 this.active_cell(id);
             }
             cell_active(id, next) {
@@ -6127,7 +6146,7 @@ var $;
                 const size = this.size();
                 const edge = (row, col) => row < 0 || col < 0 || row >= size || col >= size || this.ball_kind([row, col]) !== kind;
                 const kind = this.ball_kind(id);
-                if (!kind)
+                if (kind <= 0)
                     return false;
                 let total = 0;
                 const walk = (row_step, col_step) => {
@@ -6166,24 +6185,38 @@ var $;
             add_new(next) {
                 if (next === undefined && this.snapshot().kinds.length)
                     return;
-                const vars = this.kind_colors().length - 1;
+                const vars = this.colors().length - 1;
                 const size = this.size();
-                for (let i = 0; i < 3; ++i) {
-                    const snapshot = this.snapshot().kinds;
-                    const free = [];
-                    for (let row = 0; row < size; ++row) {
-                        for (let col = 0; col < size; ++col) {
-                            if (snapshot[row * size + col])
-                                continue;
-                            free.push([row, col]);
-                        }
+                const snapshot = this.snapshot().kinds;
+                const free = new Set();
+                const plan = [];
+                for (let row = 0; row < size; ++row) {
+                    for (let col = 0; col < size; ++col) {
+                        const kind = snapshot[row * size + col];
+                        if (kind > 0)
+                            continue;
+                        if (kind < 0)
+                            plan.push([row, col]);
+                        else
+                            free.add([row, col]);
                     }
-                    if (!free.length)
-                        return;
+                }
+                while (free.size && plan.length < 3) {
                     const id = $mol_array_lottery([...free]);
-                    const kind = Math.ceil(Math.random() * vars);
+                    free.delete(id);
+                    plan.push(id);
+                }
+                for (const id of plan) {
+                    const kind = Math.abs(this.ball_kind(id)) || Math.ceil(Math.random() * vars);
                     this.ball_kind(id, kind);
+                }
+                for (const id of plan)
                     this.check_lines(id);
+                for (let i = 0; free.size && i < 3; ++i) {
+                    const id = $mol_array_lottery([...free]);
+                    free.delete(id);
+                    const kind = Math.ceil(Math.random() * vars);
+                    this.ball_kind(id, -kind);
                 }
                 return;
             }
@@ -6210,9 +6243,6 @@ var $;
         __decorate([
             $mol_mem_key
         ], $hd_balls.prototype, "ball_kind", null);
-        __decorate([
-            $mol_mem_key
-        ], $hd_balls.prototype, "ball_color", null);
         __decorate([
             $mol_mem_key
         ], $hd_balls.prototype, "ball_mood", null);
