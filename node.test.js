@@ -6799,7 +6799,7 @@ var $;
                 if (kind === 0)
                     return '';
                 if (kind < 0)
-                    return '.^.';
+                    return '..';
                 let mood = 0;
                 const size = this.size();
                 const nears = [
