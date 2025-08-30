@@ -1,5 +1,4 @@
 include \/mol/offline/install
 
 deploy \/hd/balls/manifest.json
-deploy \/hd/balls/logo/logo_512.png
-deploy \/hd/balls/logo/logo.svg
+deploy \/hd/balls/logo/
