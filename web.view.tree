@@ -8,35 +8,71 @@ $mol_scroll $mol_view
 		^
 		scroll?event <=> event_scroll?event null
 
-$mol_page $mol_view
-	dom_name \article
-	attr *
-		^
-		tabIndex <= tabindex -1
-	sub /
-		<= Head $mol_view
-			minimal_height 64
-			dom_name \header
-			sub <= head /
-				<= Title $mol_view
-					dom_name \h1
-					sub <= title_content /
-						<= Logo null
-						<= title
-				<= Tools $mol_view
-					sub <= tools /$mol_view_content
-		<= Body $mol_scroll
-			scroll_top? => body_scroll_top?
-			sub <= body_content /
-				<= Body_content $mol_view
-					sub <= body /$mol_view
-		<= Foot $mol_view
-			dom_name \footer
-			sub <= foot /$mol_view
+$mol_book2 $mol_scroll
+	menu_title \
+	sub /$mol_view
+		^ pages <= pages_deep /$mol_view
+		^ placeholders /$mol_view
+			<= Placeholder $mol_view
+	minimal_width 0
+	Gap* $mol_view title \
 
 $mol_theme_auto $mol_plugin
 	light \$mol_theme_light
 	attr * mol_theme <= theme <= dark \$mol_theme_dark
+
+$mol_link $mol_view
+	uri \
+	dom_name \a
+	uri_off \
+	uri_native null
+	external false
+	attr *
+		^
+		href <= uri_toggle \
+		title <= hint_safe <= hint \
+		target <= target \_self
+		download <= file_name \
+		mol_link_current <= current false
+		rel <= relation \
+	sub /$mol_view_content
+		<= title
+	arg *
+	event *
+		^
+		click?event <=> click?event <=> event_click?event null
+
+$mol_embed_native $mol_scroll
+	dom_name \iframe
+	window null
+	attr *
+		^
+		src <= uri? \about:config
+	sub /
+		<= Fallback $mol_link
+			uri <= uri
+			sub /
+				<= title \
+	message *
+		hashchange? <=> uri_change? null
+
+$mol_frame $mol_embed_native
+	attr *
+		tabindex <= tabindex
+		allow <= allow \
+		src <= uri
+		srcdoc <= html null
+	fullscreen true
+	accelerometer true
+	autoplay true
+	encription true
+	gyroscope true
+	pip true
+	clipboard_read true
+	clipboard_write true
+
+$hd_space_frame $mol_frame
+	uri \http://localhost:9080/hd/space/bar/-/test.html#mol_lights={lights}/current={current}
 
 $mol_speck $mol_view
 	minimal_width 12
@@ -126,27 +162,6 @@ $mol_chip $mol_view
 	sub /
 		<= title
 
-$mol_link $mol_view
-	uri \
-	dom_name \a
-	uri_off \
-	uri_native null
-	external false
-	attr *
-		^
-		href <= uri_toggle \
-		title <= hint_safe <= hint \
-		target <= target \_self
-		download <= file_name \
-		mol_link_current <= current false
-		rel <= relation \
-	sub /$mol_view_content
-		<= title
-	arg *
-	event *
-		^
-		click?event <=> click?event <=> event_click?event null
-
 $mol_icon_gift $mol_icon path \M9.06,1.93C7.17,1.92 5.33,3.74 6.17,6H3A2,2 0 0,0 1,8V10A1,1 0 0,0 2,11H11V8H13V11H22A1,1 0 0,0 23,10V8A2,2 0 0,0 21,6H17.83C19,2.73 14.6,0.42 12.57,3.24L12,4L11.43,3.22C10.8,2.33 9.93,1.94 9.06,1.93M9,4C9.89,4 10.34,5.08 9.71,5.71C9.08,6.34 8,5.89 8,5A1,1 0 0,1 9,4M15,4C15.89,4 16.34,5.08 15.71,5.71C15.08,6.34 14,5.89 14,5A1,1 0 0,1 15,4M2,12V20A2,2 0 0,0 4,22H20A2,2 0 0,0 22,20V12H13V20H11V12H2Z
 
 $mol_icon_gift_outline $mol_icon path \M22,12V20A2,2 0 0,1 20,22H4A2,2 0 0,1 2,20V12A1,1 0 0,1 1,11V8A2,2 0 0,1 3,6H6.17C6.06,5.69 6,5.35 6,5A3,3 0 0,1 9,2C10,2 10.88,2.5 11.43,3.24V3.23L12,4L12.57,3.23V3.24C13.12,2.5 14,2 15,2A3,3 0 0,1 18,5C18,5.35 17.94,5.69 17.83,6H21A2,2 0 0,1 23,8V11A1,1 0 0,1 22,12M4,20H11V12H4V20M20,20V12H13V20H20M9,4A1,1 0 0,0 8,5A1,1 0 0,0 9,6A1,1 0 0,0 10,5A1,1 0 0,0 9,4M15,4A1,1 0 0,0 14,5A1,1 0 0,0 15,6A1,1 0 0,0 16,5A1,1 0 0,0 15,4M3,8V10H11V8H3M13,8V10H21V8H13Z
@@ -206,8 +221,33 @@ $hd_balls_ball $mol_view
 	sub /
 		<= mood \x_x
 
-$hd_balls $mol_page
-	title @ \Hyper Balls
+$mol_page $mol_view
+	dom_name \article
+	attr *
+		^
+		tabIndex <= tabindex -1
+	sub /
+		<= Head $mol_view
+			minimal_height 64
+			dom_name \header
+			sub <= head /
+				<= Title $mol_view
+					dom_name \h1
+					sub <= title_content /
+						<= Logo null
+						<= title
+				<= Tools $mol_view
+					sub <= tools /$mol_view_content
+		<= Body $mol_scroll
+			scroll_top? => body_scroll_top?
+			sub <= body_content /
+				<= Body_content $mol_view
+					sub <= body /$mol_view
+		<= Foot $mol_view
+			dom_name \footer
+			sub <= foot /$mol_view
+
+$hd_balls $mol_book2
 	size 8
 	colors /
 		\
@@ -231,35 +271,42 @@ $hd_balls $mol_page
 	score? 0
 	plugins /
 		<= Theme $mol_theme_auto
-	head /
-		<= Caption $mol_view sub /
-			<= Share $mol_button_share
-			<= Title
-		<= Main $mol_view sub /
-			<= Restart $mol_button_minor
-				hint @ \Reset
-				click? <=> restart? null
-				sub / <= Restart_icon $mol_icon_autorenew
-			<= Score_pick <= Score*0 $mol_chip sub / <= score_text \
-		<= Tools
-	tools /
-		<= Donate $mol_link_donate uri \https://boosty.to/hyoo
-		<= Support $mol_link_support uri \https://t.me/hd4ru/118
-		<= Source $mol_link_source uri \http://github.com/hd4ru/lines/
-		<= Lights $mol_lights_toggle
-	body_content /
-		<= Board $mol_view sub <= rows /
-			<= Row*0 $mol_view sub <= cells* /
-				<= Cell*0 $mol_view
-					event *
-						pointerdown? <=> ball_grab*? null
-						pointerenter? <=> ball_move*? null
-						pointerup? <=> ball_drop*? null
-					sub /
-						<= Ball* $hd_balls_ball
-							kind <= ball_kind*? 0
-							mood <= ball_mood* \
-							active <= cell_active*? false
-							colors <= colors
+	placeholders /
+	pages /
+		<= Space $hd_space_frame
+		<= Game $mol_page
+			title <= title @ \Hyper Balls
+			head /
+				<= Caption $mol_view sub /
+					<= Share $mol_button_share
+					<= Game_title
+				<= Main $mol_view sub /
+					<= Restart $mol_button_minor
+						hint @ \Reset
+						click? <=> restart? null
+						sub / <= Restart_icon $mol_icon_autorenew
+					<= Score_pick <= Score*0 $mol_chip sub / <= score_text \
+				<= Game_tools
+			Tools => Game_tools
+			Title => Game_title
+			tools /
+				<= Donate $mol_link_donate uri \https://boosty.to/hyoo
+				<= Support $mol_link_support uri \https://t.me/hd4ru/118
+				<= Source $mol_link_source uri \http://github.com/hd4ru/lines/
+				<= Lights $mol_lights_toggle
+			body_content /
+				<= Board $mol_view sub <= rows /
+					<= Row*0 $mol_view sub <= cells* /
+						<= Cell*0 $mol_view
+							event *
+								pointerdown? <=> ball_grab*? null
+								pointerenter? <=> ball_move*? null
+								pointerup? <=> ball_drop*? null
+							sub /
+								<= Ball* $hd_balls_ball
+									kind <= ball_kind*? 0
+									mood <= ball_mood* \
+									active <= cell_active*? false
+									colors <= colors
 	auto /
 		<= add_new null
