@@ -2,16 +2,25 @@ namespace $.$$ {
 	
 	$mol_style_define( $hd_balls, {
 		
-		Head: {
-			justify: {
-				content: 'space-between',
-			},
-		},
-		
-		Title: {
+		Game: {
+			
 			flex: {
-				grow: 0,
+				basis: '100vh',
+				grow: 1,
 			},
+		
+			Head: {
+				justify: {
+					content: 'space-between',
+				},
+			},
+			
+			Title: {
+				flex: {
+					grow: 0,
+				},
+			},
+			
 		},
 		
 		Score: {

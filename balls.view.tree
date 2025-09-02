@@ -1,5 +1,4 @@
-$hd_balls $mol_page
-	title @ \Hyper Balls
+$hd_balls $mol_book2
 	size 8
 	colors /
 		\
@@ -23,35 +22,42 @@ $hd_balls $mol_page
 	score? 0
 	plugins /
 		<= Theme $mol_theme_auto
-	head /
-		<= Caption $mol_view sub /
-			<= Share $mol_button_share
-			<= Title
-		<= Main $mol_view sub /
-			<= Restart $mol_button_minor
-				hint @ \Reset
-				click? <=> restart? null
-				sub / <= Restart_icon $mol_icon_autorenew
-			<= Score_pick <= Score*0 $mol_chip sub / <= score_text \
-		<= Tools
-	tools /
-		<= Donate $mol_link_donate uri \https://boosty.to/hyoo
-		<= Support $mol_link_support uri \https://t.me/hd4ru/118
-		<= Source $mol_link_source uri \http://github.com/hd4ru/lines/
-		<= Lights $mol_lights_toggle
-	body_content /
-		<= Board $mol_view sub <= rows /
-			<= Row*0 $mol_view sub <= cells* /
-				<= Cell*0 $mol_view
-					event *
-						pointerdown? <=> ball_grab*? null
-						pointerenter? <=> ball_move*? null
-						pointerup? <=> ball_drop*? null
-					sub /
-						<= Ball* $hd_balls_ball
-							kind <= ball_kind*? 0
-							mood <= ball_mood* \
-							active <= cell_active*? false
-							colors <= colors
+	placeholders /
+	pages /
+		<= Space $hd_space_frame
+		<= Game $mol_page
+			title <= title @ \Hyper Balls
+			head /
+				<= Caption $mol_view sub /
+					<= Share $mol_button_share
+					<= Game_title
+				<= Main $mol_view sub /
+					<= Restart $mol_button_minor
+						hint @ \Reset
+						click? <=> restart? null
+						sub / <= Restart_icon $mol_icon_autorenew
+					<= Score_pick <= Score*0 $mol_chip sub / <= score_text \
+				<= Game_tools
+			Tools => Game_tools
+			Title => Game_title
+			tools /
+				<= Donate $mol_link_donate uri \https://boosty.to/hyoo
+				<= Support $mol_link_support uri \https://t.me/hd4ru/118
+				<= Source $mol_link_source uri \http://github.com/hd4ru/lines/
+				<= Lights $mol_lights_toggle
+			body_content /
+				<= Board $mol_view sub <= rows /
+					<= Row*0 $mol_view sub <= cells* /
+						<= Cell*0 $mol_view
+							event *
+								pointerdown? <=> ball_grab*? null
+								pointerenter? <=> ball_move*? null
+								pointerup? <=> ball_drop*? null
+							sub /
+								<= Ball* $hd_balls_ball
+									kind <= ball_kind*? 0
+									mood <= ball_mood* \
+									active <= cell_active*? false
+									colors <= colors
 	auto /
 		<= add_new null
