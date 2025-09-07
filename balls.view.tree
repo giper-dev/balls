@@ -26,7 +26,7 @@ $gd_balls $mol_book2
 	pages /
 		<= Space $gd_web_frame
 		<= Game $mol_page
-			title <= title @ \Hyper Balls
+			title <= title @ \Giper Balls
 			head /
 				<= Caption $mol_view sub /
 					<= Share $mol_button_share
