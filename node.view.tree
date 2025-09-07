@@ -71,8 +71,9 @@ $mol_frame $mol_embed_native
 	clipboard_read true
 	clipboard_write true
 
-$hd_space_frame $mol_frame
-	uri \https://space.hd4.ru/#mol_lights={lights}/current={current}
+$gd_web_frame $mol_frame
+	uri \https://web.giper.dev/#mol_lights={lights}/current={current}
+	- uri \http://localhost:9080/gd/web/bar/-/test.html#mol_lights={lights}/current={current}
 
 $mol_speck $mol_view
 	minimal_width 12
@@ -211,13 +212,13 @@ $mol_lights_toggle $mol_check_icon
 	hint @ \Toggle lights
 	checked? <=> lights? false
 
-$hd_balls_ball $mol_view
+$gd_balls_ball $mol_view
 	kind 0
 	colors /string
 	style * background-image <= image \
 	attr *
-		hd_balls_ball_active <= active false
-		hd_balls_ball_ghost <= ghost false
+		gd_balls_ball_active <= active false
+		gd_balls_ball_ghost <= ghost false
 	sub /
 		<= mood \x_x
 
@@ -247,7 +248,7 @@ $mol_page $mol_view
 			dom_name \footer
 			sub <= foot /$mol_view
 
-$hd_balls $mol_book2
+$gd_balls $mol_book2
 	size 8
 	colors /
 		\
@@ -273,7 +274,7 @@ $hd_balls $mol_book2
 		<= Theme $mol_theme_auto
 	placeholders /
 	pages /
-		<= Space $hd_space_frame
+		<= Space $gd_web_frame
 		<= Game $mol_page
 			title <= title @ \Hyper Balls
 			head /
@@ -291,8 +292,8 @@ $hd_balls $mol_book2
 			Title => Game_title
 			tools /
 				<= Donate $mol_link_donate uri \https://boosty.to/hyoo
-				<= Support $mol_link_support uri \https://t.me/hd4ru/118
-				<= Source $mol_link_source uri \http://github.com/hd4ru/lines/
+				<= Support $mol_link_support uri \https://t.me/giper-dev/118
+				<= Source $mol_link_source uri \http://github.com/giper-dev/lines/
 				<= Lights $mol_lights_toggle
 			body_content /
 				<= Board $mol_view sub <= rows /
@@ -303,7 +304,7 @@ $hd_balls $mol_book2
 								pointerenter? <=> ball_move*? null
 								pointerup? <=> ball_drop*? null
 							sub /
-								<= Ball* $hd_balls_ball
+								<= Ball* $gd_balls_ball
 									kind <= ball_kind*? 0
 									mood <= ball_mood* \
 									active <= cell_active*? false

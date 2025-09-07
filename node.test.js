@@ -5598,9 +5598,9 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$hd_space_frame) = class $hd_space_frame extends ($.$mol_frame) {
+	($.$gd_web_frame) = class $gd_web_frame extends ($.$mol_frame) {
 		uri(){
-			return "https://space.hd4.ru/#mol_lights={lights}/current={current}";
+			return "https://web.giper.dev/#mol_lights={lights}/current={current}";
 		}
 	};
 
@@ -5614,7 +5614,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        class $hd_space_frame extends $.$hd_space_frame {
+        class $gd_web_frame extends $.$gd_web_frame {
             uri() {
                 return super.uri()
                     .replace('{lights}', String(this.$.$mol_lights()))
@@ -5623,8 +5623,8 @@ var $;
         }
         __decorate([
             $mol_mem
-        ], $hd_space_frame.prototype, "uri", null);
-        $$.$hd_space_frame = $hd_space_frame;
+        ], $gd_web_frame.prototype, "uri", null);
+        $$.$gd_web_frame = $gd_web_frame;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
@@ -5632,7 +5632,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("hd/space/frame/frame.view.css", "/* @keyframes hd_space_frame_show {\n\tfrom {\n\t\topacity: 0;\n\t}\n}\n\n[hd_space_frame] {\n\tanimation: 5s -1s ease-in hd_space_frame_show;\n} */\n");
+    $mol_style_attach("gd/web/frame/frame.view.css", "/* @keyframes gd_web_frame_show {\n\tfrom {\n\t\topacity: 0;\n\t}\n}\n\n[gd_web_frame] {\n\tanimation: 5s -1s ease-in gd_web_frame_show;\n} */\n");
 })($ || ($ = {}));
 
 ;
@@ -5641,7 +5641,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        $mol_style_define($hd_space_frame, {
+        $mol_style_define($gd_web_frame, {
             flex: {
                 basis: '4rem',
                 shrink: 0,
@@ -6714,7 +6714,7 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$hd_balls_ball) = class $hd_balls_ball extends ($.$mol_view) {
+	($.$gd_balls_ball) = class $gd_balls_ball extends ($.$mol_view) {
 		image(){
 			return "";
 		}
@@ -6737,7 +6737,7 @@ var $;
 			return {"background-image": (this.image())};
 		}
 		attr(){
-			return {"hd_balls_ball_active": (this.active()), "hd_balls_ball_ghost": (this.ghost())};
+			return {"gd_balls_ball_active": (this.active()), "gd_balls_ball_ghost": (this.ghost())};
 		}
 		sub(){
 			return [(this.mood())];
@@ -6754,7 +6754,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        class $hd_balls_ball extends $.$hd_balls_ball {
+        class $gd_balls_ball extends $.$gd_balls_ball {
             color() {
                 return this.colors()[Math.abs(this.kind())];
             }
@@ -6769,14 +6769,14 @@ var $;
         }
         __decorate([
             $mol_mem
-        ], $hd_balls_ball.prototype, "color", null);
+        ], $gd_balls_ball.prototype, "color", null);
         __decorate([
             $mol_mem
-        ], $hd_balls_ball.prototype, "ghost", null);
+        ], $gd_balls_ball.prototype, "ghost", null);
         __decorate([
             $mol_mem
-        ], $hd_balls_ball.prototype, "image", null);
-        $$.$hd_balls_ball = $hd_balls_ball;
+        ], $gd_balls_ball.prototype, "image", null);
+        $$.$gd_balls_ball = $gd_balls_ball;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
@@ -6784,7 +6784,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("hd/balls/ball/ball.view.css", "@keyframes hd_balls_ball_jumping {\n\tfrom {\n\t\ttransform: scaleY(100%) translateY(-25%);\n\t}\n\tto {\n\t\ttransform: scaleY(90%) translateY(10%);\n\t}\n}\n\n[hd_balls_ball_active] {\n\tanimation: hd_balls_ball_jumping .25s infinite ease-in alternate-reverse;\n}\n");
+    $mol_style_attach("gd/balls/ball/ball.view.css", "@keyframes gd_balls_ball_jumping {\n\tfrom {\n\t\ttransform: scaleY(100%) translateY(-25%);\n\t}\n\tto {\n\t\ttransform: scaleY(90%) translateY(10%);\n\t}\n}\n\n[gd_balls_ball_active] {\n\tanimation: gd_balls_ball_jumping .25s infinite ease-in alternate-reverse;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -6793,7 +6793,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        $mol_style_define($hd_balls_ball, {
+        $mol_style_define($gd_balls_ball, {
             border: {
                 radius: '50%',
             },
@@ -6809,7 +6809,7 @@ var $;
                 size: '3vmin',
                 family: 'monospace',
             },
-            '[hd_balls_ball_ghost]': {
+            '[gd_balls_ball_ghost]': {
                 true: {
                     transform: 'scale(.5)',
                     transition: 'none',
@@ -7048,17 +7048,17 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$hd_balls) = class $hd_balls extends ($.$mol_book2) {
+	($.$gd_balls) = class $gd_balls extends ($.$mol_book2) {
 		Theme(){
 			const obj = new this.$.$mol_theme_auto();
 			return obj;
 		}
 		Space(){
-			const obj = new this.$.$hd_space_frame();
+			const obj = new this.$.$gd_web_frame();
 			return obj;
 		}
 		title(){
-			return (this.$.$mol_locale.text("$hd_balls_title"));
+			return (this.$.$mol_locale.text("$gd_balls_title"));
 		}
 		Share(){
 			const obj = new this.$.$mol_button_share();
@@ -7079,7 +7079,7 @@ var $;
 		}
 		Restart(){
 			const obj = new this.$.$mol_button_minor();
-			(obj.hint) = () => ((this.$.$mol_locale.text("$hd_balls_Restart_hint")));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$gd_balls_Restart_hint")));
 			(obj.click) = (next) => ((this.restart(next)));
 			(obj.sub) = () => ([(this.Restart_icon())]);
 			return obj;
@@ -7113,12 +7113,12 @@ var $;
 		}
 		Support(){
 			const obj = new this.$.$mol_link_support();
-			(obj.uri) = () => ("https://t.me/hd4ru/118");
+			(obj.uri) = () => ("https://t.me/giper-dev/118");
 			return obj;
 		}
 		Source(){
 			const obj = new this.$.$mol_link_source();
-			(obj.uri) = () => ("http://github.com/hd4ru/lines/");
+			(obj.uri) = () => ("http://github.com/giper-dev/lines/");
 			return obj;
 		}
 		Lights(){
@@ -7149,7 +7149,7 @@ var $;
 			return false;
 		}
 		Ball(id){
-			const obj = new this.$.$hd_balls_ball();
+			const obj = new this.$.$gd_balls_ball();
 			(obj.kind) = () => ((this.ball_kind(id)));
 			(obj.mood) = () => ((this.ball_mood(id)));
 			(obj.active) = () => ((this.cell_active(id)));
@@ -7250,31 +7250,31 @@ var $;
 			return [(this.add_new())];
 		}
 	};
-	($mol_mem(($.$hd_balls.prototype), "Theme"));
-	($mol_mem(($.$hd_balls.prototype), "Space"));
-	($mol_mem(($.$hd_balls.prototype), "Share"));
-	($mol_mem(($.$hd_balls.prototype), "Caption"));
-	($mol_mem(($.$hd_balls.prototype), "restart"));
-	($mol_mem(($.$hd_balls.prototype), "Restart_icon"));
-	($mol_mem(($.$hd_balls.prototype), "Restart"));
-	($mol_mem_key(($.$hd_balls.prototype), "Score"));
-	($mol_mem(($.$hd_balls.prototype), "Main"));
-	($mol_mem(($.$hd_balls.prototype), "Donate"));
-	($mol_mem(($.$hd_balls.prototype), "Support"));
-	($mol_mem(($.$hd_balls.prototype), "Source"));
-	($mol_mem(($.$hd_balls.prototype), "Lights"));
-	($mol_mem_key(($.$hd_balls.prototype), "ball_grab"));
-	($mol_mem_key(($.$hd_balls.prototype), "ball_move"));
-	($mol_mem_key(($.$hd_balls.prototype), "ball_drop"));
-	($mol_mem_key(($.$hd_balls.prototype), "ball_kind"));
-	($mol_mem_key(($.$hd_balls.prototype), "cell_active"));
-	($mol_mem_key(($.$hd_balls.prototype), "Ball"));
-	($mol_mem_key(($.$hd_balls.prototype), "Cell"));
-	($mol_mem_key(($.$hd_balls.prototype), "Row"));
-	($mol_mem(($.$hd_balls.prototype), "Board"));
-	($mol_mem(($.$hd_balls.prototype), "Game"));
-	($mol_mem(($.$hd_balls.prototype), "active_cell"));
-	($mol_mem(($.$hd_balls.prototype), "score"));
+	($mol_mem(($.$gd_balls.prototype), "Theme"));
+	($mol_mem(($.$gd_balls.prototype), "Space"));
+	($mol_mem(($.$gd_balls.prototype), "Share"));
+	($mol_mem(($.$gd_balls.prototype), "Caption"));
+	($mol_mem(($.$gd_balls.prototype), "restart"));
+	($mol_mem(($.$gd_balls.prototype), "Restart_icon"));
+	($mol_mem(($.$gd_balls.prototype), "Restart"));
+	($mol_mem_key(($.$gd_balls.prototype), "Score"));
+	($mol_mem(($.$gd_balls.prototype), "Main"));
+	($mol_mem(($.$gd_balls.prototype), "Donate"));
+	($mol_mem(($.$gd_balls.prototype), "Support"));
+	($mol_mem(($.$gd_balls.prototype), "Source"));
+	($mol_mem(($.$gd_balls.prototype), "Lights"));
+	($mol_mem_key(($.$gd_balls.prototype), "ball_grab"));
+	($mol_mem_key(($.$gd_balls.prototype), "ball_move"));
+	($mol_mem_key(($.$gd_balls.prototype), "ball_drop"));
+	($mol_mem_key(($.$gd_balls.prototype), "ball_kind"));
+	($mol_mem_key(($.$gd_balls.prototype), "cell_active"));
+	($mol_mem_key(($.$gd_balls.prototype), "Ball"));
+	($mol_mem_key(($.$gd_balls.prototype), "Cell"));
+	($mol_mem_key(($.$gd_balls.prototype), "Row"));
+	($mol_mem(($.$gd_balls.prototype), "Board"));
+	($mol_mem(($.$gd_balls.prototype), "Game"));
+	($mol_mem(($.$gd_balls.prototype), "active_cell"));
+	($mol_mem(($.$gd_balls.prototype), "score"));
 
 
 ;
@@ -7348,7 +7348,7 @@ var $;
                 return false;
             return true;
         }
-        class $hd_balls extends $.$hd_balls {
+        class $gd_balls extends $.$gd_balls {
             rows() {
                 return Array.from({ length: this.size() }, (_, row) => this.Row(row));
             }
@@ -7553,50 +7553,50 @@ var $;
         }
         __decorate([
             $mol_mem
-        ], $hd_balls.prototype, "rows", null);
+        ], $gd_balls.prototype, "rows", null);
         __decorate([
             $mol_mem_key
-        ], $hd_balls.prototype, "cells", null);
+        ], $gd_balls.prototype, "cells", null);
         __decorate([
             $mol_mem
-        ], $hd_balls.prototype, "snapshot", null);
+        ], $gd_balls.prototype, "snapshot", null);
         __decorate([
             $mol_mem_key
-        ], $hd_balls.prototype, "ball_kind", null);
+        ], $gd_balls.prototype, "ball_kind", null);
         __decorate([
             $mol_mem_key
-        ], $hd_balls.prototype, "ball_mood", null);
+        ], $gd_balls.prototype, "ball_mood", null);
         __decorate([
             $mol_action
-        ], $hd_balls.prototype, "ball_grab", null);
+        ], $gd_balls.prototype, "ball_grab", null);
         __decorate([
             $mol_action
-        ], $hd_balls.prototype, "ball_drop", null);
+        ], $gd_balls.prototype, "ball_drop", null);
         __decorate([
             $mol_action
-        ], $hd_balls.prototype, "ball_move", null);
+        ], $gd_balls.prototype, "ball_move", null);
         __decorate([
             $mol_mem_key
-        ], $hd_balls.prototype, "cell_active", null);
+        ], $gd_balls.prototype, "cell_active", null);
         __decorate([
             $mol_mem
-        ], $hd_balls.prototype, "score", null);
+        ], $gd_balls.prototype, "score", null);
         __decorate([
             $mol_mem
-        ], $hd_balls.prototype, "score_text", null);
+        ], $gd_balls.prototype, "score_text", null);
         __decorate([
             $mol_mem
-        ], $hd_balls.prototype, "Score_pick", null);
+        ], $gd_balls.prototype, "Score_pick", null);
         __decorate([
             $mol_action
-        ], $hd_balls.prototype, "check_lines", null);
+        ], $gd_balls.prototype, "check_lines", null);
         __decorate([
             $mol_mem
-        ], $hd_balls.prototype, "add_new", null);
+        ], $gd_balls.prototype, "add_new", null);
         __decorate([
             $mol_action
-        ], $hd_balls.prototype, "restart", null);
-        $$.$hd_balls = $hd_balls;
+        ], $gd_balls.prototype, "restart", null);
+        $$.$gd_balls = $gd_balls;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
@@ -7604,7 +7604,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("hd/balls/balls.view.css", "@keyframes hd_balls_score_show {\n\tfrom {\n\t\ttransform: scale(200%);\n\t}\n}\n\n[hd_balls_score] {\n\tanimation: hd_balls_score_show .25s ease-out;\n}\n\n[hd_balls_board] {\n\t-webkit-user-select: none;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n  touch-action: none;\n}\n");
+    $mol_style_attach("gd/balls/balls.view.css", "@keyframes gd_balls_score_show {\n\tfrom {\n\t\ttransform: scale(200%);\n\t}\n}\n\n[gd_balls_score] {\n\tanimation: gd_balls_score_show .25s ease-out;\n}\n\n[gd_balls_board] {\n\t-webkit-user-select: none;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n  touch-action: none;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -7614,13 +7614,13 @@ var $;
     var $$;
     (function ($$) {
         const { url, linear_gradient } = $mol_style_func;
-        $mol_style_define($hd_balls, {
+        $mol_style_define($gd_balls, {
             background: {
                 size: ['cover'],
                 position: 'center',
                 image: [
                     [linear_gradient($mol_theme.spirit)],
-                    [url('hd/balls/logo/back.jpg')],
+                    [url('gd/balls/logo/back.jpg')],
                 ]
             },
             Game: {

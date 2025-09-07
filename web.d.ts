@@ -1425,7 +1425,7 @@ declare namespace $ {
 }
 
 declare namespace $.$$ {
-    class $hd_space_frame extends $.$hd_space_frame {
+    class $gd_web_frame extends $.$gd_web_frame {
         uri(): string;
     }
 }
@@ -1435,7 +1435,7 @@ declare namespace $ {
 
 declare namespace $ {
 
-	export class $hd_space_frame extends $mol_frame {
+	export class $gd_web_frame extends $mol_frame {
 		uri( ): string
 	}
 	
@@ -2084,7 +2084,7 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	export class $hd_balls_ball extends $mol_view {
+	export class $gd_balls_ball extends $mol_view {
 		image( ): string
 		active( ): boolean
 		ghost( ): boolean
@@ -2092,11 +2092,11 @@ declare namespace $ {
 		kind( ): number
 		colors( ): readonly(string)[]
 		style( ): ({ 
-			'background-image': ReturnType< $hd_balls_ball['image'] >,
+			'background-image': ReturnType< $gd_balls_ball['image'] >,
 		}) 
 		attr( ): ({ 
-			'hd_balls_ball_active': ReturnType< $hd_balls_ball['active'] >,
-			'hd_balls_ball_ghost': ReturnType< $hd_balls_ball['ghost'] >,
+			'gd_balls_ball_active': ReturnType< $gd_balls_ball['active'] >,
+			'gd_balls_ball_ghost': ReturnType< $gd_balls_ball['ghost'] >,
 		}) 
 		sub( ): readonly(any)[]
 	}
@@ -2105,7 +2105,7 @@ declare namespace $ {
 
 //# sourceMappingURL=ball.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $hd_balls_ball extends $.$hd_balls_ball {
+    class $gd_balls_ball extends $.$gd_balls_ball {
         color(): string;
         ghost(): boolean;
         image(): string;
@@ -2236,118 +2236,118 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_view__sub_hd_balls_1 = $mol_type_enforce<
+	type $mol_view__sub_gd_balls_1 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_button_minor__hint_hd_balls_2 = $mol_type_enforce<
+	type $mol_button_minor__hint_gd_balls_2 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_minor['hint'] >
 	>
-	type $mol_button_minor__click_hd_balls_3 = $mol_type_enforce<
-		ReturnType< $hd_balls['restart'] >
+	type $mol_button_minor__click_gd_balls_3 = $mol_type_enforce<
+		ReturnType< $gd_balls['restart'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_button_minor__sub_hd_balls_4 = $mol_type_enforce<
+	type $mol_button_minor__sub_gd_balls_4 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_button_minor['sub'] >
 	>
-	type $mol_chip__sub_hd_balls_5 = $mol_type_enforce<
+	type $mol_chip__sub_gd_balls_5 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_chip['sub'] >
 	>
-	type $mol_view__sub_hd_balls_6 = $mol_type_enforce<
+	type $mol_view__sub_gd_balls_6 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_link_donate__uri_hd_balls_7 = $mol_type_enforce<
+	type $mol_link_donate__uri_gd_balls_7 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link_donate['uri'] >
 	>
-	type $mol_link_support__uri_hd_balls_8 = $mol_type_enforce<
+	type $mol_link_support__uri_gd_balls_8 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link_support['uri'] >
 	>
-	type $mol_link_source__uri_hd_balls_9 = $mol_type_enforce<
+	type $mol_link_source__uri_gd_balls_9 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link_source['uri'] >
 	>
-	type $hd_balls_ball__kind_hd_balls_10 = $mol_type_enforce<
-		ReturnType< $hd_balls['ball_kind'] >
+	type $gd_balls_ball__kind_gd_balls_10 = $mol_type_enforce<
+		ReturnType< $gd_balls['ball_kind'] >
 		,
-		ReturnType< $hd_balls_ball['kind'] >
+		ReturnType< $gd_balls_ball['kind'] >
 	>
-	type $hd_balls_ball__mood_hd_balls_11 = $mol_type_enforce<
-		ReturnType< $hd_balls['ball_mood'] >
+	type $gd_balls_ball__mood_gd_balls_11 = $mol_type_enforce<
+		ReturnType< $gd_balls['ball_mood'] >
 		,
-		ReturnType< $hd_balls_ball['mood'] >
+		ReturnType< $gd_balls_ball['mood'] >
 	>
-	type $hd_balls_ball__active_hd_balls_12 = $mol_type_enforce<
-		ReturnType< $hd_balls['cell_active'] >
+	type $gd_balls_ball__active_gd_balls_12 = $mol_type_enforce<
+		ReturnType< $gd_balls['cell_active'] >
 		,
-		ReturnType< $hd_balls_ball['active'] >
+		ReturnType< $gd_balls_ball['active'] >
 	>
-	type $hd_balls_ball__colors_hd_balls_13 = $mol_type_enforce<
-		ReturnType< $hd_balls['colors'] >
+	type $gd_balls_ball__colors_gd_balls_13 = $mol_type_enforce<
+		ReturnType< $gd_balls['colors'] >
 		,
-		ReturnType< $hd_balls_ball['colors'] >
+		ReturnType< $gd_balls_ball['colors'] >
 	>
-	type $mol_view__event_hd_balls_14 = $mol_type_enforce<
+	type $mol_view__event_gd_balls_14 = $mol_type_enforce<
 		({ 
-			pointerdown( next?: ReturnType< $hd_balls['ball_grab'] > ): ReturnType< $hd_balls['ball_grab'] >,
-			pointerenter( next?: ReturnType< $hd_balls['ball_move'] > ): ReturnType< $hd_balls['ball_move'] >,
-			pointerup( next?: ReturnType< $hd_balls['ball_drop'] > ): ReturnType< $hd_balls['ball_drop'] >,
+			pointerdown( next?: ReturnType< $gd_balls['ball_grab'] > ): ReturnType< $gd_balls['ball_grab'] >,
+			pointerenter( next?: ReturnType< $gd_balls['ball_move'] > ): ReturnType< $gd_balls['ball_move'] >,
+			pointerup( next?: ReturnType< $gd_balls['ball_drop'] > ): ReturnType< $gd_balls['ball_drop'] >,
 		}) 
 		,
 		ReturnType< $mol_view['event'] >
 	>
-	type $mol_view__sub_hd_balls_15 = $mol_type_enforce<
+	type $mol_view__sub_gd_balls_15 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_hd_balls_16 = $mol_type_enforce<
-		ReturnType< $hd_balls['cells'] >
+	type $mol_view__sub_gd_balls_16 = $mol_type_enforce<
+		ReturnType< $gd_balls['cells'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_hd_balls_17 = $mol_type_enforce<
-		ReturnType< $hd_balls['rows'] >
+	type $mol_view__sub_gd_balls_17 = $mol_type_enforce<
+		ReturnType< $gd_balls['rows'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_page__title_hd_balls_18 = $mol_type_enforce<
-		ReturnType< $hd_balls['title'] >
+	type $mol_page__title_gd_balls_18 = $mol_type_enforce<
+		ReturnType< $gd_balls['title'] >
 		,
 		ReturnType< $mol_page['title'] >
 	>
-	type $mol_page__head_hd_balls_19 = $mol_type_enforce<
+	type $mol_page__head_gd_balls_19 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_page['head'] >
 	>
-	type $mol_page__tools_hd_balls_20 = $mol_type_enforce<
+	type $mol_page__tools_gd_balls_20 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_page['tools'] >
 	>
-	type $mol_page__body_content_hd_balls_21 = $mol_type_enforce<
+	type $mol_page__body_content_gd_balls_21 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_page['body_content'] >
 	>
-	export class $hd_balls extends $mol_book2 {
+	export class $gd_balls extends $mol_book2 {
 		Theme( ): $mol_theme_auto
-		Space( ): $hd_space_frame
+		Space( ): $gd_web_frame
 		title( ): string
 		Share( ): $mol_button_share
 		Caption( ): $mol_view
@@ -2356,10 +2356,10 @@ declare namespace $ {
 		Restart( ): $mol_button_minor
 		score_text( ): string
 		Score( id: any): $mol_chip
-		Score_pick( ): ReturnType< $hd_balls['Score'] >
+		Score_pick( ): ReturnType< $gd_balls['Score'] >
 		Main( ): $mol_view
-		Game_tools( ): ReturnType< ReturnType< $hd_balls['Game'] >['Tools'] >
-		Game_title( ): ReturnType< ReturnType< $hd_balls['Game'] >['Title'] >
+		Game_tools( ): ReturnType< ReturnType< $gd_balls['Game'] >['Tools'] >
+		Game_title( ): ReturnType< ReturnType< $gd_balls['Game'] >['Title'] >
 		Donate( ): $mol_link_donate
 		Support( ): $mol_link_support
 		Source( ): $mol_link_source
@@ -2370,7 +2370,7 @@ declare namespace $ {
 		ball_kind( id: any, next?: number ): number
 		ball_mood( id: any): string
 		cell_active( id: any, next?: boolean ): boolean
-		Ball( id: any): $hd_balls_ball
+		Ball( id: any): $gd_balls_ball
 		Cell( id: any): $mol_view
 		cells( id: any): readonly(any)[]
 		Row( id: any): $mol_view
@@ -2398,7 +2398,7 @@ declare namespace $.$$ {
         score_max: number;
         kinds: readonly number[];
     }>;
-    export class $hd_balls extends $.$hd_balls {
+    export class $gd_balls extends $.$gd_balls {
         rows(): $mol_view[];
         cells(row: number): $mol_view[];
         snapshot(next?: Snapshot): Snapshot;
