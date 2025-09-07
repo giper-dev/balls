@@ -1,4 +1,4 @@
 include \/mol/offline/install
 
-deploy \/hd/balls/manifest.json
-deploy \/hd/balls/logo/
+deploy \/gd/balls/manifest.json
+deploy \/gd/balls/logo/

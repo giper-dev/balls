@@ -1,6 +1,6 @@
 namespace $.$$ {
 	
-	$mol_style_define( $hd_balls_ball, {
+	$mol_style_define( $gd_balls_ball, {
 		
 		border: {
 			radius: '50%',
@@ -22,7 +22,7 @@ namespace $.$$ {
 			family: 'monospace',
 		},
 		
-		'[hd_balls_ball_ghost]': {
+		'[gd_balls_ball_ghost]': {
 			true : {
 				transform: 'scale(.5)',
 				transition: 'none',

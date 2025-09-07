@@ -1,4 +1,4 @@
-$hd_balls $mol_book2
+$gd_balls $mol_book2
 	size 8
 	colors /
 		\
@@ -24,7 +24,7 @@ $hd_balls $mol_book2
 		<= Theme $mol_theme_auto
 	placeholders /
 	pages /
-		<= Space $hd_space_frame
+		<= Space $gd_web_frame
 		<= Game $mol_page
 			title <= title @ \Hyper Balls
 			head /
@@ -42,8 +42,8 @@ $hd_balls $mol_book2
 			Title => Game_title
 			tools /
 				<= Donate $mol_link_donate uri \https://boosty.to/hyoo
-				<= Support $mol_link_support uri \https://t.me/hd4ru/118
-				<= Source $mol_link_source uri \http://github.com/hd4ru/lines/
+				<= Support $mol_link_support uri \https://t.me/giper-dev/118
+				<= Source $mol_link_source uri \http://github.com/giper-dev/lines/
 				<= Lights $mol_lights_toggle
 			body_content /
 				<= Board $mol_view sub <= rows /
@@ -54,7 +54,7 @@ $hd_balls $mol_book2
 								pointerenter? <=> ball_move*? null
 								pointerup? <=> ball_drop*? null
 							sub /
-								<= Ball* $hd_balls_ball
+								<= Ball* $gd_balls_ball
 									kind <= ball_kind*? 0
 									mood <= ball_mood* \
 									active <= cell_active*? false

@@ -2,14 +2,14 @@ namespace $.$$ {
 	
 	const { url, linear_gradient } = $mol_style_func
 	
-	$mol_style_define( $hd_balls, {
+	$mol_style_define( $gd_balls, {
 		
 		background: {
 			size: [ 'cover' ],
 			position: 'center',
 			image: [
 				[ linear_gradient( $mol_theme.spirit ) ],
-				[ url( 'hd/balls/logo/back.jpg' ) ],
+				[ url( 'gd/balls/logo/back.jpg' ) ],
 			]
 		},
 		

@@ -1,14 +1,14 @@
-@keyframes hd_balls_score_show {
+@keyframes gd_balls_score_show {
 	from {
 		transform: scale(200%);
 	}
 }
 
-[hd_balls_score] {
-	animation: hd_balls_score_show .25s ease-out;
+[gd_balls_score] {
+	animation: gd_balls_score_show .25s ease-out;
 }
 
-[hd_balls_board] {
+[gd_balls_board] {
 	-webkit-user-select: none;
 }
 
