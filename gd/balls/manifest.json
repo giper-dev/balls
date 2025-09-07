@@ -7,11 +7,6 @@
 			"src": "../../gd/balls/logo/logo_512.png",
 			"type": "image/png",
 			"sizes": "512x512"
-		},
-		{
-			"src": "../../gd/balls/logo/logo.svg",
-			"type": "image/svg+xml",
-			"sizes": "390x390"
 		}
 	],
 	"start_url": "../..",
