@@ -43,7 +43,7 @@ $gd_balls $mol_book2
 			tools /
 				<= Donate $mol_link_donate uri \https://boosty.to/hyoo
 				<= Support $mol_link_support uri \https://t.me/giper-dev/118
-				<= Source $mol_link_source uri \http://github.com/giper-dev/lines/
+				<= Source $mol_link_source uri \http://github.com/giper-dev/balls/
 				<= Lights $mol_lights_toggle
 			body_content /
 				<= Board $mol_view sub <= rows /
