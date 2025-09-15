@@ -6820,6 +6820,7 @@ var $;
                 size: '3vmin',
                 family: 'monospace',
             },
+            willChange: 'transform',
             box: {
                 shadow: [{
                         inset: true,
