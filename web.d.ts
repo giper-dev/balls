@@ -1162,7 +1162,7 @@ declare namespace $ {
     export type $mol_style_guard<View extends $mol_view, Config> = {
         [key in Keys<View>]?: unknown;
     } & $mol_style_properties & {
-        [key in keyof Config]: key extends keyof $mol_style_properties ? $mol_style_properties[key] : key extends '>' | $mol_style_pseudo_class | $mol_style_pseudo_element ? $mol_style_guard<View, Config[key]> : key extends '@' ? Attrs<View, Config[key]> : key extends '@media' ? Medias<View, Config[key]> : key extends `[${string}]` ? {
+        [key in keyof Config]: key extends keyof $mol_style_properties ? $mol_style_properties[key] : key extends '>' | $mol_style_pseudo_class | $mol_style_pseudo_element ? $mol_style_guard<View, Config[key]> : key extends '@' ? Attrs<View, Config[key]> : key extends '@media' ? Medias<View, Config[key]> : key extends '@starting-style' ? $mol_style_guard<View, Config[key]> : key extends `[${string}]` ? {
             [val in keyof Config[key]]: $mol_style_guard<View, Config[key][val]>;
         } : key extends `--${string}` ? any : key extends keyof $ ? $mol_style_guard<InstanceType<Extract<$[key], typeof $mol_view>>, Config[key]> : key extends keyof View ? View[key] extends (id?: any) => infer Sub ? Sub extends $mol_view ? $mol_style_guard<Sub, Config[key]> : $mol_type_error<'Property returns non $mol_view', {
             Returns: Sub;
@@ -2086,17 +2086,16 @@ declare namespace $ {
 
 	export class $gd_balls_ball extends $mol_view {
 		image( ): string
-		active( ): boolean
-		ghost( ): boolean
+		state( ): string
 		mood( ): string
 		kind( ): number
 		colors( ): readonly(string)[]
 		style( ): ({ 
 			'background-image': ReturnType< $gd_balls_ball['image'] >,
 		}) 
+		active( ): boolean
 		attr( ): ({ 
-			'gd_balls_ball_active': ReturnType< $gd_balls_ball['active'] >,
-			'gd_balls_ball_ghost': ReturnType< $gd_balls_ball['ghost'] >,
+			'gd_balls_ball_state': ReturnType< $gd_balls_ball['state'] >,
 		}) 
 		sub( ): readonly(any)[]
 	}
@@ -2107,7 +2106,7 @@ declare namespace $ {
 declare namespace $.$$ {
     class $gd_balls_ball extends $.$gd_balls_ball {
         color(): string;
-        ghost(): boolean;
+        state(): "empty" | "ghost" | "active" | "alve";
         image(): string;
     }
 }
@@ -2118,6 +2117,17 @@ declare namespace $ {
 declare namespace $.$$ {
 }
 
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_stack extends $mol_view {
+	}
+	
+}
+
+//# sourceMappingURL=stack.view.tree.d.ts.map
 declare namespace $ {
 
 	type $mol_view__dom_name_mol_page_1 = $mol_type_enforce<
@@ -2301,19 +2311,19 @@ declare namespace $ {
 		,
 		ReturnType< $gd_balls_ball['colors'] >
 	>
-	type $mol_view__event_gd_balls_14 = $mol_type_enforce<
+	type $mol_stack__event_gd_balls_14 = $mol_type_enforce<
 		({ 
 			pointerdown( next?: ReturnType< $gd_balls['ball_grab'] > ): ReturnType< $gd_balls['ball_grab'] >,
 			pointerenter( next?: ReturnType< $gd_balls['ball_move'] > ): ReturnType< $gd_balls['ball_move'] >,
 			pointerup( next?: ReturnType< $gd_balls['ball_drop'] > ): ReturnType< $gd_balls['ball_drop'] >,
 		}) 
 		,
-		ReturnType< $mol_view['event'] >
+		ReturnType< $mol_stack['event'] >
 	>
-	type $mol_view__sub_gd_balls_15 = $mol_type_enforce<
+	type $mol_stack__sub_gd_balls_15 = $mol_type_enforce<
 		readonly(any)[]
 		,
-		ReturnType< $mol_view['sub'] >
+		ReturnType< $mol_stack['sub'] >
 	>
 	type $mol_view__sub_gd_balls_16 = $mol_type_enforce<
 		ReturnType< $gd_balls['cells'] >
@@ -2371,7 +2381,7 @@ declare namespace $ {
 		ball_mood( id: any): string
 		cell_active( id: any, next?: boolean ): boolean
 		Ball( id: any): $gd_balls_ball
-		Cell( id: any): $mol_view
+		Cell( id: any): $mol_stack
 		cells( id: any): readonly(any)[]
 		Row( id: any): $mol_view
 		rows( ): readonly(any)[]
@@ -2400,7 +2410,7 @@ declare namespace $.$$ {
     }>;
     export class $gd_balls extends $.$gd_balls {
         rows(): $mol_view[];
-        cells(row: number): $mol_view[];
+        cells(row: number): $mol_stack[];
         snapshot(next?: Snapshot): Snapshot;
         ball_kind(id: [number, number], next?: number): number;
         ball_mood([row, col]: [number, number]): any;

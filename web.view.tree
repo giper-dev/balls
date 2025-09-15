@@ -216,11 +216,13 @@ $gd_balls_ball $mol_view
 	kind 0
 	colors /string
 	style * background-image <= image \
+	active false
 	attr *
-		gd_balls_ball_active <= active false
-		gd_balls_ball_ghost <= ghost false
+		gd_balls_ball_state <= state \empty
 	sub /
 		<= mood \x_x
+
+$mol_stack $mol_view
 
 $mol_page $mol_view
 	dom_name \article
@@ -293,12 +295,12 @@ $gd_balls $mol_book2
 			tools /
 				<= Donate $mol_link_donate uri \https://boosty.to/hyoo
 				<= Support $mol_link_support uri \https://t.me/giper-dev/118
-				<= Source $mol_link_source uri \http://github.com/giper-dev/lines/
+				<= Source $mol_link_source uri \http://github.com/giper-dev/balls/
 				<= Lights $mol_lights_toggle
 			body_content /
 				<= Board $mol_view sub <= rows /
 					<= Row*0 $mol_view sub <= cells* /
-						<= Cell*0 $mol_view
+						<= Cell*0 $mol_stack
 							event *
 								pointerdown? <=> ball_grab*? null
 								pointerenter? <=> ball_move*? null

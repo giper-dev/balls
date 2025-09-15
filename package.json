@@ -190,6 +190,7 @@
     "$mol_icon_brightness_4",
     "$mol_icon_brightness",
     "$gd_balls_ball",
+    "$mol_stack",
     "$mol_page",
     "$mol_mutable",
     "$mol_type_immutable_deep_deep",

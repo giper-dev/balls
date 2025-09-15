@@ -4873,6 +4873,12 @@ var $;
                         rules.push(`${key} ${query} {\n`);
                     }
                 }
+                else if (key === '@starting-style') {
+                    const styles = config[key];
+                    rules.push('}\n');
+                    make_class(prefix, path, styles);
+                    rules.push(`${key} {\n`);
+                }
                 else if (key[0] === '[' && key[key.length - 1] === ']') {
                     const attr = key.slice(1, -1);
                     const vals = config[key];
@@ -6718,11 +6724,8 @@ var $;
 		image(){
 			return "";
 		}
-		active(){
-			return false;
-		}
-		ghost(){
-			return false;
+		state(){
+			return "empty";
 		}
 		mood(){
 			return "x_x";
@@ -6736,8 +6739,11 @@ var $;
 		style(){
 			return {"background-image": (this.image())};
 		}
+		active(){
+			return false;
+		}
 		attr(){
-			return {"gd_balls_ball_active": (this.active()), "gd_balls_ball_ghost": (this.ghost())};
+			return {"gd_balls_ball_state": (this.state())};
 		}
 		sub(){
 			return [(this.mood())];
@@ -6758,13 +6764,18 @@ var $;
             color() {
                 return this.colors()[Math.abs(this.kind())];
             }
-            ghost() {
-                return this.kind() < 0;
+            state() {
+                const kind = this.kind();
+                if (!kind)
+                    return 'empty';
+                if (kind < 0)
+                    return 'ghost';
+                if (this.active())
+                    return 'active';
+                return 'alve';
             }
             image() {
-                if (this.kind() === 0)
-                    return 'radial-gradient( circle at 50% 125%, transparent, oklch( 0 0 0 / .25 ) )';
-                return `radial-gradient( circle at 50% 25%, oklch( 1 0 0 ), ${this.color()} 3%, oklch( 0 0 0 / .75 ) 90% )`;
+                return `radial-gradient( circle at 50% 25%, oklch( 1 0 0 ), ${this.color()} 3%, black 110% )`;
             }
         }
         __decorate([
@@ -6772,7 +6783,7 @@ var $;
         ], $gd_balls_ball.prototype, "color", null);
         __decorate([
             $mol_mem
-        ], $gd_balls_ball.prototype, "ghost", null);
+        ], $gd_balls_ball.prototype, "state", null);
         __decorate([
             $mol_mem
         ], $gd_balls_ball.prototype, "image", null);
@@ -6784,7 +6795,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("gd/balls/ball/ball.view.css", "@keyframes gd_balls_ball_jumping {\n\tfrom {\n\t\ttransform: scaleY(100%) translateY(-25%);\n\t}\n\tto {\n\t\ttransform: scaleY(90%) translateY(10%);\n\t}\n}\n\n[gd_balls_ball_active] {\n\tanimation: gd_balls_ball_jumping .25s infinite ease-in alternate-reverse;\n}\n");
+    $mol_style_attach("gd/balls/ball/ball.view.css", "@keyframes gd_balls_ball_jumping {\n\tto {\n\t\ttransform: scale3d(120%, 120%, 1);\n\t}\n}\n/* \n[gd_balls_ball] {\n\t@starting-style {\n\t\ttransform: scale3d(0, 0, 0);\n\t}\n} */\n\n[gd_balls_ball_state=\"active\"] {\n\tanimation: gd_balls_ball_jumping .25s infinite ease-out alternate-reverse;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -6809,24 +6820,47 @@ var $;
                 size: '3vmin',
                 family: 'monospace',
             },
-            '[gd_balls_ball_ghost]': {
-                true: {
+            box: {
+                shadow: [{
+                        inset: true,
+                        x: 0,
+                        y: 0,
+                        blur: '1vmin',
+                        spread: 0,
+                        color: $mol_style_func.hsla(0, 0, 0, .25),
+                    }]
+            },
+            '[gd_balls_ball_state]': {
+                empty: {
+                    transform: 'scale(0)',
+                },
+                ghost: {
                     transform: 'scale(.5)',
-                    transition: 'none',
-                    box: {
-                        shadow: [{
-                                x: 0,
-                                y: 0,
-                                blur: 0,
-                                spread: '5vmin',
-                                color: $mol_style_func.hsla(0, 0, 0, .25),
-                            }]
-                    },
-                }
+                },
+                active: {
+                    zIndex: 1,
+                },
+            },
+            '@starting-style': {
+                transform: 'scale3d(0, 0, 0)',
             },
         });
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
+
+;
+	($.$mol_stack) = class $mol_stack extends ($.$mol_view) {};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/stack/stack.view.css", "[mol_stack] {\n\tdisplay: grid;\n\t/* width: max-content; */\n\t/* height: max-content; */\n\talign-items: flex-start;\n\tjustify-items: flex-start;\n}\n\n[mol_stack] > * {\n\tgrid-area: 1/1;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
 
 ;
 	($.$mol_page) = class $mol_page extends ($.$mol_view) {
@@ -7118,7 +7152,7 @@ var $;
 		}
 		Source(){
 			const obj = new this.$.$mol_link_source();
-			(obj.uri) = () => ("http://github.com/giper-dev/lines/");
+			(obj.uri) = () => ("http://github.com/giper-dev/balls/");
 			return obj;
 		}
 		Lights(){
@@ -7157,7 +7191,7 @@ var $;
 			return obj;
 		}
 		Cell(id){
-			const obj = new this.$.$mol_view();
+			const obj = new this.$.$mol_stack();
 			(obj.event) = () => ({
 				"pointerdown": (next) => (this.ball_grab(id, next)), 
 				"pointerenter": (next) => (this.ball_move(id, next)), 
@@ -7613,7 +7647,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        const { url, linear_gradient } = $mol_style_func;
+        const { url, linear_gradient, radial_gradient } = $mol_style_func;
         $mol_style_define($gd_balls, {
             background: {
                 size: ['cover'],
@@ -7660,10 +7694,26 @@ var $;
                     basis: '11vmin',
                 },
                 aspectRatio: 1,
-                border: {
-                    radius: $mol_gap.round,
-                },
                 cursor: 'grab',
+                align: {
+                    items: 'stretch',
+                },
+                justify: {
+                    items: 'stretch',
+                },
+                '::before': {
+                    content: '""',
+                    display: 'block',
+                    width: '100%',
+                    height: '100%',
+                    border: {
+                        radius: '50%',
+                    },
+                    background: {
+                        image: [[radial_gradient(' circle at 50% 125%, transparent, oklch( 0 0 0 / .25 ) ')]],
+                    },
+                    gridArea: '1/1',
+                }
             },
             Ball: {
                 flex: {
