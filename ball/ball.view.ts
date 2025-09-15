@@ -12,7 +12,7 @@ namespace $.$$ {
 			if( !kind ) return 'empty'
 			if( kind < 0 ) return 'ghost'
 			if( this.active() ) return 'active'
-			if( kind > 0 ) return 'alive'
+			return 'alve'
 		}
 		
 		@ $mol_mem
