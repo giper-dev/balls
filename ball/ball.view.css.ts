@@ -22,6 +22,8 @@ namespace $.$$ {
 			family: 'monospace',
 		},
 		
+		willChange: 'transform',
+		
 		box: {
 			shadow: [{
 				inset: true,
