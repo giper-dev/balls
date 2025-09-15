@@ -48,7 +48,7 @@ $gd_balls $mol_book2
 			body_content /
 				<= Board $mol_view sub <= rows /
 					<= Row*0 $mol_view sub <= cells* /
-						<= Cell*0 $mol_view
+						<= Cell*0 $mol_stack
 							event *
 								pointerdown? <=> ball_grab*? null
 								pointerenter? <=> ball_move*? null

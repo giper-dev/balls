@@ -2,8 +2,8 @@ $gd_balls_ball $mol_view
 	kind 0
 	colors /string
 	style * background-image <= image \
+	active false
 	attr *
-		gd_balls_ball_active <= active false
-		gd_balls_ball_ghost <= ghost false
+		gd_balls_ball_state <= state \empty
 	sub /
 		<= mood \x_x

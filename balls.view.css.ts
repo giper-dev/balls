@@ -1,6 +1,6 @@
 namespace $.$$ {
 	
-	const { url, linear_gradient } = $mol_style_func
+	const { url, linear_gradient, radial_gradient } = $mol_style_func
 	
 	$mol_style_define( $gd_balls, {
 		
@@ -57,10 +57,26 @@ namespace $.$$ {
 				basis: '11vmin',
 			},
 			aspectRatio: 1,
-			border: {
-				radius: $mol_gap.round,
-			},
 			cursor: 'grab',
+			align: {
+				items: 'stretch',
+			},
+			justify: {
+				items: 'stretch',
+			},
+			'::before': {
+				content: '""',
+				display: 'block',
+				width: '100%',
+				height: '100%',
+				border: {
+					radius: '50%',
+				},
+				background: {
+					image: [[ radial_gradient(' circle at 50% 125%, transparent, oklch( 0 0 0 / .25 ) ') ]],
+				},
+				gridArea: '1/1',
+			}
 		},
 		
 		Ball: {

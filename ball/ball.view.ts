@@ -7,14 +7,17 @@ namespace $.$$ {
 		}
 		
 		@ $mol_mem
-		ghost() {
-			return this.kind() < 0
+		state() {
+			const kind = this.kind()
+			if( !kind ) return 'empty'
+			if( kind < 0 ) return 'ghost'
+			if( this.active() ) return 'active'
+			if( kind > 0 ) return 'alive'
 		}
 		
 		@ $mol_mem
 		image() {
-			if( this.kind() === 0 ) return 'radial-gradient( circle at 50% 125%, transparent, oklch( 0 0 0 / .25 ) )'
-			return `radial-gradient( circle at 50% 25%, oklch( 1 0 0 ), ${ this.color() } 3%, oklch( 0 0 0 / .75 ) 90% )`
+			return `radial-gradient( circle at 50% 25%, oklch( 1 0 0 ), ${ this.color() } 3%, black 110% )`
 		}
 		
 	}

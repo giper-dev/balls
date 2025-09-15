@@ -1,12 +1,15 @@
 @keyframes gd_balls_ball_jumping {
-	from {
-		transform: scaleY(100%) translateY(-25%);
-	}
 	to {
-		transform: scaleY(90%) translateY(10%);
+		transform: scale3d(120%, 120%, 1);
 	}
 }
+/* 
+[gd_balls_ball] {
+	@starting-style {
+		transform: scale3d(0, 0, 0);
+	}
+} */
 
-[gd_balls_ball_active] {
-	animation: gd_balls_ball_jumping .25s infinite ease-in alternate-reverse;
+[gd_balls_ball_state="active"] {
+	animation: gd_balls_ball_jumping .25s infinite ease-out alternate-reverse;
 }

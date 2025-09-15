@@ -22,20 +22,31 @@ namespace $.$$ {
 			family: 'monospace',
 		},
 		
-		'[gd_balls_ball_ghost]': {
-			true : {
+		box: {
+			shadow: [{
+				inset: true,
+				x: 0,
+				y: 0,
+				blur: '1vmin',
+				spread: 0,
+				color: $mol_style_func.hsla( 0, 0, 0, .25 ),
+			}]
+		},
+		
+		'[gd_balls_ball_state]': {
+			empty: {
+				transform: 'scale(0)',
+			},
+			ghost: {
 				transform: 'scale(.5)',
-				transition: 'none',
-				box: {
-					shadow: [{
-						x: 0,
-						y: 0,
-						blur: 0,
-						spread: '5vmin',
-						color: $mol_style_func.hsla( 0, 0, 0, .25 ),
-					}]
-				},
-			}
+			},
+			active: {
+				zIndex: 1,
+			},
+		},
+		
+		'@starting-style': {
+			transform: 'scale3d(0, 0, 0)',
 		},
 		
 	} )
