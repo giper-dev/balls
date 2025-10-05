@@ -17,64 +17,124 @@ $mol_book2 $mol_scroll
 	minimal_width 0
 	Gap* $mol_view title \
 
-$mol_theme_auto $mol_plugin
-	light \$mol_theme_light
-	attr * mol_theme <= theme <= dark \$mol_theme_dark
+$mol_pop $mol_view
+	showed? false
+	align_vert \
+	align_hor \
+	prefer \vert
+	sub /
+		<= Anchor null
+	sub_visible /
+		<= Anchor
+		<= Bubble $mol_pop_bubble
+			align <= align \bottom_center
+			content <= bubble_content /$mol_view_content
+			height_max <= height_max 9999
 
-$mol_link $mol_view
-	uri \
-	dom_name \a
-	uri_off \
-	uri_native null
-	external false
+$mol_pop_bubble $mol_view
+	sub <= content /$mol_view_content
+	style *
+		^
+		maxHeight <= height_max 9999
 	attr *
 		^
-		href <= uri_toggle \
-		title <= hint_safe <= hint \
-		target <= target \_self
-		download <= file_name \
-		mol_link_current <= current false
-		rel <= relation \
-	sub /$mol_view_content
-		<= title
-	arg *
+		mol_pop_align <= align \
+		tabindex 0
+
+$mol_hotkey $mol_plugin
 	event *
 		^
-		click?event <=> click?event <=> event_click?event null
+		keydown?event <=> keydown?event null
+	key *
+	mod_ctrl false
+	mod_alt false
+	mod_shift false
 
-$mol_embed_native $mol_scroll
-	dom_name \iframe
-	window null
+$mol_nav $mol_plugin
+	cycle? false
+	-
+	mod_ctrl false
+	mod_shift false
+	mod_alt false
+	-
+	keys_x? /
+	keys_y? /
+	-
+	current_x? null
+	current_y? null
+	-
+	event_up?event null
+	event_down?event null
+	event_left?event null
+	event_right?event null
+	event *
+		^
+		keydown?event <=> event_key?event null
+
+$mol_string $mol_view
+	dom_name \input
+	enabled true
+	minimal_height 40
+	autocomplete false
+	selection? /number
+		0
+		0
+	auto /
+		<= selection_watcher null
+		<= error_report null
+	field *
+		^
+		disabled <= disabled false
+		value <= value_changed? <=> value? \
+		placeholder <= hint_visible <= hint \
+		spellcheck <= spellcheck true
+		autocomplete <= autocomplete_native \
+		selectionEnd <= selection_end 0
+		selectionStart <= selection_start 0
+		inputMode <= keyboard \text
+		enterkeyhint <= enter \go
 	attr *
 		^
-		src <= uri? \about:config
-	sub /
-		<= Fallback $mol_link
-			uri <= uri
-			sub /
-				<= title \
-	message *
-		hashchange? <=> uri_change? null
+		maxlength <= length_max +Infinity
+		type <= type? \text
+	event *
+		^
+		input?event <=> event_change?event null
+	plugins /
+		<= Submit $mol_hotkey
+			mod_ctrl <= submit_with_ctrl false
+			key * enter?event <=> submit?event null
 
-$mol_frame $mol_embed_native
+$mol_svg $mol_view
+	dom_name \svg
+	dom_name_space \http://www.w3.org/2000/svg
+	font_size 16
+	font_family \
+	style_size *
+
+$mol_svg_root $mol_svg
+	dom_name \svg
 	attr *
-		tabindex <= tabindex
-		allow <= allow \
-		src <= uri
-		srcdoc <= html null
-	fullscreen true
-	accelerometer true
-	autoplay true
-	encription true
-	gyroscope true
-	pip true
-	clipboard_read true
-	clipboard_write true
+		^
+		viewBox <= view_box \0 0 100 100
+		preserveAspectRatio <= aspect \xMidYMid
 
-$gd_web_frame $mol_frame
-	uri \https://web.giper.dev/#mol_lights={lights}/current={current}/query={query}
-	- uri \http://localhost:9080/gd/web/bar/-/test.html#mol_lights={lights}/current={current}/query={query}
-	query \
+$mol_svg_path $mol_svg
+	dom_name \path
+	attr *
+		^
+		d <= geometry \
+
+
+$mol_icon $mol_svg_root
+	view_box \0 0 24 24
+	minimal_width 16
+	minimal_height 16
+	sub /
+		<= Path $mol_svg_path
+			geometry <= path \
+
+$mol_icon_close $mol_icon path \M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z
 
 $mol_speck $mol_view
 	minimal_width 12
@@ -113,56 +173,206 @@ $mol_button_typed $mol_button
 
 $mol_button_minor $mol_button_typed
 
-$mol_svg $mol_view
-	dom_name \svg
-	dom_name_space \http://www.w3.org/2000/svg
-	font_size 16
-	font_family \
-	style_size *
+$mol_list $mol_view
+	render_visible_only true
+	render_over 0
+	sub <= rows /$mol_view
+	Empty $mol_view
+	Gap_before $mol_view style * paddingTop <= gap_before 0
+	Gap_after $mol_view style * paddingTop <= gap_after 0
+	item_height_min* 1
+	item_width_min* 1
+	view_window /
+		0
+		0
 
-$mol_svg_root $mol_svg
-	dom_name \svg
-	attr *
+$mol_paragraph $mol_view
+	line_height 24
+	letter_width 7
+	width_limit +Infinity
+	row_width 0
+	sub / <= title
+
+$mol_dimmer $mol_paragraph
+	haystack \
+	needle \
+	sub <= parts /$mol_view_content
+	Low* $mol_paragraph
+		sub /
+			<= string* \
+	High* $mol_paragraph
+		sub /
+			<= string* \
+
+$mol_search $mol_pop
+	query? \
+	suggests /string
+	plugins /$mol_plugin
 		^
-		viewBox <= view_box \0 0 100 100
-		preserveAspectRatio <= aspect \xMidYMid
+		<= Hotkey $mol_hotkey
+			key * escape? <=> clear? null
+		<= Nav $mol_nav
+			keys_y <= nav_components /$mol_view
+			current_y?component <=> nav_focused?component null
+	showed? <=> suggests_showed? false
+	align_hor \right
+	Anchor $mol_view
+		sub <= anchor_content /
+			<= Query $mol_string
+				value? <=> query? \
+				hint <= hint @ \Search...
+				submit?event <=> submit?event null
+				enabled <= enabled true
+				keyboard <= keyboard \search
+				enter <= enter \search
+				bring => bring
+			<= Clear $mol_button_minor
+				hint @ \Clear
+				enabled <= enabled true
+				click?event <=> clear?event null
+				sub /
+					<= Clear_icon $mol_icon_close
+	bubble_content /$mol_view_content
+		<= Bubble_pane $mol_scroll
+			sub /
+				<= Menu $mol_list
+					rows <= menu_items /$mol_view
+	Suggest* $mol_button_minor
+		click?event <=> suggest_select*?event null
+		sub <= suggest_content* /$mol_view_content
+			<= Suggest_label* $mol_dimmer
+				haystack <= suggest_label* \
+				needle <= query? \
 
-$mol_svg_path $mol_svg
-	dom_name \path
-	attr *
-		^
-		d <= geometry \
-
-
-$mol_icon $mol_svg_root
-	view_box \0 0 24 24
-	minimal_width 16
-	minimal_height 16
-	sub /
-		<= Path $mol_svg_path
-			geometry <= path \
-
-$mol_icon_share $mol_icon path \M21,12L14,5V9C7,10 4,15 3,20C5.5,16.5 9,14.9 14,14.9V19L21,12Z
-
-$mol_icon_share_variant $mol_icon path \M18,16.08C17.24,16.08 16.56,16.38 16.04,16.85L8.91,12.7C8.96,12.47 9,12.24 9,12C9,11.76 8.96,11.53 8.91,11.3L15.96,7.19C16.5,7.69 17.21,8 18,8A3,3 0 0,0 21,5A3,3 0 0,0 18,2A3,3 0 0,0 15,5C15,5.24 15.04,5.47 15.09,5.7L8.04,9.81C7.5,9.31 6.79,9 6,9A3,3 0 0,0 3,12A3,3 0 0,0 6,15C6.79,15 7.5,14.69 8.04,14.19L15.16,18.34C15.11,18.55 15.08,18.77 15.08,19C15.08,20.61 16.39,21.91 18,21.91C19.61,21.91 20.92,20.61 20.92,19A2.92,2.92 0 0,0 18,16.08Z
-
-$mol_button_share $mol_button_minor
+$mol_link $mol_view
 	uri \
-	capture null
-	hint @ \Share
-	sub /
-		<= Icon $mol_icon_share_variant
-		<= title \
-
-$mol_icon_autorenew $mol_icon path \M12,6V9L16,5L12,1V4A8,8 0 0,0 4,12C4,13.57 4.46,15.03 5.24,16.26L6.7,14.8C6.25,13.97 6,13 6,12A6,6 0 0,1 12,6M18.76,7.74L17.3,9.2C17.74,10.04 18,11 18,12A6,6 0 0,1 12,18V15L8,19L12,23V20A8,8 0 0,0 20,12C20,10.43 19.54,8.97 18.76,7.74Z
-
-$mol_chip $mol_view
-	minimal_height 40
+	dom_name \a
+	uri_off \
+	uri_native null
+	external false
 	attr *
 		^
-		title <= hint \
-	sub /
+		href <= uri_toggle \
+		title <= hint_safe <= hint \
+		target <= target \_self
+		download <= file_name \
+		mol_link_current <= current false
+		rel <= relation \
+	sub /$mol_view_content
 		<= title
+	arg *
+	event *
+		^
+		click?event <=> click?event <=> event_click?event null
+
+$mol_page $mol_view
+	dom_name \article
+	attr *
+		^
+		tabIndex <= tabindex -1
+	sub /
+		<= Head $mol_view
+			minimal_height 64
+			dom_name \header
+			sub <= head /
+				<= Title $mol_view
+					dom_name \h1
+					sub <= title_content /
+						<= Logo null
+						<= title
+				<= Tools $mol_view
+					sub <= tools /$mol_view_content
+		<= Body $mol_scroll
+			scroll_top? => body_scroll_top?
+			sub <= body_content /
+				<= Body_content $mol_view
+					sub <= body /$mol_view
+		<= Foot $mol_view
+			dom_name \footer
+			sub <= foot /$mol_view
+
+$mol_book2_catalog $mol_book2
+	param \
+	spread? \
+	spreads *
+	Spread* $mol_view
+	Spread_default null
+	spread_ids /string
+	menu_filter_enabled false
+	spread_ids_filtered /string
+	spread_current null
+	menu_tools /
+	addon_tools /
+	pages /
+		<= Menu $mol_page
+			Title => Menu_title
+			title <= menu_title \
+			Tools => Menu_tools
+			Logo <= Menu_logo null
+			tools /
+				^ menu_tools
+				^ addon_tools
+			head <= menu_head /$mol_view_content
+				<= Menu_title
+				<= Menu_tools
+			body <= menu_body /$mol_view
+				<= Menu_filter $mol_search
+					query? <=> menu_filter? \
+				<= Menu_links $mol_list
+					Empty <= Menu_links_empty $mol_view
+					rows <= menu_links /$mol_view
+						<= Menu_item*0 $mol_view
+							sub <= menu_item_content* /$mol_view
+								<= Menu_link* $mol_link
+									arg <= menu_link_arg* <= arg* *
+									sub <= menu_link_content* /$mol_view_content
+										<= Menu_link_title* $mol_dimmer
+											needle <= menu_filter
+											haystack <= spread_title* \
+			foot <= menu_foot /$mol_view
+	Spread_close $mol_link
+		arg <= spread_close_arg *
+		hint @ \Close page
+		sub /
+			<= Spread_close_icon $mol_icon_close
+
+$mol_theme_auto $mol_plugin
+	light \$mol_theme_light
+	attr * mol_theme <= theme <= dark \$mol_theme_dark
+
+$mol_embed_native $mol_scroll
+	dom_name \iframe
+	window null
+	attr *
+		^
+		src <= uri? \about:config
+	sub /
+		<= Fallback $mol_link
+			uri <= uri
+			sub /
+				<= title \
+	message *
+		hashchange? <=> uri_change? null
+
+$mol_frame $mol_embed_native
+	attr *
+		tabindex <= tabindex
+		allow <= allow \
+		src <= uri
+		srcdoc <= html null
+	fullscreen true
+	accelerometer true
+	autoplay true
+	encription true
+	gyroscope true
+	pip true
+	clipboard_read true
+	clipboard_write true
+
+$gd_web_frame $mol_frame
+	uri \https://web.giper.dev/#mol_lights={lights}/current={current}/query={query}
+	- uri \http://localhost:9080/gd/web/bar/-/test.html#mol_lights={lights}/current={current}/query={query}
+	query \
 
 $mol_icon_gift $mol_icon path \M9.06,1.93C7.17,1.92 5.33,3.74 6.17,6H3A2,2 0 0,0 1,8V10A1,1 0 0,0 2,11H11V8H13V11H22A1,1 0 0,0 23,10V8A2,2 0 0,0 21,6H17.83C19,2.73 14.6,0.42 12.57,3.24L12,4L11.43,3.22C10.8,2.33 9.93,1.94 9.06,1.93M9,4C9.89,4 10.34,5.08 9.71,5.71C9.08,6.34 8,5.89 8,5A1,1 0 0,1 9,4M15,4C15.89,4 16.34,5.08 15.71,5.71C15.08,6.34 14,5.89 14,5A1,1 0 0,1 15,4M2,12V20A2,2 0 0,0 4,22H20A2,2 0 0,0 22,20V12H13V20H11V12H2Z
 
@@ -213,6 +423,28 @@ $mol_lights_toggle $mol_check_icon
 	hint @ \Toggle lights
 	checked? <=> lights? false
 
+$mol_icon_share $mol_icon path \M21,12L14,5V9C7,10 4,15 3,20C5.5,16.5 9,14.9 14,14.9V19L21,12Z
+
+$mol_icon_share_variant $mol_icon path \M18,16.08C17.24,16.08 16.56,16.38 16.04,16.85L8.91,12.7C8.96,12.47 9,12.24 9,12C9,11.76 8.96,11.53 8.91,11.3L15.96,7.19C16.5,7.69 17.21,8 18,8A3,3 0 0,0 21,5A3,3 0 0,0 18,2A3,3 0 0,0 15,5C15,5.24 15.04,5.47 15.09,5.7L8.04,9.81C7.5,9.31 6.79,9 6,9A3,3 0 0,0 3,12A3,3 0 0,0 6,15C6.79,15 7.5,14.69 8.04,14.19L15.16,18.34C15.11,18.55 15.08,18.77 15.08,19C15.08,20.61 16.39,21.91 18,21.91C19.61,21.91 20.92,20.61 20.92,19A2.92,2.92 0 0,0 18,16.08Z
+
+$mol_button_share $mol_button_minor
+	uri \
+	capture null
+	hint @ \Share
+	sub /
+		<= Icon $mol_icon_share_variant
+		<= title \
+
+$mol_icon_autorenew $mol_icon path \M12,6V9L16,5L12,1V4A8,8 0 0,0 4,12C4,13.57 4.46,15.03 5.24,16.26L6.7,14.8C6.25,13.97 6,13 6,12A6,6 0 0,1 12,6M18.76,7.74L17.3,9.2C17.74,10.04 18,11 18,12A6,6 0 0,1 12,18V15L8,19L12,23V20A8,8 0 0,0 20,12C20,10.43 19.54,8.97 18.76,7.74Z
+
+$mol_chip $mol_view
+	minimal_height 40
+	attr *
+		^
+		title <= hint \
+	sub /
+		<= title
+
 $gd_balls_ball $mol_view
 	kind 0
 	colors /string
@@ -225,33 +457,7 @@ $gd_balls_ball $mol_view
 
 $mol_stack $mol_view
 
-$mol_page $mol_view
-	dom_name \article
-	attr *
-		^
-		tabIndex <= tabindex -1
-	sub /
-		<= Head $mol_view
-			minimal_height 64
-			dom_name \header
-			sub <= head /
-				<= Title $mol_view
-					dom_name \h1
-					sub <= title_content /
-						<= Logo null
-						<= title
-				<= Tools $mol_view
-					sub <= tools /$mol_view_content
-		<= Body $mol_scroll
-			scroll_top? => body_scroll_top?
-			sub <= body_content /
-				<= Body_content $mol_view
-					sub <= body /$mol_view
-		<= Foot $mol_view
-			dom_name \footer
-			sub <= foot /$mol_view
-
-$gd_balls $mol_book2
+$gd_balls_game $mol_page
 	size 8
 	colors /
 		\
@@ -271,46 +477,70 @@ $gd_balls $mol_book2
 		\=^__^=
 		\=*_*=
 		\=*__*=
-	active_cell? /
+	active_cell? /number
 	score? 0
+	head /
+		<= Caption $mol_view sub /
+			<= Share $mol_button_share
+			<= Title
+		<= Main $mol_view sub /
+			<= Restart $mol_button_minor
+				hint @ \Reset
+				click? <=> restart? null
+				sub / <= Restart_icon $mol_icon_autorenew
+			<= Score_pick <= Score*0 $mol_chip
+				sub /
+					<= score_text \
+		<= Tools
+	body_content /
+		<= Board $mol_view sub <= rows /
+			<= Row*0 $mol_view sub <= cells* /
+				<= Cell*0 $mol_stack
+					event *
+						pointerdown? <=> ball_grab*? null
+						pointerenter? <=> ball_move*? null
+						pointerup? <=> ball_drop*? null
+					sub /
+						<= Ball* $gd_balls_ball
+							kind <= ball_kind*? 0
+							mood <= ball_mood* \
+							active <= cell_active*? false
+							colors <= colors
+
+$gd_balls_lines $gd_balls_game
+	title @ \Lines
+	auto /
+		<= add_new null
+
+$gd_balls_chess $gd_balls_game
+	title @ \Chess
+	State? $gd_balls_chess_state
+	mood_smiles /
+		\
+		\._.
+		\+_+
+		\^o^
+		\x_x
+		\*_*
+		\*.*
+	auto /
+		<= thinking null
+
+$gd_balls $mol_book2_catalog
+	menu_title @ \Giper Balls
 	plugins /
 		<= Theme $mol_theme_auto
 	placeholders /
 	pages /
 		<= Space $gd_web_frame
-		<= Game $mol_page
-			title <= title @ \Giper Balls
-			head /
-				<= Caption $mol_view sub /
-					<= Share $mol_button_share
-					<= Game_title
-				<= Main $mol_view sub /
-					<= Restart $mol_button_minor
-						hint @ \Reset
-						click? <=> restart? null
-						sub / <= Restart_icon $mol_icon_autorenew
-					<= Score_pick <= Score*0 $mol_chip sub / <= score_text \
-				<= Game_tools
-			Tools => Game_tools
-			Title => Game_title
-			tools /
-				<= Donate $mol_link_donate uri \https://boosty.to/hyoo
-				<= Support $mol_link_support uri \https://t.me/giper-dev/118
-				<= Source $mol_link_source uri \http://github.com/giper-dev/balls/
-				<= Lights $mol_lights_toggle
-			body_content /
-				<= Board $mol_view sub <= rows /
-					<= Row*0 $mol_view sub <= cells* /
-						<= Cell*0 $mol_stack
-							event *
-								pointerdown? <=> ball_grab*? null
-								pointerenter? <=> ball_move*? null
-								pointerup? <=> ball_drop*? null
-							sub /
-								<= Ball* $gd_balls_ball
-									kind <= ball_kind*? 0
-									mood <= ball_mood* \
-									active <= cell_active*? false
-									colors <= colors
-	auto /
-		<= add_new null
+		^
+	menu_foot /
+		<= Donate $mol_link_donate uri \https://boosty.to/hyoo
+		<= Support $mol_link_support uri \https://t.me/giper-dev/118
+		<= Source $mol_link_source uri \http://github.com/giper-dev/balls/
+		<= Lights $mol_lights_toggle
+	spreads *
+		lines <= Lines $gd_balls_lines
+			tools / <= Spread_close
+		chess <= Chess $gd_balls_chess
+			tools / <= Spread_close
