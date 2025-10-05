@@ -194,9 +194,11 @@ namespace $ {
 				$mol_dev_format_native( this.score() ),
 				':',
 				$mol_dev_format_native( this._estimation ),
-				$mol_dev_format_native( this.best().map( $gd_balls_step_str ) ),
 				$mol_dev_format_auto(
-					Object.fromEntries( this.movements().map( step => [ $gd_balls_step_str( step ), this.ways.get( step ) ] ) )
+					Object.fromEntries([
+						[ Symbol.toStringTag, 'ways' ],
+						... this.movements().map( step => [ $gd_balls_step_str( step ), this.ways.get( step ) ] ),
+					])
 				),
 			)
 		}
