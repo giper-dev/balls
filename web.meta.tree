@@ -29,7 +29,7 @@
 	pack icon git \https://github.com/nin-jin/mol_icon.git
 \/mol/view
 	include \/mol/view/tree/test
-\/gd/balls
+\/gd/balls/catalog
 	include \/mol/offline/install
-	deploy \/gd/balls/manifest.json
+	deploy \/gd/balls/catalog/manifest.json
 	deploy \/gd/balls/logo/

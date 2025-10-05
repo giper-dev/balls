@@ -2866,6 +2866,73 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+    function $mol_offline(): void;
+}
+
+declare namespace $ {
+    function $mol_offline_web(): void;
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_link_donate__uri_gd_balls_catalog_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link_donate['uri'] >
+	>
+	type $mol_link_support__uri_gd_balls_catalog_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link_support['uri'] >
+	>
+	type $mol_link_source__uri_gd_balls_catalog_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link_source['uri'] >
+	>
+	type $gd_balls_lines__tools_gd_balls_catalog_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $gd_balls_lines['tools'] >
+	>
+	type $gd_balls_chess_game__tools_gd_balls_catalog_5 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $gd_balls_chess_game['tools'] >
+	>
+	export class $gd_balls_catalog extends $mol_book2_catalog {
+		Theme( ): $mol_theme_auto
+		Space( ): $gd_web_frame
+		Donate( ): $mol_link_donate
+		Support( ): $mol_link_support
+		Source( ): $mol_link_source
+		Lights( ): $mol_lights_toggle
+		Lines( ): $gd_balls_lines
+		Chess( ): $gd_balls_chess_game
+		menu_title( ): string
+		plugins( ): readonly(any)[]
+		placeholders( ): readonly(any)[]
+		pages( ): readonly(any)[]
+		menu_foot( ): readonly(any)[]
+		spreads( ): ({ 
+			'lines': ReturnType< $gd_balls_catalog['Lines'] >,
+			'chess': ReturnType< $gd_balls_catalog['Chess'] >,
+		}) 
+	}
+	
+}
+
+//# sourceMappingURL=catalog.view.tree.d.ts.map
+declare namespace $.$$ {
+}
+
+declare namespace $ {
 
 	export class $mol_icon_share extends $mol_icon {
 		path( ): string
@@ -3106,6 +3173,9 @@ declare namespace $.$$ {
     }
 }
 
+declare namespace $ {
+}
+
 declare namespace $.$$ {
 }
 
@@ -3167,19 +3237,13 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-    function $mol_base64_encode(src: string | Uint8Array<ArrayBuffer>): string;
+    const $gd_balls_vector: (hor: number, ver: number) => number;
+    const $gd_balls_vector_hor: (vec: number) => number;
+    const $gd_balls_vector_vert: (vec: number) => number;
 }
 
 declare namespace $ {
-    function $mol_base64_encode_web(str: string | Uint8Array<ArrayBuffer>): string;
-}
-
-declare namespace $ {
-    function $mol_base64_decode(base64: string): Uint8Array<ArrayBuffer>;
-}
-
-declare namespace $ {
-    function $mol_base64_decode_web(base64Str: string): Uint8Array<ArrayBuffer>;
+    const $gd_balls_chess_rules: number[][][];
 }
 
 declare namespace $ {
@@ -3196,43 +3260,6 @@ declare namespace $ {
     const $gd_balls_step_to: (pos: number) => number;
     const $gd_balls_step_str: (step: number) => string;
     const $gd_balls_step_parse: (str: string) => number;
-}
-
-declare namespace $ {
-
-	export class $gd_balls_chess extends $gd_balls_game {
-		thinking( ): any
-		title( ): string
-		State( next?: $gd_balls_chess_state ): $gd_balls_chess_state
-		mood_smiles( ): readonly(any)[]
-		auto( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=chess.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $gd_balls_chess extends $.$gd_balls_chess {
-        State(next?: $gd_balls_chess_state): $gd_balls_chess_state;
-        score(): number;
-        score_text(): string;
-        ball_kind(id: [number, number], next?: number): 1 | 3 | -1 | 0 | -3;
-        ball_mood(id: [number, number]): any;
-        ball_grab(id: [number, number], event: PointerEvent): void;
-        ball_drop(id: [number, number], event: PointerEvent): void;
-        restart(): void;
-        thinking(): void;
-    }
-}
-
-declare namespace $ {
-    const $gd_balls_vector: (hor: number, ver: number) => number;
-    const $gd_balls_vector_hor: (vec: number) => number;
-    const $gd_balls_vector_vert: (vec: number) => number;
-}
-
-declare namespace $ {
-    const $gd_balls_chess_rules: number[][][];
 }
 
 declare namespace $ {
@@ -3258,75 +3285,46 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    function $mol_offline(): void;
+    function $mol_base64_encode(src: string | Uint8Array<ArrayBuffer>): string;
 }
 
 declare namespace $ {
-    function $mol_offline_web(): void;
+    function $mol_base64_encode_web(str: string | Uint8Array<ArrayBuffer>): string;
 }
 
 declare namespace $ {
+    function $mol_base64_decode(base64: string): Uint8Array<ArrayBuffer>;
+}
+
+declare namespace $ {
+    function $mol_base64_decode_web(base64Str: string): Uint8Array<ArrayBuffer>;
 }
 
 declare namespace $ {
 
-	type $mol_link_donate__uri_gd_balls_1 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link_donate['uri'] >
-	>
-	type $mol_link_support__uri_gd_balls_2 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link_support['uri'] >
-	>
-	type $mol_link_source__uri_gd_balls_3 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link_source['uri'] >
-	>
-	type $gd_balls_lines__tools_gd_balls_4 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $gd_balls_lines['tools'] >
-	>
-	type $gd_balls_chess__tools_gd_balls_5 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $gd_balls_chess['tools'] >
-	>
-	export class $gd_balls extends $mol_book2_catalog {
-		Theme( ): $mol_theme_auto
-		Space( ): $gd_web_frame
-		Donate( ): $mol_link_donate
-		Support( ): $mol_link_support
-		Source( ): $mol_link_source
-		Lights( ): $mol_lights_toggle
-		Lines( ): $gd_balls_lines
-		Chess( ): $gd_balls_chess
-		menu_title( ): string
-		plugins( ): readonly(any)[]
-		placeholders( ): readonly(any)[]
-		pages( ): readonly(any)[]
-		menu_foot( ): readonly(any)[]
-		spreads( ): ({ 
-			'lines': ReturnType< $gd_balls['Lines'] >,
-			'chess': ReturnType< $gd_balls['Chess'] >,
-		}) 
+	export class $gd_balls_chess_game extends $gd_balls_game {
+		thinking( ): any
+		title( ): string
+		State( next?: $gd_balls_chess_state ): $gd_balls_chess_state
+		mood_smiles( ): readonly(any)[]
+		auto( ): readonly(any)[]
 	}
 	
 }
 
-//# sourceMappingURL=balls.view.tree.d.ts.map
+//# sourceMappingURL=game.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $gd_balls extends $.$gd_balls {
+    class $gd_balls_chess_game extends $.$gd_balls_chess_game {
+        State(next?: $gd_balls_chess_state): $gd_balls_chess_state;
+        score(): number;
+        score_text(): string;
+        ball_kind(id: [number, number], next?: number): 1 | 3 | -1 | 0 | -3;
+        ball_mood(id: [number, number]): any;
+        ball_grab(id: [number, number], event: PointerEvent): void;
+        ball_drop(id: [number, number], event: PointerEvent): void;
+        restart(): void;
+        thinking(): void;
     }
-}
-
-declare namespace $ {
-}
-
-declare namespace $.$$ {
 }
 
 export = $;

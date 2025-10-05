@@ -8610,6 +8610,129 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$gd_balls_catalog) = class $gd_balls_catalog extends ($.$mol_book2_catalog) {
+		Theme(){
+			const obj = new this.$.$mol_theme_auto();
+			return obj;
+		}
+		Space(){
+			const obj = new this.$.$gd_web_frame();
+			return obj;
+		}
+		Donate(){
+			const obj = new this.$.$mol_link_donate();
+			(obj.uri) = () => ("https://boosty.to/hyoo");
+			return obj;
+		}
+		Support(){
+			const obj = new this.$.$mol_link_support();
+			(obj.uri) = () => ("https://t.me/giper-dev/118");
+			return obj;
+		}
+		Source(){
+			const obj = new this.$.$mol_link_source();
+			(obj.uri) = () => ("http://github.com/giper-dev/balls/");
+			return obj;
+		}
+		Lights(){
+			const obj = new this.$.$mol_lights_toggle();
+			return obj;
+		}
+		Lines(){
+			const obj = new this.$.$gd_balls_lines();
+			(obj.tools) = () => ([(this.Spread_close())]);
+			return obj;
+		}
+		Chess(){
+			const obj = new this.$.$gd_balls_chess_game();
+			(obj.tools) = () => ([(this.Spread_close())]);
+			return obj;
+		}
+		menu_title(){
+			return (this.$.$mol_locale.text("$gd_balls_catalog_menu_title"));
+		}
+		plugins(){
+			return [(this.Theme())];
+		}
+		placeholders(){
+			return [];
+		}
+		pages(){
+			return [(this.Space()), ...(super.pages())];
+		}
+		menu_foot(){
+			return [
+				(this.Donate()), 
+				(this.Support()), 
+				(this.Source()), 
+				(this.Lights())
+			];
+		}
+		spreads(){
+			return {"lines": (this.Lines()), "chess": (this.Chess())};
+		}
+	};
+	($mol_mem(($.$gd_balls_catalog.prototype), "Theme"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Space"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Donate"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Support"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Source"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Lights"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Lines"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Chess"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    function $mol_offline() { }
+    $.$mol_offline = $mol_offline;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    try {
+        $mol_offline();
+    }
+    catch (error) {
+        console.error(error);
+    }
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("gd/balls/catalog/catalog.view.css", "[gd_balls_catalog_board] {\n\t-webkit-user-select: none;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n  touch-action: none;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { url, linear_gradient } = $mol_style_func;
+        $mol_style_define($gd_balls_catalog, {
+            background: {
+                size: ['cover'],
+                position: 'center',
+                image: [
+                    [linear_gradient($mol_theme.spirit)],
+                    [url('gd/balls/logo/back.jpg')],
+                ]
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$mol_icon_share) = class $mol_icon_share extends ($.$mol_icon) {
 		path(){
 			return "M21,12L14,5V9C7,10 4,15 3,20C5.5,16.5 9,14.9 14,14.9V19L21,12Z";
@@ -9196,6 +9319,13 @@ var $;
 "use strict";
 var $;
 (function ($) {
+    $mol_style_attach("gd/balls/game/game.view.css", "@keyframes gd_balls_game_score_show {\n\tfrom {\n\t\ttransform: scale(200%);\n\t}\n}\n\n[gd_balls_catalog_score] {\n\tanimation: gd_balls_game_score_show .25s ease-out;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
     var $$;
     (function ($$) {
         const { radial_gradient } = $mol_style_func;
@@ -9560,234 +9690,6 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$gd_balls_chess) = class $gd_balls_chess extends ($.$gd_balls_game) {
-		thinking(){
-			return null;
-		}
-		title(){
-			return (this.$.$mol_locale.text("$gd_balls_chess_title"));
-		}
-		State(next){
-			if(next !== undefined) return next;
-			const obj = new this.$.$gd_balls_chess_state();
-			return obj;
-		}
-		mood_smiles(){
-			return [
-				"", 
-				"._.", 
-				"+_+", 
-				"^o^", 
-				"x_x", 
-				"*_*", 
-				"*.*"
-			];
-		}
-		auto(){
-			return [(this.thinking())];
-		}
-	};
-	($mol_mem(($.$gd_balls_chess.prototype), "State"));
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    function $mol_base64_encode(src) {
-        throw new Error('Not implemented');
-    }
-    $.$mol_base64_encode = $mol_base64_encode;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    function $mol_base64_encode_node(str) {
-        if (!str)
-            return '';
-        if (Buffer.isBuffer(str))
-            return str.toString('base64');
-        return Buffer.from(str).toString('base64');
-    }
-    $.$mol_base64_encode_node = $mol_base64_encode_node;
-    $.$mol_base64_encode = $mol_base64_encode_node;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    function $mol_base64_decode(base64) {
-        throw new Error('Not implemented');
-    }
-    $.$mol_base64_decode = $mol_base64_decode;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    function $mol_base64_decode_node(base64Str) {
-        base64Str = base64Str.replace(/-/g, '+').replace(/_/g, '/');
-        const buffer = Buffer.from(base64Str, 'base64');
-        return new Uint8Array(buffer.buffer, buffer.byteOffset, buffer.byteLength);
-    }
-    $.$mol_base64_decode_node = $mol_base64_decode_node;
-    $.$mol_base64_decode = $mol_base64_decode_node;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    $.$gd_balls_coord = (row, col) => (row << 3) | col;
-    $.$gd_balls_coord_row = (pos) => pos >> 3;
-    $.$gd_balls_coord_col = (pos) => pos & 0b111;
-    $.$gd_balls_coord_str = (pos) => 'abcdefgh'[$.$gd_balls_coord_col(pos)] + ($.$gd_balls_coord_row(pos) + 1);
-    $.$gd_balls_coord_parse = (str) => $.$gd_balls_coord(Number(str[1]) - 1, str.charCodeAt(0) - 97);
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    $.$gd_balls_step = (from, to) => (to << 8) | from;
-    $.$gd_balls_step_from = (pos) => pos & 0b1111_1111;
-    $.$gd_balls_step_to = (pos) => pos >> 8;
-    $.$gd_balls_step_str = (step) => $gd_balls_coord_str($.$gd_balls_step_from(step)) + '' + $gd_balls_coord_str($.$gd_balls_step_to(step));
-    $.$gd_balls_step_parse = (str) => $.$gd_balls_step($gd_balls_coord_parse(str.slice(0, 2)), $gd_balls_coord_parse(str.slice(2, 4)));
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $gd_balls_chess extends $.$gd_balls_chess {
-            State(next) {
-                const val = this.$.$mol_state_local.value('$gd_balls_chess:state', next && $mol_base64_encode(next));
-                return val && new $gd_balls_chess_state($mol_base64_decode(val)) || new $gd_balls_chess_state(super.State());
-            }
-            score() {
-                return this.State().ballance();
-            }
-            score_text() {
-                return this.score().toLocaleString('en', { signDisplay: 'exceptZero' });
-            }
-            ball_kind(id, next) {
-                const side = this.State().side();
-                const coord = $gd_balls_coord(...id);
-                const cell = this.State()[coord];
-                const ways = this.State().movements();
-                if (!ways.length) {
-                    if (!cell)
-                        return 0;
-                    const cell_side = $gd_balls_chess_cell_side(cell);
-                    if (cell_side === side)
-                        return cell_side ? -1 : -3;
-                    else
-                        return cell_side ? 1 : 3;
-                }
-                const active = this.active_cell();
-                if (active.length) {
-                    const active_coord = $gd_balls_coord(active[0], active[1]);
-                    const step = $gd_balls_step(active_coord, coord);
-                    if (!cell)
-                        return ways.includes(step) ? (side ? -1 : -3) : 0;
-                    if (ways.includes(step))
-                        return $gd_balls_chess_cell_side(cell) ? -1 : -3;
-                    else
-                        return $gd_balls_chess_cell_side(cell) ? 1 : 3;
-                }
-                else {
-                    if (!cell)
-                        return 0;
-                    return $gd_balls_chess_cell_side(cell) ? 1 : 3;
-                }
-            }
-            ball_mood(id) {
-                const cell = this.State()[$gd_balls_coord(...id)];
-                if (!cell)
-                    return '';
-                return this.mood_smiles()[$gd_balls_chess_cell_kind(cell)];
-            }
-            ball_grab(id, event) {
-                ;
-                event.target.releasePointerCapture(event.pointerId);
-                if (this.active_cell())
-                    this.ball_drop(this.active_cell(), event);
-                const ways = this.State().movements();
-                const coord = $gd_balls_coord(...id);
-                if (!ways.some(step => $gd_balls_step_from(step) === coord))
-                    return;
-                const state = this.State();
-                if ($gd_balls_chess_cell_side(state[coord]) !== state.side())
-                    return;
-                this.cell_active(id, !this.cell_active(id));
-            }
-            ball_drop(id, event) {
-                const active = this.active_cell();
-                if (!active.length)
-                    return;
-                this.active_cell([]);
-                const coord = $gd_balls_coord(...id);
-                const active_coord = $gd_balls_coord(active[0], active[1]);
-                const step = $gd_balls_step(active_coord, coord);
-                const ways = this.State().movements();
-                if (!ways.includes(step))
-                    return;
-                let state = this.State().move(step);
-                const best = state.best();
-                if (best.length)
-                    state = state.move($mol_array_lottery(best));
-                this.State(state);
-            }
-            restart() {
-                this.State(new $gd_balls_chess_state(super.State()));
-            }
-            thinking() {
-                this.$.$mol_state_time.now(0);
-                const state = this.State();
-                for (const way of state.movements()) {
-                    state.move(way).think();
-                }
-            }
-        }
-        __decorate([
-            $mol_mem
-        ], $gd_balls_chess.prototype, "State", null);
-        __decorate([
-            $mol_mem
-        ], $gd_balls_chess.prototype, "score_text", null);
-        __decorate([
-            $mol_mem_key
-        ], $gd_balls_chess.prototype, "ball_kind", null);
-        __decorate([
-            $mol_mem_key
-        ], $gd_balls_chess.prototype, "ball_mood", null);
-        __decorate([
-            $mol_action
-        ], $gd_balls_chess.prototype, "ball_grab", null);
-        __decorate([
-            $mol_action
-        ], $gd_balls_chess.prototype, "ball_drop", null);
-        __decorate([
-            $mol_action
-        ], $gd_balls_chess.prototype, "restart", null);
-        __decorate([
-            $mol_mem
-        ], $gd_balls_chess.prototype, "thinking", null);
-        $$.$gd_balls_chess = $gd_balls_chess;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
 "use strict";
 var $;
 (function ($) {
@@ -9828,6 +9730,28 @@ var $;
         [$gd_balls_vector(+0, -1)], [$gd_balls_vector(1, -1)], [$gd_balls_vector(-1, -1)],
     ];
     $.$gd_balls_chess_rules = [WaysFree, WaysPawn, WaysRook, WaysKnight, WaysBishop, WaysQueen, WaysKing, WaysFree];
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $.$gd_balls_coord = (row, col) => (row << 3) | col;
+    $.$gd_balls_coord_row = (pos) => pos >> 3;
+    $.$gd_balls_coord_col = (pos) => pos & 0b111;
+    $.$gd_balls_coord_str = (pos) => 'abcdefgh'[$.$gd_balls_coord_col(pos)] + ($.$gd_balls_coord_row(pos) + 1);
+    $.$gd_balls_coord_parse = (str) => $.$gd_balls_coord(Number(str[1]) - 1, str.charCodeAt(0) - 97);
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $.$gd_balls_step = (from, to) => (to << 8) | from;
+    $.$gd_balls_step_from = (pos) => pos & 0b1111_1111;
+    $.$gd_balls_step_to = (pos) => pos >> 8;
+    $.$gd_balls_step_str = (step) => $gd_balls_coord_str($.$gd_balls_step_from(step)) + '' + $gd_balls_coord_str($.$gd_balls_step_to(step));
+    $.$gd_balls_step_parse = (str) => $.$gd_balls_step($gd_balls_coord_parse(str.slice(0, 2)), $gd_balls_coord_parse(str.slice(2, 4)));
 })($ || ($ = {}));
 
 ;
@@ -9971,7 +9895,7 @@ var $;
                 const state = this.move(way);
                 const est = state.estimation();
                 if (this.side() === White ? edge > est : edge < est) {
-                    state.ways = new Map;
+                    state.ways.clear();
                     continue;
                 }
                 if (edge !== est) {
@@ -9985,7 +9909,7 @@ var $;
             return found;
         }
         [$mol_dev_format_head]() {
-            return $mol_dev_format_div({}, $mol_dev_format_native(this), $mol_dev_format_native(this.score()), ':', $mol_dev_format_native(this.estimation()), $mol_dev_format_native(this.best().map($gd_balls_step_str)), $mol_dev_format_auto(Object.fromEntries(this.movements().map(step => [$gd_balls_step_str(step), this.ways.get(step)]))));
+            return $mol_dev_format_div({}, $mol_dev_format_native(this), $mol_dev_format_native(this.score()), ':', $mol_dev_format_native(this._estimation), $mol_dev_format_native(this.best().map($gd_balls_step_str)), $mol_dev_format_auto(Object.fromEntries(this.movements().map(step => [$gd_balls_step_str(step), this.ways.get(step)]))));
         }
         [$mol_dev_format_body]() {
             return $mol_dev_format_div({}, $mol_dev_format_table({ display: 'inline-table', 'text-align': 'center' }, ...Array.from({ length: Size }, (_, row) => $mol_dev_format_tr({}, $mol_dev_format_td({ color: 'gray' }, Size - row), ...Array.from({ length: Size }, (_, col) => $mol_dev_format_td({}, Figures[this[$gd_balls_coord(Size - row - 1, col)]])))), $mol_dev_format_tr({}, $mol_dev_format_td({}, this.side() ? '🔴' : '🟢'), ...[...'abcdefgh'].map(letter => $mol_dev_format_td({ color: 'gray' }, letter)))));
@@ -10004,96 +9928,82 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$gd_balls) = class $gd_balls extends ($.$mol_book2_catalog) {
-		Theme(){
-			const obj = new this.$.$mol_theme_auto();
+	($.$gd_balls_chess_game) = class $gd_balls_chess_game extends ($.$gd_balls_game) {
+		thinking(){
+			return null;
+		}
+		title(){
+			return (this.$.$mol_locale.text("$gd_balls_chess_game_title"));
+		}
+		State(next){
+			if(next !== undefined) return next;
+			const obj = new this.$.$gd_balls_chess_state();
 			return obj;
 		}
-		Space(){
-			const obj = new this.$.$gd_web_frame();
-			return obj;
-		}
-		Donate(){
-			const obj = new this.$.$mol_link_donate();
-			(obj.uri) = () => ("https://boosty.to/hyoo");
-			return obj;
-		}
-		Support(){
-			const obj = new this.$.$mol_link_support();
-			(obj.uri) = () => ("https://t.me/giper-dev/118");
-			return obj;
-		}
-		Source(){
-			const obj = new this.$.$mol_link_source();
-			(obj.uri) = () => ("http://github.com/giper-dev/balls/");
-			return obj;
-		}
-		Lights(){
-			const obj = new this.$.$mol_lights_toggle();
-			return obj;
-		}
-		Lines(){
-			const obj = new this.$.$gd_balls_lines();
-			(obj.tools) = () => ([(this.Spread_close())]);
-			return obj;
-		}
-		Chess(){
-			const obj = new this.$.$gd_balls_chess();
-			(obj.tools) = () => ([(this.Spread_close())]);
-			return obj;
-		}
-		menu_title(){
-			return (this.$.$mol_locale.text("$gd_balls_menu_title"));
-		}
-		plugins(){
-			return [(this.Theme())];
-		}
-		placeholders(){
-			return [];
-		}
-		pages(){
-			return [(this.Space()), ...(super.pages())];
-		}
-		menu_foot(){
+		mood_smiles(){
 			return [
-				(this.Donate()), 
-				(this.Support()), 
-				(this.Source()), 
-				(this.Lights())
+				"", 
+				"._.", 
+				"+_+", 
+				"^o^", 
+				"x_x", 
+				"*_*", 
+				"*.*"
 			];
 		}
-		spreads(){
-			return {"lines": (this.Lines()), "chess": (this.Chess())};
+		auto(){
+			return [(this.thinking())];
 		}
 	};
-	($mol_mem(($.$gd_balls.prototype), "Theme"));
-	($mol_mem(($.$gd_balls.prototype), "Space"));
-	($mol_mem(($.$gd_balls.prototype), "Donate"));
-	($mol_mem(($.$gd_balls.prototype), "Support"));
-	($mol_mem(($.$gd_balls.prototype), "Source"));
-	($mol_mem(($.$gd_balls.prototype), "Lights"));
-	($mol_mem(($.$gd_balls.prototype), "Lines"));
-	($mol_mem(($.$gd_balls.prototype), "Chess"));
+	($mol_mem(($.$gd_balls_chess_game.prototype), "State"));
 
 
 ;
 "use strict";
 var $;
 (function ($) {
-    function $mol_offline() { }
-    $.$mol_offline = $mol_offline;
+    function $mol_base64_encode(src) {
+        throw new Error('Not implemented');
+    }
+    $.$mol_base64_encode = $mol_base64_encode;
 })($ || ($ = {}));
 
 ;
 "use strict";
 var $;
 (function ($) {
-    try {
-        $mol_offline();
+    function $mol_base64_encode_node(str) {
+        if (!str)
+            return '';
+        if (Buffer.isBuffer(str))
+            return str.toString('base64');
+        return Buffer.from(str).toString('base64');
     }
-    catch (error) {
-        console.error(error);
+    $.$mol_base64_encode_node = $mol_base64_encode_node;
+    $.$mol_base64_encode = $mol_base64_encode_node;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    function $mol_base64_decode(base64) {
+        throw new Error('Not implemented');
     }
+    $.$mol_base64_decode = $mol_base64_decode;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    function $mol_base64_decode_node(base64Str) {
+        base64Str = base64Str.replace(/-/g, '+').replace(/_/g, '/');
+        const buffer = Buffer.from(base64Str, 'base64');
+        return new Uint8Array(buffer.buffer, buffer.byteOffset, buffer.byteLength);
+    }
+    $.$mol_base64_decode_node = $mol_base64_decode_node;
+    $.$mol_base64_decode = $mol_base64_decode_node;
 })($ || ($ = {}));
 
 ;
@@ -10105,36 +10015,121 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        class $gd_balls extends $.$gd_balls {
+        class $gd_balls_chess_game extends $.$gd_balls_chess_game {
+            State(next) {
+                const val = this.$.$mol_state_local.value('$gd_balls_chess:state', next && $mol_base64_encode(next));
+                return val && new $gd_balls_chess_state($mol_base64_decode(val)) || new $gd_balls_chess_state(super.State());
+            }
+            score() {
+                return this.State().ballance();
+            }
+            score_text() {
+                return this.score().toLocaleString('en', { signDisplay: 'exceptZero' });
+            }
+            ball_kind(id, next) {
+                const side = this.State().side();
+                const coord = $gd_balls_coord(...id);
+                const cell = this.State()[coord];
+                const ways = this.State().movements();
+                if (!ways.length) {
+                    if (!cell)
+                        return 0;
+                    const cell_side = $gd_balls_chess_cell_side(cell);
+                    if (cell_side === side)
+                        return cell_side ? -1 : -3;
+                    else
+                        return cell_side ? 1 : 3;
+                }
+                const active = this.active_cell();
+                if (active.length) {
+                    const active_coord = $gd_balls_coord(active[0], active[1]);
+                    const step = $gd_balls_step(active_coord, coord);
+                    if (!cell)
+                        return ways.includes(step) ? (side ? -1 : -3) : 0;
+                    if (ways.includes(step))
+                        return $gd_balls_chess_cell_side(cell) ? -1 : -3;
+                    else
+                        return $gd_balls_chess_cell_side(cell) ? 1 : 3;
+                }
+                else {
+                    if (!cell)
+                        return 0;
+                    return $gd_balls_chess_cell_side(cell) ? 1 : 3;
+                }
+            }
+            ball_mood(id) {
+                const cell = this.State()[$gd_balls_coord(...id)];
+                if (!cell)
+                    return '';
+                return this.mood_smiles()[$gd_balls_chess_cell_kind(cell)];
+            }
+            ball_grab(id, event) {
+                ;
+                event.target.releasePointerCapture(event.pointerId);
+                if (this.active_cell())
+                    this.ball_drop(this.active_cell(), event);
+                const ways = this.State().movements();
+                const coord = $gd_balls_coord(...id);
+                if (!ways.some(step => $gd_balls_step_from(step) === coord))
+                    return;
+                const state = this.State();
+                if ($gd_balls_chess_cell_side(state[coord]) !== state.side())
+                    return;
+                this.cell_active(id, !this.cell_active(id));
+            }
+            ball_drop(id, event) {
+                const active = this.active_cell();
+                if (!active.length)
+                    return;
+                this.active_cell([]);
+                const coord = $gd_balls_coord(...id);
+                const active_coord = $gd_balls_coord(active[0], active[1]);
+                const step = $gd_balls_step(active_coord, coord);
+                const ways = this.State().movements();
+                if (!ways.includes(step))
+                    return;
+                let state = this.State().move(step);
+                const best = state.best();
+                if (best.length)
+                    state = state.move($mol_array_lottery(best));
+                this.State(state);
+            }
+            restart() {
+                this.State(new $gd_balls_chess_state(super.State()));
+            }
+            thinking() {
+                this.$.$mol_state_time.now(0);
+                const state = this.State();
+                for (const way of state.movements()) {
+                    state.move(way).think();
+                }
+            }
         }
-        $$.$gd_balls = $gd_balls;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("gd/balls/balls.view.css", "@keyframes gd_balls_score_show {\n\tfrom {\n\t\ttransform: scale(200%);\n\t}\n}\n\n[gd_balls_score] {\n\tanimation: gd_balls_score_show .25s ease-out;\n}\n\n[gd_balls_board] {\n\t-webkit-user-select: none;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n  touch-action: none;\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        const { url, linear_gradient } = $mol_style_func;
-        $mol_style_define($gd_balls, {
-            background: {
-                size: ['cover'],
-                position: 'center',
-                image: [
-                    [linear_gradient($mol_theme.spirit)],
-                    [url('gd/balls/logo/back.jpg')],
-                ]
-            },
-        });
+        __decorate([
+            $mol_mem
+        ], $gd_balls_chess_game.prototype, "State", null);
+        __decorate([
+            $mol_mem
+        ], $gd_balls_chess_game.prototype, "score_text", null);
+        __decorate([
+            $mol_mem_key
+        ], $gd_balls_chess_game.prototype, "ball_kind", null);
+        __decorate([
+            $mol_mem_key
+        ], $gd_balls_chess_game.prototype, "ball_mood", null);
+        __decorate([
+            $mol_action
+        ], $gd_balls_chess_game.prototype, "ball_grab", null);
+        __decorate([
+            $mol_action
+        ], $gd_balls_chess_game.prototype, "ball_drop", null);
+        __decorate([
+            $mol_action
+        ], $gd_balls_chess_game.prototype, "restart", null);
+        __decorate([
+            $mol_mem
+        ], $gd_balls_chess_game.prototype, "thinking", null);
+        $$.$gd_balls_chess_game = $gd_balls_chess_game;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
