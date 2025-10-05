@@ -29,18 +29,19 @@ namespace $.$$ {
 				inset: true,
 				x: 0,
 				y: 0,
-				blur: '1vmin',
+				blur: '2vmin',
 				spread: 0,
-				color: $mol_style_func.hsla( 0, 0, 0, .25 ),
+				color: $mol_style_func.hsla( 0, 0, 0, .5 ),
 			}]
 		},
 		
 		'[gd_balls_ball_state]': {
 			empty: {
-				transform: 'scale(0)',
+				scale: '0',
 			},
 			ghost: {
-				transform: 'scale(.5)',
+				scale: '.5',
+				opacity: .75,
 			},
 			active: {
 				zIndex: 1,
@@ -48,7 +49,7 @@ namespace $.$$ {
 		},
 		
 		'@starting-style': {
-			transform: 'scale3d(0, 0, 0)',
+			scale: '0',
 		},
 		
 	} )

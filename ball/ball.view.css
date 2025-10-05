@@ -1,6 +1,6 @@
 @keyframes gd_balls_ball_jumping {
 	to {
-		transform: scale3d(120%, 120%, 1);
+		scale: 120%;
 	}
 }
 /* 

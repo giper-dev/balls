@@ -17,7 +17,7 @@ namespace $.$$ {
 		
 		@ $mol_mem
 		image() {
-			return `radial-gradient( circle at 50% 25%, oklch( 1 0 0 ), ${ this.color() } 3%, black 110% )`
+			return `radial-gradient( circle at 50% 25%, oklch( 1 0 0 ), ${ this.color() } 3%, oklch( 0 0 0 ) 120% )`
 		}
 		
 	}
