@@ -1,4 +1,4 @@
-name: $gd_balls
+name: $gd_balls_catalog
 
 # optional: change permissions if you don't want to allow everything
 # https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs#defining-access-for-the-github_token-permissions
@@ -21,8 +21,9 @@ jobs:
     - uses: hyoo-ru/mam_build@master2
       with:
         package: 'gd/balls'
+        modules: 'catalog'
         
     - uses: hyoo-ru/gh-deploy@v4.4.1
       if: github.ref == 'refs/heads/master'
       with:
-        folder: 'gd/balls/-'
+        folder: 'gd/balls/catalog/-'

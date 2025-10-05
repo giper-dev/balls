@@ -1,5 +1,5 @@
 namespace $.$$ {
-	export class $gd_balls_chess extends $.$gd_balls_chess {
+	export class $gd_balls_chess_game extends $.$gd_balls_chess_game {
 		
 		@ $mol_mem
 		State( next?: $gd_balls_chess_state ): $gd_balls_chess_state {

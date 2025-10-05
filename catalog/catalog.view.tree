@@ -1,4 +1,4 @@
-$gd_balls $mol_book2_catalog
+$gd_balls_catalog $mol_book2_catalog
 	menu_title @ \Giper Balls
 	plugins /
 		<= Theme $mol_theme_auto
@@ -14,5 +14,5 @@ $gd_balls $mol_book2_catalog
 	spreads *
 		lines <= Lines $gd_balls_lines
 			tools / <= Spread_close
-		chess <= Chess $gd_balls_chess
+		chess <= Chess $gd_balls_chess_game
 			tools / <= Spread_close

@@ -172,7 +172,7 @@ namespace $ {
 				const est = state.estimation()
 				
 				if( this.side() === White ? edge > est : edge < est ) {
-					state.ways = new Map
+					state.ways.clear()
 					continue
 				}
 				
@@ -193,7 +193,7 @@ namespace $ {
 				$mol_dev_format_native( this ),
 				$mol_dev_format_native( this.score() ),
 				':',
-				$mol_dev_format_native( this.estimation() ),
+				$mol_dev_format_native( this._estimation ),
 				$mol_dev_format_native( this.best().map( $gd_balls_step_str ) ),
 				$mol_dev_format_auto(
 					Object.fromEntries( this.movements().map( step => [ $gd_balls_step_str( step ), this.ways.get( step ) ] ) )

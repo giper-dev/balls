@@ -1,4 +1,4 @@
-$gd_balls_chess $gd_balls_game
+$gd_balls_chess_game $gd_balls_game
 	title @ \Chess
 	State? $gd_balls_chess_state
 	mood_smiles /
