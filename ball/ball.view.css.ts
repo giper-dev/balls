@@ -18,7 +18,7 @@ namespace $.$$ {
 		
 		font: {
 			weight: 'bold',
-			size: '3vmin',
+			size: '3.5vmin',
 			family: 'monospace',
 		},
 		

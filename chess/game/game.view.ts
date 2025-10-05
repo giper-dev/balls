@@ -67,11 +67,13 @@ namespace $.$$ {
 			
 			if( this.active_cell() ) this.ball_drop( this.active_cell() as any, event )
 			
-			const ways = this.State().movements()
+			const state = this.State()
+			if( state.side() ) return
+			
+			const ways = state.movements()
 			const coord =  $gd_balls_coord( ... id )
 			if( !ways.some( step => $gd_balls_step_from( step ) === coord ) ) return
 			
-			const state = this.State()
 			if( $gd_balls_chess_cell_side( state[ coord ] ) !== state.side() ) return
 			
 			this.cell_active( id, ! this.cell_active( id ) )
@@ -91,12 +93,15 @@ namespace $.$$ {
 			const ways = this.State().movements()
 			if( !ways.includes( step ) ) return
 			
-			let state = this.State().move( step )
+			this.State( this.State().move( step ) )
 			
+			this.$.$mol_wait_timeout( 1000 )
+			
+			const state = this.State()
 			const best = state.best()
-			if( best.length ) state = state.move( $mol_array_lottery( best ) )
+			if( !best.length ) return
 			
-			this.State( state )
+			this.State( state.move( $mol_array_lottery( best ) ) )
 			
 		}
 		
