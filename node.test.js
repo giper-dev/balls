@@ -9900,7 +9900,10 @@ var $;
             return found;
         }
         [$mol_dev_format_head]() {
-            return $mol_dev_format_div({}, $mol_dev_format_native(this), $mol_dev_format_native(this.score()), ':', $mol_dev_format_native(this._estimation), $mol_dev_format_native(this.best().map($gd_balls_step_str)), $mol_dev_format_auto(Object.fromEntries(this.movements().map(step => [$gd_balls_step_str(step), this.ways.get(step)]))));
+            return $mol_dev_format_div({}, $mol_dev_format_native(this), $mol_dev_format_native(this.score()), ':', $mol_dev_format_native(this._estimation), $mol_dev_format_auto(Object.fromEntries([
+                [Symbol.toStringTag, 'ways'],
+                ...this.movements().map(step => [$gd_balls_step_str(step), this.ways.get(step)]),
+            ])));
         }
         [$mol_dev_format_body]() {
             return $mol_dev_format_div({}, $mol_dev_format_table({ display: 'inline-table', 'text-align': 'center' }, ...Array.from({ length: Size }, (_, row) => $mol_dev_format_tr({}, $mol_dev_format_td({ color: 'gray' }, Size - row), ...Array.from({ length: Size }, (_, col) => $mol_dev_format_td({}, Figures[this[$gd_balls_coord(Size - row - 1, col)]])))), $mol_dev_format_tr({}, $mol_dev_format_td({}, this.side() ? '🔴' : '🟢'), ...[...'abcdefgh'].map(letter => $mol_dev_format_td({ color: 'gray' }, letter)))));
