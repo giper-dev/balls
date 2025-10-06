@@ -4,6 +4,10 @@
 	}
 }
 
-[gd_balls_catalog_score] {
+[gd_balls_game] {
+	-webkit-touch-callout: none
+}
+
+[gd_balls_game_score] {
 	animation: gd_balls_game_score_show .25s ease-out;
 }
