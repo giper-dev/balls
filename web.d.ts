@@ -3187,13 +3187,13 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	export class $mol_icon_robot extends $mol_icon {
+	export class $mol_icon_brain extends $mol_icon {
 		path( ): string
 	}
 	
 }
 
-//# sourceMappingURL=robot.view.tree.d.ts.map
+//# sourceMappingURL=brain.view.tree.d.ts.map
 declare namespace $ {
     const $gd_balls_vector: (hor: number, ver: number) => number;
     const $gd_balls_vector_hor: (vec: number) => number;
@@ -3276,7 +3276,7 @@ declare namespace $ {
 		ReturnType< $mol_check_icon['checked'] >
 	>
 	export class $gd_balls_chess_game extends $gd_balls_game {
-		Autobot_icon( ): $mol_icon_robot
+		Autobot_icon( ): $mol_icon_brain
 		autobot( next?: boolean ): boolean
 		Autobot( ): $mol_check_icon
 		thinking( ): any
