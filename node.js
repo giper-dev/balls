@@ -8630,7 +8630,7 @@ var $;
 		}
 		Support(){
 			const obj = new this.$.$mol_link_support();
-			(obj.uri) = () => ("https://t.me/giper-dev/118");
+			(obj.uri) = () => ("https://t.me/giper_web/118");
 			return obj;
 		}
 		Source(){
