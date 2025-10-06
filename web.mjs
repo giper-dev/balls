@@ -9787,6 +9787,7 @@ var $;
             }
             restart() {
                 this.State(new $gd_balls_chess_state(super.State()));
+                this.last_coord(Number.NaN);
             }
             thinking() {
                 if (!this.autobot())
