@@ -2867,73 +2867,6 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-    function $mol_offline(): void;
-}
-
-declare namespace $ {
-    function $mol_offline_web(): void;
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	type $mol_link_donate__uri_gd_balls_catalog_1 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link_donate['uri'] >
-	>
-	type $mol_link_support__uri_gd_balls_catalog_2 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link_support['uri'] >
-	>
-	type $mol_link_source__uri_gd_balls_catalog_3 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link_source['uri'] >
-	>
-	type $gd_balls_lines__tools_gd_balls_catalog_4 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $gd_balls_lines['tools'] >
-	>
-	type $gd_balls_chess_game__tools_gd_balls_catalog_5 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $gd_balls_chess_game['tools'] >
-	>
-	export class $gd_balls_catalog extends $mol_book2_catalog {
-		Theme( ): $mol_theme_auto
-		Space( ): $gd_web_frame
-		Donate( ): $mol_link_donate
-		Support( ): $mol_link_support
-		Source( ): $mol_link_source
-		Lights( ): $mol_lights_toggle
-		Lines( ): $gd_balls_lines
-		Chess( ): $gd_balls_chess_game
-		menu_title( ): string
-		plugins( ): readonly(any)[]
-		placeholders( ): readonly(any)[]
-		pages( ): readonly(any)[]
-		menu_foot( ): readonly(any)[]
-		spreads( ): ({ 
-			'lines': ReturnType< $gd_balls_catalog['Lines'] >,
-			'chess': ReturnType< $gd_balls_catalog['Chess'] >,
-		}) 
-	}
-	
-}
-
-//# sourceMappingURL=catalog.view.tree.d.ts.map
-declare namespace $.$$ {
-}
-
-declare namespace $ {
 
 	export class $mol_icon_share extends $mol_icon {
 		path( ): string
@@ -3373,6 +3306,73 @@ declare namespace $.$$ {
         autoboting(): void;
         ball_focus(id: [number, number]): boolean;
     }
+}
+
+declare namespace $ {
+    function $mol_offline(): void;
+}
+
+declare namespace $ {
+    function $mol_offline_web(): void;
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_link_donate__uri_gd_balls_catalog_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link_donate['uri'] >
+	>
+	type $mol_link_support__uri_gd_balls_catalog_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link_support['uri'] >
+	>
+	type $mol_link_source__uri_gd_balls_catalog_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link_source['uri'] >
+	>
+	type $gd_balls_lines__tools_gd_balls_catalog_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $gd_balls_lines['tools'] >
+	>
+	type $gd_balls_chess_game__tools_gd_balls_catalog_5 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $gd_balls_chess_game['tools'] >
+	>
+	export class $gd_balls_catalog extends $mol_book2_catalog {
+		Theme( ): $mol_theme_auto
+		Space( ): $gd_web_frame
+		Donate( ): $mol_link_donate
+		Support( ): $mol_link_support
+		Source( ): $mol_link_source
+		Lights( ): $mol_lights_toggle
+		Lines( ): $gd_balls_lines
+		Chess( ): $gd_balls_chess_game
+		menu_title( ): string
+		plugins( ): readonly(any)[]
+		placeholders( ): readonly(any)[]
+		pages( ): readonly(any)[]
+		menu_foot( ): readonly(any)[]
+		spreads( ): ({ 
+			'lines': ReturnType< $gd_balls_catalog['Lines'] >,
+			'chess': ReturnType< $gd_balls_catalog['Chess'] >,
+		}) 
+	}
+	
+}
+
+//# sourceMappingURL=catalog.view.tree.d.ts.map
+declare namespace $.$$ {
 }
 
 export = $;

@@ -8148,223 +8148,6 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$gd_balls_catalog) = class $gd_balls_catalog extends ($.$mol_book2_catalog) {
-		Theme(){
-			const obj = new this.$.$mol_theme_auto();
-			return obj;
-		}
-		Space(){
-			const obj = new this.$.$gd_web_frame();
-			return obj;
-		}
-		Donate(){
-			const obj = new this.$.$mol_link_donate();
-			(obj.uri) = () => ("https://boosty.to/hyoo");
-			return obj;
-		}
-		Support(){
-			const obj = new this.$.$mol_link_support();
-			(obj.uri) = () => ("https://t.me/giper_web/118");
-			return obj;
-		}
-		Source(){
-			const obj = new this.$.$mol_link_source();
-			(obj.uri) = () => ("http://github.com/giper-dev/balls/");
-			return obj;
-		}
-		Lights(){
-			const obj = new this.$.$mol_lights_toggle();
-			return obj;
-		}
-		Lines(){
-			const obj = new this.$.$gd_balls_lines();
-			(obj.tools) = () => ([...(this.$.$gd_balls_lines.prototype.tools.call(obj)), (this.Spread_close())]);
-			return obj;
-		}
-		Chess(){
-			const obj = new this.$.$gd_balls_chess_game();
-			(obj.tools) = () => ([...(this.$.$gd_balls_chess_game.prototype.tools.call(obj)), (this.Spread_close())]);
-			return obj;
-		}
-		menu_title(){
-			return (this.$.$mol_locale.text("$gd_balls_catalog_menu_title"));
-		}
-		plugins(){
-			return [(this.Theme())];
-		}
-		placeholders(){
-			return [];
-		}
-		pages(){
-			return [(this.Space()), ...(super.pages())];
-		}
-		menu_foot(){
-			return [
-				(this.Donate()), 
-				(this.Support()), 
-				(this.Source()), 
-				(this.Lights())
-			];
-		}
-		spreads(){
-			return {"lines": (this.Lines()), "chess": (this.Chess())};
-		}
-	};
-	($mol_mem(($.$gd_balls_catalog.prototype), "Theme"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Space"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Donate"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Support"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Source"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Lights"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Lines"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Chess"));
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    function $mol_offline() { }
-    $.$mol_offline = $mol_offline;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    const blacklist = new Set([
-        '//cse.google.com/adsense/search/async-ads.js'
-    ]);
-    function $mol_offline_web() {
-        if (typeof window === 'undefined') {
-            self.addEventListener('install', (event) => {
-                ;
-                self.skipWaiting();
-            });
-            self.addEventListener('activate', (event) => {
-                ;
-                self.clients.claim();
-                $$.$mol_log3_done({
-                    place: '$mol_offline',
-                    message: 'Activated',
-                });
-            });
-            self.addEventListener('fetch', (event) => {
-                const request = event.request;
-                if (blacklist.has(request.url.replace(/^https?:/, ''))) {
-                    return event.respondWith(new Response(null, {
-                        status: 418,
-                        statusText: 'Blocked'
-                    }));
-                }
-                if (request.method !== 'GET')
-                    return;
-                if (!/^https?:/.test(request.url))
-                    return;
-                if (/\?/.test(request.url))
-                    return;
-                if (request.cache === 'no-store')
-                    return;
-                const fetch_data = () => fetch(new Request(request, { credentials: 'omit' })).then(response => {
-                    if (response.status !== 200)
-                        return response;
-                    event.waitUntil(caches.open('$mol_offline').then(cache => cache.put(request, response)));
-                    return response.clone();
-                });
-                const enrich = (response) => {
-                    if (!response.status)
-                        return response;
-                    const headers = new Headers(response.headers);
-                    headers.set("$mol_offline", "");
-                    headers.set("Origin-Agent-Cluster", "?1");
-                    return new Response(response.body, {
-                        status: response.status,
-                        statusText: response.statusText,
-                        headers,
-                    });
-                };
-                const fresh = request.cache === 'force-cache' ? null : fetch_data();
-                if (fresh)
-                    event.waitUntil(fresh.then(enrich));
-                event.respondWith(caches.match(request).then(cached => request.cache === 'no-cache' || request.cache === 'reload'
-                    ? (cached
-                        ? fresh
-                            .then(actual => {
-                            if (actual.status === cached.status)
-                                return actual;
-                            throw new Error(`${actual.status}${actual.statusText ? ` ${actual.statusText}` : ''}`, { cause: actual });
-                        })
-                            .catch((err) => {
-                            const cloned = cached.clone();
-                            const message = `${err.cause instanceof Response ? '' : '500 '}${err.message} $mol_offline fallback to cache`;
-                            cloned.headers.set('$mol_offline_remote_status', message);
-                            return cloned;
-                        })
-                        : fresh)
-                    : (cached || fresh || fetch_data())).then(enrich));
-            });
-            self.addEventListener('beforeinstallprompt', (event) => event.prompt());
-        }
-        else if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
-            console.warn('HTTPS or localhost is required for service workers.');
-        }
-        else if (!navigator.serviceWorker) {
-            console.warn('Service Worker is not supported.');
-        }
-        else {
-            $mol_dom.addEventListener('DOMContentLoaded', () => {
-                navigator.serviceWorker.register('web.js').then(reg => {
-                });
-            });
-        }
-    }
-    $.$mol_offline_web = $mol_offline_web;
-    $.$mol_offline = $mol_offline_web;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    try {
-        $mol_offline();
-    }
-    catch (error) {
-        console.error(error);
-    }
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("gd/balls/catalog/catalog.view.css", "[gd_balls_catalog_board] {\n\t-webkit-user-select: none;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n  touch-action: none;\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        const { url, linear_gradient } = $mol_style_func;
-        $mol_style_define($gd_balls_catalog, {
-            background: {
-                size: ['cover'],
-                position: 'center',
-                image: [
-                    [linear_gradient($mol_theme.spirit)],
-                    [url('gd/balls/logo/back.jpg')],
-                ]
-            },
-        });
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
 	($.$mol_icon_share) = class $mol_icon_share extends ($.$mol_icon) {
 		path(){
 			return "M21,12L14,5V9C7,10 4,15 3,20C5.5,16.5 9,14.9 14,14.9V19L21,12Z";
@@ -8975,7 +8758,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("gd/balls/game/game.view.css", "@keyframes gd_balls_game_score_show {\n\tfrom {\n\t\ttransform: scale(200%);\n\t}\n}\n\n[gd_balls_catalog_score] {\n\tanimation: gd_balls_game_score_show .25s ease-out;\n}\n");
+    $mol_style_attach("gd/balls/game/game.view.css", "@keyframes gd_balls_game_score_show {\n\tfrom {\n\t\ttransform: scale(200%);\n\t}\n}\n\n[gd_balls_game] {\n\t-webkit-touch-callout: none\n}\n\n[gd_balls_game_score] {\n\tanimation: gd_balls_game_score_show .25s ease-out;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -9859,6 +9642,223 @@ var $;
             $mol_mem
         ], $gd_balls_chess_game.prototype, "autoboting", null);
         $$.$gd_balls_chess_game = $gd_balls_chess_game;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$gd_balls_catalog) = class $gd_balls_catalog extends ($.$mol_book2_catalog) {
+		Theme(){
+			const obj = new this.$.$mol_theme_auto();
+			return obj;
+		}
+		Space(){
+			const obj = new this.$.$gd_web_frame();
+			return obj;
+		}
+		Donate(){
+			const obj = new this.$.$mol_link_donate();
+			(obj.uri) = () => ("https://boosty.to/hyoo");
+			return obj;
+		}
+		Support(){
+			const obj = new this.$.$mol_link_support();
+			(obj.uri) = () => ("https://t.me/giper_web/118");
+			return obj;
+		}
+		Source(){
+			const obj = new this.$.$mol_link_source();
+			(obj.uri) = () => ("http://github.com/giper-dev/balls/");
+			return obj;
+		}
+		Lights(){
+			const obj = new this.$.$mol_lights_toggle();
+			return obj;
+		}
+		Lines(){
+			const obj = new this.$.$gd_balls_lines();
+			(obj.tools) = () => ([...(this.$.$gd_balls_lines.prototype.tools.call(obj)), (this.Spread_close())]);
+			return obj;
+		}
+		Chess(){
+			const obj = new this.$.$gd_balls_chess_game();
+			(obj.tools) = () => ([...(this.$.$gd_balls_chess_game.prototype.tools.call(obj)), (this.Spread_close())]);
+			return obj;
+		}
+		menu_title(){
+			return (this.$.$mol_locale.text("$gd_balls_catalog_menu_title"));
+		}
+		plugins(){
+			return [(this.Theme())];
+		}
+		placeholders(){
+			return [];
+		}
+		pages(){
+			return [(this.Space()), ...(super.pages())];
+		}
+		menu_foot(){
+			return [
+				(this.Donate()), 
+				(this.Support()), 
+				(this.Source()), 
+				(this.Lights())
+			];
+		}
+		spreads(){
+			return {"lines": (this.Lines()), "chess": (this.Chess())};
+		}
+	};
+	($mol_mem(($.$gd_balls_catalog.prototype), "Theme"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Space"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Donate"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Support"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Source"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Lights"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Lines"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Chess"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    function $mol_offline() { }
+    $.$mol_offline = $mol_offline;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    const blacklist = new Set([
+        '//cse.google.com/adsense/search/async-ads.js'
+    ]);
+    function $mol_offline_web() {
+        if (typeof window === 'undefined') {
+            self.addEventListener('install', (event) => {
+                ;
+                self.skipWaiting();
+            });
+            self.addEventListener('activate', (event) => {
+                ;
+                self.clients.claim();
+                $$.$mol_log3_done({
+                    place: '$mol_offline',
+                    message: 'Activated',
+                });
+            });
+            self.addEventListener('fetch', (event) => {
+                const request = event.request;
+                if (blacklist.has(request.url.replace(/^https?:/, ''))) {
+                    return event.respondWith(new Response(null, {
+                        status: 418,
+                        statusText: 'Blocked'
+                    }));
+                }
+                if (request.method !== 'GET')
+                    return;
+                if (!/^https?:/.test(request.url))
+                    return;
+                if (/\?/.test(request.url))
+                    return;
+                if (request.cache === 'no-store')
+                    return;
+                const fetch_data = () => fetch(new Request(request, { credentials: 'omit' })).then(response => {
+                    if (response.status !== 200)
+                        return response;
+                    event.waitUntil(caches.open('$mol_offline').then(cache => cache.put(request, response)));
+                    return response.clone();
+                });
+                const enrich = (response) => {
+                    if (!response.status)
+                        return response;
+                    const headers = new Headers(response.headers);
+                    headers.set("$mol_offline", "");
+                    headers.set("Origin-Agent-Cluster", "?1");
+                    return new Response(response.body, {
+                        status: response.status,
+                        statusText: response.statusText,
+                        headers,
+                    });
+                };
+                const fresh = request.cache === 'force-cache' ? null : fetch_data();
+                if (fresh)
+                    event.waitUntil(fresh.then(enrich));
+                event.respondWith(caches.match(request).then(cached => request.cache === 'no-cache' || request.cache === 'reload'
+                    ? (cached
+                        ? fresh
+                            .then(actual => {
+                            if (actual.status === cached.status)
+                                return actual;
+                            throw new Error(`${actual.status}${actual.statusText ? ` ${actual.statusText}` : ''}`, { cause: actual });
+                        })
+                            .catch((err) => {
+                            const cloned = cached.clone();
+                            const message = `${err.cause instanceof Response ? '' : '500 '}${err.message} $mol_offline fallback to cache`;
+                            cloned.headers.set('$mol_offline_remote_status', message);
+                            return cloned;
+                        })
+                        : fresh)
+                    : (cached || fresh || fetch_data())).then(enrich));
+            });
+            self.addEventListener('beforeinstallprompt', (event) => event.prompt());
+        }
+        else if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
+            console.warn('HTTPS or localhost is required for service workers.');
+        }
+        else if (!navigator.serviceWorker) {
+            console.warn('Service Worker is not supported.');
+        }
+        else {
+            $mol_dom.addEventListener('DOMContentLoaded', () => {
+                navigator.serviceWorker.register('web.js').then(reg => {
+                });
+            });
+        }
+    }
+    $.$mol_offline_web = $mol_offline_web;
+    $.$mol_offline = $mol_offline_web;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    try {
+        $mol_offline();
+    }
+    catch (error) {
+        console.error(error);
+    }
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("gd/balls/catalog/catalog.view.css", "[gd_balls_catalog_board] {\n\t-webkit-user-select: none;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n  touch-action: none;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { url, linear_gradient } = $mol_style_func;
+        $mol_style_define($gd_balls_catalog, {
+            background: {
+                size: ['cover'],
+                position: 'center',
+                image: [
+                    [linear_gradient($mol_theme.spirit)],
+                    [url('gd/balls/logo/back.jpg')],
+                ]
+            },
+        });
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 

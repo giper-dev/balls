@@ -8614,129 +8614,6 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$gd_balls_catalog) = class $gd_balls_catalog extends ($.$mol_book2_catalog) {
-		Theme(){
-			const obj = new this.$.$mol_theme_auto();
-			return obj;
-		}
-		Space(){
-			const obj = new this.$.$gd_web_frame();
-			return obj;
-		}
-		Donate(){
-			const obj = new this.$.$mol_link_donate();
-			(obj.uri) = () => ("https://boosty.to/hyoo");
-			return obj;
-		}
-		Support(){
-			const obj = new this.$.$mol_link_support();
-			(obj.uri) = () => ("https://t.me/giper_web/118");
-			return obj;
-		}
-		Source(){
-			const obj = new this.$.$mol_link_source();
-			(obj.uri) = () => ("http://github.com/giper-dev/balls/");
-			return obj;
-		}
-		Lights(){
-			const obj = new this.$.$mol_lights_toggle();
-			return obj;
-		}
-		Lines(){
-			const obj = new this.$.$gd_balls_lines();
-			(obj.tools) = () => ([...(this.$.$gd_balls_lines.prototype.tools.call(obj)), (this.Spread_close())]);
-			return obj;
-		}
-		Chess(){
-			const obj = new this.$.$gd_balls_chess_game();
-			(obj.tools) = () => ([...(this.$.$gd_balls_chess_game.prototype.tools.call(obj)), (this.Spread_close())]);
-			return obj;
-		}
-		menu_title(){
-			return (this.$.$mol_locale.text("$gd_balls_catalog_menu_title"));
-		}
-		plugins(){
-			return [(this.Theme())];
-		}
-		placeholders(){
-			return [];
-		}
-		pages(){
-			return [(this.Space()), ...(super.pages())];
-		}
-		menu_foot(){
-			return [
-				(this.Donate()), 
-				(this.Support()), 
-				(this.Source()), 
-				(this.Lights())
-			];
-		}
-		spreads(){
-			return {"lines": (this.Lines()), "chess": (this.Chess())};
-		}
-	};
-	($mol_mem(($.$gd_balls_catalog.prototype), "Theme"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Space"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Donate"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Support"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Source"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Lights"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Lines"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Chess"));
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    function $mol_offline() { }
-    $.$mol_offline = $mol_offline;
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    try {
-        $mol_offline();
-    }
-    catch (error) {
-        console.error(error);
-    }
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("gd/balls/catalog/catalog.view.css", "[gd_balls_catalog_board] {\n\t-webkit-user-select: none;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n  touch-action: none;\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        const { url, linear_gradient } = $mol_style_func;
-        $mol_style_define($gd_balls_catalog, {
-            background: {
-                size: ['cover'],
-                position: 'center',
-                image: [
-                    [linear_gradient($mol_theme.spirit)],
-                    [url('gd/balls/logo/back.jpg')],
-                ]
-            },
-        });
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
 	($.$mol_icon_share) = class $mol_icon_share extends ($.$mol_icon) {
 		path(){
 			return "M21,12L14,5V9C7,10 4,15 3,20C5.5,16.5 9,14.9 14,14.9V19L21,12Z";
@@ -9347,7 +9224,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("gd/balls/game/game.view.css", "@keyframes gd_balls_game_score_show {\n\tfrom {\n\t\ttransform: scale(200%);\n\t}\n}\n\n[gd_balls_catalog_score] {\n\tanimation: gd_balls_game_score_show .25s ease-out;\n}\n");
+    $mol_style_attach("gd/balls/game/game.view.css", "@keyframes gd_balls_game_score_show {\n\tfrom {\n\t\ttransform: scale(200%);\n\t}\n}\n\n[gd_balls_game] {\n\t-webkit-touch-callout: none\n}\n\n[gd_balls_game_score] {\n\tanimation: gd_balls_game_score_show .25s ease-out;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -10226,6 +10103,129 @@ var $;
             $mol_mem
         ], $gd_balls_chess_game.prototype, "autoboting", null);
         $$.$gd_balls_chess_game = $gd_balls_chess_game;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$gd_balls_catalog) = class $gd_balls_catalog extends ($.$mol_book2_catalog) {
+		Theme(){
+			const obj = new this.$.$mol_theme_auto();
+			return obj;
+		}
+		Space(){
+			const obj = new this.$.$gd_web_frame();
+			return obj;
+		}
+		Donate(){
+			const obj = new this.$.$mol_link_donate();
+			(obj.uri) = () => ("https://boosty.to/hyoo");
+			return obj;
+		}
+		Support(){
+			const obj = new this.$.$mol_link_support();
+			(obj.uri) = () => ("https://t.me/giper_web/118");
+			return obj;
+		}
+		Source(){
+			const obj = new this.$.$mol_link_source();
+			(obj.uri) = () => ("http://github.com/giper-dev/balls/");
+			return obj;
+		}
+		Lights(){
+			const obj = new this.$.$mol_lights_toggle();
+			return obj;
+		}
+		Lines(){
+			const obj = new this.$.$gd_balls_lines();
+			(obj.tools) = () => ([...(this.$.$gd_balls_lines.prototype.tools.call(obj)), (this.Spread_close())]);
+			return obj;
+		}
+		Chess(){
+			const obj = new this.$.$gd_balls_chess_game();
+			(obj.tools) = () => ([...(this.$.$gd_balls_chess_game.prototype.tools.call(obj)), (this.Spread_close())]);
+			return obj;
+		}
+		menu_title(){
+			return (this.$.$mol_locale.text("$gd_balls_catalog_menu_title"));
+		}
+		plugins(){
+			return [(this.Theme())];
+		}
+		placeholders(){
+			return [];
+		}
+		pages(){
+			return [(this.Space()), ...(super.pages())];
+		}
+		menu_foot(){
+			return [
+				(this.Donate()), 
+				(this.Support()), 
+				(this.Source()), 
+				(this.Lights())
+			];
+		}
+		spreads(){
+			return {"lines": (this.Lines()), "chess": (this.Chess())};
+		}
+	};
+	($mol_mem(($.$gd_balls_catalog.prototype), "Theme"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Space"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Donate"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Support"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Source"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Lights"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Lines"));
+	($mol_mem(($.$gd_balls_catalog.prototype), "Chess"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    function $mol_offline() { }
+    $.$mol_offline = $mol_offline;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    try {
+        $mol_offline();
+    }
+    catch (error) {
+        console.error(error);
+    }
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("gd/balls/catalog/catalog.view.css", "[gd_balls_catalog_board] {\n\t-webkit-user-select: none;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n  touch-action: none;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { url, linear_gradient } = $mol_style_func;
+        $mol_style_define($gd_balls_catalog, {
+            background: {
+                size: ['cover'],
+                position: 'center',
+                image: [
+                    [linear_gradient($mol_theme.spirit)],
+                    [url('gd/balls/logo/back.jpg')],
+                ]
+            },
+        });
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
