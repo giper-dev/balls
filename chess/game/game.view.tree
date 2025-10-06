@@ -1,6 +1,7 @@
 $gd_balls_chess_game $gd_balls_game
 	title @ \Chess
 	State? $gd_balls_chess_state
+	last_coord? +NaN
 	mood_smiles /
 		\
 		\._.

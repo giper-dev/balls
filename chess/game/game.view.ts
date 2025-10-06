@@ -94,6 +94,7 @@ namespace $.$$ {
 			if( !ways.includes( step ) ) return
 			
 			this.State( this.State().move( step ) )
+			this.last_coord( $gd_balls_step_to( step ) )
 			
 		}
 		
@@ -129,8 +130,14 @@ namespace $.$$ {
 			const best = state.best()
 			if( !best.length ) return
 			
-			this.State( state.move( $mol_array_lottery( best ) ) )
+			const step = $mol_array_lottery( best )
+			this.State( state.move( step ) )
+			this.last_coord( $gd_balls_step_to( step ) )
 			
+		}
+		
+		ball_focus( id: [ number, number ] ) {
+			return this.last_coord() === $gd_balls_coord( ... id )
 		}
 		
 	}

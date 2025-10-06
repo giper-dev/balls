@@ -35,6 +35,12 @@ namespace $.$$ {
 			}]
 		},
 		
+		'[gd_balls_ball_focus]': {
+			true: {
+				outline: '1px solid var(--mol_theme_focus)',
+			}
+		},
+		
 		'[gd_balls_ball_state]': {
 			empty: {
 				scale: '0',

@@ -5,5 +5,6 @@ $gd_balls_ball $mol_view
 	active false
 	attr *
 		gd_balls_ball_state <= state \empty
+		gd_balls_ball_focus <= focus false
 	sub /
 		<= mood \x_x
