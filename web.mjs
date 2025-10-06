@@ -8747,6 +8747,10 @@ var $;
 
 ;
 	($.$gd_balls_game) = class $gd_balls_game extends ($.$mol_page) {
+		select(next){
+			if(next !== undefined) return next;
+			return null;
+		}
 		Share(){
 			const obj = new this.$.$mol_button_share();
 			return obj;
@@ -8883,6 +8887,9 @@ var $;
 			if(next !== undefined) return next;
 			return 0;
 		}
+		event(){
+			return {...(super.event()), "selectionchange": (next) => (this.select(next))};
+		}
 		head(){
 			return [
 				(this.Caption()), 
@@ -8894,6 +8901,7 @@ var $;
 			return [(this.Board())];
 		}
 	};
+	($mol_mem(($.$gd_balls_game.prototype), "select"));
 	($mol_mem(($.$gd_balls_game.prototype), "Share"));
 	($mol_mem(($.$gd_balls_game.prototype), "Caption"));
 	($mol_mem(($.$gd_balls_game.prototype), "restart"));
@@ -8941,6 +8949,9 @@ var $;
             }
             Score_pick() {
                 return this.Score(this.score());
+            }
+            select(event) {
+                event.preventDefault();
             }
         }
         __decorate([
