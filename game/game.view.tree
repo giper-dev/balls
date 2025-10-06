@@ -20,6 +20,9 @@ $gd_balls_game $mol_page
 		\=*__*=
 	active_cell? /number
 	score? 0
+	event *
+		^
+		selectionchange? <=> select? null
 	head /
 		<= Caption $mol_view sub /
 			<= Share $mol_button_share

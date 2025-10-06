@@ -24,5 +24,9 @@ namespace $.$$ {
 			return this.Score( this.score() )
 		}
 		
+		select( event: Event ) {
+			event.preventDefault()
+		}
+		
 	}
 }
