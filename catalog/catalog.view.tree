@@ -13,6 +13,10 @@ $gd_balls_catalog $mol_book2_catalog
 		<= Lights $mol_lights_toggle
 	spreads *
 		lines <= Lines $gd_balls_lines
-			tools / <= Spread_close
+			tools /
+				^
+				<= Spread_close
 		chess <= Chess $gd_balls_chess_game
-			tools / <= Spread_close
+			tools /
+				^
+				<= Spread_close

@@ -68,7 +68,7 @@ namespace $.$$ {
 			if( this.active_cell() ) this.ball_drop( this.active_cell() as any, event )
 			
 			const state = this.State()
-			if( state.side() ) return
+			if( this.autobot() && state.side() ) return
 			
 			const ways = state.movements()
 			const coord =  $gd_balls_coord( ... id )
@@ -104,6 +104,7 @@ namespace $.$$ {
 		
 		@ $mol_mem
 		thinking() {
+			if( !this.autobot() ) return
 			this.$.$mol_state_time.now(1)
 			const state = this.State()
 			for( const way of state.movements() ) {
@@ -111,8 +112,14 @@ namespace $.$$ {
 			}
 		}
 		
+		autobot( next?: boolean ) {
+			return this.$.$mol_state_arg.value( 'autobot', next?.toString() ) !== 'false'
+		}
+		
 		@ $mol_mem
-		autobot() {
+		autoboting() {
+			
+			if( !this.autobot() ) return
 			
 			const state = this.State()
 			if( !state.side() ) return

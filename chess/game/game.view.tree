@@ -9,6 +9,11 @@ $gd_balls_chess_game $gd_balls_game
 		\x_x
 		\*_*
 		\*.*
+	tools /
+		<= Autobot $mol_check_icon
+			hint @ \Autobot
+			Icon <= Autobot_icon $mol_icon_robot
+			checked? <=> autobot? true
 	auto /
 		<= thinking null
-		<= autobot null
+		<= autoboting null
