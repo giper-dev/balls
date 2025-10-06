@@ -544,3 +544,4 @@ $gd_balls_chess_game $gd_balls_game
 		\*.*
 	auto /
 		<= thinking null
+		<= autobot null

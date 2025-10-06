@@ -3277,7 +3277,7 @@ declare namespace $ {
         _estimation?: number;
         estimation(next?: number): number;
         side(next?: number): number;
-        think(): void;
+        think(i?: number): void;
         best(): number[];
         [$mol_dev_format_head](): any[];
         [$mol_dev_format_body](): any[];
@@ -3304,6 +3304,7 @@ declare namespace $ {
 
 	export class $gd_balls_chess_game extends $gd_balls_game {
 		thinking( ): any
+		autobot( ): any
 		title( ): string
 		State( next?: $gd_balls_chess_state ): $gd_balls_chess_state
 		mood_smiles( ): readonly(any)[]
@@ -3324,6 +3325,7 @@ declare namespace $.$$ {
         ball_drop(id: [number, number], event: PointerEvent): void;
         restart(): void;
         thinking(): void;
+        autobot(): void;
     }
 }
 

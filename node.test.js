@@ -9853,13 +9853,13 @@ var $;
         side(next = this[Size ** 2]) {
             return this[Size ** 2] = next;
         }
-        think() {
+        think(i = 0) {
             const ways = this.movements();
             if (!ways.length)
                 return;
             if (this.ways.size === ways.length) {
                 for (const way of this.best())
-                    this.move(way).think();
+                    this.move(way).think(i + 1);
             }
             let est = Number.NaN;
             for (const way of ways) {
@@ -9926,6 +9926,9 @@ var $;
 		thinking(){
 			return null;
 		}
+		autobot(){
+			return null;
+		}
 		title(){
 			return (this.$.$mol_locale.text("$gd_balls_chess_game_title"));
 		}
@@ -9946,7 +9949,7 @@ var $;
 			];
 		}
 		auto(){
-			return [(this.thinking())];
+			return [(this.thinking()), (this.autobot())];
 		}
 	};
 	($mol_mem(($.$gd_balls_chess_game.prototype), "State"));
@@ -10085,22 +10088,26 @@ var $;
                 if (!ways.includes(step))
                     return;
                 this.State(this.State().move(step));
-                this.$.$mol_wait_timeout(1000);
-                const state = this.State();
-                const best = state.best();
-                if (!best.length)
-                    return;
-                this.State(state.move($mol_array_lottery(best)));
             }
             restart() {
                 this.State(new $gd_balls_chess_state(super.State()));
             }
             thinking() {
-                this.$.$mol_state_time.now(0);
+                this.$.$mol_state_time.now(1);
                 const state = this.State();
                 for (const way of state.movements()) {
                     state.move(way).think();
                 }
+            }
+            autobot() {
+                const state = this.State();
+                if (!state.side())
+                    return;
+                this.$.$mol_wait_timeout(1000);
+                const best = state.best();
+                if (!best.length)
+                    return;
+                this.State(state.move($mol_array_lottery(best)));
             }
         }
         __decorate([
@@ -10127,6 +10134,9 @@ var $;
         __decorate([
             $mol_mem
         ], $gd_balls_chess_game.prototype, "thinking", null);
+        __decorate([
+            $mol_mem
+        ], $gd_balls_chess_game.prototype, "autobot", null);
         $$.$gd_balls_chess_game = $gd_balls_chess_game;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
