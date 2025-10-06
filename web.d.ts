@@ -3156,6 +3156,7 @@ declare namespace $ {
 		add_new( ): any
 		title( ): string
 		auto( ): readonly(any)[]
+		cell_start( next?: readonly(any)[] ): readonly(any)[]
 	}
 	
 }

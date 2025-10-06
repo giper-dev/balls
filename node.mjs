@@ -9311,7 +9311,12 @@ var $;
 		auto(){
 			return [(this.add_new())];
 		}
+		cell_start(next){
+			if(next !== undefined) return next;
+			return [];
+		}
 	};
+	($mol_mem(($.$gd_balls_lines.prototype), "cell_start"));
 
 
 ;
@@ -9420,13 +9425,14 @@ var $;
                 if (this.ball_kind(id) <= 0)
                     return;
                 this.cell_active(id, !this.cell_active(id));
+                this.cell_start(id);
             }
             ball_drop(id, event) {
                 const active = this.active_cell();
                 if (!active.length)
                     return;
                 this.active_cell([]);
-                if ($mol_compare_deep(active, id))
+                if ($mol_compare_deep(this.cell_start(), id))
                     return;
                 const win = this.check_lines(id) || this.check_lines(active);
                 if (!win)
