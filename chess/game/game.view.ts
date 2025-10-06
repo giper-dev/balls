@@ -95,14 +95,6 @@ namespace $.$$ {
 			
 			this.State( this.State().move( step ) )
 			
-			this.$.$mol_wait_timeout( 1000 )
-			
-			const state = this.State()
-			const best = state.best()
-			if( !best.length ) return
-			
-			this.State( state.move( $mol_array_lottery( best ) ) )
-			
 		}
 		
 		@ $mol_action
@@ -112,11 +104,26 @@ namespace $.$$ {
 		
 		@ $mol_mem
 		thinking() {
-			this.$.$mol_state_time.now(0)
+			this.$.$mol_state_time.now(1)
 			const state = this.State()
 			for( const way of state.movements() ) {
 				state.move( way ).think()
 			}
+		}
+		
+		@ $mol_mem
+		autobot() {
+			
+			const state = this.State()
+			if( !state.side() ) return
+			
+			this.$.$mol_wait_timeout( 1000 )
+			
+			const best = state.best()
+			if( !best.length ) return
+			
+			this.State( state.move( $mol_array_lottery( best ) ) )
+			
 		}
 		
 	}

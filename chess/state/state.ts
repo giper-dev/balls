@@ -135,13 +135,13 @@ namespace $ {
 			return this[ Size ** 2 ] = next
 		}
 
-		think() {
+		think(i=0) {
 			
 			const ways = this.movements()
 			if( !ways.length ) return
 			
 			if( this.ways.size === ways.length ) {
-				for( const way of this.best() ) this.move( way ).think()
+				for( const way of this.best() ) this.move( way ).think(i+1)
 			}
 			
 			let est = Number.NaN
