@@ -101,6 +101,7 @@ namespace $.$$ {
 		@ $mol_action
 		restart() {
 			this.State( new $gd_balls_chess_state( super.State() ) )
+			this.last_coord( Number.NaN )
 		}
 		
 		@ $mol_mem
