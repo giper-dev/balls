@@ -8,7 +8,7 @@ $gd_balls_catalog $mol_book2_catalog
 		^
 	menu_foot /
 		<= Donate $mol_link_donate uri \https://boosty.to/hyoo
-		<= Support $mol_link_support uri \https://t.me/giper-dev/118
+		<= Support $mol_link_support uri \https://t.me/giper_web/118
 		<= Source $mol_link_source uri \http://github.com/giper-dev/balls/
 		<= Lights $mol_lights_toggle
 	spreads *
