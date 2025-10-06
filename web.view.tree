@@ -526,9 +526,9 @@ $gd_balls_chess_game $gd_balls_game
 	last_coord? +NaN
 	mood_smiles /
 		\
-		\._.
+		\..
 		\+_+
-		\^o^
+		\^.^
 		\x_x
 		\*_*
 		\*.*
