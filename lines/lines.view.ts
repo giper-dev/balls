@@ -73,6 +73,7 @@ namespace $.$$ {
 			if( !active.length ) return
 			
 			this.active_cell([])
+			if( $mol_compare_deep( active, id ) ) return
 			
 			const win = this.check_lines( id ) || this.check_lines( active )
 			if( !win ) this.add_new( null )

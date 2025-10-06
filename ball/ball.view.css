@@ -1,5 +1,5 @@
 @keyframes gd_balls_ball_jumping {
-	to {
+	from {
 		scale: 120%;
 	}
 }
@@ -11,5 +11,5 @@
 } */
 
 [gd_balls_ball_state="active"] {
-	animation: gd_balls_ball_jumping .25s infinite ease-out alternate-reverse;
+	animation: gd_balls_ball_jumping .25s infinite ease-in alternate-reverse;
 }
