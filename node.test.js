@@ -9991,7 +9991,7 @@ var $;
                 return this.mood_smiles()[$gd_balls_chess_cell_kind(cell)];
             }
             ball_grab(id, event) {
-                ;
+                event.preventDefault();
                 event.target.releasePointerCapture(event.pointerId);
                 if (this.active_cell())
                     this.ball_drop(this.active_cell(), event);
