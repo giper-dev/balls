@@ -64,6 +64,7 @@ namespace $.$$ {
 			if( this.active_cell() ) this.ball_drop( this.active_cell() as any, event )
 			if( this.ball_kind( id ) <= 0 ) return
 			this.cell_active( id, ! this.cell_active( id ) )
+			this.cell_start( id )
 		}
 		
 		@ $mol_action
@@ -73,7 +74,7 @@ namespace $.$$ {
 			if( !active.length ) return
 			
 			this.active_cell([])
-			if( $mol_compare_deep( active, id ) ) return
+			if( $mol_compare_deep( this.cell_start(), id ) ) return
 			
 			const win = this.check_lines( id ) || this.check_lines( active )
 			if( !win ) this.add_new( null )
