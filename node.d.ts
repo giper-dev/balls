@@ -3349,6 +3349,15 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+
+	export class $mol_icon_robot extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=robot.view.tree.d.ts.map
+declare namespace $ {
     const $gd_balls_vector: (hor: number, ver: number) => number;
     const $gd_balls_vector_hor: (vec: number) => number;
     const $gd_balls_vector_vert: (vec: number) => number;
@@ -3414,12 +3423,31 @@ declare namespace $ {
 
 declare namespace $ {
 
+	type $mol_check_icon__hint_gd_balls_chess_game_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_check_icon['hint'] >
+	>
+	type $mol_check_icon__Icon_gd_balls_chess_game_2 = $mol_type_enforce<
+		ReturnType< $gd_balls_chess_game['Autobot_icon'] >
+		,
+		ReturnType< $mol_check_icon['Icon'] >
+	>
+	type $mol_check_icon__checked_gd_balls_chess_game_3 = $mol_type_enforce<
+		ReturnType< $gd_balls_chess_game['autobot'] >
+		,
+		ReturnType< $mol_check_icon['checked'] >
+	>
 	export class $gd_balls_chess_game extends $gd_balls_game {
+		Autobot_icon( ): $mol_icon_robot
+		autobot( next?: boolean ): boolean
+		Autobot( ): $mol_check_icon
 		thinking( ): any
-		autobot( ): any
+		autoboting( ): any
 		title( ): string
 		State( next?: $gd_balls_chess_state ): $gd_balls_chess_state
 		mood_smiles( ): readonly(any)[]
+		tools( ): readonly(any)[]
 		auto( ): readonly(any)[]
 	}
 	
@@ -3437,7 +3465,8 @@ declare namespace $.$$ {
         ball_drop(id: [number, number], event: PointerEvent): void;
         restart(): void;
         thinking(): void;
-        autobot(): void;
+        autobot(next?: boolean): boolean;
+        autoboting(): void;
     }
 }
 

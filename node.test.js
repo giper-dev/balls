@@ -8635,12 +8635,12 @@ var $;
 		}
 		Lines(){
 			const obj = new this.$.$gd_balls_lines();
-			(obj.tools) = () => ([(this.Spread_close())]);
+			(obj.tools) = () => ([...(this.$.$gd_balls_lines.prototype.tools.call(obj)), (this.Spread_close())]);
 			return obj;
 		}
 		Chess(){
 			const obj = new this.$.$gd_balls_chess_game();
-			(obj.tools) = () => ([(this.Spread_close())]);
+			(obj.tools) = () => ([...(this.$.$gd_balls_chess_game.prototype.tools.call(obj)), (this.Spread_close())]);
 			return obj;
 		}
 		menu_title(){
@@ -9685,6 +9685,17 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$mol_icon_robot) = class $mol_icon_robot extends ($.$mol_icon) {
+		path(){
+			return "M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7H14A7,7 0 0,1 21,14H22A1,1 0 0,1 23,15V18A1,1 0 0,1 22,19H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V19H2A1,1 0 0,1 1,18V15A1,1 0 0,1 2,14H3A7,7 0 0,1 10,7H11V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M7.5,13A2.5,2.5 0 0,0 5,15.5A2.5,2.5 0 0,0 7.5,18A2.5,2.5 0 0,0 10,15.5A2.5,2.5 0 0,0 7.5,13M16.5,13A2.5,2.5 0 0,0 14,15.5A2.5,2.5 0 0,0 16.5,18A2.5,2.5 0 0,0 19,15.5A2.5,2.5 0 0,0 16.5,13Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
 "use strict";
 var $;
 (function ($) {
@@ -9927,10 +9938,25 @@ var $;
 
 ;
 	($.$gd_balls_chess_game) = class $gd_balls_chess_game extends ($.$gd_balls_game) {
+		Autobot_icon(){
+			const obj = new this.$.$mol_icon_robot();
+			return obj;
+		}
+		autobot(next){
+			if(next !== undefined) return next;
+			return true;
+		}
+		Autobot(){
+			const obj = new this.$.$mol_check_icon();
+			(obj.hint) = () => ((this.$.$mol_locale.text("$gd_balls_chess_game_Autobot_hint")));
+			(obj.Icon) = () => ((this.Autobot_icon()));
+			(obj.checked) = (next) => ((this.autobot(next)));
+			return obj;
+		}
 		thinking(){
 			return null;
 		}
-		autobot(){
+		autoboting(){
 			return null;
 		}
 		title(){
@@ -9952,10 +9978,16 @@ var $;
 				"*.*"
 			];
 		}
+		tools(){
+			return [(this.Autobot())];
+		}
 		auto(){
-			return [(this.thinking()), (this.autobot())];
+			return [(this.thinking()), (this.autoboting())];
 		}
 	};
+	($mol_mem(($.$gd_balls_chess_game.prototype), "Autobot_icon"));
+	($mol_mem(($.$gd_balls_chess_game.prototype), "autobot"));
+	($mol_mem(($.$gd_balls_chess_game.prototype), "Autobot"));
 	($mol_mem(($.$gd_balls_chess_game.prototype), "State"));
 
 
@@ -10070,7 +10102,7 @@ var $;
                 if (this.active_cell())
                     this.ball_drop(this.active_cell(), event);
                 const state = this.State();
-                if (state.side())
+                if (this.autobot() && state.side())
                     return;
                 const ways = state.movements();
                 const coord = $gd_balls_coord(...id);
@@ -10097,13 +10129,20 @@ var $;
                 this.State(new $gd_balls_chess_state(super.State()));
             }
             thinking() {
+                if (!this.autobot())
+                    return;
                 this.$.$mol_state_time.now(1);
                 const state = this.State();
                 for (const way of state.movements()) {
                     state.move(way).think();
                 }
             }
-            autobot() {
+            autobot(next) {
+                return this.$.$mol_state_arg.value('autobot', next?.toString()) !== 'false';
+            }
+            autoboting() {
+                if (!this.autobot())
+                    return;
                 const state = this.State();
                 if (!state.side())
                     return;
@@ -10140,7 +10179,7 @@ var $;
         ], $gd_balls_chess_game.prototype, "thinking", null);
         __decorate([
             $mol_mem
-        ], $gd_balls_chess_game.prototype, "autobot", null);
+        ], $gd_balls_chess_game.prototype, "autoboting", null);
         $$.$gd_balls_chess_game = $gd_balls_chess_game;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
