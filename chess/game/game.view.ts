@@ -63,7 +63,6 @@ namespace $.$$ {
 		@ $mol_action
 		ball_grab( id: [ number, number ], event: PointerEvent ) {
 			
-			event.preventDefault()
 			;( event.target! as Element ).releasePointerCapture(event.pointerId)
 			
 			if( this.active_cell() ) this.ball_drop( this.active_cell() as any, event )
