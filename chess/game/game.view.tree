@@ -13,7 +13,7 @@ $gd_balls_chess_game $gd_balls_game
 	tools /
 		<= Autobot $mol_check_icon
 			hint @ \Autobot
-			Icon <= Autobot_icon $mol_icon_robot
+			Icon <= Autobot_icon $mol_icon_brain
 			checked? <=> autobot? true
 	auto /
 		<= thinking null
