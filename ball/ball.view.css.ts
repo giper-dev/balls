@@ -37,7 +37,7 @@ namespace $.$$ {
 		
 		'[gd_balls_ball_focus]': {
 			true: {
-				outline: '1px solid var(--mol_theme_focus)',
+				outline: '2px solid oklch( 0.3 0.3 210 )',
 			}
 		},
 		
