@@ -9192,6 +9192,7 @@ var $;
 		Cell(id){
 			const obj = new this.$.$mol_stack();
 			(obj.event) = () => ({
+				"touchstart": (next) => (this.select(next)), 
 				"pointerdown": (next) => (this.ball_grab(id, next)), 
 				"pointerenter": (next) => (this.ball_move(id, next)), 
 				"pointerup": (next) => (this.ball_drop(id, next))
@@ -10125,7 +10126,7 @@ var $;
                 return this.mood_smiles()[$gd_balls_chess_cell_kind(cell)];
             }
             ball_grab(id, event) {
-                ;
+                event.preventDefault();
                 event.target.releasePointerCapture(event.pointerId);
                 if (this.active_cell())
                     this.ball_drop(this.active_cell(), event);

@@ -3227,6 +3227,7 @@ declare namespace $ {
 	>
 	type $mol_stack__event_gd_balls_game_12 = $mol_type_enforce<
 		({ 
+			touchstart( next?: ReturnType< $gd_balls_game['select'] > ): ReturnType< $gd_balls_game['select'] >,
 			pointerdown( next?: ReturnType< $gd_balls_game['ball_grab'] > ): ReturnType< $gd_balls_game['ball_grab'] >,
 			pointerenter( next?: ReturnType< $gd_balls_game['ball_move'] > ): ReturnType< $gd_balls_game['ball_move'] >,
 			pointerup( next?: ReturnType< $gd_balls_game['ball_drop'] > ): ReturnType< $gd_balls_game['ball_drop'] >,
