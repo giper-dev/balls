@@ -8920,7 +8920,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("gd/balls/ball/ball.view.css", "@keyframes gd_balls_ball_jumping {\n\tto {\n\t\tscale: 120%;\n\t}\n}\n/* \n[gd_balls_ball] {\n\t@starting-style {\n\t\ttransform: scale3d(0, 0, 0);\n\t}\n} */\n\n[gd_balls_ball_state=\"active\"] {\n\tanimation: gd_balls_ball_jumping .25s infinite ease-out alternate-reverse;\n}\n");
+    $mol_style_attach("gd/balls/ball/ball.view.css", "@keyframes gd_balls_ball_jumping {\n\tfrom {\n\t\tscale: 120%;\n\t}\n}\n/* \n[gd_balls_ball] {\n\t@starting-style {\n\t\ttransform: scale3d(0, 0, 0);\n\t}\n} */\n\n[gd_balls_ball_state=\"active\"] {\n\tanimation: gd_balls_ball_jumping .25s infinite ease-in alternate-reverse;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -9426,6 +9426,8 @@ var $;
                 if (!active.length)
                     return;
                 this.active_cell([]);
+                if ($mol_compare_deep(active, id))
+                    return;
                 const win = this.check_lines(id) || this.check_lines(active);
                 if (!win)
                     this.add_new(null);
