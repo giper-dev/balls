@@ -20,6 +20,9 @@ $gd_balls_game $mol_page
 		\=*__*=
 	active_cell? /number
 	score? 0
+	event *
+		^
+		selectionchange? <=> select? null
 	head /
 		<= Caption $mol_view sub /
 			<= Share $mol_button_share
@@ -38,6 +41,7 @@ $gd_balls_game $mol_page
 			<= Row*0 $mol_view sub <= cells* /
 				<= Cell*0 $mol_stack
 					event *
+						touchstart? <=> select? null
 						pointerdown? <=> ball_grab*? null
 						pointerenter? <=> ball_move*? null
 						pointerup? <=> ball_drop*? null
