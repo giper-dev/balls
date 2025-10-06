@@ -8600,6 +8600,9 @@ var $;
 		state(){
 			return "empty";
 		}
+		focus(){
+			return false;
+		}
 		mood(){
 			return "x_x";
 		}
@@ -8616,7 +8619,7 @@ var $;
 			return false;
 		}
 		attr(){
-			return {"gd_balls_ball_state": (this.state())};
+			return {"gd_balls_ball_state": (this.state()), "gd_balls_ball_focus": (this.focus())};
 		}
 		sub(){
 			return [(this.mood())];
@@ -8703,6 +8706,11 @@ var $;
                         spread: 0,
                         color: $mol_style_func.hsla(0, 0, 0, .5),
                     }]
+            },
+            '[gd_balls_ball_focus]': {
+                true: {
+                    outline: '1px solid var(--mol_theme_focus)',
+                }
             },
             '[gd_balls_ball_state]': {
                 empty: {
@@ -8802,12 +8810,16 @@ var $;
 			if(next !== undefined) return next;
 			return false;
 		}
+		ball_focus(id){
+			return false;
+		}
 		Ball(id){
 			const obj = new this.$.$gd_balls_ball();
 			(obj.kind) = () => ((this.ball_kind(id)));
 			(obj.mood) = () => ((this.ball_mood(id)));
 			(obj.active) = () => ((this.cell_active(id)));
 			(obj.colors) = () => ((this.colors()));
+			(obj.focus) = () => ((this.ball_focus(id)));
 			return obj;
 		}
 		Cell(id){
@@ -9604,6 +9616,10 @@ var $;
 			const obj = new this.$.$gd_balls_chess_state();
 			return obj;
 		}
+		last_coord(next){
+			if(next !== undefined) return next;
+			return +NaN;
+		}
 		mood_smiles(){
 			return [
 				"", 
@@ -9626,6 +9642,7 @@ var $;
 	($mol_mem(($.$gd_balls_chess_game.prototype), "autobot"));
 	($mol_mem(($.$gd_balls_chess_game.prototype), "Autobot"));
 	($mol_mem(($.$gd_balls_chess_game.prototype), "State"));
+	($mol_mem(($.$gd_balls_chess_game.prototype), "last_coord"));
 
 
 ;
@@ -9766,6 +9783,7 @@ var $;
                 if (!ways.includes(step))
                     return;
                 this.State(this.State().move(step));
+                this.last_coord($gd_balls_step_to(step));
             }
             restart() {
                 this.State(new $gd_balls_chess_state(super.State()));
@@ -9792,7 +9810,12 @@ var $;
                 const best = state.best();
                 if (!best.length)
                     return;
-                this.State(state.move($mol_array_lottery(best)));
+                const step = $mol_array_lottery(best);
+                this.State(state.move(step));
+                this.last_coord($gd_balls_step_to(step));
+            }
+            ball_focus(id) {
+                return this.last_coord() === $gd_balls_coord(...id);
             }
         }
         __decorate([

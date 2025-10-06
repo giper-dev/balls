@@ -3125,6 +3125,7 @@ declare namespace $ {
 	export class $gd_balls_ball extends $mol_view {
 		image( ): string
 		state( ): string
+		focus( ): boolean
 		mood( ): string
 		kind( ): number
 		colors( ): readonly(string)[]
@@ -3134,6 +3135,7 @@ declare namespace $ {
 		active( ): boolean
 		attr( ): ({ 
 			'gd_balls_ball_state': ReturnType< $gd_balls_ball['state'] >,
+			'gd_balls_ball_focus': ReturnType< $gd_balls_ball['focus'] >,
 		}) 
 		sub( ): readonly(any)[]
 	}
@@ -3218,7 +3220,12 @@ declare namespace $ {
 		,
 		ReturnType< $gd_balls_ball['colors'] >
 	>
-	type $mol_stack__event_gd_balls_game_11 = $mol_type_enforce<
+	type $gd_balls_ball__focus_gd_balls_game_11 = $mol_type_enforce<
+		ReturnType< $gd_balls_game['ball_focus'] >
+		,
+		ReturnType< $gd_balls_ball['focus'] >
+	>
+	type $mol_stack__event_gd_balls_game_12 = $mol_type_enforce<
 		({ 
 			pointerdown( next?: ReturnType< $gd_balls_game['ball_grab'] > ): ReturnType< $gd_balls_game['ball_grab'] >,
 			pointerenter( next?: ReturnType< $gd_balls_game['ball_move'] > ): ReturnType< $gd_balls_game['ball_move'] >,
@@ -3227,17 +3234,17 @@ declare namespace $ {
 		,
 		ReturnType< $mol_stack['event'] >
 	>
-	type $mol_stack__sub_gd_balls_game_12 = $mol_type_enforce<
+	type $mol_stack__sub_gd_balls_game_13 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_stack['sub'] >
 	>
-	type $mol_view__sub_gd_balls_game_13 = $mol_type_enforce<
+	type $mol_view__sub_gd_balls_game_14 = $mol_type_enforce<
 		ReturnType< $gd_balls_game['cells'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_gd_balls_game_14 = $mol_type_enforce<
+	type $mol_view__sub_gd_balls_game_15 = $mol_type_enforce<
 		ReturnType< $gd_balls_game['rows'] >
 		,
 		ReturnType< $mol_view['sub'] >
@@ -3258,6 +3265,7 @@ declare namespace $ {
 		ball_kind( id: any, next?: number ): number
 		ball_mood( id: any): string
 		cell_active( id: any, next?: boolean ): boolean
+		ball_focus( id: any): boolean
 		Ball( id: any): $gd_balls_ball
 		Cell( id: any): $mol_stack
 		cells( id: any): readonly(any)[]
@@ -3446,6 +3454,7 @@ declare namespace $ {
 		autoboting( ): any
 		title( ): string
 		State( next?: $gd_balls_chess_state ): $gd_balls_chess_state
+		last_coord( next?: number ): number
 		mood_smiles( ): readonly(any)[]
 		tools( ): readonly(any)[]
 		auto( ): readonly(any)[]
@@ -3467,6 +3476,7 @@ declare namespace $.$$ {
         thinking(): void;
         autobot(next?: boolean): boolean;
         autoboting(): void;
+        ball_focus(id: [number, number]): boolean;
     }
 }
 

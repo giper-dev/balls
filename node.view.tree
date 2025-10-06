@@ -475,6 +475,7 @@ $gd_balls_ball $mol_view
 	active false
 	attr *
 		gd_balls_ball_state <= state \empty
+		gd_balls_ball_focus <= focus false
 	sub /
 		<= mood \x_x
 
@@ -529,6 +530,7 @@ $gd_balls_game $mol_page
 							mood <= ball_mood* \
 							active <= cell_active*? false
 							colors <= colors
+							focus <= ball_focus* false
 
 $gd_balls_lines $gd_balls_game
 	title @ \Lines
@@ -540,6 +542,7 @@ $mol_icon_robot $mol_icon path \M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7
 $gd_balls_chess_game $gd_balls_game
 	title @ \Chess
 	State? $gd_balls_chess_state
+	last_coord? +NaN
 	mood_smiles /
 		\
 		\._.
