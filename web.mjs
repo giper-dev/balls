@@ -9458,7 +9458,7 @@ var $;
 var $;
 (function ($) {
     function $mol_base64_encode(src) {
-        throw new Error('Not implemented');
+        return src.toBase64();
     }
     $.$mol_base64_encode = $mol_base64_encode;
 })($ || ($ = {}));
@@ -9482,7 +9482,9 @@ var $;
         return $mol_dom_context.btoa(binary_string(str));
     }
     $.$mol_base64_encode_web = $mol_base64_encode_web;
-    $.$mol_base64_encode = $mol_base64_encode_web;
+    if (!('toBase64' in Uint8Array.prototype)) {
+        $.$mol_base64_encode = $mol_base64_encode_web;
+    }
 })($ || ($ = {}));
 
 ;
@@ -9490,7 +9492,7 @@ var $;
 var $;
 (function ($) {
     function $mol_base64_decode(base64) {
-        throw new Error('Not implemented');
+        return Uint8Array.fromBase64(base64);
     }
     $.$mol_base64_decode = $mol_base64_decode;
 })($ || ($ = {}));
@@ -9500,10 +9502,13 @@ var $;
 var $;
 (function ($) {
     function $mol_base64_decode_web(base64Str) {
-        return new Uint8Array($mol_dom_context.atob(base64Str).split('').map(c => c.charCodeAt(0)));
+        const buf = Uint8Array.from($mol_dom_context.atob(base64Str), c => c.charCodeAt(0));
+        return buf;
     }
     $.$mol_base64_decode_web = $mol_base64_decode_web;
-    $.$mol_base64_decode = $mol_base64_decode_web;
+    if (!('fromBase64' in Uint8Array)) {
+        $.$mol_base64_decode = $mol_base64_decode_web;
+    }
 })($ || ($ = {}));
 
 ;

@@ -9924,7 +9924,7 @@ var $;
 var $;
 (function ($) {
     function $mol_base64_encode(src) {
-        throw new Error('Not implemented');
+        return src.toBase64();
     }
     $.$mol_base64_encode = $mol_base64_encode;
 })($ || ($ = {}));
@@ -9936,12 +9936,13 @@ var $;
     function $mol_base64_encode_node(str) {
         if (!str)
             return '';
-        if (Buffer.isBuffer(str))
-            return str.toString('base64');
-        return Buffer.from(str).toString('base64');
+        const buf = Buffer.isBuffer(str) ? str : Buffer.from(str);
+        return buf.toString('base64');
     }
     $.$mol_base64_encode_node = $mol_base64_encode_node;
-    $.$mol_base64_encode = $mol_base64_encode_node;
+    if (!('toBase64' in Uint8Array.prototype)) {
+        $.$mol_base64_encode = $mol_base64_encode_node;
+    }
 })($ || ($ = {}));
 
 ;
@@ -9949,7 +9950,7 @@ var $;
 var $;
 (function ($) {
     function $mol_base64_decode(base64) {
-        throw new Error('Not implemented');
+        return Uint8Array.fromBase64(base64);
     }
     $.$mol_base64_decode = $mol_base64_decode;
 })($ || ($ = {}));
@@ -9959,12 +9960,13 @@ var $;
 var $;
 (function ($) {
     function $mol_base64_decode_node(base64Str) {
-        base64Str = base64Str.replace(/-/g, '+').replace(/_/g, '/');
         const buffer = Buffer.from(base64Str, 'base64');
         return new Uint8Array(buffer.buffer, buffer.byteOffset, buffer.byteLength);
     }
     $.$mol_base64_decode_node = $mol_base64_decode_node;
-    $.$mol_base64_decode = $mol_base64_decode_node;
+    if (!('fromBase64' in Uint8Array)) {
+        $.$mol_base64_decode = $mol_base64_decode_node;
+    }
 })($ || ($ = {}));
 
 ;
