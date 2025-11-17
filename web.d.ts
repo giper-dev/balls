@@ -2748,7 +2748,7 @@ declare namespace $ {
 }
 
 declare namespace $.$$ {
-    class $gd_web_frame extends $.$gd_web_frame {
+    class $giper_web_frame extends $.$giper_web_frame {
         uri(): string;
     }
 }
@@ -2758,7 +2758,7 @@ declare namespace $ {
 
 declare namespace $ {
 
-	export class $gd_web_frame extends $mol_frame {
+	export class $giper_web_frame extends $mol_frame {
 		uri( ): string
 		query( ): string
 	}
@@ -3011,7 +3011,7 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	export class $gd_balls_ball extends $mol_view {
+	export class $giper_balls_ball extends $mol_view {
 		image( ): string
 		state( ): string
 		focus( ): boolean
@@ -3019,12 +3019,12 @@ declare namespace $ {
 		kind( ): number
 		colors( ): readonly(string)[]
 		style( ): ({ 
-			'background-image': ReturnType< $gd_balls_ball['image'] >,
+			'background-image': ReturnType< $giper_balls_ball['image'] >,
 		}) 
 		active( ): boolean
 		attr( ): ({ 
-			'gd_balls_ball_state': ReturnType< $gd_balls_ball['state'] >,
-			'gd_balls_ball_focus': ReturnType< $gd_balls_ball['focus'] >,
+			'giper_balls_ball_state': ReturnType< $giper_balls_ball['state'] >,
+			'giper_balls_ball_focus': ReturnType< $giper_balls_ball['focus'] >,
 		}) 
 		sub( ): readonly(any)[]
 	}
@@ -3033,7 +3033,7 @@ declare namespace $ {
 
 //# sourceMappingURL=ball.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $gd_balls_ball extends $.$gd_balls_ball {
+    class $giper_balls_ball extends $.$giper_balls_ball {
         color(): string;
         state(): "empty" | "ghost" | "active" | "alve";
         image(): string;
@@ -3059,87 +3059,87 @@ declare namespace $ {
 //# sourceMappingURL=stack.view.tree.d.ts.map
 declare namespace $ {
 
-	type $mol_view__sub_gd_balls_game_1 = $mol_type_enforce<
+	type $mol_view__sub_giper_balls_game_1 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_button_minor__hint_gd_balls_game_2 = $mol_type_enforce<
+	type $mol_button_minor__hint_giper_balls_game_2 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_minor['hint'] >
 	>
-	type $mol_button_minor__click_gd_balls_game_3 = $mol_type_enforce<
-		ReturnType< $gd_balls_game['restart'] >
+	type $mol_button_minor__click_giper_balls_game_3 = $mol_type_enforce<
+		ReturnType< $giper_balls_game['restart'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_button_minor__sub_gd_balls_game_4 = $mol_type_enforce<
+	type $mol_button_minor__sub_giper_balls_game_4 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_button_minor['sub'] >
 	>
-	type $mol_chip__sub_gd_balls_game_5 = $mol_type_enforce<
+	type $mol_chip__sub_giper_balls_game_5 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_chip['sub'] >
 	>
-	type $mol_view__sub_gd_balls_game_6 = $mol_type_enforce<
+	type $mol_view__sub_giper_balls_game_6 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $gd_balls_ball__kind_gd_balls_game_7 = $mol_type_enforce<
-		ReturnType< $gd_balls_game['ball_kind'] >
+	type $giper_balls_ball__kind_giper_balls_game_7 = $mol_type_enforce<
+		ReturnType< $giper_balls_game['ball_kind'] >
 		,
-		ReturnType< $gd_balls_ball['kind'] >
+		ReturnType< $giper_balls_ball['kind'] >
 	>
-	type $gd_balls_ball__mood_gd_balls_game_8 = $mol_type_enforce<
-		ReturnType< $gd_balls_game['ball_mood'] >
+	type $giper_balls_ball__mood_giper_balls_game_8 = $mol_type_enforce<
+		ReturnType< $giper_balls_game['ball_mood'] >
 		,
-		ReturnType< $gd_balls_ball['mood'] >
+		ReturnType< $giper_balls_ball['mood'] >
 	>
-	type $gd_balls_ball__active_gd_balls_game_9 = $mol_type_enforce<
-		ReturnType< $gd_balls_game['cell_active'] >
+	type $giper_balls_ball__active_giper_balls_game_9 = $mol_type_enforce<
+		ReturnType< $giper_balls_game['cell_active'] >
 		,
-		ReturnType< $gd_balls_ball['active'] >
+		ReturnType< $giper_balls_ball['active'] >
 	>
-	type $gd_balls_ball__colors_gd_balls_game_10 = $mol_type_enforce<
-		ReturnType< $gd_balls_game['colors'] >
+	type $giper_balls_ball__colors_giper_balls_game_10 = $mol_type_enforce<
+		ReturnType< $giper_balls_game['colors'] >
 		,
-		ReturnType< $gd_balls_ball['colors'] >
+		ReturnType< $giper_balls_ball['colors'] >
 	>
-	type $gd_balls_ball__focus_gd_balls_game_11 = $mol_type_enforce<
-		ReturnType< $gd_balls_game['ball_focus'] >
+	type $giper_balls_ball__focus_giper_balls_game_11 = $mol_type_enforce<
+		ReturnType< $giper_balls_game['ball_focus'] >
 		,
-		ReturnType< $gd_balls_ball['focus'] >
+		ReturnType< $giper_balls_ball['focus'] >
 	>
-	type $mol_stack__event_gd_balls_game_12 = $mol_type_enforce<
+	type $mol_stack__event_giper_balls_game_12 = $mol_type_enforce<
 		({ 
-			touchstart( next?: ReturnType< $gd_balls_game['select'] > ): ReturnType< $gd_balls_game['select'] >,
-			pointerdown( next?: ReturnType< $gd_balls_game['ball_grab'] > ): ReturnType< $gd_balls_game['ball_grab'] >,
-			pointerenter( next?: ReturnType< $gd_balls_game['ball_move'] > ): ReturnType< $gd_balls_game['ball_move'] >,
-			pointerup( next?: ReturnType< $gd_balls_game['ball_drop'] > ): ReturnType< $gd_balls_game['ball_drop'] >,
+			touchstart( next?: ReturnType< $giper_balls_game['select'] > ): ReturnType< $giper_balls_game['select'] >,
+			pointerdown( next?: ReturnType< $giper_balls_game['ball_grab'] > ): ReturnType< $giper_balls_game['ball_grab'] >,
+			pointerenter( next?: ReturnType< $giper_balls_game['ball_move'] > ): ReturnType< $giper_balls_game['ball_move'] >,
+			pointerup( next?: ReturnType< $giper_balls_game['ball_drop'] > ): ReturnType< $giper_balls_game['ball_drop'] >,
 		}) 
 		,
 		ReturnType< $mol_stack['event'] >
 	>
-	type $mol_stack__sub_gd_balls_game_13 = $mol_type_enforce<
+	type $mol_stack__sub_giper_balls_game_13 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_stack['sub'] >
 	>
-	type $mol_view__sub_gd_balls_game_14 = $mol_type_enforce<
-		ReturnType< $gd_balls_game['cells'] >
+	type $mol_view__sub_giper_balls_game_14 = $mol_type_enforce<
+		ReturnType< $giper_balls_game['cells'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_gd_balls_game_15 = $mol_type_enforce<
-		ReturnType< $gd_balls_game['rows'] >
+	type $mol_view__sub_giper_balls_game_15 = $mol_type_enforce<
+		ReturnType< $giper_balls_game['rows'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	export class $gd_balls_game extends $mol_page {
+	export class $giper_balls_game extends $mol_page {
 		select( next?: any ): any
 		Share( ): $mol_button_share
 		Caption( ): $mol_view
@@ -3148,7 +3148,7 @@ declare namespace $ {
 		Restart( ): $mol_button_minor
 		score_text( ): string
 		Score( id: any): $mol_chip
-		Score_pick( ): ReturnType< $gd_balls_game['Score'] >
+		Score_pick( ): ReturnType< $giper_balls_game['Score'] >
 		Main( ): $mol_view
 		ball_grab( id: any, next?: any ): any
 		ball_move( id: any, next?: any ): any
@@ -3157,7 +3157,7 @@ declare namespace $ {
 		ball_mood( id: any): string
 		cell_active( id: any, next?: boolean ): boolean
 		ball_focus( id: any): boolean
-		Ball( id: any): $gd_balls_ball
+		Ball( id: any): $giper_balls_ball
 		Cell( id: any): $mol_stack
 		cells( id: any): readonly(any)[]
 		Row( id: any): $mol_view
@@ -3169,7 +3169,7 @@ declare namespace $ {
 		active_cell( next?: readonly(number)[] ): readonly(number)[]
 		score( next?: number ): number
 		event( ): ({ 
-			selectionchange( next?: ReturnType< $gd_balls_game['select'] > ): ReturnType< $gd_balls_game['select'] >,
+			selectionchange( next?: ReturnType< $giper_balls_game['select'] > ): ReturnType< $giper_balls_game['select'] >,
 		})  & ReturnType< $mol_page['event'] >
 		head( ): readonly(any)[]
 		body_content( ): readonly(any)[]
@@ -3179,7 +3179,7 @@ declare namespace $ {
 
 //# sourceMappingURL=game.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $gd_balls_game extends $.$gd_balls_game {
+    class $giper_balls_game extends $.$giper_balls_game {
         rows(): $mol_view[];
         cells(row: number): $mol_stack[];
         cell_active(id: [number, number], next?: boolean): boolean;
@@ -3210,7 +3210,7 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    function $gd_balls_near(left: [number, number], right: [number, number]): boolean;
+    function $giper_balls_near(left: [number, number], right: [number, number]): boolean;
 }
 
 declare namespace $ {
@@ -3219,7 +3219,7 @@ declare namespace $ {
 
 declare namespace $ {
 
-	export class $gd_balls_lines extends $gd_balls_game {
+	export class $giper_balls_lines extends $giper_balls_game {
 		add_new( ): any
 		title( ): string
 		auto( ): readonly(any)[]
@@ -3235,7 +3235,7 @@ declare namespace $.$$ {
         score_max: number;
         kinds: readonly number[];
     }>;
-    export class $gd_balls_lines extends $.$gd_balls_lines {
+    export class $giper_balls_lines extends $.$giper_balls_lines {
         snapshot(next?: Snapshot): Snapshot;
         ball_kind(id: [number, number], next?: number): number;
         ball_mood([row, col]: [number, number]): any;
@@ -3262,43 +3262,43 @@ declare namespace $ {
 
 //# sourceMappingURL=brain.view.tree.d.ts.map
 declare namespace $ {
-    const $gd_balls_vector: (hor: number, ver: number) => number;
-    const $gd_balls_vector_hor: (vec: number) => number;
-    const $gd_balls_vector_vert: (vec: number) => number;
+    const $giper_balls_vector: (hor: number, ver: number) => number;
+    const $giper_balls_vector_hor: (vec: number) => number;
+    const $giper_balls_vector_vert: (vec: number) => number;
 }
 
 declare namespace $ {
-    const $gd_balls_chess_rules: number[][][];
+    const $giper_balls_chess_rules: number[][][];
 }
 
 declare namespace $ {
-    const $gd_balls_coord: (row: number, col: number) => number;
-    const $gd_balls_coord_row: (pos: number) => number;
-    const $gd_balls_coord_col: (pos: number) => number;
-    const $gd_balls_coord_str: (pos: number) => string;
-    const $gd_balls_coord_parse: (str: string) => number;
+    const $giper_balls_coord: (row: number, col: number) => number;
+    const $giper_balls_coord_row: (pos: number) => number;
+    const $giper_balls_coord_col: (pos: number) => number;
+    const $giper_balls_coord_str: (pos: number) => string;
+    const $giper_balls_coord_parse: (str: string) => number;
 }
 
 declare namespace $ {
-    const $gd_balls_step: (from: number, to: number) => number;
-    const $gd_balls_step_from: (pos: number) => number;
-    const $gd_balls_step_to: (pos: number) => number;
-    const $gd_balls_step_str: (step: number) => string;
-    const $gd_balls_step_parse: (str: string) => number;
+    const $giper_balls_step: (from: number, to: number) => number;
+    const $giper_balls_step_from: (pos: number) => number;
+    const $giper_balls_step_to: (pos: number) => number;
+    const $giper_balls_step_str: (step: number) => string;
+    const $giper_balls_step_parse: (str: string) => number;
 }
 
 declare namespace $ {
-    const $gd_balls_chess_cell_side: (cell: number) => number;
-    const $gd_balls_chess_cell_invert: (cell: number) => number;
-    const $gd_balls_chess_cell_kind: (cell: number) => number;
-    class $gd_balls_chess_state extends Uint8Array {
+    const $giper_balls_chess_cell_side: (cell: number) => number;
+    const $giper_balls_chess_cell_invert: (cell: number) => number;
+    const $giper_balls_chess_cell_kind: (cell: number) => number;
+    class $giper_balls_chess_state extends Uint8Array {
         constructor(array?: ArrayLike<number> | ArrayBuffer);
-        ways: Map<number, $gd_balls_chess_state>;
+        ways: Map<number, $giper_balls_chess_state>;
         ballance(): number;
         score(): number;
         movements(): number[];
-        flip(): $gd_balls_chess_state;
-        move(step: number): $gd_balls_chess_state;
+        flip(): $giper_balls_chess_state;
+        move(step: number): $giper_balls_chess_state;
         _estimation?: number;
         estimation(next?: number): number;
         side(next?: number): number;
@@ -3327,29 +3327,29 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_check_icon__hint_gd_balls_chess_game_1 = $mol_type_enforce<
+	type $mol_check_icon__hint_giper_balls_chess_game_1 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_check_icon['hint'] >
 	>
-	type $mol_check_icon__Icon_gd_balls_chess_game_2 = $mol_type_enforce<
-		ReturnType< $gd_balls_chess_game['Autobot_icon'] >
+	type $mol_check_icon__Icon_giper_balls_chess_game_2 = $mol_type_enforce<
+		ReturnType< $giper_balls_chess_game['Autobot_icon'] >
 		,
 		ReturnType< $mol_check_icon['Icon'] >
 	>
-	type $mol_check_icon__checked_gd_balls_chess_game_3 = $mol_type_enforce<
-		ReturnType< $gd_balls_chess_game['autobot'] >
+	type $mol_check_icon__checked_giper_balls_chess_game_3 = $mol_type_enforce<
+		ReturnType< $giper_balls_chess_game['autobot'] >
 		,
 		ReturnType< $mol_check_icon['checked'] >
 	>
-	export class $gd_balls_chess_game extends $gd_balls_game {
+	export class $giper_balls_chess_game extends $giper_balls_game {
 		Autobot_icon( ): $mol_icon_brain
 		autobot( next?: boolean ): boolean
 		Autobot( ): $mol_check_icon
 		thinking( ): any
 		autoboting( ): any
 		title( ): string
-		State( next?: $gd_balls_chess_state ): $gd_balls_chess_state
+		State( next?: $giper_balls_chess_state ): $giper_balls_chess_state
 		last_coord( next?: number ): number
 		mood_smiles( ): readonly(any)[]
 		tools( ): readonly(any)[]
@@ -3360,8 +3360,8 @@ declare namespace $ {
 
 //# sourceMappingURL=game.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $gd_balls_chess_game extends $.$gd_balls_chess_game {
-        State(next?: $gd_balls_chess_state): $gd_balls_chess_state;
+    class $giper_balls_chess_game extends $.$giper_balls_chess_game {
+        State(next?: $giper_balls_chess_state): $giper_balls_chess_state;
         score(): number;
         score_text(): string;
         ball_kind(id: [number, number], next?: number): 1 | 3 | -1 | 0 | -3;
@@ -3392,48 +3392,48 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_link_donate__uri_gd_balls_catalog_1 = $mol_type_enforce<
+	type $mol_link_donate__uri_giper_balls_catalog_1 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link_donate['uri'] >
 	>
-	type $mol_link_support__uri_gd_balls_catalog_2 = $mol_type_enforce<
+	type $mol_link_support__uri_giper_balls_catalog_2 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link_support['uri'] >
 	>
-	type $mol_link_source__uri_gd_balls_catalog_3 = $mol_type_enforce<
+	type $mol_link_source__uri_giper_balls_catalog_3 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link_source['uri'] >
 	>
-	type $gd_balls_lines__tools_gd_balls_catalog_4 = $mol_type_enforce<
+	type $giper_balls_lines__tools_giper_balls_catalog_4 = $mol_type_enforce<
 		readonly(any)[]
 		,
-		ReturnType< $gd_balls_lines['tools'] >
+		ReturnType< $giper_balls_lines['tools'] >
 	>
-	type $gd_balls_chess_game__tools_gd_balls_catalog_5 = $mol_type_enforce<
+	type $giper_balls_chess_game__tools_giper_balls_catalog_5 = $mol_type_enforce<
 		readonly(any)[]
 		,
-		ReturnType< $gd_balls_chess_game['tools'] >
+		ReturnType< $giper_balls_chess_game['tools'] >
 	>
-	export class $gd_balls_catalog extends $mol_book2_catalog {
+	export class $giper_balls_catalog extends $mol_book2_catalog {
 		Theme( ): $mol_theme_auto
-		Space( ): $gd_web_frame
+		Space( ): $giper_web_frame
 		Donate( ): $mol_link_donate
 		Support( ): $mol_link_support
 		Source( ): $mol_link_source
 		Lights( ): $mol_lights_toggle
-		Lines( ): $gd_balls_lines
-		Chess( ): $gd_balls_chess_game
+		Lines( ): $giper_balls_lines
+		Chess( ): $giper_balls_chess_game
 		menu_title( ): string
 		plugins( ): readonly(any)[]
 		placeholders( ): readonly(any)[]
 		pages( ): readonly(any)[]
 		menu_foot( ): readonly(any)[]
 		spreads( ): ({ 
-			'lines': ReturnType< $gd_balls_catalog['Lines'] >,
-			'chess': ReturnType< $gd_balls_catalog['Chess'] >,
+			'lines': ReturnType< $giper_balls_catalog['Lines'] >,
+			'chess': ReturnType< $giper_balls_catalog['Chess'] >,
 		}) 
 	}
 	

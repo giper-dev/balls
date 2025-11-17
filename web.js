@@ -7928,7 +7928,7 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$gd_web_frame) = class $gd_web_frame extends ($.$mol_frame) {
+	($.$giper_web_frame) = class $giper_web_frame extends ($.$mol_frame) {
 		uri(){
 			return "https://web.giper.dev/#mol_lights={lights}/current={current}/query={query}";
 		}
@@ -7944,7 +7944,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        class $gd_web_frame extends $.$gd_web_frame {
+        class $giper_web_frame extends $.$giper_web_frame {
             uri() {
                 return super.uri()
                     .replace('{lights}', String(this.$.$mol_lights()))
@@ -7954,8 +7954,8 @@ var $;
         }
         __decorate([
             $mol_mem
-        ], $gd_web_frame.prototype, "uri", null);
-        $$.$gd_web_frame = $gd_web_frame;
+        ], $giper_web_frame.prototype, "uri", null);
+        $$.$giper_web_frame = $giper_web_frame;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
@@ -7963,7 +7963,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("gd/web/frame/frame.view.css", "/* @keyframes gd_web_frame_show {\n\tfrom {\n\t\topacity: 0;\n\t}\n}\n\n[gd_web_frame] {\n\tanimation: 5s -1s ease-in gd_web_frame_show;\n} */\n");
+    $mol_style_attach("giper/web/frame/frame.view.css", "/* @keyframes giper_web_frame_show {\n\tfrom {\n\t\topacity: 0;\n\t}\n}\n\n[giper_web_frame] {\n\tanimation: 5s -1s ease-in giper_web_frame_show;\n} */\n");
 })($ || ($ = {}));
 
 ;
@@ -7975,7 +7975,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        $mol_style_define($gd_web_frame, {
+        $mol_style_define($giper_web_frame, {
             flex: {
                 basis: '4rem',
                 shrink: 0,
@@ -8492,7 +8492,7 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$gd_balls_ball) = class $gd_balls_ball extends ($.$mol_view) {
+	($.$giper_balls_ball) = class $giper_balls_ball extends ($.$mol_view) {
 		image(){
 			return "";
 		}
@@ -8518,7 +8518,7 @@ var $;
 			return false;
 		}
 		attr(){
-			return {"gd_balls_ball_state": (this.state()), "gd_balls_ball_focus": (this.focus())};
+			return {"giper_balls_ball_state": (this.state()), "giper_balls_ball_focus": (this.focus())};
 		}
 		sub(){
 			return [(this.mood())];
@@ -8535,7 +8535,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        class $gd_balls_ball extends $.$gd_balls_ball {
+        class $giper_balls_ball extends $.$giper_balls_ball {
             color() {
                 return this.colors()[Math.abs(this.kind())];
             }
@@ -8555,14 +8555,14 @@ var $;
         }
         __decorate([
             $mol_mem
-        ], $gd_balls_ball.prototype, "color", null);
+        ], $giper_balls_ball.prototype, "color", null);
         __decorate([
             $mol_mem
-        ], $gd_balls_ball.prototype, "state", null);
+        ], $giper_balls_ball.prototype, "state", null);
         __decorate([
             $mol_mem
-        ], $gd_balls_ball.prototype, "image", null);
-        $$.$gd_balls_ball = $gd_balls_ball;
+        ], $giper_balls_ball.prototype, "image", null);
+        $$.$giper_balls_ball = $giper_balls_ball;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
@@ -8570,7 +8570,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("gd/balls/ball/ball.view.css", "@keyframes gd_balls_ball_jumping {\n\tfrom {\n\t\tscale: 120%;\n\t}\n}\n/* \n[gd_balls_ball] {\n\t@starting-style {\n\t\ttransform: scale3d(0, 0, 0);\n\t}\n} */\n\n[gd_balls_ball_state=\"active\"] {\n\tanimation: gd_balls_ball_jumping .25s infinite ease-in alternate-reverse;\n}\n");
+    $mol_style_attach("giper/balls/ball/ball.view.css", "@keyframes giper_balls_ball_jumping {\n\tfrom {\n\t\tscale: 120%;\n\t}\n}\n/* \n[giper_balls_ball] {\n\t@starting-style {\n\t\ttransform: scale3d(0, 0, 0);\n\t}\n} */\n\n[giper_balls_ball_state=\"active\"] {\n\tanimation: giper_balls_ball_jumping .25s infinite ease-in alternate-reverse;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -8579,7 +8579,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        $mol_style_define($gd_balls_ball, {
+        $mol_style_define($giper_balls_ball, {
             border: {
                 radius: '50%',
             },
@@ -8606,12 +8606,12 @@ var $;
                         color: $mol_style_func.hsla(0, 0, 0, .5),
                     }]
             },
-            '[gd_balls_ball_focus]': {
+            '[giper_balls_ball_focus]': {
                 true: {
                     outline: '2px solid oklch( 0.3 0.3 210 )',
                 }
             },
-            '[gd_balls_ball_state]': {
+            '[giper_balls_ball_state]': {
                 empty: {
                     scale: '0',
                 },
@@ -8645,7 +8645,7 @@ var $;
 "use strict";
 
 ;
-	($.$gd_balls_game) = class $gd_balls_game extends ($.$mol_page) {
+	($.$giper_balls_game) = class $giper_balls_game extends ($.$mol_page) {
 		select(next){
 			if(next !== undefined) return next;
 			return null;
@@ -8669,7 +8669,7 @@ var $;
 		}
 		Restart(){
 			const obj = new this.$.$mol_button_minor();
-			(obj.hint) = () => ((this.$.$mol_locale.text("$gd_balls_game_Restart_hint")));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$giper_balls_game_Restart_hint")));
 			(obj.click) = (next) => ((this.restart(next)));
 			(obj.sub) = () => ([(this.Restart_icon())]);
 			return obj;
@@ -8717,7 +8717,7 @@ var $;
 			return false;
 		}
 		Ball(id){
-			const obj = new this.$.$gd_balls_ball();
+			const obj = new this.$.$giper_balls_ball();
 			(obj.kind) = () => ((this.ball_kind(id)));
 			(obj.mood) = () => ((this.ball_mood(id)));
 			(obj.active) = () => ((this.cell_active(id)));
@@ -8801,25 +8801,25 @@ var $;
 			return [(this.Board())];
 		}
 	};
-	($mol_mem(($.$gd_balls_game.prototype), "select"));
-	($mol_mem(($.$gd_balls_game.prototype), "Share"));
-	($mol_mem(($.$gd_balls_game.prototype), "Caption"));
-	($mol_mem(($.$gd_balls_game.prototype), "restart"));
-	($mol_mem(($.$gd_balls_game.prototype), "Restart_icon"));
-	($mol_mem(($.$gd_balls_game.prototype), "Restart"));
-	($mol_mem_key(($.$gd_balls_game.prototype), "Score"));
-	($mol_mem(($.$gd_balls_game.prototype), "Main"));
-	($mol_mem_key(($.$gd_balls_game.prototype), "ball_grab"));
-	($mol_mem_key(($.$gd_balls_game.prototype), "ball_move"));
-	($mol_mem_key(($.$gd_balls_game.prototype), "ball_drop"));
-	($mol_mem_key(($.$gd_balls_game.prototype), "ball_kind"));
-	($mol_mem_key(($.$gd_balls_game.prototype), "cell_active"));
-	($mol_mem_key(($.$gd_balls_game.prototype), "Ball"));
-	($mol_mem_key(($.$gd_balls_game.prototype), "Cell"));
-	($mol_mem_key(($.$gd_balls_game.prototype), "Row"));
-	($mol_mem(($.$gd_balls_game.prototype), "Board"));
-	($mol_mem(($.$gd_balls_game.prototype), "active_cell"));
-	($mol_mem(($.$gd_balls_game.prototype), "score"));
+	($mol_mem(($.$giper_balls_game.prototype), "select"));
+	($mol_mem(($.$giper_balls_game.prototype), "Share"));
+	($mol_mem(($.$giper_balls_game.prototype), "Caption"));
+	($mol_mem(($.$giper_balls_game.prototype), "restart"));
+	($mol_mem(($.$giper_balls_game.prototype), "Restart_icon"));
+	($mol_mem(($.$giper_balls_game.prototype), "Restart"));
+	($mol_mem_key(($.$giper_balls_game.prototype), "Score"));
+	($mol_mem(($.$giper_balls_game.prototype), "Main"));
+	($mol_mem_key(($.$giper_balls_game.prototype), "ball_grab"));
+	($mol_mem_key(($.$giper_balls_game.prototype), "ball_move"));
+	($mol_mem_key(($.$giper_balls_game.prototype), "ball_drop"));
+	($mol_mem_key(($.$giper_balls_game.prototype), "ball_kind"));
+	($mol_mem_key(($.$giper_balls_game.prototype), "cell_active"));
+	($mol_mem_key(($.$giper_balls_game.prototype), "Ball"));
+	($mol_mem_key(($.$giper_balls_game.prototype), "Cell"));
+	($mol_mem_key(($.$giper_balls_game.prototype), "Row"));
+	($mol_mem(($.$giper_balls_game.prototype), "Board"));
+	($mol_mem(($.$giper_balls_game.prototype), "active_cell"));
+	($mol_mem(($.$giper_balls_game.prototype), "score"));
 
 
 ;
@@ -8831,7 +8831,7 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        class $gd_balls_game extends $.$gd_balls_game {
+        class $giper_balls_game extends $.$giper_balls_game {
             rows() {
                 return Array.from({ length: this.size() }, (_, row) => this.Row(row));
             }
@@ -8856,17 +8856,17 @@ var $;
         }
         __decorate([
             $mol_mem
-        ], $gd_balls_game.prototype, "rows", null);
+        ], $giper_balls_game.prototype, "rows", null);
         __decorate([
             $mol_mem_key
-        ], $gd_balls_game.prototype, "cells", null);
+        ], $giper_balls_game.prototype, "cells", null);
         __decorate([
             $mol_mem_key
-        ], $gd_balls_game.prototype, "cell_active", null);
+        ], $giper_balls_game.prototype, "cell_active", null);
         __decorate([
             $mol_mem
-        ], $gd_balls_game.prototype, "Score_pick", null);
-        $$.$gd_balls_game = $gd_balls_game;
+        ], $giper_balls_game.prototype, "Score_pick", null);
+        $$.$giper_balls_game = $giper_balls_game;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
@@ -8874,7 +8874,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("gd/balls/game/game.view.css", "@keyframes gd_balls_game_score_show {\n\tfrom {\n\t\ttransform: scale(200%);\n\t}\n}\n\n[gd_balls_game] {\n\t-webkit-touch-callout: none\n}\n\n[gd_balls_game_score] {\n\tanimation: gd_balls_game_score_show .25s ease-out;\n}\n");
+    $mol_style_attach("giper/balls/game/game.view.css", "@keyframes giper_balls_game_score_show {\n\tfrom {\n\t\ttransform: scale(200%);\n\t}\n}\n\n[giper_balls_game] {\n\t-webkit-touch-callout: none\n}\n\n[giper_balls_game_score] {\n\tanimation: giper_balls_game_score_show .25s ease-out;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -8884,7 +8884,7 @@ var $;
     var $$;
     (function ($$) {
         const { radial_gradient } = $mol_style_func;
-        $mol_style_define($gd_balls_game, {
+        $mol_style_define($giper_balls_game, {
             margin: [0, 'auto'],
             flex: {
                 basis: '100vh',
@@ -8951,12 +8951,12 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$gd_balls_lines) = class $gd_balls_lines extends ($.$gd_balls_game) {
+	($.$giper_balls_lines) = class $giper_balls_lines extends ($.$giper_balls_game) {
 		add_new(){
 			return null;
 		}
 		title(){
-			return (this.$.$mol_locale.text("$gd_balls_lines_title"));
+			return (this.$.$mol_locale.text("$giper_balls_lines_title"));
 		}
 		auto(){
 			return [(this.add_new())];
@@ -8966,7 +8966,7 @@ var $;
 			return [];
 		}
 	};
-	($mol_mem(($.$gd_balls_lines.prototype), "cell_start"));
+	($mol_mem(($.$giper_balls_lines.prototype), "cell_start"));
 
 
 ;
@@ -8998,14 +8998,14 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    function $gd_balls_near(left, right) {
+    function $giper_balls_near(left, right) {
         if (Math.abs(right[0] - left[0]) > 1)
             return false;
         if (Math.abs(right[1] - left[1]) > 1)
             return false;
         return true;
     }
-    $.$gd_balls_near = $gd_balls_near;
+    $.$giper_balls_near = $giper_balls_near;
 })($ || ($ = {}));
 
 ;
@@ -9027,9 +9027,9 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        class $gd_balls_lines extends $.$gd_balls_lines {
+        class $giper_balls_lines extends $.$giper_balls_lines {
             snapshot(next) {
-                return this.$.$mol_state_local.value('$gd_balls_lines:snapshot', next) ?? { score: 0, score_max: 0, kinds: [] };
+                return this.$.$mol_state_local.value('$giper_balls_lines:snapshot', next) ?? { score: 0, score_max: 0, kinds: [] };
             }
             ball_kind(id, next) {
                 if (next !== undefined) {
@@ -9097,7 +9097,7 @@ var $;
                     return;
                 if (this.ball_kind(id) > 0)
                     return;
-                if (!$gd_balls_near(active, id))
+                if (!$giper_balls_near(active, id))
                     return;
                 const kind = this.ball_kind(active);
                 this.ball_kind(active, 0);
@@ -9217,38 +9217,38 @@ var $;
         }
         __decorate([
             $mol_mem
-        ], $gd_balls_lines.prototype, "snapshot", null);
+        ], $giper_balls_lines.prototype, "snapshot", null);
         __decorate([
             $mol_mem_key
-        ], $gd_balls_lines.prototype, "ball_kind", null);
+        ], $giper_balls_lines.prototype, "ball_kind", null);
         __decorate([
             $mol_mem_key
-        ], $gd_balls_lines.prototype, "ball_mood", null);
+        ], $giper_balls_lines.prototype, "ball_mood", null);
         __decorate([
             $mol_action
-        ], $gd_balls_lines.prototype, "ball_grab", null);
+        ], $giper_balls_lines.prototype, "ball_grab", null);
         __decorate([
             $mol_action
-        ], $gd_balls_lines.prototype, "ball_drop", null);
+        ], $giper_balls_lines.prototype, "ball_drop", null);
         __decorate([
             $mol_action
-        ], $gd_balls_lines.prototype, "ball_move", null);
+        ], $giper_balls_lines.prototype, "ball_move", null);
         __decorate([
             $mol_mem
-        ], $gd_balls_lines.prototype, "score", null);
+        ], $giper_balls_lines.prototype, "score", null);
         __decorate([
             $mol_mem
-        ], $gd_balls_lines.prototype, "score_text", null);
+        ], $giper_balls_lines.prototype, "score_text", null);
         __decorate([
             $mol_action
-        ], $gd_balls_lines.prototype, "check_lines", null);
+        ], $giper_balls_lines.prototype, "check_lines", null);
         __decorate([
             $mol_mem
-        ], $gd_balls_lines.prototype, "add_new", null);
+        ], $giper_balls_lines.prototype, "add_new", null);
         __decorate([
             $mol_action
-        ], $gd_balls_lines.prototype, "restart", null);
-        $$.$gd_balls_lines = $gd_balls_lines;
+        ], $giper_balls_lines.prototype, "restart", null);
+        $$.$giper_balls_lines = $giper_balls_lines;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
@@ -9267,9 +9267,9 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $.$gd_balls_vector = (hor, ver) => ((ver & 0b1111) << 4) | (hor & 0b1111);
-    $.$gd_balls_vector_hor = (vec) => (vec << 28) >> 28;
-    $.$gd_balls_vector_vert = (vec) => (vec << 24) >> 28;
+    $.$giper_balls_vector = (hor, ver) => ((ver & 0b1111) << 4) | (hor & 0b1111);
+    $.$giper_balls_vector_hor = (vec) => (vec << 28) >> 28;
+    $.$giper_balls_vector_vert = (vec) => (vec << 24) >> 28;
 })($ || ($ = {}));
 
 ;
@@ -9278,54 +9278,54 @@ var $;
 (function ($) {
     const Size = 8;
     const WaysFree = [];
-    const WaysPawn = [[$gd_balls_vector(+0, +1)], [$gd_balls_vector(+1, +1)], [$gd_balls_vector(-1, +1)]];
+    const WaysPawn = [[$giper_balls_vector(+0, +1)], [$giper_balls_vector(+1, +1)], [$giper_balls_vector(-1, +1)]];
     const WaysRook = [
-        Array.from({ length: Size }, (_, i) => $gd_balls_vector(0, +i)).slice(1),
-        Array.from({ length: Size }, (_, i) => $gd_balls_vector(0, -i)).slice(1),
-        Array.from({ length: Size }, (_, i) => $gd_balls_vector(+i, 0)).slice(1),
-        Array.from({ length: Size }, (_, i) => $gd_balls_vector(-i, 0)).slice(1),
+        Array.from({ length: Size }, (_, i) => $giper_balls_vector(0, +i)).slice(1),
+        Array.from({ length: Size }, (_, i) => $giper_balls_vector(0, -i)).slice(1),
+        Array.from({ length: Size }, (_, i) => $giper_balls_vector(+i, 0)).slice(1),
+        Array.from({ length: Size }, (_, i) => $giper_balls_vector(-i, 0)).slice(1),
     ];
     const WaysKnight = [
-        [$gd_balls_vector(+1, +2)], [$gd_balls_vector(+1, -2)],
-        [$gd_balls_vector(-1, +2)], [$gd_balls_vector(-1, -2)],
-        [$gd_balls_vector(+2, +1)], [$gd_balls_vector(+2, -1)],
-        [$gd_balls_vector(-2, +1)], [$gd_balls_vector(-2, -1)],
+        [$giper_balls_vector(+1, +2)], [$giper_balls_vector(+1, -2)],
+        [$giper_balls_vector(-1, +2)], [$giper_balls_vector(-1, -2)],
+        [$giper_balls_vector(+2, +1)], [$giper_balls_vector(+2, -1)],
+        [$giper_balls_vector(-2, +1)], [$giper_balls_vector(-2, -1)],
     ];
     const WaysBishop = [
-        Array.from({ length: Size }, (_, i) => $gd_balls_vector(+i, +i)).slice(1),
-        Array.from({ length: Size }, (_, i) => $gd_balls_vector(+i, -i)).slice(1),
-        Array.from({ length: Size }, (_, i) => $gd_balls_vector(-i, +i)).slice(1),
-        Array.from({ length: Size }, (_, i) => $gd_balls_vector(-i, -i)).slice(1),
+        Array.from({ length: Size }, (_, i) => $giper_balls_vector(+i, +i)).slice(1),
+        Array.from({ length: Size }, (_, i) => $giper_balls_vector(+i, -i)).slice(1),
+        Array.from({ length: Size }, (_, i) => $giper_balls_vector(-i, +i)).slice(1),
+        Array.from({ length: Size }, (_, i) => $giper_balls_vector(-i, -i)).slice(1),
     ];
     const WaysQueen = [...WaysRook, ...WaysBishop];
     const WaysKing = [
-        [$gd_balls_vector(+0, +1)], [$gd_balls_vector(+1, +1)], [$gd_balls_vector(-1, +1)],
-        [$gd_balls_vector(+1, +0)], [$gd_balls_vector(-1, +0)],
-        [$gd_balls_vector(+0, -1)], [$gd_balls_vector(1, -1)], [$gd_balls_vector(-1, -1)],
+        [$giper_balls_vector(+0, +1)], [$giper_balls_vector(+1, +1)], [$giper_balls_vector(-1, +1)],
+        [$giper_balls_vector(+1, +0)], [$giper_balls_vector(-1, +0)],
+        [$giper_balls_vector(+0, -1)], [$giper_balls_vector(1, -1)], [$giper_balls_vector(-1, -1)],
     ];
-    $.$gd_balls_chess_rules = [WaysFree, WaysPawn, WaysRook, WaysKnight, WaysBishop, WaysQueen, WaysKing, WaysFree];
+    $.$giper_balls_chess_rules = [WaysFree, WaysPawn, WaysRook, WaysKnight, WaysBishop, WaysQueen, WaysKing, WaysFree];
 })($ || ($ = {}));
 
 ;
 "use strict";
 var $;
 (function ($) {
-    $.$gd_balls_coord = (row, col) => (row << 3) | col;
-    $.$gd_balls_coord_row = (pos) => pos >> 3;
-    $.$gd_balls_coord_col = (pos) => pos & 0b111;
-    $.$gd_balls_coord_str = (pos) => 'abcdefgh'[$.$gd_balls_coord_col(pos)] + ($.$gd_balls_coord_row(pos) + 1);
-    $.$gd_balls_coord_parse = (str) => $.$gd_balls_coord(Number(str[1]) - 1, str.charCodeAt(0) - 97);
+    $.$giper_balls_coord = (row, col) => (row << 3) | col;
+    $.$giper_balls_coord_row = (pos) => pos >> 3;
+    $.$giper_balls_coord_col = (pos) => pos & 0b111;
+    $.$giper_balls_coord_str = (pos) => 'abcdefgh'[$.$giper_balls_coord_col(pos)] + ($.$giper_balls_coord_row(pos) + 1);
+    $.$giper_balls_coord_parse = (str) => $.$giper_balls_coord(Number(str[1]) - 1, str.charCodeAt(0) - 97);
 })($ || ($ = {}));
 
 ;
 "use strict";
 var $;
 (function ($) {
-    $.$gd_balls_step = (from, to) => (to << 8) | from;
-    $.$gd_balls_step_from = (pos) => pos & 0b1111_1111;
-    $.$gd_balls_step_to = (pos) => pos >> 8;
-    $.$gd_balls_step_str = (step) => $gd_balls_coord_str($.$gd_balls_step_from(step)) + '' + $gd_balls_coord_str($.$gd_balls_step_to(step));
-    $.$gd_balls_step_parse = (str) => $.$gd_balls_step($gd_balls_coord_parse(str.slice(0, 2)), $gd_balls_coord_parse(str.slice(2, 4)));
+    $.$giper_balls_step = (from, to) => (to << 8) | from;
+    $.$giper_balls_step_from = (pos) => pos & 0b1111_1111;
+    $.$giper_balls_step_to = (pos) => pos >> 8;
+    $.$giper_balls_step_str = (step) => $giper_balls_coord_str($.$giper_balls_step_from(step)) + '' + $giper_balls_coord_str($.$giper_balls_step_to(step));
+    $.$giper_balls_step_parse = (str) => $.$giper_balls_step($giper_balls_coord_parse(str.slice(0, 2)), $giper_balls_coord_parse(str.slice(2, 4)));
 })($ || ($ = {}));
 
 ;
@@ -9336,14 +9336,14 @@ var $;
     const Costs = [0, 1, 5, 3, 3, 9, 39];
     const Figures = '⋅♙♖♘♗♕♔　　♟♜♞♝♛♚';
     const [White, Black] = [0b0000, 0b1000];
-    $.$gd_balls_chess_cell_side = (cell) => cell & Black;
-    $.$gd_balls_chess_cell_invert = (cell) => (cell ^ Black);
-    $.$gd_balls_chess_cell_kind = (cell) => cell & 0b111;
+    $.$giper_balls_chess_cell_side = (cell) => cell & Black;
+    $.$giper_balls_chess_cell_invert = (cell) => (cell ^ Black);
+    $.$giper_balls_chess_cell_kind = (cell) => cell & 0b111;
     const Size = 8;
     const Court = [Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook];
     const Pawns = Array.from(Court, _ => Pawn);
     const Empty = Array.from(Court, _ => Free);
-    class $gd_balls_chess_state extends Uint8Array {
+    class $giper_balls_chess_state extends Uint8Array {
         constructor(array = [
             ...Court,
             ...Pawns,
@@ -9351,15 +9351,15 @@ var $;
             ...Empty,
             ...Empty,
             ...Empty,
-            ...Pawns.map($.$gd_balls_chess_cell_invert),
-            ...Court.map($.$gd_balls_chess_cell_invert),
+            ...Pawns.map($.$giper_balls_chess_cell_invert),
+            ...Court.map($.$giper_balls_chess_cell_invert),
             White,
         ]) {
             super(array);
         }
         ways = new Map();
         ballance() {
-            return this.reduce((sum, cell) => sum + Costs[$.$gd_balls_chess_cell_kind(cell)] * ($.$gd_balls_chess_cell_side(cell) ? -1 : +1), 0);
+            return this.reduce((sum, cell) => sum + Costs[$.$giper_balls_chess_cell_kind(cell)] * ($.$giper_balls_chess_cell_side(cell) ? -1 : +1), 0);
         }
         score() {
             return this.ballance() * 100 + (this.movements().length - this.flip().movements().length) * (this.side() ? -1 : +1);
@@ -9370,36 +9370,36 @@ var $;
             let king_alive = false;
             for (let from = 0; from < this.length; ++from) {
                 const cell = this[from];
-                if ($.$gd_balls_chess_cell_side(cell) !== this.side())
+                if ($.$giper_balls_chess_cell_side(cell) !== this.side())
                     continue;
-                const kind = $.$gd_balls_chess_cell_kind(cell);
+                const kind = $.$giper_balls_chess_cell_kind(cell);
                 if (kind === King)
                     king_alive = true;
-                const ways = $gd_balls_chess_rules[kind];
+                const ways = $giper_balls_chess_rules[kind];
                 for (const way of ways) {
-                    let row_from = $gd_balls_coord_row(from);
-                    let col_from = $gd_balls_coord_col(from);
+                    let row_from = $giper_balls_coord_row(from);
+                    let col_from = $giper_balls_coord_col(from);
                     for (const vec of way) {
-                        let row = row_from + $gd_balls_vector_vert(vec) * mirror;
+                        let row = row_from + $giper_balls_vector_vert(vec) * mirror;
                         if (row < 0 || row >= Size)
                             break;
-                        let col = col_from + $gd_balls_vector_hor(vec);
+                        let col = col_from + $giper_balls_vector_hor(vec);
                         if (col < 0 || col >= Size)
                             break;
-                        const to = $gd_balls_coord(row, col);
+                        const to = $giper_balls_coord(row, col);
                         const c = this[to];
                         if (c) {
-                            if ($.$gd_balls_chess_cell_side(c) !== this.side()) {
+                            if ($.$giper_balls_chess_cell_side(c) !== this.side()) {
                                 if (kind === Pawn && col === col_from)
                                     continue;
-                                res.push($gd_balls_step(from, to));
+                                res.push($giper_balls_step(from, to));
                             }
                             break;
                         }
                         else {
                             if (kind === Pawn && col !== col_from)
                                 continue;
-                            res.push($gd_balls_step(from, to));
+                            res.push($giper_balls_step(from, to));
                         }
                     }
                 }
@@ -9407,8 +9407,8 @@ var $;
             return king_alive ? res : [];
         }
         flip() {
-            const state = new $gd_balls_chess_state(this);
-            state.side($.$gd_balls_chess_cell_invert(this.side()));
+            const state = new $giper_balls_chess_state(this);
+            state.side($.$giper_balls_chess_cell_invert(this.side()));
             return state;
         }
         move(step) {
@@ -9416,14 +9416,14 @@ var $;
             if (cached)
                 return cached;
             const next = this.flip();
-            const from = $gd_balls_step_from(step);
-            const to = $gd_balls_step_to(step);
-            const to_row = $gd_balls_coord_row(to);
+            const from = $giper_balls_step_from(step);
+            const to = $giper_balls_step_to(step);
+            const to_row = $giper_balls_coord_row(to);
             let figure = next[from];
             if (figure === Pawn && to_row === Size - 1)
                 figure = Queen;
-            if (figure === $.$gd_balls_chess_cell_invert(Pawn) && to_row === 0)
-                figure = $.$gd_balls_chess_cell_invert(Queen);
+            if (figure === $.$giper_balls_chess_cell_invert(Pawn) && to_row === 0)
+                figure = $.$giper_balls_chess_cell_invert(Queen);
             next[to] = figure;
             next[from] = Free;
             this.ways.set(step, next);
@@ -9485,27 +9485,27 @@ var $;
         [$mol_dev_format_head]() {
             return $mol_dev_format_div({}, $mol_dev_format_native(this), $mol_dev_format_native(this.score()), ':', $mol_dev_format_native(this._estimation), $mol_dev_format_auto(Object.fromEntries([
                 [Symbol.toStringTag, 'ways'],
-                ...this.movements().map(step => [$gd_balls_step_str(step), this.ways.get(step)]),
+                ...this.movements().map(step => [$giper_balls_step_str(step), this.ways.get(step)]),
             ])));
         }
         [$mol_dev_format_body]() {
-            return $mol_dev_format_div({}, $mol_dev_format_table({ display: 'inline-table', 'text-align': 'center' }, ...Array.from({ length: Size }, (_, row) => $mol_dev_format_tr({}, $mol_dev_format_td({ color: 'gray' }, Size - row), ...Array.from({ length: Size }, (_, col) => $mol_dev_format_td({}, Figures[this[$gd_balls_coord(Size - row - 1, col)]])))), $mol_dev_format_tr({}, $mol_dev_format_td({}, this.side() ? '🔴' : '🟢'), ...[...'abcdefgh'].map(letter => $mol_dev_format_td({ color: 'gray' }, letter)))));
+            return $mol_dev_format_div({}, $mol_dev_format_table({ display: 'inline-table', 'text-align': 'center' }, ...Array.from({ length: Size }, (_, row) => $mol_dev_format_tr({}, $mol_dev_format_td({ color: 'gray' }, Size - row), ...Array.from({ length: Size }, (_, col) => $mol_dev_format_td({}, Figures[this[$giper_balls_coord(Size - row - 1, col)]])))), $mol_dev_format_tr({}, $mol_dev_format_td({}, this.side() ? '🔴' : '🟢'), ...[...'abcdefgh'].map(letter => $mol_dev_format_td({ color: 'gray' }, letter)))));
         }
     }
     __decorate([
         $mol_memo.method
-    ], $gd_balls_chess_state.prototype, "ballance", null);
+    ], $giper_balls_chess_state.prototype, "ballance", null);
     __decorate([
         $mol_memo.method
-    ], $gd_balls_chess_state.prototype, "score", null);
+    ], $giper_balls_chess_state.prototype, "score", null);
     __decorate([
         $mol_memo.method
-    ], $gd_balls_chess_state.prototype, "movements", null);
-    $.$gd_balls_chess_state = $gd_balls_chess_state;
+    ], $giper_balls_chess_state.prototype, "movements", null);
+    $.$giper_balls_chess_state = $giper_balls_chess_state;
 })($ || ($ = {}));
 
 ;
-	($.$gd_balls_chess_game) = class $gd_balls_chess_game extends ($.$gd_balls_game) {
+	($.$giper_balls_chess_game) = class $giper_balls_chess_game extends ($.$giper_balls_game) {
 		Autobot_icon(){
 			const obj = new this.$.$mol_icon_brain();
 			return obj;
@@ -9516,7 +9516,7 @@ var $;
 		}
 		Autobot(){
 			const obj = new this.$.$mol_check_icon();
-			(obj.hint) = () => ((this.$.$mol_locale.text("$gd_balls_chess_game_Autobot_hint")));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$giper_balls_chess_game_Autobot_hint")));
 			(obj.Icon) = () => ((this.Autobot_icon()));
 			(obj.checked) = (next) => ((this.autobot(next)));
 			return obj;
@@ -9528,11 +9528,11 @@ var $;
 			return null;
 		}
 		title(){
-			return (this.$.$mol_locale.text("$gd_balls_chess_game_title"));
+			return (this.$.$mol_locale.text("$giper_balls_chess_game_title"));
 		}
 		State(next){
 			if(next !== undefined) return next;
-			const obj = new this.$.$gd_balls_chess_state();
+			const obj = new this.$.$giper_balls_chess_state();
 			return obj;
 		}
 		last_coord(next){
@@ -9557,11 +9557,11 @@ var $;
 			return [(this.thinking()), (this.autoboting())];
 		}
 	};
-	($mol_mem(($.$gd_balls_chess_game.prototype), "Autobot_icon"));
-	($mol_mem(($.$gd_balls_chess_game.prototype), "autobot"));
-	($mol_mem(($.$gd_balls_chess_game.prototype), "Autobot"));
-	($mol_mem(($.$gd_balls_chess_game.prototype), "State"));
-	($mol_mem(($.$gd_balls_chess_game.prototype), "last_coord"));
+	($mol_mem(($.$giper_balls_chess_game.prototype), "Autobot_icon"));
+	($mol_mem(($.$giper_balls_chess_game.prototype), "autobot"));
+	($mol_mem(($.$giper_balls_chess_game.prototype), "Autobot"));
+	($mol_mem(($.$giper_balls_chess_game.prototype), "State"));
+	($mol_mem(($.$giper_balls_chess_game.prototype), "last_coord"));
 
 
 ;
@@ -9631,10 +9631,10 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        class $gd_balls_chess_game extends $.$gd_balls_chess_game {
+        class $giper_balls_chess_game extends $.$giper_balls_chess_game {
             State(next) {
-                const val = this.$.$mol_state_local.value('$gd_balls_chess:state', next && $mol_base64_encode(next));
-                return val && new $gd_balls_chess_state($mol_base64_decode(val)) || new $gd_balls_chess_state(super.State());
+                const val = this.$.$mol_state_local.value('$giper_balls_chess:state', next && $mol_base64_encode(next));
+                return val && new $giper_balls_chess_state($mol_base64_decode(val)) || new $giper_balls_chess_state(super.State());
             }
             score() {
                 return this.State().ballance();
@@ -9644,13 +9644,13 @@ var $;
             }
             ball_kind(id, next) {
                 const side = this.State().side();
-                const coord = $gd_balls_coord(...id);
+                const coord = $giper_balls_coord(...id);
                 const cell = this.State()[coord];
                 const ways = this.State().movements();
                 if (!ways.length) {
                     if (!cell)
                         return 0;
-                    const cell_side = $gd_balls_chess_cell_side(cell);
+                    const cell_side = $giper_balls_chess_cell_side(cell);
                     if (cell_side === side)
                         return cell_side ? -1 : -3;
                     else
@@ -9658,26 +9658,26 @@ var $;
                 }
                 const active = this.active_cell();
                 if (active.length) {
-                    const active_coord = $gd_balls_coord(active[0], active[1]);
-                    const step = $gd_balls_step(active_coord, coord);
+                    const active_coord = $giper_balls_coord(active[0], active[1]);
+                    const step = $giper_balls_step(active_coord, coord);
                     if (!cell)
                         return ways.includes(step) ? (side ? -1 : -3) : 0;
                     if (ways.includes(step))
-                        return $gd_balls_chess_cell_side(cell) ? -1 : -3;
+                        return $giper_balls_chess_cell_side(cell) ? -1 : -3;
                     else
-                        return $gd_balls_chess_cell_side(cell) ? 1 : 3;
+                        return $giper_balls_chess_cell_side(cell) ? 1 : 3;
                 }
                 else {
                     if (!cell)
                         return 0;
-                    return $gd_balls_chess_cell_side(cell) ? 1 : 3;
+                    return $giper_balls_chess_cell_side(cell) ? 1 : 3;
                 }
             }
             ball_mood(id) {
-                const cell = this.State()[$gd_balls_coord(...id)];
+                const cell = this.State()[$giper_balls_coord(...id)];
                 if (!cell)
                     return '';
-                return this.mood_smiles()[$gd_balls_chess_cell_kind(cell)];
+                return this.mood_smiles()[$giper_balls_chess_cell_kind(cell)];
             }
             ball_grab(id, event) {
                 event.preventDefault();
@@ -9688,10 +9688,10 @@ var $;
                 if (this.autobot() && state.side())
                     return;
                 const ways = state.movements();
-                const coord = $gd_balls_coord(...id);
-                if (!ways.some(step => $gd_balls_step_from(step) === coord))
+                const coord = $giper_balls_coord(...id);
+                if (!ways.some(step => $giper_balls_step_from(step) === coord))
                     return;
-                if ($gd_balls_chess_cell_side(state[coord]) !== state.side())
+                if ($giper_balls_chess_cell_side(state[coord]) !== state.side())
                     return;
                 this.cell_active(id, !this.cell_active(id));
             }
@@ -9700,17 +9700,17 @@ var $;
                 if (!active.length)
                     return;
                 this.active_cell([]);
-                const coord = $gd_balls_coord(...id);
-                const active_coord = $gd_balls_coord(active[0], active[1]);
-                const step = $gd_balls_step(active_coord, coord);
+                const coord = $giper_balls_coord(...id);
+                const active_coord = $giper_balls_coord(active[0], active[1]);
+                const step = $giper_balls_step(active_coord, coord);
                 const ways = this.State().movements();
                 if (!ways.includes(step))
                     return;
                 this.State(this.State().move(step));
-                this.last_coord($gd_balls_step_to(step));
+                this.last_coord($giper_balls_step_to(step));
             }
             restart() {
-                this.State(new $gd_balls_chess_state(super.State()));
+                this.State(new $giper_balls_chess_state(super.State()));
                 this.last_coord(Number.NaN);
             }
             thinking() {
@@ -9737,51 +9737,51 @@ var $;
                     return;
                 const step = $mol_array_lottery(best);
                 this.State(state.move(step));
-                this.last_coord($gd_balls_step_to(step));
+                this.last_coord($giper_balls_step_to(step));
             }
             ball_focus(id) {
-                return this.last_coord() === $gd_balls_coord(...id);
+                return this.last_coord() === $giper_balls_coord(...id);
             }
         }
         __decorate([
             $mol_mem
-        ], $gd_balls_chess_game.prototype, "State", null);
+        ], $giper_balls_chess_game.prototype, "State", null);
         __decorate([
             $mol_mem
-        ], $gd_balls_chess_game.prototype, "score_text", null);
+        ], $giper_balls_chess_game.prototype, "score_text", null);
         __decorate([
             $mol_mem_key
-        ], $gd_balls_chess_game.prototype, "ball_kind", null);
+        ], $giper_balls_chess_game.prototype, "ball_kind", null);
         __decorate([
             $mol_mem_key
-        ], $gd_balls_chess_game.prototype, "ball_mood", null);
+        ], $giper_balls_chess_game.prototype, "ball_mood", null);
         __decorate([
             $mol_action
-        ], $gd_balls_chess_game.prototype, "ball_grab", null);
+        ], $giper_balls_chess_game.prototype, "ball_grab", null);
         __decorate([
             $mol_action
-        ], $gd_balls_chess_game.prototype, "ball_drop", null);
+        ], $giper_balls_chess_game.prototype, "ball_drop", null);
         __decorate([
             $mol_action
-        ], $gd_balls_chess_game.prototype, "restart", null);
+        ], $giper_balls_chess_game.prototype, "restart", null);
         __decorate([
             $mol_mem
-        ], $gd_balls_chess_game.prototype, "thinking", null);
+        ], $giper_balls_chess_game.prototype, "thinking", null);
         __decorate([
             $mol_mem
-        ], $gd_balls_chess_game.prototype, "autoboting", null);
-        $$.$gd_balls_chess_game = $gd_balls_chess_game;
+        ], $giper_balls_chess_game.prototype, "autoboting", null);
+        $$.$giper_balls_chess_game = $giper_balls_chess_game;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
 ;
-	($.$gd_balls_catalog) = class $gd_balls_catalog extends ($.$mol_book2_catalog) {
+	($.$giper_balls_catalog) = class $giper_balls_catalog extends ($.$mol_book2_catalog) {
 		Theme(){
 			const obj = new this.$.$mol_theme_auto();
 			return obj;
 		}
 		Space(){
-			const obj = new this.$.$gd_web_frame();
+			const obj = new this.$.$giper_web_frame();
 			return obj;
 		}
 		Donate(){
@@ -9804,17 +9804,17 @@ var $;
 			return obj;
 		}
 		Lines(){
-			const obj = new this.$.$gd_balls_lines();
-			(obj.tools) = () => ([...(this.$.$gd_balls_lines.prototype.tools.call(obj)), (this.Spread_close())]);
+			const obj = new this.$.$giper_balls_lines();
+			(obj.tools) = () => ([...(this.$.$giper_balls_lines.prototype.tools.call(obj)), (this.Spread_close())]);
 			return obj;
 		}
 		Chess(){
-			const obj = new this.$.$gd_balls_chess_game();
-			(obj.tools) = () => ([...(this.$.$gd_balls_chess_game.prototype.tools.call(obj)), (this.Spread_close())]);
+			const obj = new this.$.$giper_balls_chess_game();
+			(obj.tools) = () => ([...(this.$.$giper_balls_chess_game.prototype.tools.call(obj)), (this.Spread_close())]);
 			return obj;
 		}
 		menu_title(){
-			return (this.$.$mol_locale.text("$gd_balls_catalog_menu_title"));
+			return (this.$.$mol_locale.text("$giper_balls_catalog_menu_title"));
 		}
 		plugins(){
 			return [(this.Theme())];
@@ -9837,14 +9837,14 @@ var $;
 			return {"lines": (this.Lines()), "chess": (this.Chess())};
 		}
 	};
-	($mol_mem(($.$gd_balls_catalog.prototype), "Theme"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Space"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Donate"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Support"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Source"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Lights"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Lines"));
-	($mol_mem(($.$gd_balls_catalog.prototype), "Chess"));
+	($mol_mem(($.$giper_balls_catalog.prototype), "Theme"));
+	($mol_mem(($.$giper_balls_catalog.prototype), "Space"));
+	($mol_mem(($.$giper_balls_catalog.prototype), "Donate"));
+	($mol_mem(($.$giper_balls_catalog.prototype), "Support"));
+	($mol_mem(($.$giper_balls_catalog.prototype), "Source"));
+	($mol_mem(($.$giper_balls_catalog.prototype), "Lights"));
+	($mol_mem(($.$giper_balls_catalog.prototype), "Lines"));
+	($mol_mem(($.$giper_balls_catalog.prototype), "Chess"));
 
 
 ;
@@ -9965,7 +9965,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("gd/balls/catalog/catalog.view.css", "[gd_balls_catalog_board] {\n\t-webkit-user-select: none;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n  touch-action: none;\n}\n");
+    $mol_style_attach("giper/balls/catalog/catalog.view.css", "[giper_balls_catalog_board] {\n\t-webkit-user-select: none;\n}\n\nhtml, body {\n  overscroll-behavior-x: none;\n  touch-action: none;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -9978,13 +9978,13 @@ var $;
     var $$;
     (function ($$) {
         const { url, linear_gradient } = $mol_style_func;
-        $mol_style_define($gd_balls_catalog, {
+        $mol_style_define($giper_balls_catalog, {
             background: {
                 size: ['cover'],
                 position: 'center',
                 image: [
                     [linear_gradient($mol_theme.spirit)],
-                    [url('gd/balls/logo/back.jpg')],
+                    [url('giper/balls/logo/back.jpg')],
                 ]
             },
         });

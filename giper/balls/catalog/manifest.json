@@ -4,7 +4,7 @@
 	"categories": [ "game" ],
 	"icons": [
 		{
-			"src": "../../../gd/balls/logo/logo_512.png",
+			"src": "../../../giper/balls/logo/logo_512.png",
 			"type": "image/png",
 			"sizes": "512x512"
 		}
