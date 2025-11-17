@@ -1,4 +1,4 @@
-$gd_balls_lines $gd_balls_game
+$giper_balls_lines $giper_balls_game
 	title @ \Lines
 	auto /
 		<= add_new null

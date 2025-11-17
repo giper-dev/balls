@@ -1,13 +1,13 @@
-@keyframes gd_balls_game_score_show {
+@keyframes giper_balls_game_score_show {
 	from {
 		transform: scale(200%);
 	}
 }
 
-[gd_balls_game] {
+[giper_balls_game] {
 	-webkit-touch-callout: none
 }
 
-[gd_balls_game_score] {
-	animation: gd_balls_game_score_show .25s ease-out;
+[giper_balls_game_score] {
+	animation: giper_balls_game_score_show .25s ease-out;
 }

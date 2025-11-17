@@ -1,5 +1,5 @@
 namespace $.$$ {
-	export class $gd_balls_game extends $.$gd_balls_game {
+	export class $giper_balls_game extends $.$giper_balls_game {
 		
 		@ $mol_mem
 		rows() {

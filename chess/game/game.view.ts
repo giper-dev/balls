@@ -1,10 +1,10 @@
 namespace $.$$ {
-	export class $gd_balls_chess_game extends $.$gd_balls_chess_game {
+	export class $giper_balls_chess_game extends $.$giper_balls_chess_game {
 		
 		@ $mol_mem
-		State( next?: $gd_balls_chess_state ): $gd_balls_chess_state {
-			const val = this.$.$mol_state_local.value( '$gd_balls_chess:state', next && $mol_base64_encode( next ) )
-			return val && new $gd_balls_chess_state( $mol_base64_decode( val ) ) || new $gd_balls_chess_state( super.State() )
+		State( next?: $giper_balls_chess_state ): $giper_balls_chess_state {
+			const val = this.$.$mol_state_local.value( '$giper_balls_chess:state', next && $mol_base64_encode( next ) )
+			return val && new $giper_balls_chess_state( $mol_base64_decode( val ) ) || new $giper_balls_chess_state( super.State() )
 		}
 		
 		score() {
@@ -20,13 +20,13 @@ namespace $.$$ {
 		ball_kind( id: [ number, number ], next?: number ) {
 			
 			const side = this.State().side()
-			const coord =  $gd_balls_coord( ... id )
+			const coord =  $giper_balls_coord( ... id )
 			const cell = this.State()[ coord ]
 			const ways = this.State().movements()
 			
 			if( !ways.length ) {
 				if( !cell ) return 0
-				const cell_side = $gd_balls_chess_cell_side( cell )
+				const cell_side = $giper_balls_chess_cell_side( cell )
 				if( cell_side === side ) return cell_side ? -1 : -3
 				else return cell_side ? 1 : 3
 			}
@@ -34,18 +34,18 @@ namespace $.$$ {
 			const active = this.active_cell()
 			if( active.length ) {
 				
-				const active_coord = $gd_balls_coord( active[0], active[1] )
-				const step = $gd_balls_step( active_coord, coord )
+				const active_coord = $giper_balls_coord( active[0], active[1] )
+				const step = $giper_balls_step( active_coord, coord )
 				
 				if( !cell ) return ways.includes( step ) ? ( side ? -1 : -3 ) : 0
 				
-				if( ways.includes( step ) ) return $gd_balls_chess_cell_side( cell ) ? -1 : -3
-				else return $gd_balls_chess_cell_side( cell ) ? 1 : 3
+				if( ways.includes( step ) ) return $giper_balls_chess_cell_side( cell ) ? -1 : -3
+				else return $giper_balls_chess_cell_side( cell ) ? 1 : 3
 				
 			} else {
 				
 				if( !cell ) return 0
-				return $gd_balls_chess_cell_side( cell ) ? 1 : 3
+				return $giper_balls_chess_cell_side( cell ) ? 1 : 3
 				
 			}
 			
@@ -54,10 +54,10 @@ namespace $.$$ {
 		@ $mol_mem_key
 		ball_mood( id: [ number, number ] ) {
 			
-			const cell = this.State()[ $gd_balls_coord( ... id ) ]
+			const cell = this.State()[ $giper_balls_coord( ... id ) ]
 			if( !cell ) return ''
 			
-			return this.mood_smiles()[ $gd_balls_chess_cell_kind( cell ) ]
+			return this.mood_smiles()[ $giper_balls_chess_cell_kind( cell ) ]
 		}
 		
 		@ $mol_action
@@ -72,10 +72,10 @@ namespace $.$$ {
 			if( this.autobot() && state.side() ) return
 			
 			const ways = state.movements()
-			const coord =  $gd_balls_coord( ... id )
-			if( !ways.some( step => $gd_balls_step_from( step ) === coord ) ) return
+			const coord =  $giper_balls_coord( ... id )
+			if( !ways.some( step => $giper_balls_step_from( step ) === coord ) ) return
 			
-			if( $gd_balls_chess_cell_side( state[ coord ] ) !== state.side() ) return
+			if( $giper_balls_chess_cell_side( state[ coord ] ) !== state.side() ) return
 			
 			this.cell_active( id, ! this.cell_active( id ) )
 		}
@@ -87,21 +87,21 @@ namespace $.$$ {
 			if( !active.length ) return
 			this.active_cell([])
 			
-			const coord =  $gd_balls_coord( ... id )
-			const active_coord = $gd_balls_coord( active[0], active[1] )
-			const step = $gd_balls_step( active_coord, coord )
+			const coord =  $giper_balls_coord( ... id )
+			const active_coord = $giper_balls_coord( active[0], active[1] )
+			const step = $giper_balls_step( active_coord, coord )
 			
 			const ways = this.State().movements()
 			if( !ways.includes( step ) ) return
 			
 			this.State( this.State().move( step ) )
-			this.last_coord( $gd_balls_step_to( step ) )
+			this.last_coord( $giper_balls_step_to( step ) )
 			
 		}
 		
 		@ $mol_action
 		restart() {
-			this.State( new $gd_balls_chess_state( super.State() ) )
+			this.State( new $giper_balls_chess_state( super.State() ) )
 			this.last_coord( Number.NaN )
 		}
 		
@@ -134,12 +134,12 @@ namespace $.$$ {
 			
 			const step = $mol_array_lottery( best )
 			this.State( state.move( step ) )
-			this.last_coord( $gd_balls_step_to( step ) )
+			this.last_coord( $giper_balls_step_to( step ) )
 			
 		}
 		
 		ball_focus( id: [ number, number ] ) {
-			return this.last_coord() === $gd_balls_coord( ... id )
+			return this.last_coord() === $giper_balls_coord( ... id )
 		}
 		
 	}

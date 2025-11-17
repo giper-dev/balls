@@ -2,7 +2,7 @@ namespace $.$$ {
 	
 	const { radial_gradient } = $mol_style_func
 	
-	$mol_style_define( $gd_balls_game, {
+	$mol_style_define( $giper_balls_game, {
 		
 		margin: [ 0, 'auto' ],
 		flex: {

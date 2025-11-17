@@ -1,15 +1,15 @@
-@keyframes gd_balls_ball_jumping {
+@keyframes giper_balls_ball_jumping {
 	from {
 		scale: 120%;
 	}
 }
 /* 
-[gd_balls_ball] {
+[giper_balls_ball] {
 	@starting-style {
 		transform: scale3d(0, 0, 0);
 	}
 } */
 
-[gd_balls_ball_state="active"] {
-	animation: gd_balls_ball_jumping .25s infinite ease-in alternate-reverse;
+[giper_balls_ball_state="active"] {
+	animation: giper_balls_ball_jumping .25s infinite ease-in alternate-reverse;
 }

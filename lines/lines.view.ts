@@ -6,11 +6,11 @@ namespace $.$$ {
 		kinds: readonly number[]
 	}>
 	
-	export class $gd_balls_lines extends $.$gd_balls_lines {
+	export class $giper_balls_lines extends $.$giper_balls_lines {
 		
 		@ $mol_mem
 		snapshot( next?: Snapshot ): Snapshot {
-			return this.$.$mol_state_local.value( '$gd_balls_lines:snapshot', next ) ?? { score: 0, score_max: 0, kinds: [] }
+			return this.$.$mol_state_local.value( '$giper_balls_lines:snapshot', next ) ?? { score: 0, score_max: 0, kinds: [] }
 		}
 		
 		
@@ -90,7 +90,7 @@ namespace $.$$ {
 			const active = this.active_cell() as [ number, number ]
 			if( !active.length ) return
 			if( this.ball_kind( id ) > 0 ) return
-			if( !$gd_balls_near( active, id ) ) return
+			if( !$giper_balls_near( active, id ) ) return
 			
 			const kind = this.ball_kind( active )
 			this.ball_kind( active, 0 )

@@ -1,6 +1,6 @@
 namespace $.$$ {
 	
-	$mol_style_define( $gd_balls_ball, {
+	$mol_style_define( $giper_balls_ball, {
 		
 		border: {
 			radius: '50%',
@@ -35,13 +35,13 @@ namespace $.$$ {
 			}]
 		},
 		
-		'[gd_balls_ball_focus]': {
+		'[giper_balls_ball_focus]': {
 			true: {
 				outline: '2px solid oklch( 0.3 0.3 210 )',
 			}
 		},
 		
-		'[gd_balls_ball_state]': {
+		'[giper_balls_ball_state]': {
 			empty: {
 				scale: '0',
 			},

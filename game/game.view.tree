@@ -1,4 +1,4 @@
-$gd_balls_game $mol_page
+$giper_balls_game $mol_page
 	size 8
 	colors /
 		\
@@ -46,7 +46,7 @@ $gd_balls_game $mol_page
 						pointerenter? <=> ball_move*? null
 						pointerup? <=> ball_drop*? null
 					sub /
-						<= Ball* $gd_balls_ball
+						<= Ball* $giper_balls_ball
 							kind <= ball_kind*? 0
 							mood <= ball_mood* \
 							active <= cell_active*? false

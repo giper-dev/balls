@@ -5,16 +5,16 @@ namespace $ {
 	const Figures = '⋅♙♖♘♗♕♔　　♟♜♞♝♛♚'
 
 	const [ White, Black ] = [ 0b0000, 0b1000 ]
-	export const $gd_balls_chess_cell_side = ( cell: number )=> cell & Black
-	export const $gd_balls_chess_cell_invert = ( cell: number )=> ( cell ^ Black )
-	export const $gd_balls_chess_cell_kind = ( cell: number )=> cell & 0b111
+	export const $giper_balls_chess_cell_side = ( cell: number )=> cell & Black
+	export const $giper_balls_chess_cell_invert = ( cell: number )=> ( cell ^ Black )
+	export const $giper_balls_chess_cell_kind = ( cell: number )=> cell & 0b111
 
 	const Size = 8
 	const Court = [ Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook ]
 	const Pawns = Array.from( Court, _=> Pawn )
 	const Empty = Array.from( Court, _=> Free )
 	
-	export class $gd_balls_chess_state extends Uint8Array {
+	export class $giper_balls_chess_state extends Uint8Array {
 		
 		constructor( array: ArrayLike<number> | ArrayBuffer = [
 			... Court,
@@ -23,19 +23,19 @@ namespace $ {
 			... Empty,
 			... Empty,
 			... Empty,
-			... Pawns.map( $gd_balls_chess_cell_invert ),
-			... Court.map( $gd_balls_chess_cell_invert ),
+			... Pawns.map( $giper_balls_chess_cell_invert ),
+			... Court.map( $giper_balls_chess_cell_invert ),
 			White,
 		] ) {
 			super( array )
 		}
 		
-		ways = new Map< number, $gd_balls_chess_state >()
+		ways = new Map< number, $giper_balls_chess_state >()
 		
 		@ $mol_memo.method
 		ballance() {
 			return this.reduce( ( sum, cell )=>
-				sum + Costs[ $gd_balls_chess_cell_kind(cell) ] * ( $gd_balls_chess_cell_side(cell) ? -1 : +1 )
+				sum + Costs[ $giper_balls_chess_cell_kind(cell) ] * ( $giper_balls_chess_cell_side(cell) ? -1 : +1 )
 			, 0 )
 		}
 		
@@ -54,39 +54,39 @@ namespace $ {
 			for( let from = 0; from < this.length; ++ from ) {
 				
 				const cell = this[ from ]
-				if( $gd_balls_chess_cell_side( cell ) !== this.side() ) continue
+				if( $giper_balls_chess_cell_side( cell ) !== this.side() ) continue
 				
-				const kind = $gd_balls_chess_cell_kind( cell )
+				const kind = $giper_balls_chess_cell_kind( cell )
 				if( kind === King ) king_alive = true
 				
-				const ways = $gd_balls_chess_rules[ kind ]
+				const ways = $giper_balls_chess_rules[ kind ]
 				for( const way of ways ) {
 					
-					let row_from = $gd_balls_coord_row( from )
-					let col_from = $gd_balls_coord_col( from )
+					let row_from = $giper_balls_coord_row( from )
+					let col_from = $giper_balls_coord_col( from )
 					
 					for( const vec of way ) {
 						
-						let row = row_from + $gd_balls_vector_vert( vec ) * mirror
+						let row = row_from + $giper_balls_vector_vert( vec ) * mirror
 						if( row < 0 || row >= Size ) break
 						
-						let col = col_from + $gd_balls_vector_hor( vec )
+						let col = col_from + $giper_balls_vector_hor( vec )
 						if( col < 0 || col >= Size ) break
 						
-						const to = $gd_balls_coord( row, col )
+						const to = $giper_balls_coord( row, col )
 						const c = this[ to ]
 						if( c ) {
 							
-							if( $gd_balls_chess_cell_side(c) !== this.side() ) {
+							if( $giper_balls_chess_cell_side(c) !== this.side() ) {
 								if( kind === Pawn && col === col_from ) continue
-								res.push( $gd_balls_step( from, to ) )
+								res.push( $giper_balls_step( from, to ) )
 							}
 							break
 							
 						} else {
 							
 							if( kind === Pawn && col !== col_from ) continue
-							res.push( $gd_balls_step( from, to ) )
+							res.push( $giper_balls_step( from, to ) )
 							
 						}
 					}
@@ -98,8 +98,8 @@ namespace $ {
 		}
 		
 		flip() {
-			const state = new $gd_balls_chess_state( this )
-			state.side( $gd_balls_chess_cell_invert( this.side() ) )
+			const state = new $giper_balls_chess_state( this )
+			state.side( $giper_balls_chess_cell_invert( this.side() ) )
 			return state
 		}
 
@@ -110,13 +110,13 @@ namespace $ {
 			
 			const next = this.flip()
 			
-			const from = $gd_balls_step_from( step )
-			const to = $gd_balls_step_to( step )
-			const to_row = $gd_balls_coord_row( to )
+			const from = $giper_balls_step_from( step )
+			const to = $giper_balls_step_to( step )
+			const to_row = $giper_balls_coord_row( to )
 			
 			let figure = next[ from ]
 			if( figure === Pawn && to_row === Size - 1 ) figure = Queen
-			if( figure === $gd_balls_chess_cell_invert( Pawn ) && to_row === 0 ) figure = $gd_balls_chess_cell_invert( Queen )
+			if( figure === $giper_balls_chess_cell_invert( Pawn ) && to_row === 0 ) figure = $giper_balls_chess_cell_invert( Queen )
 			
 			next[ to ] = figure
 			next[ from ] = Free
@@ -197,7 +197,7 @@ namespace $ {
 				$mol_dev_format_auto(
 					Object.fromEntries([
 						[ Symbol.toStringTag, 'ways' ],
-						... this.movements().map( step => [ $gd_balls_step_str( step ), this.ways.get( step ) ] ),
+						... this.movements().map( step => [ $giper_balls_step_str( step ), this.ways.get( step ) ] ),
 					])
 				),
 			)
@@ -209,7 +209,7 @@ namespace $ {
 					... Array.from( { length: Size }, (_, row )=> $mol_dev_format_tr( {},
 						$mol_dev_format_td( { color : 'gray' }, Size - row ),
 						... Array.from( { length: Size }, (_, col )=> $mol_dev_format_td( {},
-							Figures[ this[ $gd_balls_coord( Size - row - 1, col ) ] ]
+							Figures[ this[ $giper_balls_coord( Size - row - 1, col ) ] ]
 						) ),
 					) ),
 					$mol_dev_format_tr( {},
