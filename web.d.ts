@@ -3319,12 +3319,6 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-    function $mol_coord_pack(high: number, low: number): number;
-    function $mol_coord_high(pack: number): number;
-    function $mol_coord_low(pack: number): number;
-}
-
-declare namespace $ {
 
 	export class $giper_balls_crowd extends $giper_balls_game {
 		life( ): any

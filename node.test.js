@@ -9965,25 +9965,6 @@ var $;
 
 ;
 "use strict";
-var $;
-(function ($) {
-    const mask = 0b11111_11111_11111;
-    function $mol_coord_pack(high, low) {
-        return (high << 17 >>> 2) | (low & mask);
-    }
-    $.$mol_coord_pack = $mol_coord_pack;
-    function $mol_coord_high(pack) {
-        return pack << 2 >> 17;
-    }
-    $.$mol_coord_high = $mol_coord_high;
-    function $mol_coord_low(pack) {
-        return (pack << 17) >> 17;
-    }
-    $.$mol_coord_low = $mol_coord_low;
-})($ || ($ = {}));
-
-;
-"use strict";
 
 ;
 "use strict";
@@ -10031,32 +10012,34 @@ var $;
                 if (this.ball_kind(id) <= 0)
                     return;
                 const kind = this.ball_kind(id);
-                const max = this.size() - 1;
+                const size = this.size();
                 const all = new Set();
+                const { score, score_max, kinds: init } = this.snapshot();
+                const kinds = [...init];
                 const collect = (row, col) => {
-                    const coord = $mol_coord_pack(row, col);
-                    if (all.has(coord))
+                    const pos = row * size + col;
+                    if (all.has(pos))
                         return;
-                    const k = this.ball_kind([row, col]);
+                    const k = kinds[pos];
                     if (k !== kind)
                         return;
-                    all.add(coord);
+                    all.add(pos);
                     if (row > 0)
                         collect(row - 1, col);
                     if (col > 0)
                         collect(row, col - 1);
-                    if (row < max)
+                    if (row < size - 1)
                         collect(row + 1, col);
-                    if (col < max)
+                    if (col < size - 1)
                         collect(row, col + 1);
                 };
                 collect(...id);
                 if (all.size < 2)
                     return;
                 this.score(this.score() + 2 ** all.size - 3);
-                for (const coord of all) {
-                    this.ball_kind([$mol_coord_high(coord), $mol_coord_low(coord)], 0);
-                }
+                for (const pos of all)
+                    kinds[pos] = 0;
+                this.snapshot({ score, score_max, kinds });
             }
             score(next) {
                 const { score, score_max, kinds } = this.snapshot();
