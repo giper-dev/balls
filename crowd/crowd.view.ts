@@ -59,7 +59,7 @@ namespace $.$$ {
 			
 			if( this.ball_kind( id ) <= 0 ) return
 			const kind = this.ball_kind( id )
-			const size = this.size()
+			const max = this.size() - 1
 			const all = new Set< number >()
 			
 			const collect = ( row: number, col: number )=> {
@@ -74,8 +74,8 @@ namespace $.$$ {
 				
 				if( row > 0 ) collect( row - 1, col )
 				if( col > 0 ) collect( row, col - 1 )
-				if( row < size ) collect( row + 1, col )
-				if( col < size ) collect( row, col + 1 )
+				if( row < max ) collect( row + 1, col )
+				if( col < max ) collect( row, col + 1 )
 				
 			}
 			collect( ... id )
