@@ -3329,6 +3329,7 @@ declare namespace $ {
 	export class $giper_balls_crowd extends $giper_balls_game {
 		life( ): any
 		title( ): string
+		mood_smiles( ): readonly(any)[]
 		auto( ): readonly(any)[]
 	}
 	

@@ -9957,6 +9957,15 @@ var $;
 		title(){
 			return (this.$.$mol_locale.text("$giper_balls_crowd_title"));
 		}
+		mood_smiles(){
+			return [
+				"._.", 
+				"*_*", 
+				"*o*", 
+				"^_^", 
+				"^o^"
+			];
+		}
 		auto(){
 			return [(this.life())];
 		}
