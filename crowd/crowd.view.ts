@@ -59,34 +59,35 @@ namespace $.$$ {
 			
 			if( this.ball_kind( id ) <= 0 ) return
 			const kind = this.ball_kind( id )
-			const max = this.size() - 1
+			const size = this.size()
 			const all = new Set< number >()
+			
+			const { score, score_max, kinds: init } = this.snapshot()
+			const kinds = [ ... init ]
 			
 			const collect = ( row: number, col: number )=> {
 				
-				const coord = $mol_coord_pack( row, col )
-				if( all.has( coord ) ) return
+				const pos = row * size + col
+				if( all.has( pos ) ) return
 				
-				const k = this.ball_kind([ row, col ])
+				const k = kinds[ pos ]
 				if( k !== kind ) return
 				
-				all.add( coord )
+				all.add( pos )
 				
 				if( row > 0 ) collect( row - 1, col )
 				if( col > 0 ) collect( row, col - 1 )
-				if( row < max ) collect( row + 1, col )
-				if( col < max ) collect( row, col + 1 )
+				if( row < size-1 ) collect( row + 1, col )
+				if( col < size-1 ) collect( row, col + 1 )
 				
 			}
 			collect( ... id )
 			
 			if( all.size < 2 ) return
-			
 			this.score( this.score() + 2 ** all.size - 3 )
 			
-			for( const coord of all ) {
-				this.ball_kind( [ $mol_coord_high( coord ), $mol_coord_low( coord ) ] , 0 )
-			}
+			for( const pos of all ) kinds[ pos ] = 0
+			this.snapshot({ score, score_max, kinds })
 			
 		}
 		
