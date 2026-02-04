@@ -62,7 +62,7 @@ namespace $.$$ {
 			const size = this.size()
 			const all = new Set< number >()
 			
-			const { score, score_max, kinds: init } = this.snapshot()
+			let { score, score_max, kinds: init } = this.snapshot()
 			const kinds = [ ... init ]
 			
 			const collect = ( row: number, col: number )=> {
@@ -84,7 +84,7 @@ namespace $.$$ {
 			collect( ... id )
 			
 			if( all.size < 2 ) return
-			this.score( this.score() + 2 ** all.size - 3 )
+			score += 2 ** all.size - 3
 			
 			for( const pos of all ) kinds[ pos ] = 0
 			this.snapshot({ score, score_max, kinds })
