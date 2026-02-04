@@ -1,0 +1,4 @@
+$giper_balls_crowd $giper_balls_game
+	title @ \Crowd
+	auto /
+		<= life null
