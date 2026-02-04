@@ -228,6 +228,8 @@
     "$mol_type_immutable",
     "$giper_balls_near",
     "$mol_array_lottery",
+    "$giper_balls_crowd",
+    "$mol_coord",
     "$giper_balls_chess_game",
     "$giper_balls_chess",
     "$mol_icon_brain",

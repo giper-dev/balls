@@ -3319,6 +3319,43 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+    function $mol_coord_pack(high: number, low: number): number;
+    function $mol_coord_high(pack: number): number;
+    function $mol_coord_low(pack: number): number;
+}
+
+declare namespace $ {
+
+	export class $giper_balls_crowd extends $giper_balls_game {
+		life( ): any
+		title( ): string
+		auto( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=crowd.view.tree.d.ts.map
+declare namespace $.$$ {
+    type Snapshot = Readonly<{
+        score: number;
+        score_max: number;
+        kinds: readonly number[];
+    }>;
+    export class $giper_balls_crowd extends $.$giper_balls_crowd {
+        snapshot(next?: Snapshot): Snapshot;
+        ball_kind(id: [number, number], next?: number): number;
+        ball_mood([row, col]: [number, number]): any;
+        ball_grab(id: [number, number], event: PointerEvent): void;
+        score(next?: number): number;
+        score_max(): number;
+        score_text(): string;
+        life(): void;
+        restart(): void;
+    }
+    export {};
+}
+
+declare namespace $ {
 
 	export class $mol_icon_brain extends $mol_icon {
 		path( ): string
@@ -3478,7 +3515,12 @@ declare namespace $ {
 		,
 		ReturnType< $giper_balls_lines['tools'] >
 	>
-	type $giper_balls_chess_game__tools_giper_balls_catalog_5 = $mol_type_enforce<
+	type $giper_balls_crowd__tools_giper_balls_catalog_5 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $giper_balls_crowd['tools'] >
+	>
+	type $giper_balls_chess_game__tools_giper_balls_catalog_6 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $giper_balls_chess_game['tools'] >
@@ -3491,6 +3533,7 @@ declare namespace $ {
 		Source( ): $mol_link_source
 		Lights( ): $mol_lights_toggle
 		Lines( ): $giper_balls_lines
+		Crowd( ): $giper_balls_crowd
 		Chess( ): $giper_balls_chess_game
 		menu_title( ): string
 		plugins( ): readonly(any)[]
@@ -3499,6 +3542,7 @@ declare namespace $ {
 		menu_foot( ): readonly(any)[]
 		spreads( ): ({ 
 			'lines': ReturnType< $giper_balls_catalog['Lines'] >,
+			'crowd': ReturnType< $giper_balls_catalog['Crowd'] >,
 			'chess': ReturnType< $giper_balls_catalog['Chess'] >,
 		}) 
 	}
