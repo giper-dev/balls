@@ -9580,7 +9580,7 @@ var $;
                 if (this.ball_kind(id) <= 0)
                     return;
                 const kind = this.ball_kind(id);
-                const size = this.size();
+                const max = this.size() - 1;
                 const all = new Set();
                 const collect = (row, col) => {
                     const coord = $mol_coord_pack(row, col);
@@ -9594,9 +9594,9 @@ var $;
                         collect(row - 1, col);
                     if (col > 0)
                         collect(row, col - 1);
-                    if (row < size)
+                    if (row < max)
                         collect(row + 1, col);
-                    if (col < size)
+                    if (col < max)
                         collect(row, col + 1);
                 };
                 collect(...id);
