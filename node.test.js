@@ -9974,7 +9974,7 @@ var $;
     (function ($$) {
         class $giper_balls_crowd extends $.$giper_balls_crowd {
             snapshot(next) {
-                return this.$.$mol_state_local.value('$giper_balls_bomber:snapshot', next) ?? { score: 0, score_max: 0, kinds: [] };
+                return this.$.$mol_state_local.value('$giper_balls_crowd:snapshot', next) ?? { score: 0, score_max: 0, kinds: [] };
             }
             ball_kind(id, next) {
                 if (next !== undefined) {
@@ -10037,6 +10037,8 @@ var $;
                 if (all.size < 2)
                     return;
                 score += 2 ** all.size - 3;
+                if (score > score_max)
+                    score_max = score;
                 for (const pos of all)
                     kinds[pos] = 0;
                 this.snapshot({ score, score_max, kinds });
