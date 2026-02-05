@@ -114,8 +114,8 @@ namespace $.$$ {
 		
 		@ $mol_mem
 		score_text() {
-			const score = this.score()
-			const max = this.score_max()
+			const score = this.score().toLocaleString('en').replace( /,/g, '_' )
+			const max = this.score_max().toLocaleString('en').replace( /,/g, '_' )
 			if( score === max ) return `${score}!`
 			else return `${score} / ${max}`
 		}
